@@ -1,0 +1,11 @@
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
