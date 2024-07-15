@@ -178,7 +178,7 @@ void SysTick_Handler(void)
 {
 	systick_flag = 1;
 	Macro_Set_Bit(SCB->ICSR, 28);
-//	SCB->ICSR |= (1<<28);				// PendSV set
+	SCB->ICSR |= (1<<28);				// PendSV set
 }
 
 /*******************************************************************************

@@ -26,13 +26,7 @@
 		int no_task;					// task 번호 (tcb 배열의 index)
 		int prio;						// task의 priority
 		int state;						// task의 상태
-		struct TCB *next;				// next TCB
-		struct TCB *prev;				// prev TCB
 	}TCB;
-
-	typedef struct {
-		TCB *head;						// 첫 번째 노드를 가리키는 포인터
-	}LinkedList;
 
 	/* [ Macro ] */
 

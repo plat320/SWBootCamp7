@@ -53,8 +53,6 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 		return OS_FAIL_ALLOCATE_TCB;
 	}
 	ptcb = &tcb[idx_tcb];
-	link = TCBLink;
-
 
 	// task가 사용 할 stack 할당
 	ptcb->top_of_stack = (unsigned long*)_OS_Get_Stack(size_stack);		// 분석해볼 것
@@ -74,25 +72,6 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 	ptcb->prio = prio;
 	ptcb->state = STATE_READY;
 
-
-	// linked list
-	if (link->head == NULL){
-		link->head = ptcb;
-	}
-	else{			// priority scan 후 낑가넣기
-		TCB *current = link->head;
-		while (prio <= current->prio || current->next != NULL){
-			current = current->next;
-		}
-		if (current->next == NULL){
-			current->next = ptcb;
-		}
-		else{
-			ptcb->next = current->next;
-			current->next = ptcb;
-		}
-	}
-
 	return ptcb->no_task;
 }
 
@@ -101,9 +80,7 @@ extern void _OS_Start_First_Task(void); // scheduler.s 파일 확인
 void C_Scheduler(){
 	int highest_prio = -1;
 	int running_task_no = current_tcb->no_task;
-
-	LinkedList *link;
-	link = TCBLink;
+	int tmp = -1;
 
 }
 

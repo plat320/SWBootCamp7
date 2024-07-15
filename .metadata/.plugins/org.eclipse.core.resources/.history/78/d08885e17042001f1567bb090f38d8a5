@@ -27,7 +27,6 @@
 		int prio;						// task의 priority
 		int state;						// task의 상태
 		struct TCB *next;				// next TCB
-		struct TCB *prev;				// prev TCB
 	}TCB;
 
 	typedef struct {
