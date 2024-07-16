@@ -30,10 +30,10 @@ void Task2(void *para)
 void Task3(void *para)
 {
 	volatile int i;
-	//int cnt = 0;
+	int cnt = 0;
 	for(;;)
 	{
-		//Uart_Printf("Task3 : %d\n", cnt++);
+		Uart_Printf("Task3 : %d\n", cnt++);
 		for(i=0;i<0x100000;i++);
 	}
 }
@@ -65,7 +65,7 @@ void Main(void)
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
 	SysTick_OS_Tick(1);

@@ -14,6 +14,7 @@ char stack[STACK_SIZE] __attribute__((__aligned__(8)));
 TCB* current_tcb;
 TCB* next_tcb;
 PriorityQueue ready_queue;
+PriorityQueue blocked_queue;
 int system_tick = 0;
 
 /* Function */
@@ -29,6 +30,7 @@ void OS_Init(void)
 		tcb[i].heap_index = -1;
 	}
 	pq_init(&ready_queue);
+	pq_init(&blocked_queue);
 }
 
 char* _OS_Get_Stack(int size){
@@ -84,7 +86,7 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
     ptcb->heap_index = -1;
 
     // Add task to the priority queue
-    pq_push(&ready_queue, ptcb);
+    pq_push(&ready_queue, ptcb, pq_compare_ready);
 
     Uart_Printf("TCB[%d] created with stack top at %p\n", idx_tcb - 1, ptcb->top_of_stack);
 
@@ -98,7 +100,7 @@ void OS_Scheduler_Start(void)
 	int i;
 
 	// 현재는 선택된 첫 task의 실행만 진행하고 있음 (임의로 tcb[0]의 task를 현재 실행 할 태스크로 정의 (추후 정책에 따른 선택의 코드로 변경 필요)
-	current_tcb =  pq_pop(&ready_queue);
+	current_tcb =  pq_pop(&ready_queue, pq_compare_ready);
 
 	// Exception Priority 초기화
 	SCB->SHP[15 - 4] = 0xf << 4; // SysTick Exception Priority : Lowest Priority
@@ -115,59 +117,73 @@ void OS_Scheduler_Start(void)
 
 void OS_Scheduler(void)
 {
+	static int delay_cnt = 2000;
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
 		Uart_Printf("next_tcb->no_task : NULL\n");
 		return; // 우선순위 큐가 비어 있는 경우
 	}
-	//Uart_Printf("next_tcb->no_task : %d\n", next_tcb->no_task);
 
-	//Uart_Printf("current_tcb->no_task : %d\n", current_tcb->no_task);
-	//Uart_Printf("next_tcb->no_task : %d\n", next_tcb->no_task);
 	if (next_tcb != NULL && next_tcb != current_tcb) {
-		pq_pop(&ready_queue);
+		pq_pop(&ready_queue, pq_compare_ready);
 		//Uart_Printf("YES\n");
 	    current_tcb->state = STATE_READY;
 	    //Uart_Printf("current_tcb->state : %d\n", current_tcb->state);
 	    next_tcb->state = STATE_RUNNING;
 	    //Uart_Printf("next_tcb->state : %d\n\n\n", next_tcb->state);
 	    current_tcb->timestamp = system_tick;
-	    pq_push(&ready_queue, current_tcb);
+
+	    // test code
+	    if(current_tcb->no_task == 2) {
+	    	delay_cnt--;
+	    }
+	    if(current_tcb->no_task == 2 && delay_cnt <= 0) {
+	    	Uart_Printf("task 3 delay start : %d\n", system_tick);
+	    	OS_Block_Task(2, 2000);
+	    	delay_cnt = 2000;
+	    }
+	    else
+	    	pq_push(&ready_queue, current_tcb, pq_compare_ready);
 	    current_tcb = next_tcb;
 	}
 }
 
 void OS_Tick(void) {
     system_tick++;  // 시스템 타임스탬프 증가
-    int i;
-    for (i = 0; i < MAX_TCB; i++) {
-        if (tcb[i].state == STATE_BLOCKED && tcb[i].delay_until <= system_tick) {
-            tcb[i].state = STATE_READY; // blocked 중인 task가 대기 중인 이벤트 발생하면 state는 ready
-            tcb[i].timestamp = system_tick;
-            pq_push(&ready_queue, &tcb[i]);
-        }
-    }
+    while (blocked_queue.size > 0 && pq_top(&blocked_queue)->delay_until <= system_tick) {
+        TCB* task = pq_pop(&blocked_queue, pq_compare_delay);
+        task->state = STATE_READY;
+        pq_push(&ready_queue, task, pq_compare_ready);
+   }
 }
 
 
 void OS_Block_Task(int task_no, int delay) {
-	tcb[task_no].state = STATE_BLOCKED;
-	tcb[task_no].delay_until = system_tick + delay;
-    pq_remove(&ready_queue, current_tcb);
+    if (task_no < 0 || task_no >= MAX_TCB) {
+        return; // 유효하지 않은 task_no
+    }
+
+    TCB* task = &tcb[task_no];
+
+    task->state = STATE_BLOCKED;
+    task->delay_until = system_tick + delay;
+
+    pq_remove(&ready_queue, task, pq_compare_ready);
+    pq_push(&blocked_queue, task, pq_compare_delay);
 }
 
 void OS_Unblock_Task(int task_no) {
     if (task_no >= 0 && task_no < MAX_TCB) {
         tcb[task_no].state = STATE_READY;
         tcb[task_no].timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
-        pq_push(&ready_queue, &tcb[task_no]);
+        pq_push(&ready_queue, &tcb[task_no], pq_compare_ready);
     }
 }
 
 void OS_Change_Priority(int task_no, int new_prio) {
     if (task_no >= 0 && task_no < MAX_TCB) {
         tcb[task_no].prio = new_prio;
-        pq_update(&ready_queue, &tcb[task_no]);
+        pq_update(&ready_queue, &tcb[task_no], pq_compare_ready);
     }
 }
 

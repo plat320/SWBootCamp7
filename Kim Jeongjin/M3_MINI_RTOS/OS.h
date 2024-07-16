@@ -45,16 +45,17 @@
 	extern TCB* current_tcb;
 	extern TCB* next_tcb;
 	extern PriorityQueue ready_queue;
+	extern PriorityQueue blocked_queue;
 	extern int system_tick; // 시스템 타임스탬프
 
 	/* [ Macro ] */
 
 	/* [ Function ] */
-	extern void OS_Init(void);
-	extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
+	void OS_Init(void);
+	int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
 	extern void OS_Scheduler_Start(void);
 	extern void OS_Scheduler(void);
-	extern void PRINT_DUMMY(void);
+	void PRINT_DUMMY(void);
 
 	void OS_Tick(void);
 
