@@ -18,6 +18,12 @@ PriorityQueue blocked_queue;
 int system_tick = 0;
 
 /* Function */
+void IdleTask(void *para) {
+    for (;;) {
+    	Uart_Printf("IdleTask is working\n");
+    }
+}
+
 void OS_Init(void)
 {
 	int i;
@@ -31,6 +37,8 @@ void OS_Init(void)
 	}
 	pq_init(&ready_queue);
 	pq_init(&blocked_queue);
+
+	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
 }
 
 char* _OS_Get_Stack(int size){
@@ -120,7 +128,7 @@ void OS_Scheduler(void)
 	static int delay_cnt = 2000;
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
-		Uart_Printf("next_tcb->no_task : NULL\n");
+		//Uart_Printf("next_tcb->no_task : NULL\n");
 		return; // 우선순위 큐가 비어 있는 경우
 	}
 
@@ -134,12 +142,12 @@ void OS_Scheduler(void)
 	    current_tcb->timestamp = system_tick;
 
 	    // test code
-	    if(current_tcb->no_task == 2) {
+	    if(current_tcb->no_task == 3) {
 	    	delay_cnt--;
 	    }
-	    if(current_tcb->no_task == 2 && delay_cnt <= 0) {
+	    if(current_tcb->no_task == 3 && delay_cnt <= 0) {
 	    	Uart_Printf("task 3 delay start : %d\n", system_tick);
-	    	OS_Block_Task(2, 2000);
+	    	OS_Block_Task(3, 2000);
 	    	delay_cnt = 2000;
 	    }
 	    else
