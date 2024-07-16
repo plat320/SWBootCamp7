@@ -17,3 +17,7 @@
 - systick handler에서 OS_Tick함수를 호출하도록 하여 blocked queue에서 State Blocked 인 task 중 delay시간이 끝난 task만 갱신하도록 수정
 - priority_queue에서 compare 함수를 compare_ready와 comapre_blocked로 구분하고 이를 공용으로 사용할 수 있도록 함수 개선
 - OS_Scheduler에 Taks 3를 block하는 test code 추가
+
+2024-07-16 11:40 am
+- IDLE Task 생성하여 OS_Init 시점에서 생성되도록 수정
+- IDLE Task 생성에 맞춰 전체 코드의 task index가 Create 되는 Task와 일치하도록 수정 
