@@ -21,3 +21,9 @@
 2024-07-16 11:40 am
 - IDLE Task 생성하여 OS_Init 시점에서 생성되도록 수정
 - IDLE Task 생성에 맞춰 전체 코드의 task index가 Create 되는 Task와 일치하도록 수정 
+
+2024-07-16 03:58 pm
+- task가 delay할 필요가 있을 때 자기 자신을 delay 해야할 시간 만큼 state blocked 할 수 있도록 OS_Block_Current_Task 함수 생성
+- CPU를 선점하고 있던 task가 State Blocked로 전환되었을 때, CPU를 즉시 다른 task에게 넘겨주도록 개선
+- Systick interrupt 주기를 상수 변수로 바꾸고 systick 값이 Systick Handler 호출 시 해당 변수 만큼 더해지도록 개선
+- Systick 변수 타입을 long long int로 변경
