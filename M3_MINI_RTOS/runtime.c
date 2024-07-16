@@ -1,7 +1,5 @@
 #include "device_driver.h"
 
-
-
 char * _sbrk(int inc)
 {
 	extern unsigned char __ZI_LIMIT__;
@@ -34,7 +32,7 @@ void System_Init(void)
 
 	LED_Init();	// LED 초기화
 
-
+	SysTick_OS_Tick(1000);	// Systick Timer timeout이벤트 interrupt 활성화
 
 	SCB->VTOR = 0x08003000;
 	SCB->SHCSR = 7<<16;

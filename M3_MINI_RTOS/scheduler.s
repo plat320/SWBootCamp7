@@ -6,24 +6,24 @@
 	.align 4
 
 	.extern current_tcb
-	.extern C_Scheduler
+	.extern OS_Scheduler
+	.extern PRINT_DUMMY
 
 	.global PendSV_Handler
 	.type 	PendSV_Handler, %function
 PendSV_Handler:
-	MRS		R0, PSP
-	STMDB	R0!, {R4-R11}
+	@ 필요 시 작성
+    MRS     R0, PSP
+    STMDB   R0!, {R4-R11}
+    LDR     R1, =current_tcb
+    LDR     R2, [R1]
+    STR     R0, [R2]
 
-	LDR 	R3, =current_tcb
-	LDR		R1, [R3]
-	STR		R0, [R1]			@ top_of_stack update		@ context store 끝
+	push 	{r0-r4, lr}
+    BL 		OS_Scheduler
+    pop 	{r0-r4, lr}
 
-	PUSH	{R0-R4, LR}
-	BL		C_Scheduler
-	POP		{R0-R4, LR}
-
-	B		SVC_Handler
-
+    B		SVC_Handler
 
 
 	.global SVC_Handler

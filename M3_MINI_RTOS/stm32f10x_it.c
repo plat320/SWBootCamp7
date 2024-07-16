@@ -24,6 +24,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "device_driver.h"
+#include "OS.h"
 
 void Invalid_ISR(void)
 {
@@ -177,8 +178,8 @@ volatile int systick_flag = 0;
 void SysTick_Handler(void)
 {
 	systick_flag = 1;
-	Macro_Set_Bit(SCB->ICSR, 28);
-//	SCB->ICSR |= (1<<28);				// PendSV set
+	OS_Tick();
+	OS_Pend_Trigger();
 }
 
 /*******************************************************************************
