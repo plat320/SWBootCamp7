@@ -9,7 +9,7 @@
 
 
 /* Global Variable */
-TCB tcb[MAX_TCB];
+TCB tcb[MAX_TCB + 1];
 char stack[STACK_SIZE] __attribute__((__aligned__(8)));
 TCB* current_tcb;
 TCB* next_tcb;
@@ -20,14 +20,14 @@ int system_tick = 0;
 /* Function */
 void IdleTask(void *para) {
     for (;;) {
-    	Uart_Printf("IdleTask is working\n");
+    	// Uart_Printf("IdleTask is working\n");
     }
 }
 
 void OS_Init(void)
 {
 	int i;
-	for(i=0; i<MAX_TCB; i++)
+	for(i=0; i<=MAX_TCB; i++)
 	{
 		tcb[i].no_task = i;
 		tcb[i].state = STATE_READY; // 초기 상태는 READY
@@ -67,7 +67,7 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 	Uart_Printf("TCB[%d] will be created\n", idx_tcb);
 
 	// task가 사용 할 TCB 할당
-	if(idx_tcb >= MAX_TCB)
+	if(idx_tcb > MAX_TCB)
 	{
 		return OS_FAIL_ALLOCATE_TCB;
 	}
@@ -125,7 +125,7 @@ void OS_Scheduler_Start(void)
 
 void OS_Scheduler(void)
 {
-	static int delay_cnt = 2000;
+	static int test_delay_cnt = 2000;
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
 		//Uart_Printf("next_tcb->no_task : NULL\n");
@@ -134,21 +134,18 @@ void OS_Scheduler(void)
 
 	if (next_tcb != NULL && next_tcb != current_tcb) {
 		pq_pop(&ready_queue, pq_compare_ready);
-		//Uart_Printf("YES\n");
 	    current_tcb->state = STATE_READY;
-	    //Uart_Printf("current_tcb->state : %d\n", current_tcb->state);
 	    next_tcb->state = STATE_RUNNING;
-	    //Uart_Printf("next_tcb->state : %d\n\n\n", next_tcb->state);
 	    current_tcb->timestamp = system_tick;
 
 	    // test code
 	    if(current_tcb->no_task == 3) {
-	    	delay_cnt--;
+	    	test_delay_cnt--;
 	    }
-	    if(current_tcb->no_task == 3 && delay_cnt <= 0) {
-	    	Uart_Printf("task 3 delay start : %d\n", system_tick);
+	    if(current_tcb->no_task == 3 && test_delay_cnt <= 0) {
+	    	//Uart_Printf("[test] task 3 delay start : %d\n", system_tick);
 	    	OS_Block_Task(3, 2000);
-	    	delay_cnt = 2000;
+	    	test_delay_cnt = 2000;
 	    }
 	    else
 	    	pq_push(&ready_queue, current_tcb, pq_compare_ready);
@@ -167,7 +164,7 @@ void OS_Tick(void) {
 
 
 void OS_Block_Task(int task_no, int delay) {
-    if (task_no < 0 || task_no >= MAX_TCB) {
+    if (task_no < 0 || task_no > MAX_TCB) {
         return; // 유효하지 않은 task_no
     }
 
@@ -181,7 +178,7 @@ void OS_Block_Task(int task_no, int delay) {
 }
 
 void OS_Unblock_Task(int task_no) {
-    if (task_no >= 0 && task_no < MAX_TCB) {
+    if (task_no >= 0 && task_no <= MAX_TCB) {
         tcb[task_no].state = STATE_READY;
         tcb[task_no].timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
         pq_push(&ready_queue, &tcb[task_no], pq_compare_ready);
@@ -189,7 +186,7 @@ void OS_Unblock_Task(int task_no) {
 }
 
 void OS_Change_Priority(int task_no, int new_prio) {
-    if (task_no >= 0 && task_no < MAX_TCB) {
+    if (task_no >= 0 && task_no <= MAX_TCB) {
         tcb[task_no].prio = new_prio;
         pq_update(&ready_queue, &tcb[task_no], pq_compare_ready);
     }

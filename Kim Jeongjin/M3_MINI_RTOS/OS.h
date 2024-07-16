@@ -4,7 +4,7 @@
 	/* [Constant] */
 	//#define MAX_TCB					(20)
 	#define MAX_TCB					(64)
-	#define PQ_SIZE 				(MAX_TCB)
+	#define PQ_SIZE 				(MAX_TCB + 1)
 
 	#define PRIO_HIGHEST			(0)
 	#define PRIO_LOWEST				(10)
@@ -37,11 +37,11 @@
 	}TCB;
 
 	typedef struct {
-	    TCB* heap[MAX_TCB];
+	    TCB* heap[MAX_TCB + 1];
 	    int size;
 	} PriorityQueue;
 
-	extern TCB tcb[MAX_TCB];
+	extern TCB tcb[MAX_TCB + 1];
 	extern TCB* current_tcb;
 	extern TCB* next_tcb;
 	extern PriorityQueue ready_queue;

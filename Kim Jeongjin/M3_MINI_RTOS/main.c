@@ -33,7 +33,7 @@ void Task3(void *para)
 	int cnt = 0;
 	for(;;)
 	{
-		Uart_Printf("Task3 : %d\n", cnt++);
+		//Uart_Printf("Task3 : %d\n", cnt++);
 		for(i=0;i<0x100000;i++);
 	}
 }
@@ -59,13 +59,13 @@ void Main(void)
 
 	OS_Init();	// OS 자료구조 초기화
 
-	//OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
-	//OS_Create_Task_Simple(Task2, (void*)0, 5, 128); // Task 생성
-	//OS_Create_Task_Simple(Task3, (void*)0, 5, 256);
+	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
+	OS_Create_Task_Simple(Task2, (void*)0, 5, 128); // Task 생성
+	OS_Create_Task_Simple(Task3, (void*)0, 5, 256);
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
 	SysTick_OS_Tick(1);

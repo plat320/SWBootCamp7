@@ -72,7 +72,7 @@ void pq_heapify_down(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
 }
 
 void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
-    if (pq->size >= HEAP_SIZE) {
+    if (pq->size >= PQ_SIZE) {
         return; // 큐가 가득 찬 경우
     }
 
