@@ -24,6 +24,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "device_driver.h"
+#include "OS.h"
 
 void Invalid_ISR(void)
 {
@@ -177,6 +178,7 @@ volatile int systick_flag = 0;
 void SysTick_Handler(void)
 {
 	systick_flag = 1;
+	OS_Tick();
 	SCB->ICSR |= (1 << 28);
 }
 

@@ -1,6 +1,6 @@
 #include "device_driver.h"
 #include "OS.h"
-#include "stm32f10x.h"
+//#include "stm32f10x.h"
 #include "priority_queue.h"
 #include <stdlib.h>
 
@@ -14,7 +14,7 @@ char stack[STACK_SIZE] __attribute__((__aligned__(8)));
 TCB* current_tcb;
 TCB* next_tcb;
 PriorityQueue ready_queue;
-int current_stamp = 0;
+int system_tick = 0;
 
 /* Function */
 void OS_Init(void)
@@ -25,6 +25,7 @@ void OS_Init(void)
 		tcb[i].no_task = i;
 		tcb[i].state = STATE_READY; // 초기 상태는 READY
 		tcb[i].timestamp = 0;
+		tcb[i].delay_until = 0;
 		tcb[i].heap_index = -1;
 	}
 	pq_init(&ready_queue);
@@ -79,7 +80,7 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 
     ptcb->prio = prio;
     ptcb->state = STATE_READY;
-    ptcb->timestamp = current_stamp; // 태스크 생성 시 타임스탬프 설정
+    ptcb->timestamp = system_tick; // 태스크 생성 시 타임스탬프 설정
     ptcb->heap_index = -1;
 
     // Add task to the priority queue
@@ -110,7 +111,6 @@ void OS_Scheduler_Start(void)
 	current_tcb->state = STATE_RUNNING;
 
 	_OS_Start_First_Task();
-	current_stamp++;
 }
 
 void OS_Scheduler(void)
@@ -131,24 +131,35 @@ void OS_Scheduler(void)
 	    //Uart_Printf("current_tcb->state : %d\n", current_tcb->state);
 	    next_tcb->state = STATE_RUNNING;
 	    //Uart_Printf("next_tcb->state : %d\n\n\n", next_tcb->state);
-	    current_tcb->timestamp = current_stamp;
+	    current_tcb->timestamp = system_tick;
 	    pq_push(&ready_queue, current_tcb);
 	    current_tcb = next_tcb;
 	}
-	current_stamp++;
 }
 
-/*
-void OS_Block_Current_Task(void) {
-    current_tcb->state = STATE_BLOCKED;
-    current_tcb->delay_until = system_tick + delay;
+void OS_Tick(void) {
+    system_tick++;  // 시스템 타임스탬프 증가
+    int i;
+    for (i = 0; i < MAX_TCB; i++) {
+        if (tcb[i].state == STATE_BLOCKED && tcb[i].delay_until <= system_tick) {
+            tcb[i].state = STATE_READY; // blocked 중인 task가 대기 중인 이벤트 발생하면 state는 ready
+            tcb[i].timestamp = system_tick;
+            pq_push(&ready_queue, &tcb[i]);
+        }
+    }
+}
+
+
+void OS_Block_Task(int task_no, int delay) {
+	tcb[task_no].state = STATE_BLOCKED;
+	tcb[task_no].delay_until = system_tick + delay;
     pq_remove(&ready_queue, current_tcb);
 }
 
 void OS_Unblock_Task(int task_no) {
     if (task_no >= 0 && task_no < MAX_TCB) {
         tcb[task_no].state = STATE_READY;
-        tcb[task_no].timestamp = current_stamp; // 태스크 언블록 시 타임스탬프 갱신
+        tcb[task_no].timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
         pq_push(&ready_queue, &tcb[task_no]);
     }
 }
@@ -157,11 +168,9 @@ void OS_Change_Priority(int task_no, int new_prio) {
     if (task_no >= 0 && task_no < MAX_TCB) {
         tcb[task_no].prio = new_prio;
         pq_update(&ready_queue, &tcb[task_no]);
-        OS_Yield(); // 스케줄러 호출
     }
 }
 
-*/
 
 void PRINT_DUMMY(void)
 {

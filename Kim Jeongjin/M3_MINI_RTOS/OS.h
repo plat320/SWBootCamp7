@@ -32,6 +32,7 @@
 
 		// For Priority Queue
 		int timestamp;
+		int delay_until;
 		int heap_index;
 	}TCB;
 
@@ -55,9 +56,10 @@
 	extern void OS_Scheduler(void);
 	extern void PRINT_DUMMY(void);
 
-	/*
-	void OS_Block_Current_Task(void);
+	void OS_Tick(void);
+
+	void OS_Block_Task(int task_no, int delay);
 	void OS_Unblock_Task(int task_no);
-	*/
+	void OS_Change_Priority(int task_no, int new_prio);
 
 #endif
