@@ -15,7 +15,8 @@ TCB* current_tcb;
 TCB* next_tcb;
 PriorityQueue ready_queue;
 PriorityQueue blocked_queue;
-int system_tick = 0;
+long long int system_tick = 0;
+int interrupt_period = 1;
 
 /* Function */
 void IdleTask(void *para) {
@@ -143,8 +144,8 @@ void OS_Scheduler(void)
 	    	test_delay_cnt--;
 	    }
 	    if(current_tcb->no_task == 3 && test_delay_cnt <= 0) {
-	    	//Uart_Printf("[test] task 3 delay start : %d\n", system_tick);
-	    	OS_Block_Task(3, 2000);
+	    	Uart_Printf("[test] task 3 delay start : %d\n", system_tick);
+	    	OS_Block_Current_Task(2000);
 	    	test_delay_cnt = 2000;
 	    }
 	    else
@@ -154,7 +155,7 @@ void OS_Scheduler(void)
 }
 
 void OS_Tick(void) {
-    system_tick++;  // 시스템 타임스탬프 증가
+    system_tick += interrupt_period;  // 시스템 타임스탬프 증가
     while (blocked_queue.size > 0 && pq_top(&blocked_queue)->delay_until <= system_tick) {
         TCB* task = pq_pop(&blocked_queue, pq_compare_delay);
         task->state = STATE_READY;
@@ -163,6 +164,18 @@ void OS_Tick(void) {
 }
 
 
+void OS_Block_Current_Task(int delay) {
+	pq_remove(&ready_queue, current_tcb, pq_compare_ready);
+
+	current_tcb -> state = STATE_BLOCKED;
+	current_tcb -> delay_until = system_tick + delay;
+
+	pq_push(&blocked_queue, current_tcb, pq_compare_delay);
+
+	OS_Pend_Trigger();
+}
+
+/*
 void OS_Block_Task(int task_no, int delay) {
     if (task_no < 0 || task_no > MAX_TCB) {
         return; // 유효하지 않은 task_no
@@ -170,18 +183,24 @@ void OS_Block_Task(int task_no, int delay) {
 
     TCB* task = &tcb[task_no];
 
+    pq_remove(&ready_queue, task, pq_compare_ready);
+
     task->state = STATE_BLOCKED;
     task->delay_until = system_tick + delay;
 
-    pq_remove(&ready_queue, task, pq_compare_ready);
     pq_push(&blocked_queue, task, pq_compare_delay);
 }
 
 void OS_Unblock_Task(int task_no) {
     if (task_no >= 0 && task_no <= MAX_TCB) {
-        tcb[task_no].state = STATE_READY;
-        tcb[task_no].timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
-        pq_push(&ready_queue, &tcb[task_no], pq_compare_ready);
+    	TCB* task = &tcb[task_no];
+
+        pq_remove(&blocked_queue, task, pq_compare_delay);
+
+        task -> state = STATE_READY;
+        task -> timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
+
+        pq_push(&ready_queue, task, pq_compare_ready);
     }
 }
 
@@ -191,7 +210,11 @@ void OS_Change_Priority(int task_no, int new_prio) {
         pq_update(&ready_queue, &tcb[task_no], pq_compare_ready);
     }
 }
+*/
 
+void OS_Pend_Trigger(void) {
+	Macro_Set_Bit(SCB->ICSR, 28);
+}
 
 void PRINT_DUMMY(void)
 {

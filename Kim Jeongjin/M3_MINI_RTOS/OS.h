@@ -3,7 +3,7 @@
 
 	/* [Constant] */
 	//#define MAX_TCB					(20)
-	#define MAX_TCB					(64)
+	#define MAX_TCB					(60)
 	#define PQ_SIZE 				(MAX_TCB + 1)
 
 	#define PRIO_HIGHEST			(0)
@@ -31,8 +31,8 @@
 		int state;						// task의 상태
 
 		// For Priority Queue
-		int timestamp;
-		int delay_until;
+		long long int timestamp;
+		long long int delay_until;
 		int heap_index;
 	}TCB;
 
@@ -46,7 +46,8 @@
 	extern TCB* next_tcb;
 	extern PriorityQueue ready_queue;
 	extern PriorityQueue blocked_queue;
-	extern int system_tick; // 시스템 타임스탬프
+	extern long long int system_tick; // 시스템 타임스탬프
+	extern int interrupt_period;
 
 	/* [ Macro ] */
 
@@ -58,9 +59,11 @@
 	void PRINT_DUMMY(void);
 
 	void OS_Tick(void);
+	void OS_Pend_Trigger(void);
 
-	void OS_Block_Task(int task_no, int delay);
-	void OS_Unblock_Task(int task_no);
-	void OS_Change_Priority(int task_no, int new_prio);
+	void OS_Block_Current_Task(int delay);
+	// void OS_Block_Task(int task_no, int delay);
+	// void OS_Unblock_Task(int task_no);
+	// void OS_Change_Priority(int task_no, int new_prio);
 
 #endif

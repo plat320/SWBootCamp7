@@ -179,7 +179,7 @@ void SysTick_Handler(void)
 {
 	systick_flag = 1;
 	OS_Tick();
-	SCB->ICSR |= (1 << 28);
+	OS_Pend_Trigger();
 }
 
 /*******************************************************************************
