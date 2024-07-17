@@ -18,10 +18,12 @@ void Task1(void *para)
 void Task2(void *para)
 {
 	//volatile int i;
+	int cnt = 0;
 	for(;;)
 	{
 		LED_1_Toggle();
 		//Uart_Printf("Task2\n");
+		OS_Signal_Send(3, cnt++);
 		OS_Block_Current_Task(1000);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
@@ -31,11 +33,18 @@ void Task2(void *para)
 void Task3(void *para)
 {
 //	volatile int i;
-	int cnt = 0;
+	//int cnt = 0;
 	for(;;)
 	{
-    	OS_Block_Current_Task(2000);
-		Uart_Printf("Task3 : %d\n", cnt++);
+		//Uart_Printf("Task3 : %d\n", cnt++);
+    	int received_data = OS_Signal_Wait(3000);
+    	if(received_data != SIGNAL_TIMEOUT) {
+    		Uart_Printf("Received data is : %d\n", received_data);
+    	}
+    	else {
+    		Uart_Printf("Signal Timeout\n");
+    	}
+    	OS_Block_Current_Task(500);
 //		for(i=0;i<0x100000;i++);
 	}
 }
@@ -70,7 +79,7 @@ void Main(void)
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
 	SysTick_OS_Tick(interrupt_period);

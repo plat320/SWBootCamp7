@@ -20,6 +20,11 @@
 	#define STATE_BLOCKED			(1)
 	#define STATE_RUNNING			(2)
 
+	#define SIGNAL_TIMEOUT			(-1)
+	#define SIGNAL_DEFAULT			(0)
+	#define SIGNAL_WAIT				(1)
+	#define SIGNAL_RECEIVED			(2)
+
 	#define INIT_PSR				(0x01000000)
 
 	/* [ Type ] */
@@ -34,6 +39,9 @@
 		long long int timestamp;
 		long long int delay_until;
 		int heap_index;
+
+		int temp_value;
+		int signal_flag;
 	}TCB;
 
 	typedef struct {
@@ -61,9 +69,12 @@
 	void OS_Tick(void);
 	void OS_Pend_Trigger(void);
 
+	int OS_Signal_Wait(int timeout);
+	void OS_Signal_Send(int target_no_task, int data);
+
 	void OS_Block_Current_Task(int delay);
 	// void OS_Block_Task(int task_no, int delay);
-	// void OS_Unblock_Task(int task_no);
+	void OS_Unblock_Task(TCB* task);
 	// void OS_Change_Priority(int task_no, int new_prio);
 
 #endif
