@@ -24,6 +24,7 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "device_driver.h"
+#include "OS.h"
 
 void Invalid_ISR(void)
 {
@@ -176,11 +177,9 @@ void DebugMon_Handler(void)
 volatile int systick_flag = 0;
 void SysTick_Handler(void)
 {
-//	systick_flag = 1;
-//	pendsv set
-//	SCB->ICSR |= 1<<28;  // 이렇게 하면 안됨! 다른 비트가 설정되어 있음으로써 side effect가 발생할 수 있음
-	SCB->ICSR = 1<<28;
-//	Uart1_Printf("Systick timeout!\n");
+	systick_flag = 1;
+//	OS_Tick();
+//	OS_Pend_Trigger();
 }
 
 /*******************************************************************************
