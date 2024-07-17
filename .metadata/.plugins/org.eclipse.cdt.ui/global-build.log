@@ -453,3 +453,10 @@ make all
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
 
 **** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****

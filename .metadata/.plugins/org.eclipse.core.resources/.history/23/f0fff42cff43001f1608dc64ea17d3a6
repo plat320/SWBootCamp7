@@ -134,6 +134,7 @@ void OS_Scheduler(void)
 //	Uart_Printf("OS_Scheduler\n");
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
+
 		return; // 우선순위 큐가 비어 있는 경우
 	}
 
