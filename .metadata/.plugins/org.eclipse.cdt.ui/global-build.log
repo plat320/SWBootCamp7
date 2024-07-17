@@ -1,616 +1,49 @@
 
-**** Build of configuration Default for project M3_MINI_Device_Example ****
+**** Clean-only build of configuration Default for project M3_MINI_RTOS ****
 
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_Device_Example ****
-
-make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_Device_Example ****
-
-make all 
-make: Nothing to be done for `all'.
+make clean 
+rm -f rom_0x08003000.bin
+rm -f rom_0x08003000.elf
+rm -f rom_0x08003000.map
+rm -f OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o
+rm -f __dump.txt __dump_all.txt
+rm -f OS.su clock.su core_cm3.su joy_key.su lcd.su led.su main.su priority_queue.su runtime.su stm32f10x_it.su systick.su timer.su uart.su
 
 **** Build Finished ****
 
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-main.c: In function 'Main':
-main.c:56:15: warning: unused variable 'idx_func' [-Wunused-variable]
-    static int idx_func = 0;
-               ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-runtime.c: In function 'System_Init':
-runtime.c:33:2: warning: implicit declaration of function 'Systick_OS_Tick' [-Wimplicit-function-declaration]
-  Systick_OS_Tick(1000);
-  ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-runtime.o: In function `System_Init':
-runtime.c:(.text+0xb0): undefined reference to `Systick_OS_Tick'
-make: *** [rom_0x08003000.elf] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-runtime.o: In function `System_Init':
-runtime.c:(.text+0xb0): undefined reference to `Systick_OS_Tick'
-make: *** [rom_0x08003000.elf] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_Device_Example ****
-
-make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_Device_Example ****
-
-make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'C_Scheduler':
-OS.c:80:7: warning: unused variable 'ptcb' [-Wunused-variable]
-  TCB *ptcb;
-       ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'C_Scheduler':
-OS.c:82:2: error: 'for' loop initial declarations are only allowed in C99 mode
-  for (int i=0; i < tot_no_task; i++){
-  ^
-OS.c:82:2: note: use option -std=c99 or -std=gnu99 to compile your code
-OS.c:82:20: error: 'tot_no_task' undeclared (first use in this function)
-  for (int i=0; i < tot_no_task; i++){
-                    ^
-OS.c:82:20: note: each undeclared identifier is reported only once for each function it appears in
-OS.c:83:13: error: invalid type argument of '->' (have 'TCB')
-   if (tcb[i]->state == STATE_READY){
-             ^
-OS.c:84:14: error: invalid type argument of '->' (have 'TCB')
-    if (tcb[i]->prio > highest_prio){
-              ^
-OS.c:85:26: error: invalid type argument of '->' (have 'TCB')
-     highest_prio = tcb[i]->prio;
-                          ^
-OS.c:86:29: error: invalid type argument of '->' (have 'TCB')
-     running_task_no = tcb[i]->no_task;
-                             ^
-OS.c:88:19: error: invalid type argument of '->' (have 'TCB')
-    else if (tcb[i]->prio == highest_prio && running_task_no  current_tcb->no_task){
-                   ^
-OS.c:88:62: error: expected ')' before 'current_tcb'
-    else if (tcb[i]->prio == highest_prio && running_task_no  current_tcb->no_task){
-                                                              ^
-OS.c:80:6: warning: unused variable 'tmp' [-Wunused-variable]
-  int tmp = -1;
-      ^
-OS.c: At top level:
-OS.c:96:2: error: initializer element is not constant
-  int next_no_task = (current_tcb->no_task+1) % 3;
-  ^
-OS.c:97:2: warning: data definition has no type or storage class [enabled by default]
-  current_tcb = &tcb[next_no_task];
-  ^
-OS.c:97:2: warning: type defaults to 'int' in declaration of 'current_tcb' [-Wimplicit-int]
-OS.c:97:2: error: conflicting types for 'current_tcb'
-OS.c:11:6: note: previous declaration of 'current_tcb' was here
- TCB* current_tcb;
-      ^
-OS.c:97:16: warning: initialization makes integer from pointer without a cast [enabled by default]
-  current_tcb = &tcb[next_no_task];
-                ^
-OS.c:97:2: error: initializer element is not constant
-  current_tcb = &tcb[next_no_task];
-  ^
-OS.c:98:1: error: expected identifier or '(' before '}' token
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fstack-usage -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork 
+core_cm3.c: In function '__get_PSP':
+core_cm3.c:455:1: warning: stack usage computation not supported for this target [enabled by default]
  }
  ^
-OS.c: In function 'OS_Scheduler_Start':
-OS.c:105:14: warning: assignment makes integer from pointer without a cast [enabled by default]
-  current_tcb = &tcb[0];
-              ^
-make: *** [OS.o] Error 1
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
 
 **** Build Finished ****
 
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Init':
-OS.c:17:18: error: 'NULL' undeclared (first use in this function)
-  TCBLink->head = NULL;
-                  ^
-OS.c:17:18: note: each undeclared identifier is reported only once for each function it appears in
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:75:2: warning: implicit declaration of function 'Expand_Ready_List' [-Wimplicit-function-declaration]
-  Expand_Ready_List(ptcb);
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Block_Current_Task':
+OS.c:189:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (volatile int i = 0; i<10000; i++){}
   ^
-OS.c: At top level:
-OS.c:82:6: warning: conflicting types for 'Expand_Ready_List' [enabled by default]
- void Expand_Ready_List(TCB *ptcb){
-      ^
-OS.c:75:2: note: previous implicit declaration of 'Expand_Ready_List' was here
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:87:23: error: 'NULL' undeclared (first use in this function)
-  if (TCBLink->head == NULL){
-                       ^
-OS.c:94:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:96:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:98:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:102:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-OS.c: In function 'C_Scheduler':
-OS.c:118:6: warning: unused variable 'running_task_no' [-Wunused-variable]
-  int running_task_no = current_tcb->no_task;
-      ^
-OS.c:117:6: warning: unused variable 'highest_prio' [-Wunused-variable]
-  int highest_prio = -1;
-      ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Init':
-OS.c:17:2: error: stray '\' in program
-  TCBLink->head = \0;
-  ^
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:75:2: warning: implicit declaration of function 'Expand_Ready_List' [-Wimplicit-function-declaration]
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: At top level:
-OS.c:82:6: warning: conflicting types for 'Expand_Ready_List' [enabled by default]
- void Expand_Ready_List(TCB *ptcb){
-      ^
-OS.c:75:2: note: previous implicit declaration of 'Expand_Ready_List' was here
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:87:2: error: stray '\' in program
-  if (TCBLink->head == \0){
-  ^
-OS.c:89:3: error: stray '\' in program
-   ptcb->prev = \0;
-   ^
-OS.c:93:3: error: stray '\' in program
-   while (ptcb->prio <= current->prio || current->next != \0){
-   ^
-OS.c:94:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:96:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:97:3: error: stray '\' in program
-   if (current->next == \0){   // ?办劆?滌渼 臧?灔 ??潓
-   ^
-OS.c:98:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:102:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Init':
-OS.c:17:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = "\0";
-                ^
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:75:2: warning: implicit declaration of function 'Expand_Ready_List' [-Wimplicit-function-declaration]
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: At top level:
-OS.c:82:6: warning: conflicting types for 'Expand_Ready_List' [enabled by default]
- void Expand_Ready_List(TCB *ptcb){
-      ^
-OS.c:75:2: note: previous implicit declaration of 'Expand_Ready_List' was here
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:87:20: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-  if (TCBLink->head == "\0"){
+OS.c:189:2: note: use option -std=c99 or -std=gnu99 to compile your code
+OS.c:191:20: error: redefinition of 'i'
+  for (volatile int i = 0; i<10000; i++){}
                     ^
-OS.c:87:20: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:89:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = "\0";
-              ^
-OS.c:93:55: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-   while (ptcb->prio <= current->prio || current->next != "\0"){
-                                                       ^
-OS.c:93:55: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:94:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:96:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:97:21: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-   if (current->next == "\0"){   // ?办劆?滌渼 臧?灔 ??潓
-                     ^
-OS.c:97:21: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:98:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:102:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Init':
-OS.c:17:25: error: 'NULL' undeclared (first use in this function)
-  TCBLink->head = (TCB*) NULL;
-                         ^
-OS.c:17:25: note: each undeclared identifier is reported only once for each function it appears in
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:75:2: warning: implicit declaration of function 'Expand_Ready_List' [-Wimplicit-function-declaration]
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: At top level:
-OS.c:82:6: warning: conflicting types for 'Expand_Ready_List' [enabled by default]
- void Expand_Ready_List(TCB *ptcb){
-      ^
-OS.c:75:2: note: previous implicit declaration of 'Expand_Ready_List' was here
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:87:20: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-  if (TCBLink->head == "\0"){
+OS.c:189:20: note: previous definition of 'i' was here
+  for (volatile int i = 0; i<10000; i++){}
                     ^
-OS.c:87:20: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:89:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = "\0";
-              ^
-OS.c:93:55: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-   while (ptcb->prio <= current->prio || current->next != "\0"){
-                                                       ^
-OS.c:93:55: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:94:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:96:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:97:21: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-   if (current->next == "\0"){   // ?办劆?滌渼 臧?灔 ??潓
-                     ^
-OS.c:97:21: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:98:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:102:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
+OS.c:191:2: error: 'for' loop initial declarations are only allowed in C99 mode
+  for (volatile int i = 0; i<10000; i++){}
+  ^
 make: *** [OS.o] Error 1
 
 **** Build Finished ****
@@ -618,335 +51,12 @@ make: *** [OS.o] Error 1
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Init':
-OS.c:17:24: error: 'NULL' undeclared (first use in this function)
-  TCBLink->head = (TCB*)NULL;
-                        ^
-OS.c:17:24: note: each undeclared identifier is reported only once for each function it appears in
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:75:2: warning: implicit declaration of function 'Expand_Ready_List' [-Wimplicit-function-declaration]
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: At top level:
-OS.c:82:6: warning: conflicting types for 'Expand_Ready_List' [enabled by default]
- void Expand_Ready_List(TCB *ptcb){
-      ^
-OS.c:75:2: note: previous implicit declaration of 'Expand_Ready_List' was here
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:87:20: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-  if (TCBLink->head == "\0"){
-                    ^
-OS.c:87:20: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:89:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = "\0";
-              ^
-OS.c:93:55: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-   while (ptcb->prio <= current->prio || current->next != "\0"){
-                                                       ^
-OS.c:93:55: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:94:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:96:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:97:21: warning: comparison of distinct pointer types lacks a cast [enabled by default]
-   if (current->next == "\0"){   // ?办劆?滌渼 臧?灔 ??潓
-                     ^
-OS.c:97:21: warning: comparison with string literal results in unspecified behavior [-Waddress]
-OS.c:98:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:102:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:76:2: warning: implicit declaration of function 'Expand_Ready_List' [-Wimplicit-function-declaration]
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: At top level:
-OS.c:83:6: warning: conflicting types for 'Expand_Ready_List' [enabled by default]
- void Expand_Ready_List(TCB *ptcb){
-      ^
-OS.c:76:2: note: previous implicit declaration of 'Expand_Ready_List' was here
-  Expand_Ready_List(ptcb);
-  ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:95:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:97:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:99:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:103:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-In file included from OS.c:2:0:
-OS.h:29:3: error: unknown type name 'TCB'
-   TCB *next;    // next TCB
-   ^
-OS.h:30:3: error: unknown type name 'TCB'
-   TCB *prev;    // prev TCB
-   ^
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:76:2: warning: passing argument 1 of 'Expand_Ready_List' from incompatible pointer type [enabled by default]
-  Expand_Ready_List(&ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:43:14: note: expected 'struct TCB *' but argument is of type 'struct TCB **'
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:95:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:97:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:99:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:103:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-In file included from main.c:2:0:
-OS.h:29:3: error: unknown type name 'TCB'
-   TCB *next;    // next TCB
-   ^
-OS.h:30:3: error: unknown type name 'TCB'
-   TCB *prev;    // prev TCB
-   ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-In file included from OS.c:2:0:
-OS.h:29:3: error: unknown type name 'TCB'
-   TCB *next;    // next TCB
-   ^
-OS.h:30:3: error: unknown type name 'TCB'
-   TCB *prev;    // prev TCB
-   ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:95:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:97:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:99:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:103:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-In file included from main.c:2:0:
-OS.h:29:3: error: unknown type name 'TCB'
-   TCB *next;    // next TCB
-   ^
-OS.h:30:3: error: unknown type name 'TCB'
-   TCB *prev;    // prev TCB
-   ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:95:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:97:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:99:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:103:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:89:17: warning: assignment from incompatible pointer type [enabled by default]
-   TCBLink->head = ptcb;
-                 ^
-OS.c:93:18: warning: initialization from incompatible pointer type [enabled by default]
-   TCB *current = TCBLink->head;
-                  ^
-OS.c:95:12: warning: assignment from incompatible pointer type [enabled by default]
-    current = current->next;
-            ^
-OS.c:97:14: warning: assignment from incompatible pointer type [enabled by default]
-   ptcb->prev = current;
-              ^
-OS.c:99:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:103:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:14: warning: initialization from incompatible pointer type [enabled by default]
-  TCB* ptcb = TCBLink->head;
-              ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:14: warning: assignment from incompatible pointer type [enabled by default]
-  current_tcb = TCBLink->head;
-              ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:89:17: warning: assignment from incompatible pointer type [enabled by default]
-   TCBLink->head = ptcb;
-                 ^
-OS.c:93:18: warning: initialization from incompatible pointer type [enabled by default]
-   TCB *current = TCBLink->head;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:14: warning: initialization from incompatible pointer type [enabled by default]
-  TCB* ptcb = TCBLink->head;
-              ^
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:14: warning: assignment from incompatible pointer type [enabled by default]
-  current_tcb = TCBLink->head;
-              ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c:83:6: error: conflicting types for 'Expand_Ready_List'
- void Expand_Ready_List(TCB **ptcb){
-      ^
-In file included from OS.c:2:0:
-OS.h:43:14: note: previous declaration of 'Expand_Ready_List' was here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:84:10: error: request for member 'state' in something not a structure or union
-  if (ptcb->state != STATE_READY){
-          ^
-OS.c:89:17: warning: assignment from incompatible pointer type [enabled by default]
-   TCBLink->head = ptcb;
-                 ^
-OS.c:90:7: error: request for member 'prev' in something not a structure or union
-   ptcb->prev = (void*)0;
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Block_Current_Task':
+OS.c:189:7: error: 'i' undeclared (first use in this function)
+  for (i = 0; i<10000; i++){}
        ^
-OS.c:93:18: warning: initialization from incompatible pointer type [enabled by default]
-   TCB *current = TCBLink->head;
-                  ^
-OS.c:94:14: error: request for member 'prio' in something not a structure or union
-   while (ptcb->prio <= current->prio || current->next != (void*)0){
-              ^
-OS.c:97:7: error: request for member 'prev' in something not a structure or union
-   ptcb->prev = current;
-       ^
-OS.c:99:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c:102:8: error: request for member 'next' in something not a structure or union
-    ptcb->next = current->next;
-        ^
-OS.c:103:18: warning: assignment from incompatible pointer type [enabled by default]
-    current->next = ptcb;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:14: warning: initialization from incompatible pointer type [enabled by default]
-  TCB* ptcb = TCBLink->head;
-              ^
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-OS.c:112:2: warning: passing argument 1 of 'Expand_Ready_List' from incompatible pointer type [enabled by default]
-  Expand_Ready_List(ptcb);
-  ^
-OS.c:83:6: note: expected 'struct TCB **' but argument is of type 'struct TCB *'
- void Expand_Ready_List(TCB **ptcb){
-      ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:14: warning: assignment from incompatible pointer type [enabled by default]
-  current_tcb = TCBLink->head;
-              ^
+OS.c:189:7: note: each undeclared identifier is reported only once for each function it appears in
 make: *** [OS.o] Error 1
 
 **** Build Finished ****
@@ -954,26 +64,8 @@ make: *** [OS.o] Error 1
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:89:17: warning: assignment from incompatible pointer type [enabled by default]
-   TCBLink->head = ptcb;
-                 ^
-OS.c:93:18: warning: initialization from incompatible pointer type [enabled by default]
-   TCB *current = TCBLink->head;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:14: warning: initialization from incompatible pointer type [enabled by default]
-  TCB* ptcb = TCBLink->head;
-              ^
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:14: warning: assignment from incompatible pointer type [enabled by default]
-  current_tcb = TCBLink->head;
-              ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
@@ -983,26 +75,8 @@ OS.c:119:14: warning: assignment from incompatible pointer type [enabled by defa
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:89:17: warning: assignment from incompatible pointer type [enabled by default]
-   TCBLink->head = ptcb;
-                 ^
-OS.c:93:18: warning: initialization from incompatible pointer type [enabled by default]
-   TCB *current = TCBLink->head;
-                  ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:14: warning: initialization from incompatible pointer type [enabled by default]
-  TCB* ptcb = TCBLink->head;
-              ^
-OS.c:110:16: warning: assignment from incompatible pointer type [enabled by default]
-  TCBLink->head = ptcb->next;
-                ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:14: warning: assignment from incompatible pointer type [enabled by default]
-  current_tcb = TCBLink->head;
-              ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
@@ -1012,757 +86,206 @@ OS.c:119:14: warning: assignment from incompatible pointer type [enabled by defa
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+core_cm3.c: In function '__set_BASEPRI':
+core_cm3.c:531:2: warning: implicit declaration of function 'Uart_Printf' [-Wimplicit-function-declaration]
+  Uart_Printf("set BASEPRI\n");
+  ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+core_cm3.o: In function `__set_BASEPRI':
+core_cm3.c:(.text+0x66): undefined reference to `Uart_Printf'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
 OS.c: In function 'OS_Init':
-OS.c:18:9: error: invalid type argument of '->' (have 'LinkedList')
-  TCBLink->head = (void*)0;
-         ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:88:13: error: invalid type argument of '->' (have 'LinkedList')
-  if (TCBLink->head == (void*)0){
-             ^
-OS.c:89:10: error: invalid type argument of '->' (have 'LinkedList')
-   TCBLink->head = ptcb;
-          ^
-OS.c:93:25: error: invalid type argument of '->' (have 'LinkedList')
-   TCB *current = TCBLink->head;
-                         ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:21: error: invalid type argument of '->' (have 'LinkedList')
-  TCB* ptcb = TCBLink->head;
-                     ^
-OS.c:110:9: error: invalid type argument of '->' (have 'LinkedList')
-  TCBLink->head = ptcb->next;
-         ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:23: error: invalid type argument of '->' (have 'LinkedList')
-  current_tcb = TCBLink->head;
-                       ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:88:13: error: invalid type argument of '->' (have 'LinkedList')
-  if (TCBLink->head == (void*)0){
-             ^
-OS.c:89:10: error: invalid type argument of '->' (have 'LinkedList')
-   TCBLink->head = ptcb;
-          ^
-OS.c:93:25: error: invalid type argument of '->' (have 'LinkedList')
-   TCB *current = TCBLink->head;
-                         ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:109:21: error: invalid type argument of '->' (have 'LinkedList')
-  TCB* ptcb = TCBLink->head;
-                     ^
-OS.c:110:9: error: invalid type argument of '->' (have 'LinkedList')
-  TCBLink->head = ptcb->next;
-         ^
-OS.c: In function 'C_Scheduler':
-OS.c:119:23: error: invalid type argument of '->' (have 'LinkedList')
-  current_tcb = TCBLink->head;
-                       ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-main.c: In function 'Task3':
-main.c:33:6: warning: unused variable 'cnt' [-Wunused-variable]
-  int cnt = 0;
+OS.c:32:2: error: expected ';' before 'int'
+  int i;
+  ^
+OS.c:33:6: error: 'i' undeclared (first use in this function)
+  for(i=0; i<=MAX_TCB; i++)
       ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'Expand_Ready_List':
-OS.c:90:3: error: initializer element is not constant
-   static TCB *current = head;
-   ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:111:5: error: initializer element is not constant
-     static TCB* ptcb = head;
-     ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-In file included from OS.c:2:0:
-OS.h:25:3: error: unknown type name 'TCB'
-   TCB* head;
-   ^
-OS.c:38:5: error: conflicting types for 'OS_Create_Task_Simple'
- int OS_Create_Task_Simple(LinkedList* list, void(*ptask)(void*), void* para, int prio, int size_stack)
-     ^
-In file included from OS.c:2:0:
-OS.h:42:13: note: previous declaration of 'OS_Create_Task_Simple' was here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:73:2: warning: passing argument 1 of 'Expand_Ready_List' from incompatible pointer type [enabled by default]
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:44:14: note: expected 'struct TCB *' but argument is of type 'struct LinkedList *'
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c:73:2: error: too many arguments to function 'Expand_Ready_List'
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:44:14: note: declared here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: At top level:
-OS.c:80:6: error: conflicting types for 'Expand_Ready_List'
- void Expand_Ready_List(LinkedList* list, TCB* ptcb) {
-      ^
-In file included from OS.c:2:0:
-OS.h:44:14: note: previous declaration of 'Expand_Ready_List' was here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:85:20: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* current = list->head;
-                    ^
-OS.c:97:20: warning: assignment from incompatible pointer type [enabled by default]
-         list->head = ptcb;
-                    ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:112:17: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* ptcb = list->head;
-                 ^
-OS.c:113:16: warning: assignment from incompatible pointer type [enabled by default]
-     list->head = ptcb->next;
-                ^
-OS.c:116:19: error: request for member 'prev' in something not a structure or union
-         list->head->prev = (void*)0;
-                   ^
-OS.c: In function 'C_Scheduler':
-OS.c:127:17: warning: assignment from incompatible pointer type [enabled by default]
-     current_tcb = list->head;
-                 ^
-In file included from main.c:2:0:
-OS.h:25:3: error: unknown type name 'TCB'
-   TCB* head;
-   ^
-main.c: In function 'LinkedList_Init':
-main.c:7:18: error: 'NULL' undeclared (first use in this function)
-     list->head = NULL;
-                  ^
-main.c:7:18: note: each undeclared identifier is reported only once for each function it appears in
-main.c: In function 'Main':
-main.c:59:2: warning: passing argument 1 of 'OS_Create_Task_Simple' from incompatible pointer type [enabled by default]
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'void (*)(void *)' but argument is of type 'struct LinkedList *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:59:2: warning: passing argument 3 of 'OS_Create_Task_Simple' makes integer from pointer without a cast [enabled by default]
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'int' but argument is of type 'void *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:59:2: error: too many arguments to function 'OS_Create_Task_Simple'
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: declared here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:60:2: warning: passing argument 1 of 'OS_Create_Task_Simple' from incompatible pointer type [enabled by default]
-  OS_Create_Task_Simple(&list, Task2, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'void (*)(void *)' but argument is of type 'struct LinkedList *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:60:2: warning: passing argument 3 of 'OS_Create_Task_Simple' makes integer from pointer without a cast [enabled by default]
-  OS_Create_Task_Simple(&list, Task2, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'int' but argument is of type 'void *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:60:2: error: too many arguments to function 'OS_Create_Task_Simple'
-  OS_Create_Task_Simple(&list, Task2, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: declared here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:61:2: warning: passing argument 1 of 'OS_Create_Task_Simple' from incompatible pointer type [enabled by default]
-  tot_no_task = OS_Create_Task_Simple(&list, Task3, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'void (*)(void *)' but argument is of type 'struct LinkedList *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:61:2: warning: passing argument 3 of 'OS_Create_Task_Simple' makes integer from pointer without a cast [enabled by default]
-  tot_no_task = OS_Create_Task_Simple(&list, Task3, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'int' but argument is of type 'void *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:61:2: error: too many arguments to function 'OS_Create_Task_Simple'
-  tot_no_task = OS_Create_Task_Simple(&list, Task3, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: declared here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-In file included from OS.c:2:0:
-OS.h:25:3: error: unknown type name 'TCB'
-   TCB* head;
-   ^
-OS.c:38:5: error: conflicting types for 'OS_Create_Task_Simple'
- int OS_Create_Task_Simple(LinkedList* list, void(*ptask)(void*), void* para, int prio, int size_stack)
-     ^
-In file included from OS.c:2:0:
-OS.h:42:13: note: previous declaration of 'OS_Create_Task_Simple' was here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:73:2: warning: passing argument 1 of 'Expand_Ready_List' from incompatible pointer type [enabled by default]
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:44:14: note: expected 'struct TCB *' but argument is of type 'struct LinkedList *'
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c:73:2: error: too many arguments to function 'Expand_Ready_List'
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:44:14: note: declared here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: At top level:
-OS.c:80:6: error: conflicting types for 'Expand_Ready_List'
- void Expand_Ready_List(LinkedList* list, TCB* ptcb) {
-      ^
-In file included from OS.c:2:0:
-OS.h:44:14: note: previous declaration of 'Expand_Ready_List' was here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:85:20: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* current = list->head;
-                    ^
-OS.c:97:20: warning: assignment from incompatible pointer type [enabled by default]
-         list->head = ptcb;
-                    ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:112:17: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* ptcb = list->head;
-                 ^
-OS.c:113:16: warning: assignment from incompatible pointer type [enabled by default]
-     list->head = ptcb->next;
-                ^
-OS.c:116:19: error: request for member 'prev' in something not a structure or union
-         list->head->prev = (void*)0;
-                   ^
-OS.c: In function 'C_Scheduler':
-OS.c:127:17: warning: assignment from incompatible pointer type [enabled by default]
-     current_tcb = list->head;
-                 ^
-In file included from main.c:2:0:
-OS.h:25:3: error: unknown type name 'TCB'
-   TCB* head;
-   ^
-main.c: In function 'Main':
-main.c:59:2: warning: passing argument 1 of 'OS_Create_Task_Simple' from incompatible pointer type [enabled by default]
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'void (*)(void *)' but argument is of type 'struct LinkedList *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:59:2: warning: passing argument 3 of 'OS_Create_Task_Simple' makes integer from pointer without a cast [enabled by default]
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'int' but argument is of type 'void *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:59:2: error: too many arguments to function 'OS_Create_Task_Simple'
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: declared here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:60:2: warning: passing argument 1 of 'OS_Create_Task_Simple' from incompatible pointer type [enabled by default]
-  OS_Create_Task_Simple(&list, Task2, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'void (*)(void *)' but argument is of type 'struct LinkedList *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:60:2: warning: passing argument 3 of 'OS_Create_Task_Simple' makes integer from pointer without a cast [enabled by default]
-  OS_Create_Task_Simple(&list, Task2, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'int' but argument is of type 'void *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:60:2: error: too many arguments to function 'OS_Create_Task_Simple'
-  OS_Create_Task_Simple(&list, Task2, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: declared here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:61:2: warning: passing argument 1 of 'OS_Create_Task_Simple' from incompatible pointer type [enabled by default]
-  tot_no_task = OS_Create_Task_Simple(&list, Task3, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'void (*)(void *)' but argument is of type 'struct LinkedList *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:61:2: warning: passing argument 3 of 'OS_Create_Task_Simple' makes integer from pointer without a cast [enabled by default]
-  tot_no_task = OS_Create_Task_Simple(&list, Task3, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: expected 'int' but argument is of type 'void *'
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-main.c:61:2: error: too many arguments to function 'OS_Create_Task_Simple'
-  tot_no_task = OS_Create_Task_Simple(&list, Task3, (void*)0, 5, 128); // Task 积己
-  ^
-In file included from main.c:2:0:
-OS.h:42:13: note: declared here
-  extern int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_stack);
-             ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-In file included from OS.c:2:0:
-OS.h:39:35: error: unknown type name 'LinkedList'
-  extern int OS_Create_Task_Simple(LinkedList(*list) ,void(*ptask)(void*), void* para, int prio, int size_stack);
-                                   ^
-OS.c:38:27: error: unknown type name 'LinkedList'
- int OS_Create_Task_Simple(LinkedList* list, void(*ptask)(void*), void* para, int prio, int size_stack)
-                           ^
-OS.c:80:24: error: unknown type name 'LinkedList'
- void Expand_Ready_List(LinkedList* list, TCB* ptcb) {
-                        ^
-OS.c:107:23: error: unknown type name 'LinkedList'
- void Check_CurrentTCB(LinkedList* list) {
-                       ^
-OS.c:125:18: error: unknown type name 'LinkedList'
- void C_Scheduler(LinkedList* list) {
-                  ^
-In file included from main.c:2:0:
-OS.h:39:35: error: unknown type name 'LinkedList'
-  extern int OS_Create_Task_Simple(LinkedList(*list) ,void(*ptask)(void*), void* para, int prio, int size_stack);
-                                   ^
-main.c:6:22: error: unknown type name 'LinkedList'
- void LinkedList_Init(LinkedList* list) {
-                      ^
-main.c:10:1: error: unknown type name 'LinkedList'
- LinkedList list;
- ^
-main.c: In function 'Main':
-main.c:59:2: warning: implicit declaration of function 'OS_Create_Task_Simple' [-Wimplicit-function-declaration]
-  OS_Create_Task_Simple(&list, Task1, (void*)0, 5, 128); // Task 积己
-  ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:73:2: warning: passing argument 1 of 'Expand_Ready_List' from incompatible pointer type [enabled by default]
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:45:14: note: expected 'struct TCB *' but argument is of type 'struct LinkedList *'
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c:73:2: error: too many arguments to function 'Expand_Ready_List'
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:45:14: note: declared here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: At top level:
-OS.c:80:6: error: conflicting types for 'Expand_Ready_List'
- void Expand_Ready_List(LinkedList* list, TCB* ptcb) {
-      ^
-In file included from OS.c:2:0:
-OS.h:45:14: note: previous declaration of 'Expand_Ready_List' was here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:85:20: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* current = list->head;
-                    ^
-OS.c:97:20: warning: assignment from incompatible pointer type [enabled by default]
-         list->head = ptcb;
-                    ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:112:17: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* ptcb = list->head;
-                 ^
-OS.c:113:16: warning: assignment from incompatible pointer type [enabled by default]
-     list->head = ptcb->next;
-                ^
-OS.c:116:19: error: dereferencing pointer to incomplete type
-         list->head->prev = (void*)0;
-                   ^
-OS.c: In function 'C_Scheduler':
-OS.c:127:17: warning: assignment from incompatible pointer type [enabled by default]
-     current_tcb = list->head;
-                 ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Create_Task_Simple':
-OS.c:73:2: warning: passing argument 1 of 'Expand_Ready_List' from incompatible pointer type [enabled by default]
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:45:14: note: expected 'struct TCB *' but argument is of type 'struct LinkedList *'
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c:73:2: error: too many arguments to function 'Expand_Ready_List'
-  Expand_Ready_List(list, ptcb);
-  ^
-In file included from OS.c:2:0:
-OS.h:45:14: note: declared here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: At top level:
-OS.c:80:6: error: conflicting types for 'Expand_Ready_List'
- void Expand_Ready_List(LinkedList* list, TCB* ptcb) {
-      ^
-In file included from OS.c:2:0:
-OS.h:45:14: note: previous declaration of 'Expand_Ready_List' was here
-  extern void Expand_Ready_List(TCB *ptcb);
-              ^
-OS.c: In function 'Expand_Ready_List':
-OS.c:85:20: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* current = list->head;
-                    ^
-OS.c:97:20: warning: assignment from incompatible pointer type [enabled by default]
-         list->head = ptcb;
-                    ^
-OS.c: In function 'Check_CurrentTCB':
-OS.c:112:17: warning: initialization from incompatible pointer type [enabled by default]
-     TCB* ptcb = list->head;
-                 ^
-OS.c:113:16: warning: assignment from incompatible pointer type [enabled by default]
-     list->head = ptcb->next;
-                ^
-OS.c:116:19: error: dereferencing pointer to incomplete type
-         list->head->prev = (void*)0;
-                   ^
-OS.c: In function 'C_Scheduler':
-OS.c:127:17: warning: assignment from incompatible pointer type [enabled by default]
-     current_tcb = list->head;
-                 ^
-make: *** [OS.o] Error 1
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c:19:15: error: conflicting types for 'interrupt_period'
- long long int interrupt_period = 1;
-               ^
-In file included from OS.c:2:0:
-OS.h:50:13: note: previous declaration of 'interrupt_period' was here
-  extern int interrupt_period;
-             ^
+OS.c:33:6: note: each undeclared identifier is reported only once for each function it appears in
 make: *** [OS.o] Error 1
 
 **** Build Finished ****
@@ -1792,29 +315,7 @@ make all
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-make: Nothing to be done for `all'.
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
-
-**** Build Finished ****
-
-**** Build of configuration Default for project M3_MINI_RTOS ****
-
-make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-main.c: In function 'Task3':
-main.c:32:15: warning: unused variable 'i' [-Wunused-variable]
-  volatile int i;
-               ^
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
@@ -1836,7 +337,21 @@ make all
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-make: Nothing to be done for `all'.
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+scheduler.s: Assembler messages:
+scheduler.s:45: Error: Thumb encoding does not support an immediate here -- `msr BASEPRI,#3'
+make: *** [OS.o] Error 1
 
 **** Build Finished ****
 
@@ -1855,10 +370,6 @@ make all
 
 make all 
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Scheduler':
-OS.c:129:13: warning: unused variable 'test_delay_cnt' [-Wunused-variable]
-  static int test_delay_cnt = 2000;
-             ^
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
@@ -1870,10 +381,6 @@ OS.c:129:13: warning: unused variable 'test_delay_cnt' [-Wunused-variable]
 
 make all 
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Scheduler':
-OS.c:129:13: warning: unused variable 'test_delay_cnt' [-Wunused-variable]
-  static int test_delay_cnt = 2000;
-             ^
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
@@ -1885,10 +392,39 @@ OS.c:129:13: warning: unused variable 'test_delay_cnt' [-Wunused-variable]
 
 make all 
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-OS.c: In function 'OS_Scheduler':
-OS.c:129:13: warning: unused variable 'test_delay_cnt' [-Wunused-variable]
-  static int test_delay_cnt = 2000;
-             ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt

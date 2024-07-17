@@ -162,6 +162,9 @@ __start:
 	.equ MSP_SIZE,	(1*1024)
 	.equ MSP_LIMIT,	(MSP_BASE - MSP_SIZE)
 
+	ldr r0, =0x0
+	msr control, r0
+
 	bl 		Clock_Init
 	bl		System_Init
 
