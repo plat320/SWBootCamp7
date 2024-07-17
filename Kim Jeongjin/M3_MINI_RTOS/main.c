@@ -5,46 +5,51 @@ int dummyParams[10];
 
 void Task1(void *para)
 {
-	volatile int i;
+	//volatile int i;
 	for(;;)
 	{
 		LED_0_Toggle();
 		//Uart_Printf("Task1\n");
-		for(i=0;i<0x50000;i++);
+		OS_Block_Current_Task(500);
 		//Uart_Printf("Task1 after loop\n");
 	}
 }
 
 void Task2(void *para)
 {
-	volatile int i;
+	//volatile int i;
 	for(;;)
 	{
 		LED_1_Toggle();
 		//Uart_Printf("Task2\n");
-		for(i=0;i<0x100000;i++);
+		OS_Block_Current_Task(1000);
+		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
 	}
 }
 
 void Task3(void *para)
 {
-	volatile int i;
-	// int cnt = 0;
+//	volatile int i;
+	int cnt = 0;
 	for(;;)
 	{
-		//Uart_Printf("Task3 : %d\n", cnt++);
-		for(i=0;i<0x100000;i++);
+    	OS_Block_Current_Task(2000);
+		Uart_Printf("Task3 : %d\n", cnt++);
+//		for(i=0;i<0x100000;i++);
 	}
 }
 
 void TaskDummy(void *para)
 {
-	volatile int i;
+	//volatile int i;
+	OS_Block_Current_Task(3000);
 	for(;;)
 	{
-		//Uart_Printf("Task4 : %d\n", cnt++);
-		for(i=0;i<0x100000;i++);
+		//((void(*)(void))0xE1234567)();
+		//Uart_Printf("TaskDummy\n");
+		//for(i=0;i<0x100000;i++);
+		OS_Block_Current_Task(1000);
 	}
 }
 
@@ -61,7 +66,7 @@ void Main(void)
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
 	OS_Create_Task_Simple(Task2, (void*)0, 5, 128); // Task »ý¼º
-	OS_Create_Task_Simple(Task3, (void*)0, 5, 256);
+	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{

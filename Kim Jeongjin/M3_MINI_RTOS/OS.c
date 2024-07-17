@@ -16,17 +16,18 @@ TCB* next_tcb;
 PriorityQueue ready_queue;
 PriorityQueue blocked_queue;
 long long int system_tick = 0;
-int interrupt_period = 1;
+int interrupt_period = 100;
 
 /* Function */
 void IdleTask(void *para) {
     for (;;) {
-    	// Uart_Printf("IdleTask is working\n");
+    	Uart_Printf("IdleTask is working\n");
     }
 }
 
 void OS_Init(void)
 {
+	__set_BASEPRI(0x00);
 	int i;
 	for(i=0; i<=MAX_TCB; i++)
 	{
@@ -126,45 +127,57 @@ void OS_Scheduler_Start(void)
 
 void OS_Scheduler(void)
 {
-	static int test_delay_cnt = 2000;
+//	static int test_delay_cnt = 2000;
+	Uart_Printf("OS_Scheduler\n");
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
 		//Uart_Printf("next_tcb->no_task : NULL\n");
+		__enable_irq();
+
 		return; // 우선순위 큐가 비어 있는 경우
 	}
 
 	if (next_tcb != NULL && next_tcb != current_tcb) {
 		pq_pop(&ready_queue, pq_compare_ready);
-	    current_tcb->state = STATE_READY;
 	    next_tcb->state = STATE_RUNNING;
-	    current_tcb->timestamp = system_tick;
+	    if (current_tcb->state == STATE_RUNNING){
+	    	current_tcb->state = STATE_READY;
+	    	current_tcb->timestamp = system_tick;
+		    pq_push(&ready_queue, current_tcb, pq_compare_ready);
+	    }
 
 	    // test code
-	    if(current_tcb->no_task == 3) {
-	    	test_delay_cnt--;
-	    }
-	    if(current_tcb->no_task == 3 && test_delay_cnt <= 0) {
-	    	Uart_Printf("[test] task 3 delay start : %d\n", system_tick);
-	    	OS_Block_Current_Task(2000);
-	    	test_delay_cnt = 2000;
-	    }
-	    else
-	    	pq_push(&ready_queue, current_tcb, pq_compare_ready);
+//	    if(current_tcb->no_task == 3) {
+//	    	test_delay_cnt--;
+//	    }
+//	    if(current_tcb->no_task == 3 && test_delay_cnt <= 0) {
+//	    	Uart_Printf("[test] task 3 delay start : %lld\n", system_tick);
+//	    	OS_Block_Current_Task(2000);
+//	    	test_delay_cnt = 2000;
+//	    }
+//	    else
+//	    	pq_push(&ready_queue, current_tcb, pq_compare_ready);
 	    current_tcb = next_tcb;
 	}
 }
 
 void OS_Tick(void) {
+	__set_BASEPRI(0x03);
+
     system_tick += interrupt_period;  // 시스템 타임스탬프 증가
     while (blocked_queue.size > 0 && pq_top(&blocked_queue)->delay_until <= system_tick) {
         TCB* task = pq_pop(&blocked_queue, pq_compare_delay);
         task->state = STATE_READY;
         pq_push(&ready_queue, task, pq_compare_ready);
    }
+
+    __set_BASEPRI(0x00);
 }
 
 
 void OS_Block_Current_Task(int delay) {
+	__set_BASEPRI(0x03);
+	__enable_irq();
 	pq_remove(&ready_queue, current_tcb, pq_compare_ready);
 
 	current_tcb -> state = STATE_BLOCKED;
@@ -172,11 +185,16 @@ void OS_Block_Current_Task(int delay) {
 
 	pq_push(&blocked_queue, current_tcb, pq_compare_delay);
 
+	Uart_Printf("Before OS_Pend_Trigger\n");
 	OS_Pend_Trigger();
+	Uart_Printf("After OS_Pend_Trigger\n");
+	__set_BASEPRI(0x00);
 }
 
 /*
 void OS_Block_Task(int task_no, int delay) {
+	__disable_irq();
+
     if (task_no < 0 || task_no > MAX_TCB) {
         return; // 유효하지 않은 task_no
     }
@@ -189,9 +207,13 @@ void OS_Block_Task(int task_no, int delay) {
     task->delay_until = system_tick + delay;
 
     pq_push(&blocked_queue, task, pq_compare_delay);
+
+    __enable_irq();
 }
 
 void OS_Unblock_Task(int task_no) {
+	__disable_irq();
+
     if (task_no >= 0 && task_no <= MAX_TCB) {
     	TCB* task = &tcb[task_no];
 
@@ -202,13 +224,19 @@ void OS_Unblock_Task(int task_no) {
 
         pq_push(&ready_queue, task, pq_compare_ready);
     }
+
+   __enable_irq();
 }
 
 void OS_Change_Priority(int task_no, int new_prio) {
+	__disable_irq();
+
     if (task_no >= 0 && task_no <= MAX_TCB) {
         tcb[task_no].prio = new_prio;
         pq_update(&ready_queue, &tcb[task_no], pq_compare_ready);
     }
+
+   __enable_irq();
 }
 */
 

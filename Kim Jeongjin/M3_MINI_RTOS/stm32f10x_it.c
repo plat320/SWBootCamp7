@@ -178,8 +178,8 @@ volatile int systick_flag = 0;
 void SysTick_Handler(void)
 {
 	systick_flag = 1;
-	OS_Tick();
-	OS_Pend_Trigger();
+	//OS_Tick();
+	//OS_Pend_Trigger();
 }
 
 /*******************************************************************************
