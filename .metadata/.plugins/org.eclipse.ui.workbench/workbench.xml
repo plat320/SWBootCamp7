@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="31" version="2.0">
+<workbench progressCount="32" version="2.0">
 <workbenchAdvisor/>
-<window height="1047" maximized="true" width="974" x="953" y="0">
+<window height="1056" maximized="true" width="976" x="-8" y="-8">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -18,6 +18,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.ui.editor.asm.AsmEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
@@ -43,21 +44,17 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/main.c" title="main.c" tooltip="M3_MINI_RTOS/main.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/main.c" title="main.c" tooltip="M3_MINI_RTOS/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="287" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="runtime.c" partName="runtime.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/runtime.c" title="runtime.c" tooltip="M3_MINI_RTOS/runtime.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/runtime.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="443" selectionTopPixel="42"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="279" selectionTopPixel="150"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="OS.c" partName="OS.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/OS.c" title="OS.c" tooltip="M3_MINI_RTOS/OS.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/OS.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="380" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4441" selectionTopPixel="2632"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="OS.h" partName="OS.h" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/OS.h" title="OS.h" tooltip="M3_MINI_RTOS/OS.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/OS.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1157" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="systick.c" partName="systick.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/systick.c" title="systick.c" tooltip="M3_MINI_RTOS/systick.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/systick.c"/>
@@ -65,35 +62,42 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="exp_handler.s" partName="exp_handler.s" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/exp_handler.s" title="exp_handler.s" tooltip="M3_MINI_RTOS/exp_handler.s" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/exp_handler.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="2059" selectionTopPixel="1283"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1735" selectionTopPixel="1349"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="crt0.s" partName="crt0.s" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/crt0.s" title="crt0.s" tooltip="M3_MINI_RTOS/crt0.s" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/crt0.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4992" selectionTopPixel="2218"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="282" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="scheduler.s" partName="scheduler.s" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/scheduler.s" title="scheduler.s" tooltip="M3_MINI_RTOS/scheduler.s" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="scheduler.s" partName="scheduler.s" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/scheduler.s" title="scheduler.s" tooltip="M3_MINI_RTOS/scheduler.s" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/scheduler.s"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="165" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="363" selectionTopPixel="86"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_it.c" partName="stm32f10x_it.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/stm32f10x_it.c" title="stm32f10x_it.c" tooltip="M3_MINI_RTOS/stm32f10x_it.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/stm32f10x_it.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6568" selectionTopPixel="2754"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6504" selectionTopPixel="2805"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="device_driver.h" partName="device_driver.h" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/device_driver.h" title="device_driver.h" tooltip="M3_MINI_RTOS/device_driver.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/device_driver.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="55" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="priority_queue.c" partName="priority_queue.c" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/priority_queue.c" title="priority_queue.c" tooltip="M3_MINI_RTOS/priority_queue.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/priority_queue.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2637" selectionTopPixel="1604"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x.h" partName="stm32f10x.h" path="C:/Users/user/Desktop/RTOS_Project_240712/M3_MINI_RTOS/stm32f10x.h" title="stm32f10x.h" tooltip="M3_MINI_RTOS/stm32f10x.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/M3_MINI_RTOS/stm32f10x.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="633215" selectionTopPixel="141072"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
-<view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<viewState/>
+</view>
 <view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -112,7 +116,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.asm.AsmEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.eclipse.cdt.ui.CPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.egit.ui.navigation"/>
@@ -168,13 +172,13 @@
 <perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.cdt.make.ui.views.MakeView"/>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.cdt.make.ui.views.MakeView"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -197,8 +201,20 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.13095862" ratioLeft="250" ratioRight="1659" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.74922603" ratioLeft="484" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
+<info part="org.eclipse.ui.editorss" ratio="0.15557884" ratioLeft="297" ratioRight="1612" relationship="2" relative="topLeft"/>
+<info folder="true" part="topRight" ratio="0.84726226" ratioLeft="588" ratioRight="106" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Target"/>
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1557a09" ratio="0.75" ratioLeft="684" ratioRight="228" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
@@ -212,18 +228,6 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="topRight" ratio="0.84726226" ratioLeft="588" ratioRight="106" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
-<page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Target"/>
-<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-</presentation>
-</folder>
-</info>
 </mainWindow>
 </layout>
 </perspective>
@@ -231,167 +235,163 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/systick.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/runtime.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/M3_MINI_RTOS/scheduler.s"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/OS.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/OS.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/M3_MINI_RTOS/exp_handler.s"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/device_driver.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/M3_MINI_RTOS/exp_handler.s"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/systick.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/M3_MINI_RTOS/crt0.s"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/M3_MINI_RTOS/scheduler.s"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/M3_MINI_RTOS/stm32f10x_it.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/M3_MINI_RTOS/exp_handler.s"/>
 </editors>
-<item historyLabel="OS.c" index="3">
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="498" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="423" y="0"/>
+</item>
+<item historyLabel="OS.h" index="2">
+<position info="not_deleted" x="1157" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="423" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="1031" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="423" y="0"/>
+</item>
+<item historyLabel="OS.h" index="2">
+<position info="not_deleted" x="1157" y="0"/>
+</item>
+<item historyLabel="systick.c" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="OS.h" index="4">
+<item historyLabel="scheduler.s" index="0">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="crt0.s" index="5">
+<position info="not_deleted" x="282" y="0"/>
+</item>
+<item historyLabel="OS.h" index="2">
+<position info="not_deleted" x="1157" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="892" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="241" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3911" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="688" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4254" y="19"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="592" y="24"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3716" y="38"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3726" y="21"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3626" y="170"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3626" y="170"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3902" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3902" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="2998" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="2998" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4289" y="0"/>
+</item>
+<item historyLabel="scheduler.s" index="0">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4289" y="0"/>
+</item>
+<item historyLabel="scheduler.s" index="0">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4289" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
+</item>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4486" y="0"/>
+</item>
+<item historyLabel="systick.c" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="exp_handler.s" index="6">
+<position info="not_deleted" x="1735" y="0"/>
 </item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="694" y="0"/>
+<item historyLabel="scheduler.s" index="0">
+<position info="not_deleted" x="363" y="12"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="852" y="0"/>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4486" y="0"/>
 </item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="1696" y="18"/>
+<item historyLabel="scheduler.s" index="0">
+<position info="not_deleted" x="363" y="12"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="923" y="93"/>
+<item historyLabel="OS.c" index="1">
+<position/>
 </item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="694" y="0"/>
+<item historyLabel="scheduler.s" index="0">
+<position info="not_deleted" x="363" y="12"/>
 </item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="1696" y="18"/>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="3474" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="349" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
 </item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="694" y="0"/>
+<item historyLabel="OS.c" index="1">
+<position info="not_deleted" x="4441" y="0"/>
 </item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="1696" y="18"/>
-</item>
-<item historyLabel="OS.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="349" y="0"/>
-</item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="694" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="909" y="0"/>
-</item>
-<item historyLabel="systick.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="exp_handler.s" index="5">
-<position info="not_deleted" x="1026" y="0"/>
-</item>
-<item historyLabel="device_driver.h" index="6">
-<position info="not_deleted" x="1056" y="0"/>
-</item>
-<item historyLabel="systick.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="exp_handler.s" index="7">
-<position info="not_deleted" x="2059" y="6"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="563" y="0"/>
-</item>
-<item historyLabel="OS.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="781" y="0"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="563" y="0"/>
-</item>
-<item historyLabel="crt0.s" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="exp_handler.s" index="7">
-<position info="not_deleted" x="2059" y="6"/>
-</item>
-<item historyLabel="scheduler.s" index="9">
-<position info="not_deleted" x="488" y="0"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="237" y="0"/>
-</item>
-<item historyLabel="OS.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="117" y="0"/>
-</item>
-<item historyLabel="scheduler.s" index="9">
-<position info="not_deleted" x="488" y="0"/>
-</item>
-<item historyLabel="stm32f10x_it.c" index="10">
-<position info="not_deleted" x="6568" y="0"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="380" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="exp_handler.s" index="7">
-<position info="not_deleted" x="2059" y="6"/>
-</item>
-<item historyLabel="crt0.s" index="8">
-<position info="not_deleted" x="4992" y="0"/>
-</item>
-<item historyLabel="scheduler.s" index="9">
-<position info="not_deleted" x="488" y="0"/>
-</item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="443" y="0"/>
-</item>
-<item historyLabel="device_driver.h" index="6">
-<position info="not_deleted" x="55" y="5"/>
-</item>
-<item historyLabel="stm32f10x_it.c" index="10">
-<position info="not_deleted" x="3569" y="5"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="287" y="0"/>
-</item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="443" y="0"/>
-</item>
-<item historyLabel="stm32f10x_it.c" index="10">
-<position info="not_deleted" x="6568" y="0"/>
-</item>
-<item historyLabel="device_driver.h" index="6">
-<position info="not_deleted" x="55" y="5"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="380" y="0"/>
-</item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="443" y="0"/>
-</item>
-<item historyLabel="OS.c" index="3">
-<position info="not_deleted" x="380" y="0"/>
-</item>
-<item historyLabel="runtime.c" index="2">
-<position info="not_deleted" x="443" y="0"/>
-</item>
-<item active="true" historyLabel="scheduler.s" index="9">
-<position info="not_deleted" x="488" y="0"/>
+<item active="true" historyLabel="main.c" index="3">
+<position info="not_deleted" x="519" y="21"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -399,12 +399,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="topRight"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -413,12 +407,19 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.intro.impl.presentations.IntroLaunchBar"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x.h" tooltip="M3_MINI_RTOS/stm32f10x.h">
+<persistable path="/M3_MINI_RTOS/stm32f10x.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="priority_queue.c" tooltip="M3_MINI_RTOS/priority_queue.c">
+<persistable path="/M3_MINI_RTOS/priority_queue.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="__dump_all.txt" tooltip="M3_MINI_RTOS/__dump_all.txt">
+<persistable path="/M3_MINI_RTOS/__dump_all.txt"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="device_driver.h" tooltip="M3_MINI_RTOS/device_driver.h">
 <persistable path="/M3_MINI_RTOS/device_driver.h"/>
 </file>
@@ -454,15 +455,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="M3_MINI_RTOS/main.c">
 <persistable path="/M3_MINI_RTOS/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="M3_MINI_Device_Example/main.c">
-<persistable path="/M3_MINI_Device_Example/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_it.c" tooltip="M3_MINI_Device_Example/stm32f10x_it.c">
-<persistable path="/M3_MINI_Device_Example/stm32f10x_it.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="clock.c" tooltip="M3_MINI_RTOS/clock.c">
-<persistable path="/M3_MINI_RTOS/clock.c"/>
 </file>
 </mruList>
 </workbench>
