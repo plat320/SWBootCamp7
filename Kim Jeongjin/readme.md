@@ -27,3 +27,11 @@
 - CPU를 선점하고 있던 task가 State Blocked로 전환되었을 때, CPU를 즉시 다른 task에게 넘겨주도록 개선
 - Systick interrupt 주기를 상수 변수로 바꾸고 systick 값이 Systick Handler 호출 시 해당 변수 만큼 더해지도록 개선
 - Systick 변수 타입을 long long int로 변경
+
+2024-07-17 
+- Context switching 및 자료구조 변경 시 critical section에 대한 처리 필요[完]
+  - BASEPRI 이용하여 구현 완료
+- Systick timer를 이용한 delay 함수 개선 필요[完]
+
+2024-07-17 04:02 pm
+- 기본적인 동작의 OS_Signal_Send 및 OS_Signal_Wait 함수 구현
