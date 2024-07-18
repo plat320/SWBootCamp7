@@ -126,6 +126,8 @@ void OS_Scheduler_Start(void)
 
 	current_tcb->state = STATE_RUNNING;
 
+	SysTick_OS_Tick(interrupt_period);
+
 	_OS_Start_First_Task();
 }
 

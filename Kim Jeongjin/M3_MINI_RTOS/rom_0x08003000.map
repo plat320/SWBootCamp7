@@ -107,81 +107,81 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
  .text          0x08003000      0x13c crt0.o
                 0x080030ec                __start
  *(.text)
- .text          0x0800313c      0x714 OS.o
+ .text          0x0800313c      0x724 OS.o
                 0x08003194                IdleTask
                 0x080031b4                OS_Init
                 0x08003298                _OS_Get_Stack
                 0x080032f8                OS_Create_Task_Simple
                 0x08003414                OS_Scheduler_Start
-                0x08003490                OS_Scheduler
-                0x08003574                OS_Tick
-                0x08003624                OS_Signal_Wait
-                0x080036b4                OS_Signal_Send
-                0x0800370c                OS_Block_Current_Task
-                0x080037b0                OS_Unblock_Task
-                0x08003818                OS_Pend_Trigger
-                0x0800383c                PRINT_DUMMY
- .text          0x08003850       0xa8 clock.o
-                0x08003850                Clock_Init
- .text          0x080038f8      0x280 core_cm3.o
-                0x080038f8                __get_PSP
-                0x08003908                __set_PSP
-                0x08003910                __get_MSP
-                0x08003920                __set_MSP
-                0x08003928                __get_BASEPRI
-                0x08003948                __set_BASEPRI
-                0x08003960                __get_PRIMASK
-                0x08003980                __set_PRIMASK
-                0x08003998                __get_FAULTMASK
-                0x080039b8                __set_FAULTMASK
-                0x080039d0                __get_CONTROL
-                0x080039f0                __set_CONTROL
-                0x08003a08                __REV
-                0x08003a28                __REV16
-                0x08003a4c                __REVSH
-                0x08003a70                __RBIT
-                0x08003a94                __LDREXB
-                0x08003ab8                __LDREXH
-                0x08003adc                __LDREXW
-                0x08003b00                __STREXB
-                0x08003b28                __STREXH
-                0x08003b50                __STREXW
- .text          0x08003b78      0x3c0 joy_key.o
-                0x08003be0                Key_Poll_Init
-                0x08003cd4                Key_Get_Pressed
-                0x08003d3c                Key_Wait_Key_Pressed
-                0x08003d5c                Key_Wait_Key_Released
-                0x08003d70                Key_ISR_Enable
- .text          0x08003f38      0xa08 lcd.o
-                0x08004054                Lcd_GPIO_Init
-                0x080040d0                Lcd_Write_Reg
-                0x080040f8                Lcd_Write_Data_16Bit
-                0x08004168                Lcd_Fill
-                0x080041f4                Lcd_Reset
-                0x08004238                Lcd_WR_REG
-                0x08004298                Lcd_WR_DATA
-                0x080042f8                Lcd_Set_Display_Mode
-                0x08004410                Lcd_Write_RAM_Prepare
-                0x08004428                Lcd_Set_Windows
-                0x080044c4                Lcd_Set_Cursor
-                0x080044e4                Lcd_Draw_Back_Color
-                0x080045ac                Lcd_Clr_Screen
-                0x080045b8                Lcd_Draw_Box
-                0x08004698                Lcd_Init
-                0x08004914                Lcd_Put_Pixel
- .text          0x08004940      0x120 led.o
-                0x08004940                LED_Init
-                0x08004998                LED_Display
-                0x080049d0                LED_All_On
-                0x080049f4                LED_All_Off
-                0x08004a18                LED_0_Toggle
-                0x08004a3c                LED_1_Toggle
- .text          0x08004a60      0x150 main.o
-                0x08004a60                Task1
-                0x08004a78                Task2
-                0x08004abc                Task3
-                0x08004afc                TaskDummy
-                0x08004b18                Main
+                0x080034a0                OS_Scheduler
+                0x08003584                OS_Tick
+                0x08003634                OS_Signal_Wait
+                0x080036c4                OS_Signal_Send
+                0x0800371c                OS_Block_Current_Task
+                0x080037c0                OS_Unblock_Task
+                0x08003828                OS_Pend_Trigger
+                0x0800384c                PRINT_DUMMY
+ .text          0x08003860       0xa8 clock.o
+                0x08003860                Clock_Init
+ .text          0x08003908      0x280 core_cm3.o
+                0x08003908                __get_PSP
+                0x08003918                __set_PSP
+                0x08003920                __get_MSP
+                0x08003930                __set_MSP
+                0x08003938                __get_BASEPRI
+                0x08003958                __set_BASEPRI
+                0x08003970                __get_PRIMASK
+                0x08003990                __set_PRIMASK
+                0x080039a8                __get_FAULTMASK
+                0x080039c8                __set_FAULTMASK
+                0x080039e0                __get_CONTROL
+                0x08003a00                __set_CONTROL
+                0x08003a18                __REV
+                0x08003a38                __REV16
+                0x08003a5c                __REVSH
+                0x08003a80                __RBIT
+                0x08003aa4                __LDREXB
+                0x08003ac8                __LDREXH
+                0x08003aec                __LDREXW
+                0x08003b10                __STREXB
+                0x08003b38                __STREXH
+                0x08003b60                __STREXW
+ .text          0x08003b88      0x3c0 joy_key.o
+                0x08003bf0                Key_Poll_Init
+                0x08003ce4                Key_Get_Pressed
+                0x08003d4c                Key_Wait_Key_Pressed
+                0x08003d6c                Key_Wait_Key_Released
+                0x08003d80                Key_ISR_Enable
+ .text          0x08003f48      0xa08 lcd.o
+                0x08004064                Lcd_GPIO_Init
+                0x080040e0                Lcd_Write_Reg
+                0x08004108                Lcd_Write_Data_16Bit
+                0x08004178                Lcd_Fill
+                0x08004204                Lcd_Reset
+                0x08004248                Lcd_WR_REG
+                0x080042a8                Lcd_WR_DATA
+                0x08004308                Lcd_Set_Display_Mode
+                0x08004420                Lcd_Write_RAM_Prepare
+                0x08004438                Lcd_Set_Windows
+                0x080044d4                Lcd_Set_Cursor
+                0x080044f4                Lcd_Draw_Back_Color
+                0x080045bc                Lcd_Clr_Screen
+                0x080045c8                Lcd_Draw_Box
+                0x080046a8                Lcd_Init
+                0x08004924                Lcd_Put_Pixel
+ .text          0x08004950      0x120 led.o
+                0x08004950                LED_Init
+                0x080049a8                LED_Display
+                0x080049e0                LED_All_On
+                0x08004a04                LED_All_Off
+                0x08004a28                LED_0_Toggle
+                0x08004a4c                LED_1_Toggle
+ .text          0x08004a70      0x140 main.o
+                0x08004a70                Task1
+                0x08004a88                Task2
+                0x08004acc                Task3
+                0x08004b0c                TaskDummy
+                0x08004b28                Main
  .text          0x08004bb0      0x3ec priority_queue.o
                 0x08004bb0                pq_init
                 0x08004bcc                pq_compare_delay
@@ -919,7 +919,7 @@ SVC_Handler                                       scheduler.o
 SysTick_Handler                                   stm32f10x_it.o
                                                   crt0.o
 SysTick_OS_Tick                                   systick.o
-                                                  main.o
+                                                  OS.o
 System_Init                                       runtime.o
                                                   crt0.o
 TAMPER_IRQHandler                                 stm32f10x_it.o
@@ -1220,7 +1220,6 @@ free                                              C:\CodeSourcery\Sourcery G++ L
                                                   queue.o
 freeQueue                                         queue.o
 interrupt_period                                  OS.o
-                                                  main.o
 isEmpty                                           queue.o
 key_value                                         stm32f10x_it.o
                                                   main.o
