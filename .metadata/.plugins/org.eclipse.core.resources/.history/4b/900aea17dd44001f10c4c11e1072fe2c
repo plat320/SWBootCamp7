@@ -231,10 +231,10 @@ void OS_Signal_Send(int target_no_task, int queue_no, int data) {
 		TCB * target_tcb = &tcb[target_no_task];
 
 		if(target_tcb -> signal_flag != SIGNAL_RECEIVED) {
+			target_tcb -> signal_flag = SIGNAL_RECEIVED;
 			if (target_tcb -> signal_flag == SIGNAL_WAIT){
 				OS_Unblock_Task(target_tcb);
 			}
-			target_tcb -> signal_flag = SIGNAL_RECEIVED;
 
 		}
 
