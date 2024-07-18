@@ -1,7 +1,6 @@
 #include "device_driver.h"
 #include "OS.h"
 
-extern volatile int key_value;		// stm32f10x_it.c - void EXTI15_10_IRQHandler(void), void EXTI3_IRQHandler(void), void EXTI9_5_IRQHandler(void)
 int dummyParams[10];
 
 void Task1(void *para)
@@ -24,10 +23,6 @@ void Task2(void *para)
 	{
 		LED_1_Toggle();
 		//Uart_Printf("Task2\n");
-		if(key_value) {
-			OS_Signal_Send(3, key_value);
-			key_value = 0;
-		}
 		OS_Block_Current_Task(100);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
@@ -37,11 +32,12 @@ void Task2(void *para)
 void Task3(void *para)
 {
 //	volatile int i;
-	//int cnt = 0;
+	int cnt = 0;
+	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
 	for(;;)
 	{
-		//Uart_Printf("Task3 : %d\n", cnt++);
-    	int received_data = OS_Signal_Wait(0);
+		Uart_Printf("Task3 : %d\n", cnt++);
+    	int received_data = OS_Signal_Wait(KeyValueReceiverIndex, 0);
     	if(received_data != SIGNAL_TIMEOUT) {
     		Uart_Printf("Received data is : %d\n", received_data);
     	}

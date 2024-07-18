@@ -2,6 +2,7 @@
 #include "OS.h"
 //#include "stm32f10x.h"
 #include "priority_queue.h"
+#include "queue.h"
 #include <stdlib.h>
 
 // 참고 : 최초 제공된 코드는 완전한 코드가 아님
@@ -11,6 +12,7 @@
 /* Global Variable */
 TCB tcb[MAX_TCB + 1];
 char stack[STACK_SIZE] __attribute__((__aligned__(8)));
+Queue queues[MAX_QUEUE];
 TCB* current_tcb;
 TCB* next_tcb;
 PriorityQueue ready_queue;
@@ -43,6 +45,15 @@ void OS_Init(void)
 	}
 	pq_init(&ready_queue);
 	pq_init(&blocked_queue);
+
+
+	for(i=0; i<MAX_QUEUE; i++) {
+	    queues[i].front = NULL;
+	    queues[i].rear = NULL;
+	    queues[i].size = 0;
+	    queues[i].data_size = 0; // 초기화 추가
+	    queues[i].free_nodes = NULL;
+	}
 
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
 }
@@ -107,6 +118,21 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 	return ptcb->no_task;
 }
 
+int OS_Create_Queue(int data_size) {
+	int i;
+    for (i = 0; i < MAX_QUEUE; i++) {
+        if (queues[i].data_size == 0) { // 사용 중이지 않은 큐를 찾음
+            if (createQueue(&queues[i], data_size) == QUEUE_SUCCESS) {
+            	Uart_Printf("queues[%d] created \n", i);
+                return i; // 큐 생성 성공, 큐 인덱스 반환
+            } else {
+                return OS_FAIL_ALLOCATE_QUEUE; // 큐 생성 실패
+            }
+        }
+    }
+    return OS_FAIL_ALLOCATE_QUEUE; // 모든 큐가 사용 중인 경우
+}
+
 extern void _OS_Start_First_Task(void); // scheduler.s 파일 확인
 
 void OS_Scheduler_Start(void)
@@ -125,8 +151,6 @@ void OS_Scheduler_Start(void)
 	}
 
 	current_tcb->state = STATE_RUNNING;
-
-	SysTick_OS_Tick(interrupt_period);
 
 	_OS_Start_First_Task();
 }
@@ -164,18 +188,19 @@ void OS_Tick(void) {
     __set_BASEPRI(0x00);
 }
 
-int OS_Signal_Wait(int timeout) {
+int OS_Signal_Wait(int queue_no, int timeout) {
 	__set_BASEPRI(0x30);
 
 	int ret = SIGNAL_TIMEOUT;
 	current_tcb -> signal_flag = SIGNAL_WAIT;
 	OS_Block_Current_Task(timeout);
+	//__set_BASEPRI(0x30);
 
 	if(current_tcb -> signal_flag == SIGNAL_WAIT) {
 		ret = SIGNAL_TIMEOUT;
 	}
 	else if (current_tcb -> signal_flag == SIGNAL_RECEIVED) {
-		ret = current_tcb -> temp_value;
+		dequeue(&queues[queue_no], &ret);
 	}
 	else {
 		Uart_Printf("SIGNAL Error, Need to check\n");
@@ -187,8 +212,11 @@ int OS_Signal_Wait(int timeout) {
 	return ret;
 }
 
-void OS_Signal_Send(int target_no_task, int data) {
+void OS_Signal_Send(int target_no_task, int queue_no, int data) {
 	__set_BASEPRI(0x30);
+	if (queue_no >= 0 && queue_no < MAX_QUEUE) {
+		return;
+	}
 
 	if (target_no_task >= 0 && target_no_task <= MAX_TCB) {
 		TCB * target_tcb = &tcb[target_no_task];
@@ -198,7 +226,8 @@ void OS_Signal_Send(int target_no_task, int data) {
 			target_tcb -> signal_flag = SIGNAL_RECEIVED;
 		}
 
-		target_tcb -> temp_value = data;
+		enqueue(&queues[queue_no], &data);
+		Uart_Printf("Size == %d\n", queues[queue_no].size);
 	}
 
 	__set_BASEPRI(0x00);

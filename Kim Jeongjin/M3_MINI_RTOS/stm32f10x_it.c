@@ -18,7 +18,7 @@
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
   * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
-  ******************************************************************************
+  ******************************************************************************va
   */
 
 /* Includes ------------------------------------------------------------------*/
@@ -305,6 +305,7 @@ void EXTI3_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI3_IRQn);
 
 	key_value = 1;
+	OS_Signal_Send(3, 0, key_value);
 }
 
 /*******************************************************************************
@@ -483,6 +484,7 @@ void EXTI9_5_IRQHandler(void)
 	NVIC_ClearPendingIRQ(23);
 
 	key_value = EXTI9_5_LUT[kv];
+	OS_Signal_Send(3, 0, key_value);
 }
 
 /*******************************************************************************
@@ -705,6 +707,7 @@ void EXTI15_10_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI15_10_IRQn);
 
 	key_value = EXTI15_10_LUT[kv];
+	OS_Signal_Send(3, 0, key_value);
 }
 
 /*******************************************************************************
