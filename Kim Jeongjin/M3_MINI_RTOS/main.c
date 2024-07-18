@@ -41,7 +41,7 @@ void Task3(void *para)
 	for(;;)
 	{
 		//Uart_Printf("Task3 : %d\n", cnt++);
-    	int received_data = OS_Signal_Wait(5000);
+    	int received_data = OS_Signal_Wait(0);
     	if(received_data != SIGNAL_TIMEOUT) {
     		Uart_Printf("Received data is : %d\n", received_data);
     	}

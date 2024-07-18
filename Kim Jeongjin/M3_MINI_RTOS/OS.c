@@ -17,6 +17,7 @@ PriorityQueue ready_queue;
 PriorityQueue blocked_queue;
 long long int system_tick = 0;
 int interrupt_period = 100;
+const int default_delay = 1000000000;
 
 /* Function */
 void IdleTask(void *para) {
@@ -208,6 +209,9 @@ void OS_Block_Current_Task(int delay) {
 	pq_remove(&ready_queue, current_tcb, pq_compare_ready);
 
 	current_tcb -> state = STATE_BLOCKED;
+	if(delay == 0) {
+		delay = default_delay;
+	}
 	current_tcb -> delay_until = system_tick + delay;
 
 	pq_push(&blocked_queue, current_tcb, pq_compare_delay);
