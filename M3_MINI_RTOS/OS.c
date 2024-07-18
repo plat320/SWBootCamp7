@@ -2,6 +2,7 @@
 #include "OS.h"
 //#include "stm32f10x.h"
 #include "priority_queue.h"
+#include "queue.h"
 #include <stdlib.h>
 
 // 참고 : 최초 제공된 코드는 완전한 코드가 아님
@@ -11,12 +12,14 @@
 /* Global Variable */
 TCB tcb[MAX_TCB + 1];
 char stack[STACK_SIZE] __attribute__((__aligned__(8)));
+Queue queues[MAX_QUEUE];
 TCB* current_tcb;
 TCB* next_tcb;
 PriorityQueue ready_queue;
 PriorityQueue blocked_queue;
 long long int system_tick = 0;
 int interrupt_period = 100;
+const int default_delay = 1000000000;
 
 /* Function */
 void IdleTask(void *para) {
@@ -42,6 +45,15 @@ void OS_Init(void)
 	}
 	pq_init(&ready_queue);
 	pq_init(&blocked_queue);
+
+
+	for(i=0; i<MAX_QUEUE; i++) {
+	    queues[i].front = NULL;
+	    queues[i].rear = NULL;
+	    queues[i].size = 0;
+	    queues[i].data_size = 0; // 초기화 추가
+	    queues[i].free_nodes = NULL;
+	}
 
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
 }
@@ -106,6 +118,21 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 	return ptcb->no_task;
 }
 
+int OS_Create_Queue(int data_size) {
+	int i;
+    for (i = 0; i < MAX_QUEUE; i++) {
+        if (queues[i].data_size == 0) { // 사용 중이지 않은 큐를 찾음
+            if (createQueue(&queues[i], data_size) == QUEUE_SUCCESS) {
+            	Uart_Printf("queues[%d] created \n", i);
+                return i; // 큐 생성 성공, 큐 인덱스 반환
+            } else {
+                return OS_FAIL_ALLOCATE_QUEUE; // 큐 생성 실패
+            }
+        }
+    }
+    return OS_FAIL_ALLOCATE_QUEUE; // 모든 큐가 사용 중인 경우
+}
+
 extern void _OS_Start_First_Task(void); // scheduler.s 파일 확인
 
 void OS_Scheduler_Start(void)
@@ -125,13 +152,13 @@ void OS_Scheduler_Start(void)
 
 	current_tcb->state = STATE_RUNNING;
 
+	SysTick_OS_Tick(interrupt_period);
+
 	_OS_Start_First_Task();
 }
 
 void OS_Scheduler(void)
 {
-//	static int test_delay_cnt = 2000;
-//	Uart_Printf("OS_Scheduler\n");
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
 		return; // 우선순위 큐가 비어 있는 경우
@@ -146,17 +173,6 @@ void OS_Scheduler(void)
 		    pq_push(&ready_queue, current_tcb, pq_compare_ready);
 	    }
 
-	    // test code
-//	    if(current_tcb->no_task == 3) {
-//	    	test_delay_cnt--;
-//	    }
-//	    if(current_tcb->no_task == 3 && test_delay_cnt <= 0) {
-//	    	Uart_Printf("[test] task 3 delay start : %lld\n", system_tick);
-//	    	OS_Block_Current_Task(2000);
-//	    	test_delay_cnt = 2000;
-//	    }
-//	    else
-//	    	pq_push(&ready_queue, current_tcb, pq_compare_ready);
 	    current_tcb = next_tcb;
 	}
 }
@@ -174,22 +190,92 @@ void OS_Tick(void) {
     __set_BASEPRI(0x00);
 }
 
+int OS_Signal_Wait(int queue_no, int timeout) {
+	__set_BASEPRI(0x30);
+
+	int ret = SIGNAL_TIMEOUT;
+
+	if (current_tcb -> signal_flag != SIGNAL_RECEIVED){
+		current_tcb -> signal_flag = SIGNAL_WAIT;
+		OS_Block_Current_Task(timeout);
+	}
+	//__set_BASEPRI(0x30);
+
+	if(current_tcb -> signal_flag == SIGNAL_WAIT) {
+		ret = SIGNAL_TIMEOUT;
+	}
+	else if (current_tcb -> signal_flag == SIGNAL_RECEIVED) {
+		dequeue(&queues[queue_no], &ret);
+	}
+	else {
+		Uart_Printf("SIGNAL Error, Need to check\n");
+		ret = -2;
+	}
+
+	if (isEmpty(&queues[queue_no])){
+		current_tcb -> signal_flag = SIGNAL_DEFAULT;
+	}
+	__set_BASEPRI(0x00);
+
+	return ret;
+}
+
+void OS_Signal_Send(int target_no_task, int queue_no, int data) {
+	__set_BASEPRI(0x30);
+	if (!(queue_no >= 0 && queue_no < MAX_QUEUE)) {
+		return;
+	}
+
+	if (target_no_task >= 0 && target_no_task <= MAX_TCB) {
+		TCB * target_tcb = &tcb[target_no_task];
+
+		if(target_tcb -> signal_flag == SIGNAL_WAIT) {
+			OS_Unblock_Task(target_tcb);
+			target_tcb -> signal_flag = SIGNAL_RECEIVED;
+		}
+
+		enqueue(&queues[queue_no], &data);
+		Uart_Printf("Size == %d\n", queues[queue_no].size);
+	}
+
+	__set_BASEPRI(0x00);
+}
+
 void OS_Block_Current_Task(int delay) {
 	// 우리 보드는 상위 4비트만 사용하므로 상위 4비트에 우선순위를 설정해줘야 함
 	__set_BASEPRI(0x30);
 
-
 	pq_remove(&ready_queue, current_tcb, pq_compare_ready);
 
 	current_tcb -> state = STATE_BLOCKED;
+	if(delay == 0) {
+		delay = default_delay;
+	}
 	current_tcb -> delay_until = system_tick + delay;
 
 	pq_push(&blocked_queue, current_tcb, pq_compare_delay);
 
 	OS_Pend_Trigger();
 	__set_BASEPRI(0x00);
-
 }
+
+void OS_Unblock_Task(TCB* task) {
+	__set_BASEPRI(0x30);
+
+    if (task == NULL) {
+    	return;
+    }
+
+    pq_remove(&blocked_queue, task, pq_compare_delay);
+
+    task -> state = STATE_READY;
+    task -> timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
+
+    pq_push(&ready_queue, task, pq_compare_ready);
+
+    __set_BASEPRI(0x00);
+}
+
 
 /*
 void OS_Block_Task(int task_no, int delay) {
@@ -209,23 +295,6 @@ void OS_Block_Task(int task_no, int delay) {
     pq_push(&blocked_queue, task, pq_compare_delay);
 
     __enable_irq();
-}
-
-void OS_Unblock_Task(int task_no) {
-	__disable_irq();
-
-    if (task_no >= 0 && task_no <= MAX_TCB) {
-    	TCB* task = &tcb[task_no];
-
-        pq_remove(&blocked_queue, task, pq_compare_delay);
-
-        task -> state = STATE_READY;
-        task -> timestamp = system_tick; // 태스크 언블록 시 타임스탬프 갱신
-
-        pq_push(&ready_queue, task, pq_compare_ready);
-    }
-
-   __enable_irq();
 }
 
 void OS_Change_Priority(int task_no, int new_prio) {

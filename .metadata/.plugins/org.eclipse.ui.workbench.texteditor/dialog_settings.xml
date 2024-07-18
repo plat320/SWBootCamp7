@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Block" key="selection"/>
+		<item value="interrupt_period" key="selection"/>
 		<list key="findhistory">
-			<item value="block"/>
-			<item value="OS_Block_Current_Task"/>
-			<item value="delay"/>
-			<item value="system_tick"/>
 			<item value="interrupt_period"/>
-			<item value="macro_set"/>
-			<item value="macro"/>
-			<item value="set"/>
+			<item value="timeout"/>
+			<item value="time"/>
+			<item value="key_value"/>
+			<item value="EXTI"/>
+			<item value="delay"/>
+			<item value="enable"/>
+			<item value="wait"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include "queue.h"
+
+// 큐 초기화 함수
+void initQueue(Queue *q) {
+    q->front = 0;
+    q->rear = 0;
+}
+
+// 큐가 비어있는지 확인하는 함수
+int isEmpty(Queue *q) {
+    return q->front == q->rear;
+}
+
+// 큐가 꽉 차 있는지 확인하는 함수
+int isFull(Queue *q) {
+    return (q->rear + 1) % MAX_QUEUE_SIZE == q->front;
+}
+
+// 큐에 데이터 추가하는 함수 (Enqueue)
+void enqueue(Queue *q, int item) {
+    if (isFull(q)) {
+        printf("Queue is full. Cannot enqueue.\n");
+        return;
+    }
+    q->data[q->rear] = item;
+    q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
+}
+
+// 큐에서 데이터를 꺼내는 함수 (Dequeue)
+int dequeue(Queue *q) {
+    if (isEmpty(q)) {
+        printf("Queue is empty. Cannot dequeue.\n");
+        return -1; // 예외 처리: 큐가 비어있는 경우
+    }
+    int item = q->data[q->front];
+    q->front = (q->front + 1) % MAX_QUEUE_SIZE;
+    return item;
+}
+
+// 큐의 현재 상태를 출력하는 함수 (디버깅용)
+void printQueue(Queue *q) {
+    printf("Queue: ");
+    if (isEmpty(q)) {
+        printf("Empty");
+    } else {
+        int i = q->front;
+        while (i != q->rear) {
+            printf("%d ", q->data[i]);
+            i = (i + 1) % MAX_QUEUE_SIZE;
+        }
+    }
+    printf("\n");
+}

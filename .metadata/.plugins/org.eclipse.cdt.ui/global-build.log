@@ -460,3 +460,1982 @@ make all
 make: Nothing to be done for `all'.
 
 **** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+In file included from OS.c:2:0:
+OS.h:35:38: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   unsigned long long int delay_until = -1;
+                                      ^
+OS.c:16:24: error: conflicting types for 'system_tick'
+ unsigned long long int system_tick = 0;
+                        ^
+In file included from OS.c:2:0:
+OS.h:52:23: note: previous declaration of 'system_tick' was here
+  extern long long int system_tick; // ½Ã½ºÅÛ Å¸ÀÓ½ºÅÆÇÁ
+                       ^
+OS.c: In function 'OS_Init':
+OS.c:38:9: error: 'TCB' has no member named 'delay_until'
+   tcb[i].delay_until = 0;
+         ^
+OS.c:39:9: error: 'TCB' has no member named 'heap_index'
+   tcb[i].heap_index = -1;
+         ^
+OS.c: In function 'OS_Create_Task_Simple':
+OS.c:97:9: error: 'TCB' has no member named 'heap_index'
+     ptcb->heap_index = -1;
+         ^
+OS.c: In function 'OS_Tick':
+OS.c:166:60: error: 'TCB' has no member named 'delay_until'
+     while (blocked_queue.size > 0 && pq_top(&blocked_queue)->delay_until <= system_tick) {
+                                                            ^
+OS.c: At top level:
+OS.c:175:55: error: expected ';', ',' or ')' before '=' token
+ void OS_Block_Current_Task(int delay, int signal_flag = 0) {
+                                                       ^
+In file included from main.c:2:0:
+OS.h:35:38: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   unsigned long long int delay_until = -1;
+                                      ^
+In file included from priority_queue.h:4:0,
+                 from priority_queue.c:1:
+OS.h:35:38: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   unsigned long long int delay_until = -1;
+                                      ^
+priority_queue.c: In function 'pq_compare_delay':
+priority_queue.c:16:13: error: 'TCB' has no member named 'delay_until'
+     return a->delay_until - b->delay_until;
+             ^
+priority_queue.c:16:30: error: 'TCB' has no member named 'delay_until'
+     return a->delay_until - b->delay_until;
+                              ^
+priority_queue.c: In function 'pq_swap':
+priority_queue.c:38:26: error: 'TCB' has no member named 'heap_index'
+     int temp_index = (*a)->heap_index;
+                          ^
+priority_queue.c:39:9: error: 'TCB' has no member named 'heap_index'
+     (*a)->heap_index = (*b)->heap_index;
+         ^
+priority_queue.c:39:28: error: 'TCB' has no member named 'heap_index'
+     (*a)->heap_index = (*b)->heap_index;
+                            ^
+priority_queue.c:40:9: error: 'TCB' has no member named 'heap_index'
+     (*b)->heap_index = temp_index;
+         ^
+priority_queue.c: In function 'pq_push':
+priority_queue.c:80:9: error: 'TCB' has no member named 'heap_index'
+     task->heap_index = pq->size;
+         ^
+priority_queue.c:83:27: error: 'TCB' has no member named 'heap_index'
+     pq_heapify_up(pq, task->heap_index, compare);
+                           ^
+priority_queue.c: In function 'pq_pop':
+priority_queue.c:93:16: error: 'TCB' has no member named 'heap_index'
+     pq->heap[0]->heap_index = 0;
+                ^
+priority_queue.c:98:9: error: 'TCB' has no member named 'heap_index'
+     root->heap_index = -1; // Èü¿¡¼­ Á¦°ÅµÊÀ» Ç¥½Ã
+         ^
+priority_queue.c: In function 'pq_remove':
+priority_queue.c:110:13: error: 'TCB' has no member named 'heap_index'
+     if (task->heap_index < 0 || task->heap_index >= pq->size) {
+             ^
+priority_queue.c:110:37: error: 'TCB' has no member named 'heap_index'
+     if (task->heap_index < 0 || task->heap_index >= pq->size) {
+                                     ^
+priority_queue.c:114:21: error: 'TCB' has no member named 'heap_index'
+     int index = task->heap_index;
+                     ^
+priority_queue.c:116:20: error: 'TCB' has no member named 'heap_index'
+     pq->heap[index]->heap_index = index;
+                    ^
+priority_queue.c:122:9: error: 'TCB' has no member named 'heap_index'
+     task->heap_index = -1; // Èü¿¡¼­ Á¦°ÅµÊÀ» Ç¥½Ã
+         ^
+priority_queue.c: In function 'pq_update':
+priority_queue.c:126:13: error: 'TCB' has no member named 'heap_index'
+     if (task->heap_index < 0 || task->heap_index >= pq->size) {
+             ^
+priority_queue.c:126:37: error: 'TCB' has no member named 'heap_index'
+     if (task->heap_index < 0 || task->heap_index >= pq->size) {
+                                     ^
+priority_queue.c:130:27: error: 'TCB' has no member named 'heap_index'
+     pq_heapify_up(pq, task->heap_index, compare);
+                           ^
+priority_queue.c:131:29: error: 'TCB' has no member named 'heap_index'
+     pq_heapify_down(pq, task->heap_index, compare);
+                             ^
+priority_queue.c: In function 'pq_compare_delay':
+priority_queue.c:17:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:35:38: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   unsigned long long int delay_until = -1;
+                                      ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+In file included from OS.c:2:0:
+OS.h:39:19: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   int signal_flag = 0;
+                   ^
+OS.c: In function 'OS_Block_Current_Task':
+OS.c:184:14: error: 'TCB' has no member named 'signal_flag'
+  current_tcb -> signal_flag = signal_flag;
+              ^
+OS.c:184:31: error: 'signal_flag' undeclared (first use in this function)
+  current_tcb -> signal_flag = signal_flag;
+                               ^
+OS.c:184:31: note: each undeclared identifier is reported only once for each function it appears in
+In file included from main.c:2:0:
+OS.h:39:19: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   int signal_flag = 0;
+                   ^
+In file included from priority_queue.h:4:0,
+                 from priority_queue.c:1:
+OS.h:39:19: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   int signal_flag = 0;
+                   ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:39:19: error: expected ':', ',', ';', '}' or '__attribute__' before '=' token
+   int signal_flag = 0;
+                   ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Block_Current_Task':
+OS.c:184:31: error: 'signal_flag' undeclared (first use in this function)
+  current_tcb -> signal_flag = signal_flag;
+                               ^
+OS.c:184:31: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_Device_Example ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_Device_Example ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:22:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:22:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c:167:32: error: unknown type name 'Queue'
+ int OS_Queue_Wait(int timeout, Queue queue){
+                                ^
+OS.c:220:40: error: unknown type name 'Queue'
+ void OS_Queue_Send(int target_no_task, Queue queue, int data) {
+                                        ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:46:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'enqueue' [-Wimplicit-function-declaration]
+  enqueue(t3_queue, 10);
+  ^
+stm32f10x_it.c:707:10: error: 't3_queue' undeclared (first use in this function)
+  enqueue(t3_queue, 10);
+          ^
+stm32f10x_it.c:707:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c:167:32: error: unknown type name 'Queue'
+ int OS_Queue_Wait(int timeout, Queue queue){
+                                ^
+OS.c:220:40: error: unknown type name 'Queue'
+ void OS_Queue_Send(int target_no_task, Queue queue, int data) {
+                                        ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'enqueue' [-Wimplicit-function-declaration]
+  enqueue(t3_queue, 10);
+  ^
+stm32f10x_it.c:707:10: error: 't3_queue' undeclared (first use in this function)
+  enqueue(t3_queue, 10);
+          ^
+stm32f10x_it.c:707:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: error: incompatible type for argument 1 of 'dequeue'
+   ret = dequeue(queue);
+   ^
+In file included from OS.c:5:0:
+queue.h:25:5: note: expected 'struct Queue *' but argument is of type 'Queue'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: error: incompatible type for argument 1 of 'isEmpty'
+  if (isEmpty(queue)){
+  ^
+In file included from OS.c:5:0:
+queue.h:16:5: note: expected 'struct Queue *' but argument is of type 'Queue'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: error: incompatible type for argument 1 of 'enqueue'
+   enqueue(queue, data);
+   ^
+In file included from OS.c:5:0:
+queue.h:22:6: note: expected 'struct Queue *' but argument is of type 'Queue'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'enqueue' [-Wimplicit-function-declaration]
+  enqueue(t3_queue, 10);
+  ^
+stm32f10x_it.c:707:10: error: 't3_queue' undeclared (first use in this function)
+  enqueue(t3_queue, 10);
+          ^
+stm32f10x_it.c:707:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: error: incompatible type for argument 1 of 'dequeue'
+   ret = dequeue(queue);
+   ^
+In file included from OS.c:5:0:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'Queue'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: error: incompatible type for argument 1 of 'isEmpty'
+  if (isEmpty(queue)){
+  ^
+In file included from OS.c:5:0:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'Queue'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: error: incompatible type for argument 1 of 'enqueue'
+   enqueue(queue, data);
+   ^
+In file included from OS.c:5:0:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'Queue'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'enqueue' [-Wimplicit-function-declaration]
+  enqueue(t3_queue, 10);
+  ^
+stm32f10x_it.c:707:10: error: 't3_queue' undeclared (first use in this function)
+  enqueue(t3_queue, 10);
+          ^
+stm32f10x_it.c:707:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: error: incompatible type for argument 1 of 'dequeue'
+   ret = dequeue(queue);
+   ^
+In file included from OS.c:5:0:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'Queue'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: error: incompatible type for argument 1 of 'isEmpty'
+  if (isEmpty(queue)){
+  ^
+In file included from OS.c:5:0:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'Queue'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: error: incompatible type for argument 1 of 'enqueue'
+   enqueue(queue, data);
+   ^
+In file included from OS.c:5:0:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'Queue'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:708:10: error: 't3_queue' undeclared (first use in this function)
+  enqueue(t3_queue, 10);
+          ^
+stm32f10x_it.c:708:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: error: incompatible type for argument 1 of 'enqueue'
+   enqueue(queue, data);
+   ^
+In file included from OS.c:5:0:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'Queue'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:708:10: error: 't3_queue' undeclared (first use in this function)
+  enqueue(t3_queue, 10);
+          ^
+stm32f10x_it.c:708:10: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:708:11: error: 't3_queue' undeclared (first use in this function)
+  enqueue(&t3_queue, 10);
+           ^
+stm32f10x_it.c:708:11: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:708:11: error: 't3_queue' undeclared (first use in this function)
+  enqueue(&t3_queue, 10);
+           ^
+stm32f10x_it.c:708:11: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'OS_Queue_Send' [-Wimplicit-function-declaration]
+  OS_Queue_Send(3, t3_queue, 10);
+  ^
+stm32f10x_it.c:707:19: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, t3_queue, 10);
+                   ^
+stm32f10x_it.c:707:19: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'OS_Queue_Send' [-Wimplicit-function-declaration]
+  OS_Queue_Send(3, &t3_queue, 10);
+  ^
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+In file included from OS.c:2:0:
+OS.h:75:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:76:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+In file included from main.c:2:0:
+OS.h:75:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:76:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: implicit declaration of function 'OS_Queue_Wait' [-Wimplicit-function-declaration]
+      int received_data = OS_Queue_Wait(0);
+      ^
+In file included from priority_queue.h:4:0,
+                 from priority_queue.c:1:
+OS.h:75:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:76:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:75:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:76:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:75:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:76:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:2: warning: implicit declaration of function 'OS_Queue_Send' [-Wimplicit-function-declaration]
+  OS_Queue_Send(3, &t3_queue, 10);
+  ^
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: error: too few arguments to function 'OS_Queue_Wait'
+      int received_data = OS_Queue_Wait(0);
+      ^
+In file included from main.c:2:0:
+OS.h:76:6: note: declared here
+  int OS_Queue_Wait(int timeout, Queue queue);
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: error: too few arguments to function 'OS_Queue_Wait'
+      int received_data = OS_Queue_Wait(0);
+      ^
+In file included from main.c:2:0:
+OS.h:76:6: note: declared here
+  int OS_Queue_Wait(int timeout, Queue queue);
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: error: too few arguments to function 'OS_Queue_Wait'
+      int received_data = OS_Queue_Wait(0);
+      ^
+In file included from main.c:2:0:
+OS.h:76:6: note: declared here
+  int OS_Queue_Wait(int timeout, Queue queue);
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: warning: passing argument 1 of 'dequeue' from incompatible pointer type [enabled by default]
+   ret = dequeue(&queue);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: warning: passing argument 1 of 'isEmpty' from incompatible pointer type [enabled by default]
+  if (isEmpty(&queue)){
+  ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: error: incompatible type for argument 2 of 'OS_Queue_Wait'
+      int received_data = OS_Queue_Wait(0, t3_queue);
+      ^
+In file included from main.c:2:0:
+OS.h:76:6: note: expected 'struct Queue *' but argument is of type 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: warning: passing argument 1 of 'dequeue' from incompatible pointer type [enabled by default]
+   ret = dequeue(&queue);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: warning: passing argument 1 of 'isEmpty' from incompatible pointer type [enabled by default]
+  if (isEmpty(&queue)){
+  ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: warning: passing argument 1 of 'dequeue' from incompatible pointer type [enabled by default]
+   ret = dequeue(&queue);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: warning: passing argument 1 of 'isEmpty' from incompatible pointer type [enabled by default]
+  if (isEmpty(&queue)){
+  ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: warning: passing argument 1 of 'dequeue' from incompatible pointer type [enabled by default]
+   ret = dequeue(&queue);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: warning: passing argument 1 of 'isEmpty' from incompatible pointer type [enabled by default]
+  if (isEmpty(&queue)){
+  ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from priority_queue.c:1:0:
+priority_queue.h:6:15: error: unknown type name 'PriorityQueue'
+  void pq_init(PriorityQueue* pq);
+               ^
+priority_queue.h:7:15: error: unknown type name 'PriorityQueue'
+  void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+               ^
+priority_queue.h:7:34: error: unknown type name 'TCB'
+  void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                  ^
+priority_queue.h:7:60: error: unknown type name 'TCB'
+  void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                                            ^
+priority_queue.h:7:66: error: unknown type name 'TCB'
+  void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                                                  ^
+priority_queue.h:8:2: error: unknown type name 'TCB'
+  TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*));
+  ^
+priority_queue.h:8:14: error: unknown type name 'PriorityQueue'
+  TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*));
+              ^
+priority_queue.h:8:48: error: unknown type name 'TCB'
+  TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*));
+                                                ^
+priority_queue.h:8:54: error: unknown type name 'TCB'
+  TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*));
+                                                      ^
+priority_queue.h:9:2: error: unknown type name 'TCB'
+  TCB* pq_top(PriorityQueue* pq);
+  ^
+priority_queue.h:9:14: error: unknown type name 'PriorityQueue'
+  TCB* pq_top(PriorityQueue* pq);
+              ^
+priority_queue.h:10:17: error: unknown type name 'PriorityQueue'
+  void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                 ^
+priority_queue.h:10:36: error: unknown type name 'TCB'
+  void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                    ^
+priority_queue.h:10:62: error: unknown type name 'TCB'
+  void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                                              ^
+priority_queue.h:10:68: error: unknown type name 'TCB'
+  void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                                                    ^
+priority_queue.h:11:17: error: unknown type name 'PriorityQueue'
+  void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                 ^
+priority_queue.h:11:36: error: unknown type name 'TCB'
+  void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                    ^
+priority_queue.h:11:62: error: unknown type name 'TCB'
+  void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                                              ^
+priority_queue.h:11:68: error: unknown type name 'TCB'
+  void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*));
+                                                                    ^
+priority_queue.h:12:23: error: unknown type name 'TCB'
+  int pq_compare_ready(TCB* t1, TCB* t2);
+                       ^
+priority_queue.h:12:32: error: unknown type name 'TCB'
+  int pq_compare_ready(TCB* t1, TCB* t2);
+                                ^
+priority_queue.h:13:23: error: unknown type name 'TCB'
+  int pq_compare_delay(TCB* t1, TCB* t2);
+                       ^
+priority_queue.h:13:32: error: unknown type name 'TCB'
+  int pq_compare_delay(TCB* t1, TCB* t2);
+                                ^
+priority_queue.h:14:15: error: unknown type name 'TCB'
+  void pq_swap(TCB** a, TCB** b);
+               ^
+priority_queue.h:14:24: error: unknown type name 'TCB'
+  void pq_swap(TCB** a, TCB** b);
+                        ^
+priority_queue.c:5:14: error: unknown type name 'PriorityQueue'
+ void pq_init(PriorityQueue* pq) {
+              ^
+priority_queue.c:9:22: error: unknown type name 'TCB'
+ int pq_compare_delay(TCB* a, TCB* b) {
+                      ^
+priority_queue.c:9:30: error: unknown type name 'TCB'
+ int pq_compare_delay(TCB* a, TCB* b) {
+                              ^
+priority_queue.c:19:22: error: unknown type name 'TCB'
+ int pq_compare_ready(TCB* a, TCB* b) {
+                      ^
+priority_queue.c:19:30: error: unknown type name 'TCB'
+ int pq_compare_ready(TCB* a, TCB* b) {
+                              ^
+priority_queue.c:32:14: error: unknown type name 'TCB'
+ void pq_swap(TCB** a, TCB** b) {
+              ^
+priority_queue.c:32:23: error: unknown type name 'TCB'
+ void pq_swap(TCB** a, TCB** b) {
+                       ^
+priority_queue.c:43:20: error: unknown type name 'PriorityQueue'
+ void pq_heapify_up(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
+                    ^
+priority_queue.c:43:65: error: unknown type name 'TCB'
+ void pq_heapify_up(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
+                                                                 ^
+priority_queue.c:43:71: error: unknown type name 'TCB'
+ void pq_heapify_up(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
+                                                                       ^
+priority_queue.c:50:22: error: unknown type name 'PriorityQueue'
+ void pq_heapify_down(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
+                      ^
+priority_queue.c:50:67: error: unknown type name 'TCB'
+ void pq_heapify_down(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
+                                                                   ^
+priority_queue.c:50:73: error: unknown type name 'TCB'
+ void pq_heapify_down(PriorityQueue* pq, int index, int (*compare)(TCB*, TCB*)) {
+                                                                         ^
+priority_queue.c:74:14: error: unknown type name 'PriorityQueue'
+ void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+              ^
+priority_queue.c:74:33: error: unknown type name 'TCB'
+ void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                 ^
+priority_queue.c:74:59: error: unknown type name 'TCB'
+ void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                                           ^
+priority_queue.c:74:65: error: unknown type name 'TCB'
+ void pq_push(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                                                 ^
+priority_queue.c:86:1: error: unknown type name 'TCB'
+ TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*)) {
+ ^
+priority_queue.c:86:13: error: unknown type name 'PriorityQueue'
+ TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*)) {
+             ^
+priority_queue.c:86:47: error: unknown type name 'TCB'
+ TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*)) {
+                                               ^
+priority_queue.c:86:53: error: unknown type name 'TCB'
+ TCB* pq_pop(PriorityQueue* pq, int (*compare)(TCB*, TCB*)) {
+                                                     ^
+priority_queue.c:102:1: error: unknown type name 'TCB'
+ TCB* pq_top(PriorityQueue* pq) {
+ ^
+priority_queue.c:102:13: error: unknown type name 'PriorityQueue'
+ TCB* pq_top(PriorityQueue* pq) {
+             ^
+priority_queue.c:109:16: error: unknown type name 'PriorityQueue'
+ void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                ^
+priority_queue.c:109:35: error: unknown type name 'TCB'
+ void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                   ^
+priority_queue.c:109:61: error: unknown type name 'TCB'
+ void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                                             ^
+priority_queue.c:109:67: error: unknown type name 'TCB'
+ void pq_remove(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                                                   ^
+priority_queue.c:125:16: error: unknown type name 'PriorityQueue'
+ void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                ^
+priority_queue.c:125:35: error: unknown type name 'TCB'
+ void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                   ^
+priority_queue.c:125:61: error: unknown type name 'TCB'
+ void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                                             ^
+priority_queue.c:125:67: error: unknown type name 'TCB'
+ void pq_update(PriorityQueue* pq, TCB* task, int (*compare)(TCB*, TCB*)) {
+                                                                   ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: warning: passing argument 1 of 'dequeue' from incompatible pointer type [enabled by default]
+   ret = dequeue(&queue);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: warning: passing argument 1 of 'isEmpty' from incompatible pointer type [enabled by default]
+  if (isEmpty(&queue)){
+  ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Wait':
+OS.c:182:3: warning: passing argument 1 of 'dequeue' from incompatible pointer type [enabled by default]
+   ret = dequeue(&queue);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:27:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int dequeue(Queue *q);
+     ^
+OS.c:188:2: warning: passing argument 1 of 'isEmpty' from incompatible pointer type [enabled by default]
+  if (isEmpty(&queue)){
+  ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:18:5: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ int isEmpty(Queue *q);
+     ^
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Queue_Send':
+OS.c:232:3: warning: passing argument 1 of 'enqueue' from incompatible pointer type [enabled by default]
+   enqueue(&queue, data);
+   ^
+In file included from OS.h:4:0,
+                 from OS.c:2:
+queue.h:24:6: note: expected 'struct Queue *' but argument is of type 'struct Queue **'
+ void enqueue(Queue *q, int item);
+      ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:76:33: error: unknown type name 'Queue'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+                                 ^
+OS.h:77:41: error: unknown type name 'Queue'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+                                         ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+In file included from OS.c:5:0:
+queue.h:12:3: error: conflicting types for 'Queue'
+ } Queue;
+   ^
+In file included from OS.c:2:0:
+OS.h:52:4: note: previous declaration of 'Queue' was here
+  } Queue;
+    ^
+OS.c:168:5: error: conflicting types for 'OS_Queue_Wait'
+ int OS_Queue_Wait(int timeout, Queue* queue){
+     ^
+In file included from OS.c:2:0:
+OS.h:81:6: note: previous declaration of 'OS_Queue_Wait' was here
+  int OS_Queue_Wait(int timeout, Queue* queue);
+      ^
+OS.c:221:6: error: conflicting types for 'OS_Queue_Send'
+ void OS_Queue_Send(int target_no_task, Queue* queue, int data) {
+      ^
+In file included from OS.c:2:0:
+OS.h:82:7: note: previous declaration of 'OS_Queue_Send' was here
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+       ^
+In file included from main.c:3:0:
+queue.h:12:3: error: conflicting types for 'Queue'
+ } Queue;
+   ^
+In file included from main.c:2:0:
+OS.h:52:4: note: previous declaration of 'Queue' was here
+  } Queue;
+    ^
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:47:6: warning: passing argument 2 of 'OS_Queue_Wait' from incompatible pointer type [enabled by default]
+      int received_data = OS_Queue_Wait(0, &t3_queue);
+      ^
+In file included from main.c:2:0:
+OS.h:81:6: note: expected 'struct Queue *' but argument is of type 'struct Queue *'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+      ^
+In file included from queue.c:2:0:
+queue.h:12:3: error: conflicting types for 'Queue'
+ } Queue;
+   ^
+In file included from queue.h:4:0,
+                 from queue.c:2:
+OS.h:52:4: note: previous declaration of 'Queue' was here
+  } Queue;
+    ^
+In file included from stm32f10x_it.c:28:0:
+queue.h:12:3: error: conflicting types for 'Queue'
+ } Queue;
+   ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:52:4: note: previous declaration of 'Queue' was here
+  } Queue;
+    ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:43:2: warning: passing argument 1 of 'initQueue' discards 'volatile' qualifier from pointer target type [enabled by default]
+  initQueue(&t3_queue);
+  ^
+In file included from main.c:3:0:
+queue.h:15:6: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+ void initQueue(Queue *q);
+      ^
+main.c:47:6: warning: passing argument 2 of 'OS_Queue_Wait' discards 'volatile' qualifier from pointer target type [enabled by default]
+      int received_data = OS_Queue_Wait(0, &t3_queue);
+      ^
+In file included from main.c:2:0:
+OS.h:81:6: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:43:2: warning: passing argument 1 of 'initQueue' discards 'volatile' qualifier from pointer target type [enabled by default]
+  initQueue(&t3_queue);
+  ^
+In file included from main.c:3:0:
+queue.h:15:6: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+ void initQueue(Queue *q);
+      ^
+main.c:47:6: warning: passing argument 2 of 'OS_Queue_Wait' discards 'volatile' qualifier from pointer target type [enabled by default]
+      int received_data = OS_Queue_Wait(0, &t3_queue);
+      ^
+In file included from main.c:2:0:
+OS.h:81:6: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:708:2: warning: passing argument 2 of 'OS_Queue_Send' discards 'volatile' qualifier from pointer target type [enabled by default]
+  OS_Queue_Send(3, &t3_queue, 10);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:82:7: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:43:2: warning: passing argument 1 of 'initQueue' discards 'volatile' qualifier from pointer target type [enabled by default]
+  initQueue(&t3_queue);
+  ^
+In file included from main.c:3:0:
+queue.h:15:6: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+ void initQueue(Queue *q);
+      ^
+main.c:47:6: warning: passing argument 2 of 'OS_Queue_Wait' discards 'volatile' qualifier from pointer target type [enabled by default]
+      int received_data = OS_Queue_Wait(0, &t3_queue);
+      ^
+In file included from main.c:2:0:
+OS.h:81:6: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+  int OS_Queue_Wait(int timeout, Queue* queue);
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:708:2: warning: passing argument 2 of 'OS_Queue_Send' discards 'volatile' qualifier from pointer target type [enabled by default]
+  OS_Queue_Send(3, &t3_queue, 10);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:82:7: note: expected 'struct Queue *' but argument is of type 'volatile struct Queue *'
+  void OS_Queue_Send(int target_no_task, Queue* queue, int data);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:707:20: error: 't3_queue' undeclared (first use in this function)
+  OS_Queue_Send(3, &t3_queue, 10);
+                    ^
+stm32f10x_it.c:707:20: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+stm32f10x_it.c:703:11: error: expected declaration specifiers or '...' before '&' token
+ initQueue(&t3_queue);
+           ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:24:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:23:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:45:44: error: 't3_queue' undeclared (first use in this function)
+      int received_data = OS_Queue_Wait(0, &t3_queue);
+                                            ^
+main.c:45:44: note: each undeclared identifier is reported only once for each function it appears in
+main.c: In function 'Main':
+main.c:82:21: error: expected ')' before ';' token
+  initQueue(&t3_queue;)
+                     ^
+main.c:84:2: error: expected ';' before 'OS_Create_Task_Simple'
+  OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
+  ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:23:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:45:44: error: 't3_queue' undeclared (first use in this function)
+      int received_data = OS_Queue_Wait(0, &t3_queue);
+                                            ^
+main.c:45:44: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:25:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o): In function `_write_r':
+writer.c:(.text+0x16): undefined reference to `_write'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o): In function `_close_r':
+closer.c:(.text+0x12): undefined reference to `_close'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o): In function `_fstat_r':
+fstatr.c:(.text+0x14): undefined reference to `_fstat'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o): In function `_isatty_r':
+isattyr.c:(.text+0x12): undefined reference to `_isatty'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o): In function `_lseek_r':
+lseekr.c:(.text+0x16): undefined reference to `_lseek'
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o): In function `_read_r':
+readr.c:(.text+0x16): undefined reference to `_read'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****

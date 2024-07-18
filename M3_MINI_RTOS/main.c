@@ -18,11 +18,12 @@ void Task1(void *para)
 void Task2(void *para)
 {
 	//volatile int i;
+	int cnt = 0;
 	for(;;)
 	{
 		LED_1_Toggle();
 		//Uart_Printf("Task2\n");
-		OS_Block_Current_Task(1000);
+		OS_Block_Current_Task(100);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
 	}
@@ -32,10 +33,20 @@ void Task3(void *para)
 {
 //	volatile int i;
 	int cnt = 0;
+	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
 	for(;;)
 	{
-    	OS_Block_Current_Task(2000);
 		Uart_Printf("Task3 : %d\n", cnt++);
+    	int received_data = OS_Signal_Wait(KeyValueReceiverIndex, 1000);
+
+		Uart_Printf("QueueIdx : %d\n", KeyValueReceiverIndex);
+    	if(received_data != SIGNAL_TIMEOUT) {
+    		Uart_Printf("Received data is : %d\n", received_data);
+    	}
+    	else {
+    		Uart_Printf("Signal Timeout\n");
+    	}
+    	OS_Block_Current_Task(500);
 //		for(i=0;i<0x100000;i++);
 	}
 }
@@ -70,10 +81,9 @@ void Main(void)
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+//		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
-	SysTick_OS_Tick(interrupt_period);
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)
 
 	for(;;)

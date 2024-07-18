@@ -1,0 +1,32 @@
+#ifndef QUEUE_H_
+#define QUEUE_H_
+
+#include "OS.h"
+
+#define MAX_QUEUE_SIZE 100
+
+// 정적 큐 구조체 정의
+typedef struct {
+    int data[MAX_QUEUE_SIZE];
+    int front, rear;
+} Queue;
+
+// 큐 초기화 함수
+void initQueue(Queue *q);
+
+// 큐가 비어있는지 확인하는 함수
+int isEmpty(Queue *q);
+
+// 큐가 꽉 차 있는지 확인하는 함수
+int isFull(Queue *q);
+
+// 큐에 데이터 추가하는 함수 (Enqueue)
+void enqueue(Queue *q, int item);
+
+// 큐에서 데이터를 꺼내는 함수 (Dequeue)
+int dequeue(Queue *q);
+
+// 큐의 현재 상태를 출력하는 함수 (디버깅용)
+void printQueue(Queue *q);
+
+#endif /* QUEUE_H_ */
