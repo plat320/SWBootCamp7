@@ -198,6 +198,7 @@ int OS_Signal_Wait(int queue_no, int timeout) {
 	if (current_tcb -> signal_flag != SIGNAL_RECEIVED){
 		current_tcb -> signal_flag = SIGNAL_WAIT;
 		OS_Block_Current_Task(timeout);
+		__set_BASEPRI(0x30);
 	}
 	//__set_BASEPRI(0x30);
 
@@ -229,7 +230,7 @@ void OS_Signal_Send(int target_no_task, int queue_no, int data) {
 	if (target_no_task >= 0 && target_no_task <= MAX_TCB) {
 		TCB * target_tcb = &tcb[target_no_task];
 
-		if(target_tcb -> signal_flag == SIGNAL_WAIT) {
+		if(target_tcb -> signal_flag != SIGNAL_RECEIVED) {
 			OS_Unblock_Task(target_tcb);
 			target_tcb -> signal_flag = SIGNAL_RECEIVED;
 		}

@@ -107,7 +107,7 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
  .text          0x08003000      0x13c crt0.o
                 0x080030ec                __start
  *(.text)
- .text          0x0800313c      0x8c8 OS.o
+ .text          0x0800313c      0x8d0 OS.o
                 0x08003194                IdleTask
                 0x080031b4                OS_Init
                 0x0800332c                _OS_Get_Stack
@@ -117,164 +117,163 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
                 0x080035b0                OS_Scheduler
                 0x08003694                OS_Tick
                 0x08003744                OS_Signal_Wait
-                0x08003818                OS_Signal_Send
-                0x080038c0                OS_Block_Current_Task
-                0x08003964                OS_Unblock_Task
-                0x080039cc                OS_Pend_Trigger
-                0x080039f0                PRINT_DUMMY
- .text          0x08003a04       0xa8 clock.o
-                0x08003a04                Clock_Init
- .text          0x08003aac      0x280 core_cm3.o
-                0x08003aac                __get_PSP
-                0x08003abc                __set_PSP
-                0x08003ac4                __get_MSP
-                0x08003ad4                __set_MSP
-                0x08003adc                __get_BASEPRI
-                0x08003afc                __set_BASEPRI
-                0x08003b14                __get_PRIMASK
-                0x08003b34                __set_PRIMASK
-                0x08003b4c                __get_FAULTMASK
-                0x08003b6c                __set_FAULTMASK
-                0x08003b84                __get_CONTROL
-                0x08003ba4                __set_CONTROL
-                0x08003bbc                __REV
-                0x08003bdc                __REV16
-                0x08003c00                __REVSH
-                0x08003c24                __RBIT
-                0x08003c48                __LDREXB
-                0x08003c6c                __LDREXH
-                0x08003c90                __LDREXW
-                0x08003cb4                __STREXB
-                0x08003cdc                __STREXH
-                0x08003d04                __STREXW
- .text          0x08003d2c      0x3c0 joy_key.o
-                0x08003d94                Key_Poll_Init
-                0x08003e88                Key_Get_Pressed
-                0x08003ef0                Key_Wait_Key_Pressed
-                0x08003f10                Key_Wait_Key_Released
-                0x08003f24                Key_ISR_Enable
- .text          0x080040ec      0xa08 lcd.o
-                0x08004208                Lcd_GPIO_Init
-                0x08004284                Lcd_Write_Reg
-                0x080042ac                Lcd_Write_Data_16Bit
-                0x0800431c                Lcd_Fill
-                0x080043a8                Lcd_Reset
-                0x080043ec                Lcd_WR_REG
-                0x0800444c                Lcd_WR_DATA
-                0x080044ac                Lcd_Set_Display_Mode
-                0x080045c4                Lcd_Write_RAM_Prepare
-                0x080045dc                Lcd_Set_Windows
-                0x08004678                Lcd_Set_Cursor
-                0x08004698                Lcd_Draw_Back_Color
-                0x08004760                Lcd_Clr_Screen
-                0x0800476c                Lcd_Draw_Box
-                0x0800484c                Lcd_Init
-                0x08004ac8                Lcd_Put_Pixel
- .text          0x08004af4      0x120 led.o
-                0x08004af4                LED_Init
-                0x08004b4c                LED_Display
-                0x08004b84                LED_All_On
-                0x08004ba8                LED_All_Off
-                0x08004bcc                LED_0_Toggle
-                0x08004bf0                LED_1_Toggle
- .text          0x08004c14      0x124 main.o
-                0x08004c14                Task1
-                0x08004c2c                Task2
-                0x08004c44                Task3
-                0x08004cb4                TaskDummy
-                0x08004cd0                Main
- .text          0x08004d38      0x3ec priority_queue.o
-                0x08004d38                pq_init
-                0x08004d54                pq_compare_delay
-                0x08004da8                pq_compare_ready
-                0x08004e14                pq_swap
-                0x08004e58                pq_heapify_up
-                0x08004ec8                pq_heapify_down
-                0x08004f80                pq_push
-                0x08004fd4                pq_pop
-                0x08005038                pq_top
-                0x08005060                pq_remove
-                0x080050dc                pq_update
- .text          0x08005124      0x248 queue.o
-                0x08005124                _OS_Get_Buffer
-                0x08005188                createQueue
-                0x08005240                enqueue
-                0x080052bc                dequeue
-                0x08005324                isEmpty
-                0x08005348                isFull
- .text          0x0800536c       0xe4 runtime.o
-                0x0800536c                _sbrk
-                0x080053f8                System_Init
- .text          0x08005450      0x6c8 stm32f10x_it.o
-                0x08005484                Invalid_ISR
-                0x08005610                NMI_Handler
-                0x08005630                HardFault_Handler
-                0x080056d8                MemManage_Handler
-                0x08005734                BusFault_Handler
-                0x08005790                UsageFault_Handler
-                0x080057b4                DebugMon_Handler
-                0x080057c8                SysTick_Handler
-                0x080057e4                WWDG_IRQHandler
-                0x080057f0                PVD_IRQHandler
-                0x080057fc                TAMPER_IRQHandler
-                0x08005808                RTC_IRQHandler
-                0x08005814                FLASH_IRQHandler
-                0x08005820                RCC_IRQHandler
-                0x0800582c                EXTI0_IRQHandler
-                0x08005838                EXTI1_IRQHandler
-                0x08005844                EXTI2_IRQHandler
-                0x08005850                EXTI3_IRQHandler
-                0x08005894                EXTI4_IRQHandler
-                0x080058a0                DMA1_Channel1_IRQHandler
-                0x080058ac                DMA1_Channel2_IRQHandler
-                0x080058b8                DMA1_Channel3_IRQHandler
-                0x080058c4                DMA1_Channel4_IRQHandler
-                0x080058d0                DMA1_Channel5_IRQHandler
-                0x080058dc                DMA1_Channel6_IRQHandler
-                0x080058e8                DMA1_Channel7_IRQHandler
-                0x080058f4                ADC1_2_IRQHandler
-                0x08005900                USB_HP_CAN_TX_IRQHandler
-                0x0800590c                USB_LP_CAN_RX0_IRQHandler
-                0x08005918                CAN_RX1_IRQHandler
-                0x08005924                CAN_SCE_IRQHandler
-                0x08005930                EXTI9_5_IRQHandler
-                0x0800598c                TIM1_BRK_IRQHandler
-                0x08005998                TIM1_UP_IRQHandler
-                0x080059a4                TIM1_TRG_COM_IRQHandler
-                0x080059b0                TIM1_CC_IRQHandler
-                0x080059bc                TIM2_IRQHandler
-                0x080059c8                TIM3_IRQHandler
-                0x080059d4                TIM4_IRQHandler
-                0x08005a08                I2C1_EV_IRQHandler
-                0x08005a14                I2C1_ER_IRQHandler
-                0x08005a20                I2C2_EV_IRQHandler
-                0x08005a2c                I2C2_ER_IRQHandler
-                0x08005a38                SPI1_IRQHandler
-                0x08005a44                SPI2_IRQHandler
-                0x08005a50                USART1_IRQHandler
-                0x08005a80                USART2_IRQHandler
-                0x08005a8c                USART3_IRQHandler
-                0x08005a98                EXTI15_10_IRQHandler
-                0x08005b00                RTCAlarm_IRQHandler
-                0x08005b0c                USBWakeUp_IRQHandler
- .text          0x08005b18       0x90 systick.o
-                0x08005b18                SysTick_OS_Tick
- .text          0x08005ba8      0x1c8 timer.o
-                0x08005c44                TIM4_Repeat_Interrupt_Enable
- .text          0x08005d70      0x328 uart.o
-                0x08005e0c                Uart1_Init
-                0x08005f70                Uart1_Send_Byte
-                0x08005fdc                Uart1_Send_String
-                0x08006004                Uart1_Printf
-                0x08006038                Uart1_RX_Interrupt_Enable
- .text          0x08006098       0xf0 exp_handler.o
-                0x08006098                __get_IPSR
-                0x0800609e                _Print_Reg
-                0x08006130                _HardFault_Handler
-                0x08006144                _MemManage_Handler
-                0x08006158                _BusFault_Handler
-                0x0800616c                _UsageFault_Handler
- *fill*         0x08006188        0x8 
+                0x08003820                OS_Signal_Send
+                0x080038c8                OS_Block_Current_Task
+                0x0800396c                OS_Unblock_Task
+                0x080039d4                OS_Pend_Trigger
+                0x080039f8                PRINT_DUMMY
+ .text          0x08003a0c       0xa8 clock.o
+                0x08003a0c                Clock_Init
+ .text          0x08003ab4      0x280 core_cm3.o
+                0x08003ab4                __get_PSP
+                0x08003ac4                __set_PSP
+                0x08003acc                __get_MSP
+                0x08003adc                __set_MSP
+                0x08003ae4                __get_BASEPRI
+                0x08003b04                __set_BASEPRI
+                0x08003b1c                __get_PRIMASK
+                0x08003b3c                __set_PRIMASK
+                0x08003b54                __get_FAULTMASK
+                0x08003b74                __set_FAULTMASK
+                0x08003b8c                __get_CONTROL
+                0x08003bac                __set_CONTROL
+                0x08003bc4                __REV
+                0x08003be4                __REV16
+                0x08003c08                __REVSH
+                0x08003c2c                __RBIT
+                0x08003c50                __LDREXB
+                0x08003c74                __LDREXH
+                0x08003c98                __LDREXW
+                0x08003cbc                __STREXB
+                0x08003ce4                __STREXH
+                0x08003d0c                __STREXW
+ .text          0x08003d34      0x3c0 joy_key.o
+                0x08003d9c                Key_Poll_Init
+                0x08003e90                Key_Get_Pressed
+                0x08003ef8                Key_Wait_Key_Pressed
+                0x08003f18                Key_Wait_Key_Released
+                0x08003f2c                Key_ISR_Enable
+ .text          0x080040f4      0xa08 lcd.o
+                0x08004210                Lcd_GPIO_Init
+                0x0800428c                Lcd_Write_Reg
+                0x080042b4                Lcd_Write_Data_16Bit
+                0x08004324                Lcd_Fill
+                0x080043b0                Lcd_Reset
+                0x080043f4                Lcd_WR_REG
+                0x08004454                Lcd_WR_DATA
+                0x080044b4                Lcd_Set_Display_Mode
+                0x080045cc                Lcd_Write_RAM_Prepare
+                0x080045e4                Lcd_Set_Windows
+                0x08004680                Lcd_Set_Cursor
+                0x080046a0                Lcd_Draw_Back_Color
+                0x08004768                Lcd_Clr_Screen
+                0x08004774                Lcd_Draw_Box
+                0x08004854                Lcd_Init
+                0x08004ad0                Lcd_Put_Pixel
+ .text          0x08004afc      0x120 led.o
+                0x08004afc                LED_Init
+                0x08004b54                LED_Display
+                0x08004b8c                LED_All_On
+                0x08004bb0                LED_All_Off
+                0x08004bd4                LED_0_Toggle
+                0x08004bf8                LED_1_Toggle
+ .text          0x08004c1c      0x124 main.o
+                0x08004c1c                Task1
+                0x08004c34                Task2
+                0x08004c4c                Task3
+                0x08004cbc                TaskDummy
+                0x08004cd8                Main
+ .text          0x08004d40      0x3ec priority_queue.o
+                0x08004d40                pq_init
+                0x08004d5c                pq_compare_delay
+                0x08004db0                pq_compare_ready
+                0x08004e1c                pq_swap
+                0x08004e60                pq_heapify_up
+                0x08004ed0                pq_heapify_down
+                0x08004f88                pq_push
+                0x08004fdc                pq_pop
+                0x08005040                pq_top
+                0x08005068                pq_remove
+                0x080050e4                pq_update
+ .text          0x0800512c      0x248 queue.o
+                0x0800512c                _OS_Get_Buffer
+                0x08005190                createQueue
+                0x08005248                enqueue
+                0x080052c4                dequeue
+                0x0800532c                isEmpty
+                0x08005350                isFull
+ .text          0x08005374       0xe4 runtime.o
+                0x08005374                _sbrk
+                0x08005400                System_Init
+ .text          0x08005458      0x6c8 stm32f10x_it.o
+                0x0800548c                Invalid_ISR
+                0x08005618                NMI_Handler
+                0x08005638                HardFault_Handler
+                0x080056e0                MemManage_Handler
+                0x0800573c                BusFault_Handler
+                0x08005798                UsageFault_Handler
+                0x080057bc                DebugMon_Handler
+                0x080057d0                SysTick_Handler
+                0x080057ec                WWDG_IRQHandler
+                0x080057f8                PVD_IRQHandler
+                0x08005804                TAMPER_IRQHandler
+                0x08005810                RTC_IRQHandler
+                0x0800581c                FLASH_IRQHandler
+                0x08005828                RCC_IRQHandler
+                0x08005834                EXTI0_IRQHandler
+                0x08005840                EXTI1_IRQHandler
+                0x0800584c                EXTI2_IRQHandler
+                0x08005858                EXTI3_IRQHandler
+                0x0800589c                EXTI4_IRQHandler
+                0x080058a8                DMA1_Channel1_IRQHandler
+                0x080058b4                DMA1_Channel2_IRQHandler
+                0x080058c0                DMA1_Channel3_IRQHandler
+                0x080058cc                DMA1_Channel4_IRQHandler
+                0x080058d8                DMA1_Channel5_IRQHandler
+                0x080058e4                DMA1_Channel6_IRQHandler
+                0x080058f0                DMA1_Channel7_IRQHandler
+                0x080058fc                ADC1_2_IRQHandler
+                0x08005908                USB_HP_CAN_TX_IRQHandler
+                0x08005914                USB_LP_CAN_RX0_IRQHandler
+                0x08005920                CAN_RX1_IRQHandler
+                0x0800592c                CAN_SCE_IRQHandler
+                0x08005938                EXTI9_5_IRQHandler
+                0x08005994                TIM1_BRK_IRQHandler
+                0x080059a0                TIM1_UP_IRQHandler
+                0x080059ac                TIM1_TRG_COM_IRQHandler
+                0x080059b8                TIM1_CC_IRQHandler
+                0x080059c4                TIM2_IRQHandler
+                0x080059d0                TIM3_IRQHandler
+                0x080059dc                TIM4_IRQHandler
+                0x08005a10                I2C1_EV_IRQHandler
+                0x08005a1c                I2C1_ER_IRQHandler
+                0x08005a28                I2C2_EV_IRQHandler
+                0x08005a34                I2C2_ER_IRQHandler
+                0x08005a40                SPI1_IRQHandler
+                0x08005a4c                SPI2_IRQHandler
+                0x08005a58                USART1_IRQHandler
+                0x08005a88                USART2_IRQHandler
+                0x08005a94                USART3_IRQHandler
+                0x08005aa0                EXTI15_10_IRQHandler
+                0x08005b08                RTCAlarm_IRQHandler
+                0x08005b14                USBWakeUp_IRQHandler
+ .text          0x08005b20       0x90 systick.o
+                0x08005b20                SysTick_OS_Tick
+ .text          0x08005bb0      0x1c8 timer.o
+                0x08005c4c                TIM4_Repeat_Interrupt_Enable
+ .text          0x08005d78      0x328 uart.o
+                0x08005e14                Uart1_Init
+                0x08005f78                Uart1_Send_Byte
+                0x08005fe4                Uart1_Send_String
+                0x0800600c                Uart1_Printf
+                0x08006040                Uart1_RX_Interrupt_Enable
+ .text          0x080060a0       0xf0 exp_handler.o
+                0x080060a0                __get_IPSR
+                0x080060a6                _Print_Reg
+                0x08006138                _HardFault_Handler
+                0x0800614c                _MemManage_Handler
+                0x08006160                _BusFault_Handler
+                0x08006174                _UsageFault_Handler
  .text          0x08006190       0x40 scheduler.o
                 0x08006190                PendSV_Handler
                 0x080061ac                SVC_Handler
