@@ -37,4 +37,7 @@
 - 기본적인 동작의 OS_Signal_Send 및 OS_Signal_Wait 함수 구현
 
 2024-07-17 04:51 pm
-- Key Value push interrupt를 통해 Task 2에서 push 된 key 값을 Task 3로 Send 하도록 구현 
+- Key Value push interrupt를 통해 Task 2에서 push 된 key 값을 Task 3로 Send 하도록 구현
+
+2024-07-18 10:20 am
+- Systick_OS_Tick의 위치를 OS.c의 OS_Scheduler_Start 함수 내로 이동
