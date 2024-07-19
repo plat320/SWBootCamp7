@@ -19,6 +19,7 @@ void Task2(void *para)
 {
 	//volatile int i;
 	int cnt = 0;
+	//int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
 	for(;;)
 	{
 		LED_1_Toggle();
@@ -33,16 +34,25 @@ void Task3(void *para)
 {
 //	volatile int i;
 	int cnt = 0;
-	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
+	long long int KeyValueReceiverIndex = OS_Create_Queue(sizeof(long long int));
 	for(;;)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
-    	int received_data = OS_Signal_Wait(KeyValueReceiverIndex, 0);
-    	if(received_data != SIGNAL_TIMEOUT) {
-    		Uart_Printf("Received data is : %d\n", received_data);
+		int received_data;
+    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 10000);
+
+		Uart_Printf("QueueIdx : %d\n", 0);
+    	if(wait_result == SIGNAL_TIMEOUT) {
+    		Uart_Printf("Signal Timeout\n");
+    	}
+    	else if(wait_result == SIGNAL_NO_PERMISSION) {
+    		Uart_Printf("Task 3 didn't create Queue\n");
+    	}
+    	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
+    		Uart_Printf("Queue is empty\n");
     	}
     	else {
-    		Uart_Printf("Signal Timeout\n");
+    		Uart_Printf("Received data is : %d\n", received_data);
     	}
     	OS_Block_Current_Task(500);
 //		for(i=0;i<0x100000;i++);
@@ -74,7 +84,7 @@ void Main(void)
 	OS_Init();	// OS 자료구조 초기화
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 128); // Task 생성
+	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
 	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
 	volatile int i;
 	for(i = 4; i <= 60; i++)

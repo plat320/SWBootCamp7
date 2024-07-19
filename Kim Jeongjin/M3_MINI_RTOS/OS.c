@@ -122,7 +122,7 @@ int OS_Create_Queue(int data_size) {
 	int i;
     for (i = 0; i < MAX_QUEUE; i++) {
         if (queues[i].data_size == 0) { // 사용 중이지 않은 큐를 찾음
-            if (createQueue(&queues[i], data_size) == QUEUE_SUCCESS) {
+            if (createQueue(&queues[i], data_size, current_tcb -> no_task) == QUEUE_SUCCESS) {
             	Uart_Printf("queues[%d] created \n", i);
                 return i; // 큐 생성 성공, 큐 인덱스 반환
             } else {
@@ -151,6 +151,8 @@ void OS_Scheduler_Start(void)
 	}
 
 	current_tcb->state = STATE_RUNNING;
+
+	SysTick_OS_Tick(interrupt_period);
 
 	_OS_Start_First_Task();
 }
@@ -188,42 +190,66 @@ void OS_Tick(void) {
     __set_BASEPRI(0x00);
 }
 
-int OS_Signal_Wait(int queue_no, int timeout) {
-	__set_BASEPRI(0x30);
+int OS_Signal_Wait(int queue_no, void* buffer, int buffer_size, int timeout) {
+    __set_BASEPRI(0x30);
 
-	int ret = SIGNAL_TIMEOUT;
-	current_tcb -> signal_flag = SIGNAL_WAIT;
-	OS_Block_Current_Task(timeout);
-	//__set_BASEPRI(0x30);
+    int ret = SIGNAL_NO_ERROR;
 
-	if(current_tcb -> signal_flag == SIGNAL_WAIT) {
-		ret = SIGNAL_TIMEOUT;
-	}
-	else if (current_tcb -> signal_flag == SIGNAL_RECEIVED) {
-		dequeue(&queues[queue_no], &ret);
-	}
-	else {
-		Uart_Printf("SIGNAL Error, Need to check\n");
-		ret = -2;
-	}
-	current_tcb -> signal_flag = SIGNAL_DEFAULT;
-	__set_BASEPRI(0x00);
+    if (queues[queue_no].data_size != buffer_size) {
+         __set_BASEPRI(0x00);
+         return SIGNAL_WRONG_DATA_TYPE; // buffer 크기가 queue의 data_size와 일치하지 않음
+    }
 
-	return ret;
+    if (current_tcb -> signal_flag != SIGNAL_RECEIVED){
+        current_tcb -> signal_flag = SIGNAL_WAIT;
+        OS_Block_Current_Task(timeout);
+        __set_BASEPRI(0x30);
+    }
+
+    if(current_tcb -> signal_flag == SIGNAL_WAIT) {
+        ret = SIGNAL_TIMEOUT;
+        __set_BASEPRI(0x00);
+        return ret;
+    }
+    else if (current_tcb -> signal_flag == SIGNAL_RECEIVED) {
+        ret = dequeue(&queues[queue_no], buffer, current_tcb -> no_task);
+        if(ret != DEQUEUE_SUCCESS) {
+        	__set_BASEPRI(0x00);
+        	return ret;
+        }
+    }
+    else {
+        Uart_Printf("SIGNAL Error, Need to check\n");
+        ret = SIGNAL_NO_PERMISSION;
+        __set_BASEPRI(0x00);
+        return ret;
+    }
+
+    if (isEmpty(&queues[queue_no])){
+        current_tcb -> signal_flag = SIGNAL_DEFAULT;
+        ret = SIGNAL_NO_ERROR;
+    }
+    __set_BASEPRI(0x00);
+
+    return ret;
 }
 
 void OS_Signal_Send(int target_no_task, int queue_no, int data) {
 	__set_BASEPRI(0x30);
-	if (queue_no >= 0 && queue_no < MAX_QUEUE) {
+	if (!(queue_no >= 0 && queue_no < MAX_QUEUE)) {
 		return;
 	}
 
 	if (target_no_task >= 0 && target_no_task <= MAX_TCB) {
 		TCB * target_tcb = &tcb[target_no_task];
 
-		if(target_tcb -> signal_flag == SIGNAL_WAIT) {
-			OS_Unblock_Task(target_tcb);
+		if(target_tcb -> signal_flag != SIGNAL_RECEIVED) {
+			if (target_tcb -> signal_flag == SIGNAL_WAIT){
+				OS_Unblock_Task(target_tcb);
+				__set_BASEPRI(0x30);
+			}
 			target_tcb -> signal_flag = SIGNAL_RECEIVED;
+
 		}
 
 		enqueue(&queues[queue_no], &data);

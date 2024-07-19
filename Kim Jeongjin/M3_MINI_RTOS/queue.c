@@ -20,11 +20,12 @@ char* _OS_Get_Buffer(int size) {
 }
 
 // Queue 생성 함수
-int createQueue(Queue* q, int data_size) {
+int createQueue(Queue* q, int data_size, int no_task) {
     q->front = NULL;
     q->rear = NULL;
     q->size = 0;
     q->data_size = data_size;
+    q->no_task = no_task;
 
     // 미리 할당된 메모리로 노드 초기화
     q->free_nodes = (Node*)_OS_Get_Buffer(sizeof(Node));
@@ -80,9 +81,12 @@ int enqueue(Queue* q, void* data) {
 }
 
 // Queue에서 데이터 제거 함수
-void dequeue(Queue* q, void* data) {
+int dequeue(Queue* q, void* data, int no_task) {
     if (isEmpty(q)) {
-        return;
+        return DEQUEUE_EMPTY;
+    }
+    if (q->no_task != no_task) {
+    	return DEQUEUE_NO_PERMISSION;
     }
 
     Node* temp = q->front;
@@ -97,6 +101,7 @@ void dequeue(Queue* q, void* data) {
     q->free_nodes = temp;
 
     q->size--;
+    return DEQUEUE_SUCCESS;
 }
 
 // Queue가 비어 있는지 확인하는 함수
