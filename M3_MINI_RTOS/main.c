@@ -33,46 +33,51 @@ void Task3(void *para)
 {
 //	volatile int i;
 	int cnt = 0;
-	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
+	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
+	char usart_received_data[32];
+	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
 	for(;;)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
-    	int received_data;
-    	int signal_flag = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, 1000);
+		int received_data = -1;
+    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 500000);
 
-		Uart_Printf("QueueIdx : %d\n", KeyValueReceiverIndex);
-    	if(signal_flag != SIGNAL_TIMEOUT) {
+    	if(wait_result == SIGNAL_TIMEOUT) {
+    		Uart_Printf("Signal Timeout\n");
+    	}
+    	else if(wait_result == SIGNAL_NO_PERMISSION) {
+    		Uart_Printf("Task 3 didn't create Queue\n");
+    	}
+    	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
+    		Uart_Printf("Queue is empty\n");
+    	}
+    	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
+    		Uart_Printf("Data Type is wrong\n");
+    	}
+    	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
     	}
-    	else {
+
+    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
+    	if(usart_result == SIGNAL_TIMEOUT) {
     		Uart_Printf("Signal Timeout\n");
+    	}
+    	else if(usart_result == SIGNAL_NO_PERMISSION) {
+    		Uart_Printf("Task 3 didn't create Queue\n");
+    	}
+    	else if(usart_result == SIGNAL_QUEUE_EMPTY) {
+    		Uart_Printf("Queue is empty\n");
+    	}
+    	else if(usart_result == SIGNAL_WRONG_DATA_TYPE) {
+    		Uart_Printf("Data Type is wrong\n");
+    	}
+    	else if(usart_result == SIGNAL_NO_ERROR){
+    		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	OS_Block_Current_Task(500);
 //		for(i=0;i<0x100000;i++);
 	}
 }
-
-//void Task4(void *para)
-//{
-////	volatile int i;
-//	int cnt = 0;
-//	int UartValueReceiverIndex = OS_Create_Queue(sizeof(char));
-//	for(;;)
-//	{
-//    	int received_data = OS_Signal_Wait(UartValueReceiverIndex, 1000);
-//
-//		Uart_Printf("QueueIdx : %d\n", UartValueReceiverIndex);
-//    	if(received_data != SIGNAL_TIMEOUT) {
-//    		Uart_Printf("Received data is : %d\n", received_data);
-//    	}
-//    	else {
-//    		Uart_Printf("Signal Timeout\n");
-//    	}
-//    	OS_Block_Current_Task(500);
-////		for(i=0;i<0x100000;i++);
-//	}
-//}
-
 
 void TaskDummy(void *para)
 {
@@ -99,12 +104,12 @@ void Main(void)
 	OS_Init();	// OS 자료구조 초기화
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 128); // Task 생성
+	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
 	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-//		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)

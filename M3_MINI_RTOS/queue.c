@@ -20,21 +20,25 @@ char* _OS_Get_Buffer(int size) {
 }
 
 // Queue 생성 함수
-int createQueue(Queue* q, int data_size) {
+int createQueue(Queue* q, int data_size, int number_of_elements, int no_task) {
     q->front = NULL;
     q->rear = NULL;
     q->size = 0;
     q->data_size = data_size;
+    q->no_task = no_task;
 
     // 미리 할당된 메모리로 노드 초기화
     q->free_nodes = (Node*)_OS_Get_Buffer(sizeof(Node));
     if (q->free_nodes == NULL) {
         return QUEUE_FAIL_ALLOCATE;
     }
+    if(number_of_elements == -1) {
+    	number_of_elements = MAX_QUEUE_SIZE;
+    }
 
     Node* current_node = q->free_nodes;
     int i;
-    for (i = 0; i < MAX_QUEUE_SIZE - 1; ++i) {
+    for (i = 0; i < number_of_elements - 1; ++i) {
         current_node->data = _OS_Get_Buffer(data_size);
         if (current_node->data == NULL) {
             return QUEUE_FAIL_ALLOCATE;
@@ -55,7 +59,7 @@ int createQueue(Queue* q, int data_size) {
 }
 
 // Queue에 데이터 추가 함수
-int enqueue(Queue* q, void* data) {
+int enqueue(Queue* q, const void* data) {
     if (isFull(q)) {
         return -1;
     }
@@ -80,9 +84,12 @@ int enqueue(Queue* q, void* data) {
 }
 
 // Queue에서 데이터 제거 함수
-void dequeue(Queue* q, void* data) {
+int dequeue(Queue* q, void* data, int no_task) {
     if (isEmpty(q)) {
-        return;
+        return DEQUEUE_EMPTY;
+    }
+    if (q->no_task != no_task) {
+    	return DEQUEUE_NO_PERMISSION;
     }
 
     Node* temp = q->front;
@@ -97,6 +104,7 @@ void dequeue(Queue* q, void* data) {
     q->free_nodes = temp;
 
     q->size--;
+    return DEQUEUE_SUCCESS;
 }
 
 // Queue가 비어 있는지 확인하는 함수

@@ -2777,3 +2777,673 @@ main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
 
 **** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task3':
+main.c:55:29: error: 'SIGNAL_WRONG_DAYA_TYPE' undeclared (first use in this function)
+      else if(wait_result == SIGNAL_WRONG_DAYA_TYPE){
+                             ^
+main.c:55:29: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c:238:6: error: conflicting types for 'OS_Signal_Send'
+ void OS_Signal_Send(int target_no_task, int queue_no, void* buffer) {
+      ^
+In file included from OS.c:2:0:
+OS.h:86:7: note: previous declaration of 'OS_Signal_Send' was here
+  void OS_Signal_Send(int target_no_task, int queue_no, int data);
+       ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+stm32f10x_it.c: In function 'EXTI3_IRQHandler':
+stm32f10x_it.c:308:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'EXTI9_5_IRQHandler':
+stm32f10x_it.c:487:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'USART1_IRQHandler':
+stm32f10x_it.c:666:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(2, 1, USART1->DR);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'uint16_t'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:711:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+stm32f10x_it.c: In function 'EXTI3_IRQHandler':
+stm32f10x_it.c:308:2: warning: passing argument 3 of 'OS_Signal_Send' discards 'volatile' qualifier from pointer target type [enabled by default]
+  OS_Signal_Send(3, 0, &key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'volatile int *'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'EXTI9_5_IRQHandler':
+stm32f10x_it.c:487:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:711:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Send':
+OS.c:256:30: warning: dereferencing 'void *' pointer [enabled by default]
+   enqueue(&queues[queue_no], *buffer);
+                              ^
+OS.c:256:3: error: invalid use of void expression
+   enqueue(&queues[queue_no], *buffer);
+   ^
+stm32f10x_it.c: In function 'EXTI3_IRQHandler':
+stm32f10x_it.c:308:2: warning: passing argument 3 of 'OS_Signal_Send' discards 'volatile' qualifier from pointer target type [enabled by default]
+  OS_Signal_Send(3, 0, &key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'volatile int *'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'EXTI9_5_IRQHandler':
+stm32f10x_it.c:487:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+stm32f10x_it.c: In function 'EXTI15_10_IRQHandler':
+stm32f10x_it.c:711:2: warning: passing argument 3 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+  OS_Signal_Send(3, 0, key_value);
+  ^
+In file included from stm32f10x_it.c:27:0:
+OS.h:86:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Send(int target_no_task, int queue_no, void* buffer);
+       ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_Device_Example ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+stm32f10x_it.c: In function 'USART1_IRQHandler':
+stm32f10x_it.c:676:9: error: expected expression before 'int'
+     if (int(received_char) == END_CHAR || uart_rx_index >= BUFFER_SIZE) {
+         ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Send':
+OS.c:263:3: warning: implicit declaration of function 'Uart_print' [-Wimplicit-function-declaration]
+   Uart_print("asd");
+   ^
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+OS.o: In function `OS_Signal_Send':
+OS.c:(.text+0x838): undefined reference to `Uart_print'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Send':
+OS.c:263:3: warning: implicit declaration of function 'Uart_printf' [-Wimplicit-function-declaration]
+   Uart_printf("asd");
+   ^
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+OS.o: In function `OS_Signal_Send':
+OS.c:(.text+0x838): undefined reference to `Uart_printf'
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
