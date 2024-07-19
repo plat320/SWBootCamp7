@@ -305,7 +305,7 @@ void EXTI3_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI3_IRQn);
 
 	key_value = 1;
-	OS_Signal_Send(0, key_value);
+	OS_Signal_Send(0, (const void*)(&key_value));
 }
 
 /*******************************************************************************
@@ -484,7 +484,7 @@ void EXTI9_5_IRQHandler(void)
 	NVIC_ClearPendingIRQ(23);
 
 	key_value = EXTI9_5_LUT[kv];
-	OS_Signal_Send(0, key_value);
+	OS_Signal_Send(0, (const void*)(&key_value));
 }
 
 /*******************************************************************************
@@ -657,15 +657,32 @@ void SPI2_IRQHandler(void)
  * Output         : None
  * Return         : None
  *******************************************************************************/
-volatile int uart_rx_in;
-volatile char uart_rx_data;
+#define BUFFER_SIZE 20
+#define END_CHAR '\n'  // 종료 문자 정의
+
+volatile int uart_rx_in = 0;
+volatile char uart_rx_buffer[BUFFER_SIZE];
+volatile int uart_rx_index = 0;
 
 void USART1_IRQHandler(void)
 {
-	uart_rx_data = USART1->DR;
-	NVIC_ClearPendingIRQ(USART1_IRQn);
+    char received_char = USART1->DR; // 수신된 문자 읽기
+    NVIC_ClearPendingIRQ(USART1_IRQn);
 
-	uart_rx_in = 1;
+    // 수신된 문자를 버퍼에 저장
+    uart_rx_buffer[uart_rx_index++] = received_char;
+
+    // 종료 문자를 받았거나 버퍼가 가득 찼을 때
+    if (received_char == END_CHAR || uart_rx_index >= BUFFER_SIZE) {
+        uart_rx_buffer[uart_rx_index] = '\0'; // 문자열 종료 문자 추가
+        uart_rx_index = 0; // 버퍼 인덱스 초기화
+
+        // 큐에 문자열 저장
+        int queue_no = 1;
+        OS_Signal_Send(queue_no, (const void*)(uart_rx_buffer));
+    }
+
+    uart_rx_in = 1;
 }
 
 /*******************************************************************************
@@ -707,7 +724,7 @@ void EXTI15_10_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI15_10_IRQn);
 
 	key_value = EXTI15_10_LUT[kv];
-	OS_Signal_Send(0, key_value);
+	OS_Signal_Send(0, (const void*)(&key_value));
 }
 
 /*******************************************************************************

@@ -34,8 +34,8 @@ typedef struct Queue {
 
 // 함수 선언
 char* _OS_Get_Buffer(int size);
-int createQueue(Queue* q, int data_size, int no_task);
-int enqueue(Queue* q, void* data);
+int createQueue(Queue* q, int data_size, int number_of_elements, int no_task);
+int enqueue(Queue* q, const void* data);
 int dequeue(Queue* q, void* data, int no_task);
 int isEmpty(Queue* q);
 int isFull(Queue* q);

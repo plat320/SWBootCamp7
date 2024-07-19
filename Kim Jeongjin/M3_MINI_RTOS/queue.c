@@ -20,7 +20,7 @@ char* _OS_Get_Buffer(int size) {
 }
 
 // Queue 생성 함수
-int createQueue(Queue* q, int data_size, int no_task) {
+int createQueue(Queue* q, int data_size, int number_of_elements, int no_task) {
     q->front = NULL;
     q->rear = NULL;
     q->size = 0;
@@ -32,10 +32,13 @@ int createQueue(Queue* q, int data_size, int no_task) {
     if (q->free_nodes == NULL) {
         return QUEUE_FAIL_ALLOCATE;
     }
+    if(number_of_elements == -1) {
+    	number_of_elements = MAX_QUEUE_SIZE;
+    }
 
     Node* current_node = q->free_nodes;
     int i;
-    for (i = 0; i < MAX_QUEUE_SIZE - 1; ++i) {
+    for (i = 0; i < number_of_elements - 1; ++i) {
         current_node->data = _OS_Get_Buffer(data_size);
         if (current_node->data == NULL) {
             return QUEUE_FAIL_ALLOCATE;
@@ -56,7 +59,7 @@ int createQueue(Queue* q, int data_size, int no_task) {
 }
 
 // Queue에 데이터 추가 함수
-int enqueue(Queue* q, void* data) {
+int enqueue(Queue* q, const void* data) {
     if (isFull(q)) {
         return -1;
     }

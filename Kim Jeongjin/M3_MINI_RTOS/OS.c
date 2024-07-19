@@ -32,7 +32,7 @@ void IdleTask(void *para) {
 
 void OS_Init(void)
 {
-	__set_BASEPRI(0x00);
+	__set_BASEPRI(0x30);
 
 	int i;
 	for(i=0; i<=MAX_TCB; i++)
@@ -55,6 +55,7 @@ void OS_Init(void)
 	    queues[i].free_nodes = NULL;
 	}
 
+	__set_BASEPRI(0x00);
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
 }
 
@@ -78,7 +79,7 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 	// para : task코드가 시작하면서 전달받을 parameter
 	// prio : 우선순위
 	// size_stack : task가 사용할 stack의 할당 요청 사이즈
-
+	__set_BASEPRI(0x30);
 	static int idx_tcb = 0;
 	TCB *ptcb;
 	Uart_Printf("TCB[%d] will be created\n", idx_tcb);
@@ -115,14 +116,16 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 
     Uart_Printf("TCB[%d] created with stack top at %p\n", idx_tcb - 1, ptcb->top_of_stack);
 
+    __set_BASEPRI(0x00);
 	return ptcb->no_task;
 }
 
-int OS_Create_Queue(int data_size) {
+int OS_Create_Queue(int data_size, int number_of_elements) {
+	__set_BASEPRI(0x30);
 	int i;
     for (i = 0; i < MAX_QUEUE; i++) {
         if (queues[i].data_size == 0) { // 사용 중이지 않은 큐를 찾음
-            if (createQueue(&queues[i], data_size, current_tcb -> no_task) == QUEUE_SUCCESS) {
+            if (createQueue(&queues[i], data_size, number_of_elements, current_tcb -> no_task) == QUEUE_SUCCESS) {
             	Uart_Printf("queues[%d] created \n", i);
                 return i; // 큐 생성 성공, 큐 인덱스 반환
             } else {
@@ -130,6 +133,7 @@ int OS_Create_Queue(int data_size) {
             }
         }
     }
+    __set_BASEPRI(0x00);
     return OS_FAIL_ALLOCATE_QUEUE; // 모든 큐가 사용 중인 경우
 }
 
@@ -137,6 +141,7 @@ extern void _OS_Start_First_Task(void); // scheduler.s 파일 확인
 
 void OS_Scheduler_Start(void)
 {
+	__set_BASEPRI(0x30);
 	int i;
 
 	// 현재는 선택된 첫 task의 실행만 진행하고 있음 (임의로 tcb[0]의 task를 현재 실행 할 태스크로 정의 (추후 정책에 따른 선택의 코드로 변경 필요)
@@ -154,6 +159,7 @@ void OS_Scheduler_Start(void)
 
 	SysTick_OS_Tick(interrupt_period);
 
+	__set_BASEPRI(0x00);
 	_OS_Start_First_Task();
 }
 
@@ -238,7 +244,7 @@ int OS_Signal_Wait(int queue_no, void* buffer, int buffer_size, int timeout) {
     return ret;
 }
 
-void OS_Signal_Send(int queue_no, int data) {
+void OS_Signal_Send(int queue_no, const void* buffer) {
 	__set_BASEPRI(0x30);
 	if (!(queue_no >= 0 && queue_no < MAX_QUEUE)) {
 		return;
@@ -256,7 +262,7 @@ void OS_Signal_Send(int queue_no, int data) {
 
 		}
 
-		enqueue(&queues[queue_no], &data);
+		enqueue(&queues[queue_no], buffer);
 		Uart_Printf("Size == %d\n", queues[queue_no].size);
 	}
 
