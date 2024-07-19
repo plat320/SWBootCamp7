@@ -39,6 +39,7 @@ void Task3(void *para)
 	for(;;)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
+		/*
 		int received_data = -1;
     	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
 
@@ -58,22 +59,23 @@ void Task3(void *para)
     	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
     	}
+    	*/
 
     	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
 		Uart_Printf("usart_result : %d\n", usart_result);
-    	if(wait_result == SIGNAL_TIMEOUT) {
+    	if(usart_result == SIGNAL_TIMEOUT) {
     		Uart_Printf("Signal Timeout\n");
     	}
-    	else if(wait_result == SIGNAL_NO_PERMISSION) {
+    	else if(usart_result == SIGNAL_NO_PERMISSION) {
     		Uart_Printf("Task 3 didn't create Queue\n");
     	}
-    	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
+    	else if(usart_result == SIGNAL_QUEUE_EMPTY) {
     		Uart_Printf("Queue is empty\n");
     	}
-    	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
+    	else if(usart_result == SIGNAL_WRONG_DATA_TYPE) {
     		Uart_Printf("Data Type is wrong\n");
     	}
-    	else if(wait_result == SIGNAL_NO_ERROR){
+    	else if(usart_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	OS_Block_Current_Task(500);
