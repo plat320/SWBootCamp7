@@ -52,6 +52,8 @@
 		int temp_value;
 		int signal_flag;
 
+		int base_prio;
+
 	}TCB;
 
 	typedef struct {

@@ -42,6 +42,7 @@ void OS_Init(void)
 		tcb[i].timestamp = 0;
 		tcb[i].delay_until = 0;
 		tcb[i].heap_index = -1;
+		tcb[i].base_prio = 255;
 	}
 	pq_init(&ready_queue);
 	pq_init(&blocked_queue);
@@ -57,6 +58,8 @@ void OS_Init(void)
 
 	__set_BASEPRI(0x00);
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
+	initMutex();
+	createMutex();
 }
 
 char* _OS_Get_Stack(int size){
@@ -107,6 +110,7 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 	ptcb->top_of_stack[15] = INIT_PSR;
 
     ptcb->prio = prio;
+    ptcb->base_prio = prio;
     ptcb->state = STATE_READY;
     ptcb->timestamp = system_tick; // 태스크 생성 시 타임스탬프 설정
     ptcb->heap_index = -1;

@@ -658,7 +658,7 @@ void SPI2_IRQHandler(void)
  * Return         : None
  *******************************************************************************/
 #define BUFFER_SIZE 20
-#define END_CHAR 13  // 종료 문자 정의
+#define END_CHAR 13  // 종료 문자 정의 (13 == carriage return)
 
 volatile int uart_rx_in = 0;
 volatile char uart_rx_buffer[BUFFER_SIZE];
