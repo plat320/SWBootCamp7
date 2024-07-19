@@ -195,6 +195,11 @@ int OS_Signal_Wait(int queue_no, void* buffer, int buffer_size, int timeout) {
 
     int ret = SIGNAL_NO_ERROR;
 
+    if (!(queue_no >= 0 && queue_no < MAX_QUEUE)) {
+    	__set_BASEPRI(0x00);
+    	return SIGNAL_NO_PERMISSION;
+    }
+
     if (queues[queue_no].data_size != buffer_size) {
          __set_BASEPRI(0x00);
          return SIGNAL_WRONG_DATA_TYPE; // buffer 크기가 queue의 data_size와 일치하지 않음
@@ -227,21 +232,20 @@ int OS_Signal_Wait(int queue_no, void* buffer, int buffer_size, int timeout) {
 
     if (isEmpty(&queues[queue_no])){
         current_tcb -> signal_flag = SIGNAL_DEFAULT;
-        ret = SIGNAL_NO_ERROR;
     }
     __set_BASEPRI(0x00);
 
     return ret;
 }
 
-void OS_Signal_Send(int target_no_task, int queue_no, int data) {
+void OS_Signal_Send(int queue_no, int data) {
 	__set_BASEPRI(0x30);
 	if (!(queue_no >= 0 && queue_no < MAX_QUEUE)) {
 		return;
 	}
 
-	if (target_no_task >= 0 && target_no_task <= MAX_TCB) {
-		TCB * target_tcb = &tcb[target_no_task];
+	if (queues[queue_no].no_task >= 0 && queues[queue_no].no_task <= MAX_TCB) {
+		TCB * target_tcb = &tcb[queues[queue_no].no_task];
 
 		if(target_tcb -> signal_flag != SIGNAL_RECEIVED) {
 			if (target_tcb -> signal_flag == SIGNAL_WAIT){

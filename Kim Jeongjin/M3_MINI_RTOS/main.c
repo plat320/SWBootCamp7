@@ -19,7 +19,7 @@ void Task2(void *para)
 {
 	//volatile int i;
 	int cnt = 0;
-	//int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
+	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
 	for(;;)
 	{
 		LED_1_Toggle();
@@ -34,14 +34,14 @@ void Task3(void *para)
 {
 //	volatile int i;
 	int cnt = 0;
-	long long int KeyValueReceiverIndex = OS_Create_Queue(sizeof(long long int));
+	//int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int));
 	for(;;)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
-		int received_data;
-    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 10000);
+		int received_data = -1;
+    	int wait_result = OS_Signal_Wait(0, &received_data, sizeof(int), 5000);
 
-		Uart_Printf("QueueIdx : %d\n", 0);
+		Uart_Printf("Wait_result : %d\n", wait_result);
     	if(wait_result == SIGNAL_TIMEOUT) {
     		Uart_Printf("Signal Timeout\n");
     	}
@@ -51,7 +51,10 @@ void Task3(void *para)
     	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
     		Uart_Printf("Queue is empty\n");
     	}
-    	else {
+    	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
+    		Uart_Printf("Data Type is wrong\n");
+    	}
+    	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
     	}
     	OS_Block_Current_Task(500);
