@@ -191,7 +191,7 @@ void OS_Tick(void) {
     __set_BASEPRI(0x00);
 }
 
-int OS_Signal_Wait(int queue_no, void* data, int timeout) {
+void OS_Signal_Wait(int queue_no, void* data, int timeout) {
 	__set_BASEPRI(0x30);
 
 	int ret = SIGNAL_RECEIVED;
@@ -219,7 +219,7 @@ int OS_Signal_Wait(int queue_no, void* data, int timeout) {
 	}
 	__set_BASEPRI(0x00);
 
-	return ret;
+//	return ret;
 }
 
 void OS_Signal_Send(int target_no_task, int queue_no, int data) {

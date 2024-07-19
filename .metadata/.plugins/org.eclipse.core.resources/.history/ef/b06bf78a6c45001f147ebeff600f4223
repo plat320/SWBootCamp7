@@ -191,10 +191,11 @@ void OS_Tick(void) {
     __set_BASEPRI(0x00);
 }
 
-int OS_Signal_Wait(int queue_no, void* data, int timeout) {
+void OS_Signal_Wait(int queue_no, void* data, int timeout) {
 	__set_BASEPRI(0x30);
 
-	int ret = SIGNAL_RECEIVED;
+//	int ret = SIGNAL_TIMEOUT;
+	memcpy(data, SIGNAL_TIMEOUT, queues[queue_no].data_size);
 
 	if (current_tcb -> signal_flag != SIGNAL_RECEIVED){
 		current_tcb -> signal_flag = SIGNAL_WAIT;
@@ -204,14 +205,16 @@ int OS_Signal_Wait(int queue_no, void* data, int timeout) {
 	//__set_BASEPRI(0x30);
 
 	if(current_tcb -> signal_flag == SIGNAL_WAIT) {
-		ret = SIGNAL_TIMEOUT;
+		memcpy(data, SIGNAL_TIMEOUT, queues[queue_no].data_size);
+//		ret = SIGNAL_TIMEOUT;
 	}
 	else if (current_tcb -> signal_flag == SIGNAL_RECEIVED) {
 		dequeue(&queues[queue_no], data);
 	}
 	else {
 		Uart_Printf("SIGNAL Error, Need to check\n");
-		ret = -2;
+		memcpy(data, -2, queues[queue_no].data_size);
+//		ret = -2;
 	}
 
 	if (isEmpty(&queues[queue_no])){
@@ -219,7 +222,7 @@ int OS_Signal_Wait(int queue_no, void* data, int timeout) {
 	}
 	__set_BASEPRI(0x00);
 
-	return ret;
+//	return ret;
 }
 
 void OS_Signal_Send(int target_no_task, int queue_no, int data) {

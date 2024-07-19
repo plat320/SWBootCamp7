@@ -4,7 +4,6 @@
 #include "priority_queue.h"
 #include "queue.h"
 #include <stdlib.h>
-#include <string.h>
 
 // 참고 : 최초 제공된 코드는 완전한 코드가 아님
 //      그러므로 추후 RTOS 설계에 따라 보완이 필요함
@@ -191,10 +190,10 @@ void OS_Tick(void) {
     __set_BASEPRI(0x00);
 }
 
-int OS_Signal_Wait(int queue_no, void* data, int timeout) {
+int OS_Signal_Wait(int queue_no, int timeout) {
 	__set_BASEPRI(0x30);
 
-	int ret = SIGNAL_RECEIVED;
+	int ret = SIGNAL_TIMEOUT;
 
 	if (current_tcb -> signal_flag != SIGNAL_RECEIVED){
 		current_tcb -> signal_flag = SIGNAL_WAIT;
@@ -207,7 +206,7 @@ int OS_Signal_Wait(int queue_no, void* data, int timeout) {
 		ret = SIGNAL_TIMEOUT;
 	}
 	else if (current_tcb -> signal_flag == SIGNAL_RECEIVED) {
-		dequeue(&queues[queue_no], data);
+		dequeue(&queues[queue_no], &ret);
 	}
 	else {
 		Uart_Printf("SIGNAL Error, Need to check\n");

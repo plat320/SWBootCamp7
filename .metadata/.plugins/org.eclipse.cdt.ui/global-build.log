@@ -2469,3 +2469,311 @@ main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
 
 **** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_Device_Example ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Wait':
+OS.c:198:47: error: invalid type argument of '->' (have 'Queue')
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+                                               ^
+OS.c:198:2: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+  ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:208:48: error: invalid type argument of '->' (have 'Queue')
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+                                                ^
+OS.c:208:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:216:36: error: invalid type argument of '->' (have 'Queue')
+   memcpy(data, -2, queues[queue_no]->data_size);
+                                    ^
+OS.c:216:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, -2, queues[queue_no]->data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task4':
+main.c:62:6: warning: passing argument 2 of 'OS_Signal_Wait' makes pointer from integer without a cast [enabled by default]
+      int received_data = OS_Signal_Wait(UartValueReceiverIndex, 1000);
+      ^
+In file included from main.c:2:0:
+OS.h:79:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Wait(int queue_no, void* data, int timeout);
+       ^
+main.c:62:6: error: too few arguments to function 'OS_Signal_Wait'
+      int received_data = OS_Signal_Wait(UartValueReceiverIndex, 1000);
+      ^
+In file included from main.c:2:0:
+OS.h:79:7: note: declared here
+  void OS_Signal_Wait(int queue_no, void* data, int timeout);
+       ^
+main.c:58:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Wait':
+OS.c:198:47: error: invalid type argument of '->' (have 'Queue')
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+                                               ^
+OS.c:198:2: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+  ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:208:48: error: invalid type argument of '->' (have 'Queue')
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+                                                ^
+OS.c:208:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:216:36: error: invalid type argument of '->' (have 'Queue')
+   memcpy(data, -2, queues[queue_no]->data_size);
+                                    ^
+OS.c:216:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, -2, queues[queue_no]->data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+main.c: In function 'Task4':
+main.c:62:6: warning: passing argument 2 of 'OS_Signal_Wait' makes pointer from integer without a cast [enabled by default]
+      int received_data = OS_Signal_Wait(UartValueReceiverIndex, 1000);
+      ^
+In file included from main.c:2:0:
+OS.h:79:7: note: expected 'void *' but argument is of type 'int'
+  void OS_Signal_Wait(int queue_no, void* data, int timeout);
+       ^
+main.c:62:6: error: too few arguments to function 'OS_Signal_Wait'
+      int received_data = OS_Signal_Wait(UartValueReceiverIndex, 1000);
+      ^
+In file included from main.c:2:0:
+OS.h:79:7: note: declared here
+  void OS_Signal_Wait(int queue_no, void* data, int timeout);
+       ^
+main.c:58:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Wait':
+OS.c:198:47: error: invalid type argument of '->' (have 'Queue')
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+                                               ^
+OS.c:198:2: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+  ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:208:48: error: invalid type argument of '->' (have 'Queue')
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+                                                ^
+OS.c:208:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no]->data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:216:36: error: invalid type argument of '->' (have 'Queue')
+   memcpy(data, -2, queues[queue_no]->data_size);
+                                    ^
+OS.c:216:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, -2, queues[queue_no]->data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+OS.c: In function 'OS_Signal_Wait':
+OS.c:198:2: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+  memcpy(data, SIGNAL_TIMEOUT, queues[queue_no].data_size);
+  ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:208:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, SIGNAL_TIMEOUT, queues[queue_no].data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+OS.c:216:3: warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast [enabled by default]
+   memcpy(data, -2, queues[queue_no].data_size);
+   ^
+In file included from C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/stdint.h:12:0,
+                 from core_cm3.h:90,
+                 from stm32f10x.h:479,
+                 from device_driver.h:1,
+                 from OS.c:1:
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/string.h:23:15: note: expected 'const void *' but argument is of type 'int'
+ _PTR   _EXFUN(memcpy,(_PTR, const _PTR, size_t));
+               ^
+C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include/_ansi.h:65:30: note: in definition of macro '_EXFUN'
+ #define _EXFUN(name, proto)  name proto
+                              ^
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task2':
+main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
+  int cnt = 0;
+      ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****

@@ -37,11 +37,10 @@ void Task3(void *para)
 	for(;;)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
-    	int received_data;
-    	int signal_flag = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, 1000);
+    	int received_data = OS_Signal_Wait(KeyValueReceiverIndex, 1000);
 
 		Uart_Printf("QueueIdx : %d\n", KeyValueReceiverIndex);
-    	if(signal_flag != SIGNAL_TIMEOUT) {
+    	if(received_data != SIGNAL_TIMEOUT) {
     		Uart_Printf("Received data is : %d\n", received_data);
     	}
     	else {
@@ -51,28 +50,6 @@ void Task3(void *para)
 //		for(i=0;i<0x100000;i++);
 	}
 }
-
-//void Task4(void *para)
-//{
-////	volatile int i;
-//	int cnt = 0;
-//	int UartValueReceiverIndex = OS_Create_Queue(sizeof(char));
-//	for(;;)
-//	{
-//    	int received_data = OS_Signal_Wait(UartValueReceiverIndex, 1000);
-//
-//		Uart_Printf("QueueIdx : %d\n", UartValueReceiverIndex);
-//    	if(received_data != SIGNAL_TIMEOUT) {
-//    		Uart_Printf("Received data is : %d\n", received_data);
-//    	}
-//    	else {
-//    		Uart_Printf("Signal Timeout\n");
-//    	}
-//    	OS_Block_Current_Task(500);
-////		for(i=0;i<0x100000;i++);
-//	}
-//}
-
 
 void TaskDummy(void *para)
 {

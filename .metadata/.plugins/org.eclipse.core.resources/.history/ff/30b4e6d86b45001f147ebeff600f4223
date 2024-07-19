@@ -663,7 +663,6 @@ volatile char uart_rx_data;
 void USART1_IRQHandler(void)
 {
 	uart_rx_data = USART1->DR;
-	OS_Signal_Send(4, 0, uart_rx_data);
 	NVIC_ClearPendingIRQ(USART1_IRQn);
 
 	uart_rx_in = 1;

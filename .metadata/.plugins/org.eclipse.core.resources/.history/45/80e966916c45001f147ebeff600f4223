@@ -76,7 +76,7 @@
 	void OS_Tick(void);
 	void OS_Pend_Trigger(void);
 
-	int OS_Signal_Wait(int queue_no, void* data, int timeout);
+	void OS_Signal_Wait(int queue_no, void* data, int timeout);
 	void OS_Signal_Send(int target_no_task, int queue_no, int data);
 
 	void OS_Block_Current_Task(int delay);

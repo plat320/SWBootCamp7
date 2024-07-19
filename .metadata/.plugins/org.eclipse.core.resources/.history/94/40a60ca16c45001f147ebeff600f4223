@@ -38,10 +38,10 @@ void Task3(void *para)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
     	int received_data;
-    	int signal_flag = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, 1000);
+    	OS_Signal_Wait(KeyValueReceiverIndex, &received_data, 1000);
 
 		Uart_Printf("QueueIdx : %d\n", KeyValueReceiverIndex);
-    	if(signal_flag != SIGNAL_TIMEOUT) {
+    	if(received_data != SIGNAL_TIMEOUT) {
     		Uart_Printf("Received data is : %d\n", received_data);
     	}
     	else {
