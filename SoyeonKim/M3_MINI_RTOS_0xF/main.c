@@ -1,7 +1,6 @@
 #include "device_driver.h"
 #include "OS.h"
 
-extern volatile int key_value;		// stm32f10x_it.c - void EXTI15_10_IRQHandler(void), void EXTI3_IRQHandler(void), void EXTI9_5_IRQHandler(void)
 int dummyParams[10];
 
 void Task1(void *para)
@@ -19,15 +18,11 @@ void Task1(void *para)
 void Task2(void *para)
 {
 	//volatile int i;
-//	int cnt = 0;
+	int cnt = 0;
 	for(;;)
 	{
 		LED_1_Toggle();
 		//Uart_Printf("Task2\n");
-//		if(key_value) {
-//			OS_Signal_Send(3, key_value);
-//			key_value = 0;
-//		}
 		OS_Block_Current_Task(100);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
@@ -37,19 +32,71 @@ void Task2(void *para)
 void Task3(void *para)
 {
 //	volatile int i;
-	//int cnt = 0;
+	int cnt = 0;
+	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
+	char usart_received_data[32];
+	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
 	for(;;)
 	{
-		//Uart_Printf("Task3 : %d\n", cnt++);
-    	int received_data = OS_Signal_Wait(0);
-    	if(received_data != SIGNAL_TIMEOUT) {
+		Uart_Printf("Task3 : %d\n", cnt++);
+		/*
+		int received_data = -1;
+    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
+
+		Uart_Printf("Wait_result : %d\n", wait_result);
+    	if(wait_result == SIGNAL_TIMEOUT) {
+    		Uart_Printf("Signal Timeout\n");
+    	}
+    	else if(wait_result == SIGNAL_NO_PERMISSION) {
+    		Uart_Printf("Task 3 didn't create Queue\n");
+    	}
+    	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
+    		Uart_Printf("Queue is empty\n");
+    	}
+    	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
+    		Uart_Printf("Data Type is wrong\n");
+    	}
+    	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
     	}
-    	else {
+    	*/
+
+    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
+		Uart_Printf("usart_result : %d\n", usart_result);
+    	if(usart_result == SIGNAL_TIMEOUT) {
     		Uart_Printf("Signal Timeout\n");
+    	}
+    	else if(usart_result == SIGNAL_NO_PERMISSION) {
+    		Uart_Printf("Task 3 didn't create Queue\n");
+    	}
+    	else if(usart_result == SIGNAL_QUEUE_EMPTY) {
+    		Uart_Printf("Queue is empty\n");
+    	}
+    	else if(usart_result == SIGNAL_WRONG_DATA_TYPE) {
+    		Uart_Printf("Data Type is wrong\n");
+    	}
+    	else if(usart_result == SIGNAL_NO_ERROR){
+    		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	OS_Block_Current_Task(500);
 //		for(i=0;i<0x100000;i++);
+	}
+}
+
+// 임시
+void Task4(void *para)
+{
+	for(;;)
+	{
+		// 임시 lcd
+		static int idx_color = 0;
+		static int color[] = {0xf800,0x07e0,0x001f,0xffff};
+//		Lcd_Draw_Box(80, 60, 160, 120, color[idx_color]);
+		Lcd_Draw_Box(0, 60, 20, 20, color[idx_color]);
+		Lcd_Draw_Box(30, 80, 20, 20, color[idx_color]);
+		Lcd_Draw_Box(80, 20, 20, 20, color[idx_color]);
+		idx_color = (idx_color + 1) % 4;
+		OS_Block_Current_Task(1000);
 	}
 }
 
@@ -59,9 +106,17 @@ void TaskDummy(void *para)
 	OS_Block_Current_Task(3000);
 	for(;;)
 	{
+		// 임시 lcd
+//		static int idx_color = 0;
+//		static int color[] = {0xf800,0x07e0,0x001f,0xffff};
+//		Lcd_Draw_Box(80, 60, 160, 120, color[idx_color]);
+//		idx_color = (idx_color + 1) % 4;
+//		OS_Block_Current_Task(3000);
+
 		//((void(*)(void))0xE1234567)();
 		//Uart_Printf("TaskDummy\n");
 		//for(i=0;i<0x100000;i++);
+
 		OS_Block_Current_Task(1000);
 	}
 }
@@ -78,8 +133,11 @@ void Main(void)
 	OS_Init();	// OS 자료구조 초기화
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 128); // Task 생성
+	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
 	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
+
+	OS_Create_Task_Simple(Task4, (void*)0, 7, 1024);
+
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
