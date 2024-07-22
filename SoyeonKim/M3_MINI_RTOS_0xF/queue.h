@@ -34,6 +34,12 @@ typedef struct Queue {
     int no_task; // Queue 생성한 task의 no
 } Queue;
 
+// 임시
+typedef struct _point{
+	int x;
+	int y;
+}POINT;
+
 // 함수 선언
 char* _OS_Get_Buffer(int size);
 int createQueue(Queue* q, int data_size, int number_of_elements, int no_task);

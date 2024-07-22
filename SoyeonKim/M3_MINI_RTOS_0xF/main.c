@@ -18,7 +18,7 @@ void Task1(void *para)
 void Task2(void *para)
 {
 	//volatile int i;
-	int cnt = 0;
+//	int cnt = 0;
 	for(;;)
 	{
 		LED_1_Toggle();
@@ -33,14 +33,22 @@ void Task3(void *para)
 {
 //	volatile int i;
 	int cnt = 0;
-	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
-	char usart_received_data[32];
-	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
+//	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
+	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
+//	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
+//	char usart_received_data[32];
+//	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
 	for(;;)
 	{
 		Uart_Printf("Task3 : %d\n", cnt++);
 		int received_data = -1;
     	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
+
+//    	Uart_Printf("KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
+//    	Uart_Printf("queues[0].size: %d\n", queues[0].size);
+//    	Uart_Printf("queues[0].data_size: %d\n", queues[0].data_size);
+//    	Uart_Printf("queues[1].size: %d\n", queues[1].size);
+//    	Uart_Printf("queues[1].data_size: %d\n", queues[1].data_size);
 
 		Uart_Printf("Wait_result : %d\n", wait_result);
     	if(wait_result == SIGNAL_TIMEOUT) {
@@ -57,6 +65,9 @@ void Task3(void *para)
     	}
     	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
+//    		Uart_Printf("여기까지는 정상 동작\n");
+    		snake_object.head_direction = received_data;
+//    		Calculate_Snake_Position(snake_object.head_direction);
     	}
 
     	/*
@@ -92,12 +103,18 @@ void Task4(void *para)
 {
 	for(;;)
 	{
+		Calculate_Snake_Position(snake_object.head_direction);
+
+//		Make_Target();
+
 		// 임시 lcd
-		static int idx_color = 0;
-		static int color[] = {0xf800,0x07e0,0x001f,0xffff};
+//		static int idx_color = 0;
+//		static int color[] = {0xf800,0x07e0,0x001f,0xffff};
 		// Lcd_Draw_Box(가로, 세로, ...)
 //		Lcd_Draw_Box(80, 60, 160, 120, color[idx_color]);
-		Lcd_Draw_Box(40, 60, 20, 20, color[idx_color]);
+
+//		Lcd_Draw_Box(40, 60, 20, 20, color[idx_color]);
+
 //		Lcd_Draw_Box(40, 80, 20, 20, color[idx_color]);
 //		Lcd_Draw_Box(80, 20, 20, 20, color[idx_color]);
 //		Lcd_Draw_Box(40, 100, 20, 20, color[idx_color]);
@@ -107,9 +124,11 @@ void Task4(void *para)
 //		Lcd_Draw_Box(140, 60, 20, 20, color[(idx_color + 1) % 4]);
 //		Lcd_Draw_Box(140, 80, 20, 20, color[(idx_color + 1) % 4]);
 //		Lcd_Draw_Box(160, 80, 20, 20, color[(idx_color + 1) % 4]);
-		Lcd_Draw_Box(260, 200, 20, 20, 0xf800);
-		idx_color = (idx_color + 1) % 4;
-		OS_Block_Current_Task(1000);
+
+//		Lcd_Draw_Box(260, 200, 20, 20, 0xf800);
+
+//		idx_color = (idx_color + 1) % 4;
+		OS_Block_Current_Task(500);
 	}
 }
 

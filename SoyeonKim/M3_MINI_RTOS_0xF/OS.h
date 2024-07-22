@@ -69,6 +69,7 @@
 	extern long long int system_tick; // 시스템 타임스탬프
 	extern int interrupt_period;
 //	extern SNAKE_OBJECT snake_object;
+	extern int KeyValueReceiverIndex;
 
 	/* [ Macro ] */
 

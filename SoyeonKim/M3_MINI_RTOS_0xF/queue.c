@@ -1,3 +1,4 @@
+#include "device_driver.h"
 #include "queue.h"
 #include <string.h>
 
@@ -84,18 +85,28 @@ int enqueue(Queue* q, const void* data) {
 }
 
 // Queue에서 데이터 제거 함수
-// TODO: no_task가 -1이면 task 확인 비활성화 시키는 걸로 수정하기
+// no_task가 HAVE_PERMISSION(-1)이면 task_no 확인 비활성화
 int dequeue(Queue* q, void* data, int no_task) {
     if (isEmpty(q)) {
         return DEQUEUE_EMPTY;
     }
-    if (q->no_task != no_task) {
+    if (no_task != HAVE_PERMISSION && q->no_task != no_task) {
     	return DEQUEUE_NO_PERMISSION;
     }
 
+//    Uart_Printf("--- 1 ---\n");
     Node* temp = q->front;
+//    Uart_Printf("--- 2 ---\n");
+//    Uart_Printf("q->front: %x\n", q->front);
+//    Uart_Printf("((POINT*)q->front)->x: %d\n", ((POINT*)(q->front->data))->x);
+//    Uart_Printf("q->size: %d\n", q->size);
+//    Uart_Printf("data: %x\n", data);
+//    Uart_Printf("temp->data: %x\n", temp->data);
+//    Uart_Printf("q->data_size: %d\n", q->data_size);
     memcpy(data, temp->data, q->data_size);
+//    Uart_Printf("--- 3 ---\n");
     q->front = q->front->next;
+//    Uart_Printf("--- 4 ---\n");
 
     if (q->front == NULL) {
         q->rear = NULL;

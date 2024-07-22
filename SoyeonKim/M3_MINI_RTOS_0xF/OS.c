@@ -23,6 +23,7 @@ int interrupt_period = 100;
 const int default_delay = 1000000000;
 
 SNAKE_OBJECT snake_object;
+int KeyValueReceiverIndex;
 
 /* Function */
 void IdleTask(void *para) {
@@ -194,7 +195,7 @@ void OS_Tick(void) {
         TCB* task = pq_pop(&blocked_queue, pq_compare_delay);
         task->state = STATE_READY;
         pq_push(&ready_queue, task, pq_compare_ready);
-   }
+    }
 
     __set_BASEPRI(0x00);
 }

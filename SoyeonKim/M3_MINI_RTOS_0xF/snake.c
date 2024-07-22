@@ -12,48 +12,89 @@ void Snake_Init(void)
 			snake_object.object_map[i][j] = 0;
 		}
 	}
+	snake_object.head_direction = JOY_KEY_RIGHT;
 	Lcd_Draw_Border();
-	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), 50);
+	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), 10);
+//	Uart_Printf("*** snake_object.queue_no: %d\n", snake_object.queue_no);
 	POINT p1 = {4,5};
 	POINT p2 = {5,5};
+	POINT p3 = {6,5};
 	enqueue(&queues[snake_object.queue_no], &p1);
 	enqueue(&queues[snake_object.queue_no], &p2);
+	enqueue(&queues[snake_object.queue_no], &p3);
+	Lcd_Draw_Snake();
 }
 
 void Lcd_Draw_Border(void)
 {
 	int i;
-	// 정사각형이 아니라면 이 부분 수정 필요 (GAME_WINDOW_ROW != GAME_WINDOW_COLUMN 인 경우)
 	for (i = 0; i < GAME_WINDOW_ROW; i++)
 	{
-		Lcd_Draw_Box(i * OBJECT_BLOCK_SIZE, 0, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, 0xffff);
-		Lcd_Draw_Box(0, i * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, 0xffff);
-		Lcd_Draw_Box(i * OBJECT_BLOCK_SIZE, (GAME_WINDOW_ROW - 1) * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, 0xffff);
-		Lcd_Draw_Box((GAME_WINDOW_ROW - 1) * OBJECT_BLOCK_SIZE, i * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, 0xffff);
+		Lcd_Draw_Box(i * OBJECT_BLOCK_SIZE, 0, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BORDER_COLOR);
+		Lcd_Draw_Box(0, i * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BORDER_COLOR);
+		Lcd_Draw_Box(i * OBJECT_BLOCK_SIZE, (GAME_WINDOW_ROW - 1) * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BORDER_COLOR);
+		Lcd_Draw_Box((GAME_WINDOW_ROW - 1) * OBJECT_BLOCK_SIZE, i * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BORDER_COLOR);
 	}
 }
 
-void Calculate_Snake_Position(int received_data)
+void Lcd_Draw_Snake(void)
 {
+	Node* node = queues[snake_object.queue_no].front;
+	while (node != NULL)
+	{
+		POINT* p = (POINT*)node->data;
+		Lcd_Draw_Box(p->x * OBJECT_BLOCK_SIZE, p->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, SNAKE_COLOR);
+		node = node->next;
+	}
+}
+
+void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position)
+{
+//	Uart_Printf("Lcd_Draw_New_Position Start\n");
+	Lcd_Draw_Box(head_position->x * OBJECT_BLOCK_SIZE, head_position->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, SNAKE_COLOR);
+	Lcd_Draw_Box(tail_position->x * OBJECT_BLOCK_SIZE, tail_position->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BACKGROUND_COLOR);
+//	Uart_Printf("Lcd_Draw_New_Position End\n");
+}
+
+void Calculate_Snake_Position(int head_direction)
+{
+//	Uart_Printf("Calculate_Snake_Position Start\n");
 	POINT* head_position = (POINT*)queues[snake_object.queue_no].rear->data;
-	POINT new_position = {head_position -> x, head_position -> y};
-	void* tail_position;
-	if (received_data == JOY_KEY_UP)
+	POINT new_head_position = {head_position -> x, head_position -> y};
+	POINT tail_position;
+	if (head_direction == JOY_KEY_UP)
 	{
-		new_position.y -= 1;
+		new_head_position.y -= 1;
 	}
-	else if (received_data == JOY_KEY_DOWN)
+	else if (head_direction == JOY_KEY_DOWN)
 	{
-		new_position.y += 1;
+		new_head_position.y += 1;
 	}
-	else if (received_data == JOY_KEY_LEFT)
+	else if (head_direction == JOY_KEY_LEFT)
 	{
-		new_position.x -= 1;
+		new_head_position.x -= 1;
 	}
-	else if (received_data == JOY_KEY_RIGHT)
+	else if (head_direction == JOY_KEY_RIGHT)
 	{
-		new_position.x += 1;
+		new_head_position.x += 1;
 	}
-	enqueue(&queues[snake_object.queue_no], &new_position);
-	int ret = dequeue(&queues[snake_object.queue_no], tail_position, HAVE_PERMISSION);
+//	Uart_Printf("before enqueue\n");
+	enqueue(&queues[snake_object.queue_no], &new_head_position);
+//	Uart_Printf("after enqueue\n");
+	int ret = dequeue(&queues[snake_object.queue_no], &tail_position, HAVE_PERMISSION);
+	Uart_Printf("ret: %d\n", ret);
+//	Uart_Printf("after dequeue\n");
+	Lcd_Draw_New_Position(&new_head_position, &tail_position);
+//	Uart_Printf("Calculate_Snake_Position End\n");
+}
+
+void Make_Target(void)
+{
+//	srand(time(NULL));  // 난수 초기화
+	int rand_row, rand_column;
+	rand_row = rand() % GAME_OBJECT_MAP_ROW;
+	rand_column = rand() % GAME_OBJECT_MAP_COLUMN;
+	Uart_Printf("rand_row: %d\n", rand_row);
+	Uart_Printf("rand_column: %d\n", rand_column);
+	Lcd_Draw_Box(rand_column * OBJECT_BLOCK_SIZE, rand_row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, TARGET_COLOR);
 }
