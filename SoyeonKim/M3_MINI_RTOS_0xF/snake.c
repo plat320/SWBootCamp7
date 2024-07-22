@@ -23,6 +23,17 @@ void Snake_Init(void)
 	enqueue(&queues[snake_object.queue_no], &p2);
 	enqueue(&queues[snake_object.queue_no], &p3);
 	Lcd_Draw_Snake();
+	Make_Target();
+}
+
+void Add_Snake_Position(POINT* p)
+{
+	enqueue(&queues[snake_object.queue_no], p);
+	Lcd_Draw_Box(p->x * OBJECT_BLOCK_SIZE, p->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, SNAKE_COLOR);
+}
+
+void Remove_Snake_Position(void)
+{
 }
 
 void Lcd_Draw_Border(void)
