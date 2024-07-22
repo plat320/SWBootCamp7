@@ -8,9 +8,9 @@ void Task1(void *para)
 	//volatile int i;
 	for(;;)
 	{
-		LED_0_Toggle();
+		//LED_0_Toggle();
 		Uart_Printf("Task1\n");
-		OS_Block_Current_Task(500);
+		OS_Block_Current_Task(200);
 		//Uart_Printf("Task1 after loop\n");
 	}
 }
@@ -21,9 +21,9 @@ void Task2(void *para)
 	int cnt = 0;
 	for(;;)
 	{
-		LED_1_Toggle();
+		//LED_1_Toggle();
 		Uart_Printf("Task2\n");
-		OS_Block_Current_Task(100);
+		OS_Block_Current_Task(200);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
 	}
@@ -80,7 +80,7 @@ void Task3(void *para)
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	*/
-    	OS_Block_Current_Task(500);
+    	OS_Block_Current_Task(200);
 //		for(i=0;i<0x100000;i++);
 	}
 }
@@ -109,13 +109,13 @@ void Main(void)
 
 	OS_Init();	// OS 자료구조 초기화
 
-	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
-	OS_Create_Task_Simple(Task3, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task2, (void*)0, 6, 1024); // Task 생성
+	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)

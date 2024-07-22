@@ -30,7 +30,7 @@ void Uart1_Init(int baud)
 	USART1->CR2 = 0<<12;
 	USART1->CR3 = 0;
 
-	uart_mutex_id = Create_Mutex();
+	uart_mutex_id = Create_Mutex(TASK_NOT_RELATED);
 }
 
 void Uart1_Send_Byte(char data)

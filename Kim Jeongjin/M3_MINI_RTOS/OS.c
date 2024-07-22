@@ -60,10 +60,9 @@ void OS_Init(void)
 	__set_BASEPRI(0x00);
 	Uart_Printf("Create Mutex\n");
 	Mutex_Init();
-	os_mutex_id = Create_Mutex();
+	os_mutex_id = Create_Mutex(TASK_RELATED);
 	Uart_Printf("Create IdleTask\n");
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
-	Set_Mutex_Scheduler_Flag();
 	Uart_Printf("Success Init\n");
 }
 
@@ -138,7 +137,7 @@ int OS_Create_Queue(int data_size, int number_of_elements) {
     for (i = 0; i < MAX_QUEUE; i++) {
         if (queues[i].data_size == 0) { // 사용 중이지 않은 큐를 찾음
             if (createQueue(&queues[i], data_size, number_of_elements, current_tcb -> no_task) == QUEUE_SUCCESS) {
-            	Uart_Printf("queues[%d] created \n", i);
+            	//Uart_Printf("queues[%d] created \n", i);
             	__set_BASEPRI(0x00);
                 return i; // 큐 생성 성공, 큐 인덱스 반환
             } else {
@@ -159,7 +158,6 @@ void OS_Scheduler_Start(void)
 	int i;
 
 	current_tcb =  pq_pop(&ready_queue, pq_compare_ready);
-	OS_Give_Mutex();
 
 	// Exception Priority 초기화
 	SCB->SHP[15 - 4] = 0xf << 4; // SysTick Exception Priority : Lowest Priority
@@ -174,15 +172,14 @@ void OS_Scheduler_Start(void)
 	SysTick_OS_Tick(interrupt_period);
 
 	__set_BASEPRI(0x00);
+	Set_Mutex_Scheduler_Flag();
 	_OS_Start_First_Task();
 }
 
 void OS_Scheduler(void)
 {
-	OS_Take_Mutex();
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
-		OS_Give_Mutex();
 		return; // 우선순위 큐가 비어 있는 경우
 	}
 
@@ -197,7 +194,7 @@ void OS_Scheduler(void)
 
 	    current_tcb = next_tcb;
 	}
-	OS_Give_Mutex();
+
 }
 
 void OS_Tick(void) {
@@ -211,7 +208,7 @@ void OS_Tick(void) {
         pq_push(&ready_queue, task, pq_compare_ready);
    }
 
-    OS_Give_Mutex();
+   // OS_Give_Mutex();
     __set_BASEPRI(0x00);
 }
 
@@ -282,9 +279,9 @@ void OS_Signal_Send(int queue_no, const void* buffer) {
 
 		}
 
-		OS_Give_Mutex();
-		enqueue(&queues[queue_no], buffer);
 		OS_Take_Mutex();
+		enqueue(&queues[queue_no], buffer);
+		OS_Give_Mutex();
 		Uart_Printf("Size == %d\n", queues[queue_no].size);
 	}
 
@@ -294,7 +291,6 @@ void OS_Signal_Send(int queue_no, const void* buffer) {
 void OS_Block_Current_Task(int delay) {
 	// 우리 보드는 상위 4비트만 사용하므로 상위 4비트에 우선순위를 설정해줘야 함
 	__set_BASEPRI(0x30);
-	OS_Take_Mutex();
 	pq_remove(&ready_queue, current_tcb, pq_compare_ready);
 
 	current_tcb -> state = STATE_BLOCKED;
@@ -306,13 +302,11 @@ void OS_Block_Current_Task(int delay) {
 	pq_push(&blocked_queue, current_tcb, pq_compare_delay);
 
 	OS_Pend_Trigger();
-	OS_Give_Mutex();
 	__set_BASEPRI(0x00);
 }
 
 void OS_Unblock_Task(TCB* task) {
 	__set_BASEPRI(0x30);
-	OS_Take_Mutex();
 
     if (task == NULL) {
     	return;
@@ -325,7 +319,6 @@ void OS_Unblock_Task(TCB* task) {
 
     pq_push(&ready_queue, task, pq_compare_ready);
 
-    OS_Give_Mutex();
     __set_BASEPRI(0x00);
 }
 
