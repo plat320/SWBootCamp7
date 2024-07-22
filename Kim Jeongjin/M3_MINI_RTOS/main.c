@@ -9,7 +9,7 @@ void Task1(void *para)
 	for(;;)
 	{
 		LED_0_Toggle();
-		//Uart_Printf("Task1\n");
+		Uart_Printf("Task1\n");
 		OS_Block_Current_Task(500);
 		//Uart_Printf("Task1 after loop\n");
 	}
@@ -22,7 +22,7 @@ void Task2(void *para)
 	for(;;)
 	{
 		LED_1_Toggle();
-		//Uart_Printf("Task2\n");
+		Uart_Printf("Task2\n");
 		OS_Block_Current_Task(100);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
@@ -61,6 +61,7 @@ void Task3(void *para)
     	}
     	*/
 
+		/*
     	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
 		Uart_Printf("usart_result : %d\n", usart_result);
     	if(usart_result == SIGNAL_TIMEOUT) {
@@ -78,6 +79,7 @@ void Task3(void *para)
     	else if(usart_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
+    	*/
     	OS_Block_Current_Task(500);
 //		for(i=0;i<0x100000;i++);
 	}
@@ -90,7 +92,7 @@ void TaskDummy(void *para)
 	for(;;)
 	{
 		//((void(*)(void))0xE1234567)();
-		//Uart_Printf("TaskDummy\n");
+		Uart_Printf("TaskDummy\n");
 		//for(i=0;i<0x100000;i++);
 		OS_Block_Current_Task(1000);
 	}
@@ -109,7 +111,7 @@ void Main(void)
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
 	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task »ý¼º
-	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
+	OS_Create_Task_Simple(Task3, (void*)0, 5, 1024);
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
