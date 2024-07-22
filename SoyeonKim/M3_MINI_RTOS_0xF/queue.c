@@ -84,6 +84,7 @@ int enqueue(Queue* q, const void* data) {
 }
 
 // Queue에서 데이터 제거 함수
+// TODO: no_task가 -1이면 task 확인 비활성화 시키는 걸로 수정하기
 int dequeue(Queue* q, void* data, int no_task) {
     if (isEmpty(q)) {
         return DEQUEUE_EMPTY;

@@ -3,6 +3,7 @@
 //#include "stm32f10x.h"
 #include "priority_queue.h"
 #include "queue.h"
+//#include "snake.h"
 #include <stdlib.h>
 
 // 참고 : 최초 제공된 코드는 완전한 코드가 아님
@@ -20,6 +21,8 @@ PriorityQueue blocked_queue;
 long long int system_tick = 0;
 int interrupt_period = 100;
 const int default_delay = 1000000000;
+
+SNAKE_OBJECT snake_object;
 
 /* Function */
 void IdleTask(void *para) {

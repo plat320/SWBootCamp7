@@ -16,6 +16,8 @@
 #define DEQUEUE_NO_PERMISSION		(-2)
 #define DEQUEUE_EMPTY				(-3)
 
+#define HAVE_PERMISSION			(-1)
+
 // 노드 구조체 정의
 typedef struct Node {
     void* data;
