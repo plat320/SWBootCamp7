@@ -9,8 +9,9 @@ void Task1(void *para)
 	for(;;)
 	{
 		//LED_0_Toggle();
-		Uart_Printf("Task1\n");
-		OS_Block_Current_Task(200);
+		//Uart_Printf("Task1: The quick brown fox jumps over the lazy dog in the park.\n");
+		Uart_Printf_From_Task("Task1: The quick brown fox jumps over the lazy dog in the park.\n");
+		OS_Block_Current_Task(1);
 		//Uart_Printf("Task1 after loop\n");
 	}
 }
@@ -18,12 +19,12 @@ void Task1(void *para)
 void Task2(void *para)
 {
 	//volatile int i;
-	int cnt = 0;
 	for(;;)
 	{
 		//LED_1_Toggle();
-		Uart_Printf("Task2\n");
-		OS_Block_Current_Task(200);
+		//Uart_Printf("Task2: A journey of a thousand miles begins with a single step.\n");
+		Uart_Printf_From_Task("Task2: A journey of a thousand miles begins with a single step.\n");
+		OS_Block_Current_Task(1);
 		//for(i=0;i<0x100000;i++);
 		//Uart_Printf("Task2 after loop\n");
 	}
@@ -32,55 +33,15 @@ void Task2(void *para)
 void Task3(void *para)
 {
 //	volatile int i;
-	int cnt = 0;
-	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
-	char usart_received_data[32];
-	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
+	//int cnt = 0;
+	//int KeyValueReceiverIndex = OS_Creates_Queue(sizeof(int), 10);
+	//char usart_received_data[32];
+	//int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
 	for(;;)
 	{
-		Uart_Printf("Task3 : %d\n", cnt++);
-		/*
-		int received_data = -1;
-    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
-
-		Uart_Printf("Wait_result : %d\n", wait_result);
-    	if(wait_result == SIGNAL_TIMEOUT) {
-    		Uart_Printf("Signal Timeout\n");
-    	}
-    	else if(wait_result == SIGNAL_NO_PERMISSION) {
-    		Uart_Printf("Task 3 didn't create Queue\n");
-    	}
-    	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
-    		Uart_Printf("Queue is empty\n");
-    	}
-    	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
-    		Uart_Printf("Data Type is wrong\n");
-    	}
-    	else if(wait_result == SIGNAL_NO_ERROR){
-    		Uart_Printf("Received data is : %d\n", received_data);
-    	}
-    	*/
-
-		/*
-    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
-		Uart_Printf("usart_result : %d\n", usart_result);
-    	if(usart_result == SIGNAL_TIMEOUT) {
-    		Uart_Printf("Signal Timeout\n");
-    	}
-    	else if(usart_result == SIGNAL_NO_PERMISSION) {
-    		Uart_Printf("Task 3 didn't create Queue\n");
-    	}
-    	else if(usart_result == SIGNAL_QUEUE_EMPTY) {
-    		Uart_Printf("Queue is empty\n");
-    	}
-    	else if(usart_result == SIGNAL_WRONG_DATA_TYPE) {
-    		Uart_Printf("Data Type is wrong\n");
-    	}
-    	else if(usart_result == SIGNAL_NO_ERROR){
-    		Uart_Printf("Received data is : %s\n", usart_received_data);
-    	}
-    	*/
-    	OS_Block_Current_Task(200);
+		//Uart_Printf("Task3: To be yourself in a world that is constantly changing you.\n");
+		Uart_Printf_From_Task("Task3: To be yourself in a world that is constantly changing you.\n");
+		OS_Block_Current_Task(1);
 //		for(i=0;i<0x100000;i++);
 	}
 }
@@ -92,7 +53,7 @@ void TaskDummy(void *para)
 	for(;;)
 	{
 		//((void(*)(void))0xE1234567)();
-		Uart_Printf("TaskDummy\n");
+		Uart_Printf_From_Task("TaskDummy\n");
 		//for(i=0;i<0x100000;i++);
 		OS_Block_Current_Task(1000);
 	}
@@ -115,7 +76,7 @@ void Main(void)
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 1024);
 	}
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)

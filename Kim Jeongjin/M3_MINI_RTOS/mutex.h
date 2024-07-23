@@ -26,7 +26,6 @@ typedef struct _mutex {
 	int allocated;
 	int no_task;
     int locked;                     // Mutex locked state
-    int task_related;               // Flag to indicate if mutex is task-related
     Queue waiting_queue;            // Tasks waiting for the mutex
 } Mutex;
 
@@ -35,9 +34,9 @@ extern char mutex_buffer[MUTEX_BUFFER_SIZE];
 
 void Mutex_Init(void);
 char* _Mutex_Get_Buffer(int size);
-int Create_Mutex(int task_related);
-int Take_Mutex(int mutex_id);
-void Give_Mutex(int mutex_id);
+int Create_Mutex();
+int Take_Mutex(int mutex_id, int task_related);
+void Give_Mutex(int mutex_id, int task_related);
 void Set_Mutex_Scheduler_Flag(void);
 
 #endif
