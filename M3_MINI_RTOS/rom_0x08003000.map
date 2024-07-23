@@ -106,7 +106,7 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libm.a
 LOAD C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a
 LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a
 
-.text           0x08003000     0xa180
+.text           0x08003000     0xa170
  crt0.o(.text)
  .text          0x08003000      0x13c crt0.o
                 0x080030ec                __start
@@ -183,331 +183,332 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
                 0x08004ca4                LED_All_Off
                 0x08004cc8                LED_0_Toggle
                 0x08004cec                LED_1_Toggle
- .text          0x08004d10      0x2b0 main.o
+ .text          0x08004d10      0x29c main.o
                 0x08004d10                Task1
-                0x08004e14                Task2
-                0x08004e38                Task3
-                0x08004e4c                Task5
+                0x08004df8                Task2
+                0x08004e44                Task5
                 0x08004f1c                TaskDummy
                 0x08004f38                Main
- .text          0x08004fc0      0x3ec priority_queue.o
-                0x08004fc0                pq_init
-                0x08004fdc                pq_compare_delay
-                0x08005030                pq_compare_ready
-                0x0800509c                pq_swap
-                0x080050e0                pq_heapify_up
-                0x08005150                pq_heapify_down
-                0x08005208                pq_push
-                0x0800525c                pq_pop
-                0x080052c0                pq_top
-                0x080052e8                pq_remove
-                0x08005364                pq_update
- .text          0x080053ac      0x284 queue.o
-                0x080053ac                _OS_Get_Buffer
-                0x08005410                createQueue
-                0x080054e4                enqueue
-                0x08005560                dequeue
-                0x080055e8                isEmpty
-                0x0800560c                isFull
- .text          0x08005630       0xe4 runtime.o
-                0x08005630                _sbrk
-                0x080056bc                System_Init
- .text          0x08005714      0xa88 snake.o
-                0x08005714                Snake_Init
-                0x08005898                draw_init
-                0x080058a8                Lcd_Draw_Grass
-                0x08005908                Lcd_Draw_Border
-                0x08005998                Lcd_Draw_Snake
-                0x08005b44                rotate_image_array
-                0x08005ce4                Add_Snake_Position
-                0x08005d38                Remove_Snake_Position
-                0x08005da0                Move_Snake_Position
-                0x08005f24                Check_Snake_Position
-                0x08005f98                Calculate_Snake_Position
-                0x0800601c                Make_Target
-                0x080060b4                Lcd_Draw_IMG
- .text          0x0800619c      0x73c stm32f10x_it.o
-                0x080061d0                Invalid_ISR
-                0x0800635c                NMI_Handler
-                0x0800637c                HardFault_Handler
-                0x08006424                MemManage_Handler
-                0x08006480                BusFault_Handler
-                0x080064dc                UsageFault_Handler
-                0x08006500                DebugMon_Handler
-                0x08006514                SysTick_Handler
-                0x08006530                WWDG_IRQHandler
-                0x0800653c                PVD_IRQHandler
-                0x08006548                TAMPER_IRQHandler
-                0x08006554                RTC_IRQHandler
-                0x08006560                FLASH_IRQHandler
-                0x0800656c                RCC_IRQHandler
-                0x08006578                EXTI0_IRQHandler
-                0x08006584                EXTI1_IRQHandler
-                0x08006590                EXTI2_IRQHandler
-                0x0800659c                EXTI3_IRQHandler
-                0x080065e4                EXTI4_IRQHandler
-                0x080065f0                DMA1_Channel1_IRQHandler
-                0x080065fc                DMA1_Channel2_IRQHandler
-                0x08006608                DMA1_Channel3_IRQHandler
-                0x08006614                DMA1_Channel4_IRQHandler
-                0x08006620                DMA1_Channel5_IRQHandler
-                0x0800662c                DMA1_Channel6_IRQHandler
-                0x08006638                DMA1_Channel7_IRQHandler
-                0x08006644                ADC1_2_IRQHandler
-                0x08006650                USB_HP_CAN_TX_IRQHandler
-                0x0800665c                USB_LP_CAN_RX0_IRQHandler
-                0x08006668                CAN_RX1_IRQHandler
-                0x08006674                CAN_SCE_IRQHandler
-                0x08006680                EXTI9_5_IRQHandler
-                0x080066e0                TIM1_BRK_IRQHandler
-                0x080066ec                TIM1_UP_IRQHandler
-                0x080066f8                TIM1_TRG_COM_IRQHandler
-                0x08006704                TIM1_CC_IRQHandler
-                0x08006710                TIM2_IRQHandler
-                0x0800671c                TIM3_IRQHandler
-                0x08006728                TIM4_IRQHandler
-                0x0800675c                I2C1_EV_IRQHandler
-                0x08006768                I2C1_ER_IRQHandler
-                0x08006774                I2C2_EV_IRQHandler
-                0x08006780                I2C2_ER_IRQHandler
-                0x0800678c                SPI1_IRQHandler
-                0x08006798                SPI2_IRQHandler
-                0x080067a4                USART1_IRQHandler
-                0x0800683c                USART2_IRQHandler
-                0x08006848                USART3_IRQHandler
-                0x08006854                EXTI15_10_IRQHandler
-                0x080068c0                RTCAlarm_IRQHandler
-                0x080068cc                USBWakeUp_IRQHandler
- .text          0x080068d8       0x90 systick.o
-                0x080068d8                SysTick_OS_Tick
- .text          0x08006968      0x1c8 timer.o
-                0x08006a04                TIM4_Repeat_Interrupt_Enable
- .text          0x08006b30      0x328 uart.o
-                0x08006bcc                Uart1_Init
-                0x08006d30                Uart1_Send_Byte
-                0x08006d9c                Uart1_Send_String
-                0x08006dc4                Uart1_Printf
-                0x08006df8                Uart1_RX_Interrupt_Enable
- .text          0x08006e58       0xf0 exp_handler.o
-                0x08006e58                __get_IPSR
-                0x08006e5e                _Print_Reg
-                0x08006ef0                _HardFault_Handler
-                0x08006f04                _MemManage_Handler
-                0x08006f18                _BusFault_Handler
-                0x08006f2c                _UsageFault_Handler
- *fill*         0x08006f48        0x8 
- .text          0x08006f50       0x40 scheduler.o
-                0x08006f50                PendSV_Handler
-                0x08006f6c                SVC_Handler
-                0x08006f80                _OS_Start_First_Task
- .text          0x08006f90       0xa8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
-                0x08006f90                memcpy
- .text          0x08007038       0xf8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-rand.o)
-                0x08007038                srand
-                0x08007094                rand
- .text          0x08007130       0x50 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-vsprintf.o)
-                0x08007130                _vsprintf_r
-                0x08007164                vsprintf
- .text          0x08007180        0x0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
- .text          0x08007180       0x20 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
-                0x08007180                malloc
-                0x08007190                free
- .text          0x080071a0      0x570 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
-                0x080071a0                _malloc_r
- .text          0x08007710        0x8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
-                0x08007710                __malloc_lock
-                0x08007714                __malloc_unlock
- .text          0x08007718       0x28 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
-                0x08007718                _sbrk_r
- .text          0x08007740     0x14b4 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
-                0x08007740                _svfprintf_r
- *fill*         0x08008bf4        0x4 
- .text          0x08008bf8     0x10d8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
-                0x08008d44                _dtoa_r
- .text          0x08009cd0      0x23c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
-                0x08009cd0                _malloc_trim_r
-                0x08009d74                _free_r
- .text          0x08009f0c       0x9c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
-                0x08009f0c                _setlocale_r
-                0x08009f60                __locale_charset
-                0x08009f6c                __locale_mb_cur_max
-                0x08009f78                __locale_msgcharset
-                0x08009f80                __locale_cjk_lang
-                0x08009f84                _localeconv_r
-                0x08009f8c                setlocale
-                0x08009fa0                localeconv
- .text          0x08009fa8       0x90 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
-                0x08009fa8                memchr
- .text          0x0800a038      0x938 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
-                0x0800a038                _Balloc
-                0x0800a0a4                _Bfree
-                0x0800a0dc                __multadd
-                0x0800a168                __s2b
-                0x0800a200                __hi0bits
-                0x0800a23c                __lo0bits
-                0x0800a294                __i2b
-                0x0800a2a8                __multiply
-                0x0800a3e8                __pow5mult
-                0x0800a4a0                __lshift
-                0x0800a558                __mcmp
-                0x0800a59c                __mdiff
-                0x0800a688                __ulp
-                0x0800a6cc                __b2d
-                0x0800a778                __d2b
-                0x0800a834                __ratio
-                0x0800a894                _mprec_log10
-                0x0800a8c8                __copybits
-                0x0800a910                __any_on
- .text          0x0800a970       0xf4 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
-                0x0800a970                cleanup_glue
-                0x0800a98c                _reclaim_reent
- .text          0x0800aa64       0x50 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-s_fpclassify.o)
-                0x0800aa64                __fpclassifyd
- .text          0x0800aab4      0x23c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strcmp.o)
-                0x0800aab4                strcmp
- .text          0x0800acf0       0x60 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
-                0x0800acf0                strlen
- .text          0x0800ad50      0xbe0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
-                0x0800ad50                __ssprint_r
-                0x0800ae54                _svfiprintf_r
- .text          0x0800b930       0x64 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
-                0x0800b930                _calloc_r
- .text          0x0800b994       0xd0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
-                0x0800b994                memmove
- .text          0x0800ba64       0xa0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
-                0x0800ba64                memset
- .text          0x0800bb04      0x3ec C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
-                0x0800bb04                _realloc_r
- .text          0x0800bef0      0x278 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
-                0x0800bef0                __aeabi_uidiv
-                0x0800bef0                __udivsi3
-                0x0800c14c                __aeabi_uidivmod
- .text          0x0800c168        0x4 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_dvmd_tls.o)
-                0x0800c168                __aeabi_idiv0
-                0x0800c168                __aeabi_ldiv0
- .text          0x0800c16c      0x370 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_addsubdf3.o)
-                0x0800c16c                __aeabi_drsub
-                0x0800c174                __aeabi_dsub
-                0x0800c174                __subdf3
-                0x0800c178                __aeabi_dadd
-                0x0800c178                __adddf3
-                0x0800c3f0                __floatunsidf
-                0x0800c3f0                __aeabi_ui2d
-                0x0800c410                __floatsidf
-                0x0800c410                __aeabi_i2d
-                0x0800c434                __aeabi_f2d
-                0x0800c434                __extendsfdf2
-                0x0800c470                __floatundidf
-                0x0800c470                __aeabi_ul2d
-                0x0800c480                __floatdidf
-                0x0800c480                __aeabi_l2d
- .text          0x0800c4dc      0x424 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivdf3.o)
-                0x0800c4dc                __aeabi_dmul
-                0x0800c4dc                __muldf3
-                0x0800c730                __divdf3
-                0x0800c730                __aeabi_ddiv
- .text          0x0800c900      0x110 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpdf2.o)
-                0x0800c900                __gtdf2
-                0x0800c900                __gedf2
-                0x0800c908                __ltdf2
-                0x0800c908                __ledf2
-                0x0800c910                __nedf2
-                0x0800c910                __eqdf2
-                0x0800c910                __cmpdf2
-                0x0800c98c                __aeabi_cdrcmple
-                0x0800c99c                __aeabi_cdcmpeq
-                0x0800c99c                __aeabi_cdcmple
-                0x0800c9ac                __aeabi_dcmpeq
-                0x0800c9c0                __aeabi_dcmplt
-                0x0800c9d4                __aeabi_dcmple
-                0x0800c9e8                __aeabi_dcmpge
-                0x0800c9fc                __aeabi_dcmpgt
- .text          0x0800ca10       0x50 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixdfsi.o)
-                0x0800ca10                __aeabi_d2iz
-                0x0800ca10                __fixdfsi
- .text          0x0800ca60       0x40 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixunsdfsi.o)
-                0x0800ca60                __aeabi_d2uiz
-                0x0800ca60                __fixunsdfsi
- .text          0x0800caa0       0x2c C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
-                0x0800caa0                __aeabi_uldivmod
- .text          0x0800cacc       0x60 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
-                0x0800cacc                __gnu_ldivmod_helper
-                0x0800cafc                __gnu_uldivmod_helper
- .text          0x0800cb2c      0x354 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
-                0x0800cb2c                __divdi3
- .text          0x0800ce80      0x300 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
-                0x0800ce80                __udivdi3
-                0x0800d180                . = ALIGN (0x4)
+ .text          0x08004fac      0x3ec priority_queue.o
+                0x08004fac                pq_init
+                0x08004fc8                pq_compare_delay
+                0x0800501c                pq_compare_ready
+                0x08005088                pq_swap
+                0x080050cc                pq_heapify_up
+                0x0800513c                pq_heapify_down
+                0x080051f4                pq_push
+                0x08005248                pq_pop
+                0x080052ac                pq_top
+                0x080052d4                pq_remove
+                0x08005350                pq_update
+ .text          0x08005398      0x284 queue.o
+                0x08005398                _OS_Get_Buffer
+                0x080053fc                createQueue
+                0x080054d0                enqueue
+                0x0800554c                dequeue
+                0x080055d4                isEmpty
+                0x080055f8                isFull
+ .text          0x0800561c       0xe4 runtime.o
+                0x0800561c                _sbrk
+                0x080056a8                System_Init
+ .text          0x08005700      0xa88 snake.o
+                0x08005700                Snake_Init
+                0x08005884                draw_init
+                0x08005894                Lcd_Draw_Grass
+                0x080058f4                Lcd_Draw_Border
+                0x08005984                Lcd_Draw_Snake
+                0x08005b30                rotate_image_array
+                0x08005cd0                Add_Snake_Position
+                0x08005d24                Remove_Snake_Position
+                0x08005d8c                Move_Snake_Position
+                0x08005f10                Check_Snake_Position
+                0x08005f84                Calculate_Snake_Position
+                0x08006008                Make_Target
+                0x080060a0                Lcd_Draw_IMG
+ .text          0x08006188      0x73c stm32f10x_it.o
+                0x080061bc                Invalid_ISR
+                0x08006348                NMI_Handler
+                0x08006368                HardFault_Handler
+                0x08006410                MemManage_Handler
+                0x0800646c                BusFault_Handler
+                0x080064c8                UsageFault_Handler
+                0x080064ec                DebugMon_Handler
+                0x08006500                SysTick_Handler
+                0x0800651c                WWDG_IRQHandler
+                0x08006528                PVD_IRQHandler
+                0x08006534                TAMPER_IRQHandler
+                0x08006540                RTC_IRQHandler
+                0x0800654c                FLASH_IRQHandler
+                0x08006558                RCC_IRQHandler
+                0x08006564                EXTI0_IRQHandler
+                0x08006570                EXTI1_IRQHandler
+                0x0800657c                EXTI2_IRQHandler
+                0x08006588                EXTI3_IRQHandler
+                0x080065d0                EXTI4_IRQHandler
+                0x080065dc                DMA1_Channel1_IRQHandler
+                0x080065e8                DMA1_Channel2_IRQHandler
+                0x080065f4                DMA1_Channel3_IRQHandler
+                0x08006600                DMA1_Channel4_IRQHandler
+                0x0800660c                DMA1_Channel5_IRQHandler
+                0x08006618                DMA1_Channel6_IRQHandler
+                0x08006624                DMA1_Channel7_IRQHandler
+                0x08006630                ADC1_2_IRQHandler
+                0x0800663c                USB_HP_CAN_TX_IRQHandler
+                0x08006648                USB_LP_CAN_RX0_IRQHandler
+                0x08006654                CAN_RX1_IRQHandler
+                0x08006660                CAN_SCE_IRQHandler
+                0x0800666c                EXTI9_5_IRQHandler
+                0x080066cc                TIM1_BRK_IRQHandler
+                0x080066d8                TIM1_UP_IRQHandler
+                0x080066e4                TIM1_TRG_COM_IRQHandler
+                0x080066f0                TIM1_CC_IRQHandler
+                0x080066fc                TIM2_IRQHandler
+                0x08006708                TIM3_IRQHandler
+                0x08006714                TIM4_IRQHandler
+                0x08006748                I2C1_EV_IRQHandler
+                0x08006754                I2C1_ER_IRQHandler
+                0x08006760                I2C2_EV_IRQHandler
+                0x0800676c                I2C2_ER_IRQHandler
+                0x08006778                SPI1_IRQHandler
+                0x08006784                SPI2_IRQHandler
+                0x08006790                USART1_IRQHandler
+                0x08006828                USART2_IRQHandler
+                0x08006834                USART3_IRQHandler
+                0x08006840                EXTI15_10_IRQHandler
+                0x080068ac                RTCAlarm_IRQHandler
+                0x080068b8                USBWakeUp_IRQHandler
+ *fill*         0x080068c4        0x4 
+ .text          0x080068c8       0x90 systick.o
+                0x080068c8                SysTick_OS_Tick
+ .text          0x08006958      0x1c8 timer.o
+                0x080069f4                TIM4_Repeat_Interrupt_Enable
+ .text          0x08006b20      0x328 uart.o
+                0x08006bbc                Uart1_Init
+                0x08006d20                Uart1_Send_Byte
+                0x08006d8c                Uart1_Send_String
+                0x08006db4                Uart1_Printf
+                0x08006de8                Uart1_RX_Interrupt_Enable
+ .text          0x08006e48       0xf0 exp_handler.o
+                0x08006e48                __get_IPSR
+                0x08006e4e                _Print_Reg
+                0x08006ee0                _HardFault_Handler
+                0x08006ef4                _MemManage_Handler
+                0x08006f08                _BusFault_Handler
+                0x08006f1c                _UsageFault_Handler
+ *fill*         0x08006f38        0x8 
+ .text          0x08006f40       0x40 scheduler.o
+                0x08006f40                PendSV_Handler
+                0x08006f5c                SVC_Handler
+                0x08006f70                _OS_Start_First_Task
+ .text          0x08006f80       0xa8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
+                0x08006f80                memcpy
+ .text          0x08007028       0xf8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-rand.o)
+                0x08007028                srand
+                0x08007084                rand
+ .text          0x08007120       0x50 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-vsprintf.o)
+                0x08007120                _vsprintf_r
+                0x08007154                vsprintf
+ .text          0x08007170        0x0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+ .text          0x08007170       0x20 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
+                0x08007170                malloc
+                0x08007180                free
+ .text          0x08007190      0x570 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
+                0x08007190                _malloc_r
+ .text          0x08007700        0x8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
+                0x08007700                __malloc_lock
+                0x08007704                __malloc_unlock
+ .text          0x08007708       0x28 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
+                0x08007708                _sbrk_r
+ .text          0x08007730     0x14b4 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
+                0x08007730                _svfprintf_r
+ *fill*         0x08008be4        0x4 
+ .text          0x08008be8     0x10d8 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
+                0x08008d34                _dtoa_r
+ .text          0x08009cc0      0x23c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
+                0x08009cc0                _malloc_trim_r
+                0x08009d64                _free_r
+ .text          0x08009efc       0x9c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
+                0x08009efc                _setlocale_r
+                0x08009f50                __locale_charset
+                0x08009f5c                __locale_mb_cur_max
+                0x08009f68                __locale_msgcharset
+                0x08009f70                __locale_cjk_lang
+                0x08009f74                _localeconv_r
+                0x08009f7c                setlocale
+                0x08009f90                localeconv
+ .text          0x08009f98       0x90 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
+                0x08009f98                memchr
+ .text          0x0800a028      0x938 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
+                0x0800a028                _Balloc
+                0x0800a094                _Bfree
+                0x0800a0cc                __multadd
+                0x0800a158                __s2b
+                0x0800a1f0                __hi0bits
+                0x0800a22c                __lo0bits
+                0x0800a284                __i2b
+                0x0800a298                __multiply
+                0x0800a3d8                __pow5mult
+                0x0800a490                __lshift
+                0x0800a548                __mcmp
+                0x0800a58c                __mdiff
+                0x0800a678                __ulp
+                0x0800a6bc                __b2d
+                0x0800a768                __d2b
+                0x0800a824                __ratio
+                0x0800a884                _mprec_log10
+                0x0800a8b8                __copybits
+                0x0800a900                __any_on
+ .text          0x0800a960       0xf4 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
+                0x0800a960                cleanup_glue
+                0x0800a97c                _reclaim_reent
+ .text          0x0800aa54       0x50 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-s_fpclassify.o)
+                0x0800aa54                __fpclassifyd
+ .text          0x0800aaa4      0x23c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strcmp.o)
+                0x0800aaa4                strcmp
+ .text          0x0800ace0       0x60 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
+                0x0800ace0                strlen
+ .text          0x0800ad40      0xbe0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
+                0x0800ad40                __ssprint_r
+                0x0800ae44                _svfiprintf_r
+ .text          0x0800b920       0x64 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
+                0x0800b920                _calloc_r
+ .text          0x0800b984       0xd0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
+                0x0800b984                memmove
+ .text          0x0800ba54       0xa0 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
+                0x0800ba54                memset
+ .text          0x0800baf4      0x3ec C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
+                0x0800baf4                _realloc_r
+ .text          0x0800bee0      0x278 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
+                0x0800bee0                __aeabi_uidiv
+                0x0800bee0                __udivsi3
+                0x0800c13c                __aeabi_uidivmod
+ .text          0x0800c158        0x4 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_dvmd_tls.o)
+                0x0800c158                __aeabi_idiv0
+                0x0800c158                __aeabi_ldiv0
+ .text          0x0800c15c      0x370 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_addsubdf3.o)
+                0x0800c15c                __aeabi_drsub
+                0x0800c164                __aeabi_dsub
+                0x0800c164                __subdf3
+                0x0800c168                __aeabi_dadd
+                0x0800c168                __adddf3
+                0x0800c3e0                __floatunsidf
+                0x0800c3e0                __aeabi_ui2d
+                0x0800c400                __floatsidf
+                0x0800c400                __aeabi_i2d
+                0x0800c424                __aeabi_f2d
+                0x0800c424                __extendsfdf2
+                0x0800c460                __floatundidf
+                0x0800c460                __aeabi_ul2d
+                0x0800c470                __floatdidf
+                0x0800c470                __aeabi_l2d
+ .text          0x0800c4cc      0x424 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivdf3.o)
+                0x0800c4cc                __aeabi_dmul
+                0x0800c4cc                __muldf3
+                0x0800c720                __divdf3
+                0x0800c720                __aeabi_ddiv
+ .text          0x0800c8f0      0x110 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpdf2.o)
+                0x0800c8f0                __gtdf2
+                0x0800c8f0                __gedf2
+                0x0800c8f8                __ltdf2
+                0x0800c8f8                __ledf2
+                0x0800c900                __nedf2
+                0x0800c900                __eqdf2
+                0x0800c900                __cmpdf2
+                0x0800c97c                __aeabi_cdrcmple
+                0x0800c98c                __aeabi_cdcmpeq
+                0x0800c98c                __aeabi_cdcmple
+                0x0800c99c                __aeabi_dcmpeq
+                0x0800c9b0                __aeabi_dcmplt
+                0x0800c9c4                __aeabi_dcmple
+                0x0800c9d8                __aeabi_dcmpge
+                0x0800c9ec                __aeabi_dcmpgt
+ .text          0x0800ca00       0x50 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixdfsi.o)
+                0x0800ca00                __aeabi_d2iz
+                0x0800ca00                __fixdfsi
+ .text          0x0800ca50       0x40 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixunsdfsi.o)
+                0x0800ca50                __aeabi_d2uiz
+                0x0800ca50                __fixunsdfsi
+ .text          0x0800ca90       0x2c C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
+                0x0800ca90                __aeabi_uldivmod
+ .text          0x0800cabc       0x60 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
+                0x0800cabc                __gnu_ldivmod_helper
+                0x0800caec                __gnu_uldivmod_helper
+ .text          0x0800cb1c      0x354 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+                0x0800cb1c                __divdi3
+ .text          0x0800ce70      0x300 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+                0x0800ce70                __udivdi3
+                0x0800d170                . = ALIGN (0x4)
 
-.glue_7         0x0800d180        0x0
+.glue_7         0x0800d170        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x0800d180        0x0
+.glue_7t        0x0800d170        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x0800d180        0x0
+.vfp11_veneer   0x0800d170        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0800d180        0x0
+.v4_bx          0x0800d170        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0800d180        0x0
+.iplt           0x0800d170        0x0
  .iplt          0x00000000        0x0 OS.o
 
-.ARM.extab      0x0800d180        0x0
+.ARM.extab      0x0800d170        0x0
  *(.ARM.extab* .gnu.linkonce.armextab.*)
- .ARM.extab     0x0800d180        0x0 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
- .ARM.extab     0x0800d180        0x0 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
-                0x0800d180                . = ALIGN (0x4)
+ .ARM.extab     0x0800d170        0x0 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+ .ARM.extab     0x0800d170        0x0 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+                0x0800d170                . = ALIGN (0x4)
 
-.ARM.exidx      0x0800d180        0x8
+.ARM.exidx      0x0800d170        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0800d180        0x8 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
- .ARM.exidx     0x0800d188        0x0 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x0800d170        0x8 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0800d178        0x0 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x0800d188                . = ALIGN (0x4)
+                0x0800d178                . = ALIGN (0x4)
 
-.rodata         0x0800d188      0x5f8
-                0x0800d188                __RO_BASE__ = .
+.rodata         0x0800d178      0x628
+                0x0800d178                __RO_BASE__ = .
  *(.rodata)
- .rodata        0x0800d188       0x98 OS.o
-                0x0800d188                default_delay
- .rodata        0x0800d220       0xbc main.o
- .rodata        0x0800d2dc       0x6c snake.o
- .rodata        0x0800d348      0x264 stm32f10x_it.o
- .rodata        0x0800d5ac        0x4 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
-                0x0800d5ac                _global_impure_ptr
- .rodata        0x0800d5b0       0x20 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
- .rodata        0x0800d5d0      0x128 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
-                0x0800d5e0                __mprec_tens
-                0x0800d6a8                __mprec_tinytens
-                0x0800d6d0                __mprec_bigtens
- .rodata        0x0800d6f8       0x20 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
+ .rodata        0x0800d178       0x98 OS.o
+                0x0800d178                default_delay
+ .rodata        0x0800d210       0xe8 main.o
+ .rodata        0x0800d2f8       0x6c snake.o
+ .rodata        0x0800d364      0x264 stm32f10x_it.o
+ .rodata        0x0800d5c8        0x4 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x0800d5c8                _global_impure_ptr
+ .rodata        0x0800d5cc       0x20 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
+ *fill*         0x0800d5ec        0x4 
+ .rodata        0x0800d5f0      0x128 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
+                0x0800d600                __mprec_tens
+                0x0800d6c8                __mprec_tinytens
+                0x0800d6f0                __mprec_bigtens
+ .rodata        0x0800d718       0x20 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
  *(.rodata.*)
  .rodata.str1.4
-                0x0800d718        0x2 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x0800d738        0x2 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x0800d71a        0x2 
+ *fill*         0x0800d73a        0x2 
  .rodata.str1.4
-                0x0800d71c       0x42 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
+                0x0800d73c       0x42 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
                                  0x44 (size before relaxing)
- *fill*         0x0800d75e        0x2 
+ *fill*         0x0800d77e        0x2 
  .rodata.str1.4
-                0x0800d760       0x10 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
+                0x0800d780       0x10 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
                                  0x14 (size before relaxing)
  .rodata.str1.4
-                0x0800d770        0xc C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
+                0x0800d790        0xc C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
                                  0x14 (size before relaxing)
  .rodata.str1.4
                 0x00000000       0x30 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
-                0x0800d780                . = ALIGN (0x8)
- *fill*         0x0800d77c        0x4 
-                0x0800d780                __RO_LIMIT__ = .
+                0x0800d7a0                . = ALIGN (0x8)
+ *fill*         0x0800d79c        0x4 
+                0x0800d7a0                __RO_LIMIT__ = .
 
-.rel.dyn        0x0800d780        0x0
+.rel.dyn        0x0800d7a0        0x0
  .rel.iplt      0x00000000        0x0 OS.o
 
-.data           0x20000000      0xf28 load address 0x0800d780
+.data           0x20000000      0xf28 load address 0x0800d7a0
                 0x20000000                __RW_BASE__ = .
  *(.data)
  .data          0x20000000        0xc OS.o
@@ -580,12 +581,12 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
                 0x20000f28                . = ALIGN (0x4)
                 0x20000f28                __RW_LIMIT__ = .
                 0x00000f28                __RW_SIZE__ = SIZEOF (.data)
-                0x0800d780                __RW_LOAD_ADDR__ = LOADADDR (.data)
+                0x0800d7a0                __RW_LOAD_ADDR__ = LOADADDR (.data)
 
-.igot.plt       0x20000f28        0x0 load address 0x0800e6a8
+.igot.plt       0x20000f28        0x0 load address 0x0800e6c8
  .igot.plt      0x00000000        0x0 OS.o
 
-.bss            0x20000f28     0x3798 load address 0x0800e6a8
+.bss            0x20000f28     0x3798 load address 0x0800e6c8
                 0x20000f28                __ZI_BASE__ = .
  *(.bss)
  .bss           0x20000f28     0x2ef0 OS.o
@@ -906,7 +907,6 @@ Key_Wait_Key_Pressed                              joy_key.o
 Key_Wait_Key_Released                             joy_key.o
 LED_0_Toggle                                      led.o
 LED_1_Toggle                                      led.o
-                                                  main.o
 LED_All_Off                                       led.o
 LED_All_On                                        led.o
 LED_Display                                       led.o
@@ -1014,7 +1014,6 @@ TIM4_IRQHandler                                   stm32f10x_it.o
 TIM4_Repeat_Interrupt_Enable                      timer.o
 Task1                                             main.o
 Task2                                             main.o
-Task3                                             main.o
 Task5                                             main.o
 TaskDummy                                         main.o
 USART1_IRQHandler                                 stm32f10x_it.o
