@@ -27,7 +27,7 @@ void System_Init(void)
 
 	Key_Poll_Init();	// Key(LCD 보드의 키) 초기화
 	Key_ISR_Enable(1);	// Key push 이벤트  interrupt 활성화
-	TIM4_Repeat_Interrupt_Enable(1, 700);	// TIM4 timeout 이벤트 interrupt 확성화
+//	TIM4_Repeat_Interrupt_Enable(1, 500);	// TIM4 timeout 이벤트 interrupt 확성화
 
 	Lcd_Init();	// LCD 초기화
 

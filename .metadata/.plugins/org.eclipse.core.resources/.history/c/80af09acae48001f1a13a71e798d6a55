@@ -181,13 +181,12 @@ void Move_Snake_Position(int received_head_dir)
 	POINT new_head_position = {head_position -> x, head_position -> y};
 //	POINT tail_position;
 
-	// Task 1으로 이동
 	// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
-//	if (received_head_dir * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
-//			&& received_head_dir * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT)
-//	{
-//		snake_object.snake_head_dir = received_head_dir;
-//	}
+	if (received_head_dir * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
+			&& received_head_dir * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT)
+	{
+		snake_object.snake_head_dir = received_head_dir;
+	}
 
 	if (snake_object.snake_head_dir == KEY_UP)
 	{
