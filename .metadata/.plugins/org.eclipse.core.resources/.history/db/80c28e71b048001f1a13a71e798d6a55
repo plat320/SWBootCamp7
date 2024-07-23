@@ -163,8 +163,8 @@ void OS_Scheduler_Start(void)
 	current_tcb->state = STATE_RUNNING;
 
 	SysTick_OS_Tick(interrupt_period);
-	TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 확성화
 
+	TIM4_Repeat_Interrupt_Enable(1, 300);	// TIM4 timeout 이벤트 interrupt 확성화
 	__set_BASEPRI(0x00);
 	_OS_Start_First_Task();
 }
@@ -269,7 +269,7 @@ void OS_Signal_Send(int queue_no, const void* buffer) {
 		}
 
 		enqueue(&queues[queue_no], buffer);
-//		Uart_Printf("Size == %d\n", queues[queue_no].size);
+		Uart_Printf("Size == %d\n", queues[queue_no].size);
 	}
 
 	__set_BASEPRI(0x00);

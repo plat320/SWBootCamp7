@@ -197,8 +197,10 @@ void Task5(void *para)
 	for(;;)
 	{
 		int received_data = -1;
-		int wait_result = OS_Signal_Wait(UpdateLcdIndex, &received_data, sizeof(int), 0);
+		Uart_Printf("Task5\n");
+		int wait_result = OS_Signal_Wait(UpdateLcdIndex, &received_data, sizeof(int), 5000);
 
+		Uart_Printf("Task5 Wait_result : %d\n", wait_result);
 		if(wait_result == SIGNAL_TIMEOUT) {
 			Uart_Printf("Signal Timeout\n");
 		}
@@ -212,13 +214,13 @@ void Task5(void *para)
 			Uart_Printf("Data Type is wrong\n");
 		}
 		else if(wait_result == SIGNAL_NO_ERROR){
-//			Uart_Printf("Received data is : %d\n", received_data);
+			Uart_Printf("Received data is : %d\n", received_data);
 //    		Uart_Printf("여기까지는 정상 동작\n");
 			Lcd_Draw_Snake();
 //    		Calculate_Snake_Position(snake_object.head_direction);
 		}
 
-//		OS_Block_Current_Task(500);
+		OS_Block_Current_Task(500);
 	}
 }
 

@@ -269,7 +269,7 @@ void OS_Signal_Send(int queue_no, const void* buffer) {
 		}
 
 		enqueue(&queues[queue_no], buffer);
-//		Uart_Printf("Size == %d\n", queues[queue_no].size);
+		Uart_Printf("Size == %d\n", queues[queue_no].size);
 	}
 
 	__set_BASEPRI(0x00);
