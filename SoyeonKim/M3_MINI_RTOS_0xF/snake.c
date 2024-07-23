@@ -34,6 +34,13 @@ void Add_Snake_Position(POINT* p)
 
 void Remove_Snake_Position(void)
 {
+	POINT p;
+	int ret = dequeue(&queues[snake_object.queue_no], &p, HAVE_PERMISSION);
+	if (ret != DEQUEUE_SUCCESS)
+	{
+		Uart_Printf("Dequeue fail!\n");
+	}
+	Lcd_Draw_Box(p.x * OBJECT_BLOCK_SIZE, p.y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BACKGROUND_COLOR);
 }
 
 void Lcd_Draw_Border(void)
@@ -59,20 +66,21 @@ void Lcd_Draw_Snake(void)
 	}
 }
 
-void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position)
-{
-//	Uart_Printf("Lcd_Draw_New_Position Start\n");
-	Lcd_Draw_Box(head_position->x * OBJECT_BLOCK_SIZE, head_position->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, SNAKE_COLOR);
-	Lcd_Draw_Box(tail_position->x * OBJECT_BLOCK_SIZE, tail_position->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BACKGROUND_COLOR);
-//	Uart_Printf("Lcd_Draw_New_Position End\n");
-}
+//void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position)
+//{
+////	Uart_Printf("Lcd_Draw_New_Position Start\n");
+//	Lcd_Draw_Box(head_position->x * OBJECT_BLOCK_SIZE, head_position->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, SNAKE_COLOR);
+//	Lcd_Draw_Box(tail_position->x * OBJECT_BLOCK_SIZE, tail_position->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BACKGROUND_COLOR);
+////	Uart_Printf("Lcd_Draw_New_Position End\n");
+//}
 
 void Calculate_Snake_Position(int head_direction)
 {
+	// TODO: 가고 있는 방향 반대 방향으로 전환하면 무시
 //	Uart_Printf("Calculate_Snake_Position Start\n");
 	POINT* head_position = (POINT*)queues[snake_object.queue_no].rear->data;
 	POINT new_head_position = {head_position -> x, head_position -> y};
-	POINT tail_position;
+//	POINT tail_position;
 	if (head_direction == JOY_KEY_UP)
 	{
 		new_head_position.y -= 1;
@@ -90,12 +98,15 @@ void Calculate_Snake_Position(int head_direction)
 		new_head_position.x += 1;
 	}
 //	Uart_Printf("before enqueue\n");
-	enqueue(&queues[snake_object.queue_no], &new_head_position);
+//	enqueue(&queues[snake_object.queue_no], &new_head_position);
 //	Uart_Printf("after enqueue\n");
-	int ret = dequeue(&queues[snake_object.queue_no], &tail_position, HAVE_PERMISSION);
-	Uart_Printf("ret: %d\n", ret);
+//	int ret = dequeue(&queues[snake_object.queue_no], &tail_position, HAVE_PERMISSION);
+//	Uart_Printf("ret: %d\n", ret);
 //	Uart_Printf("after dequeue\n");
-	Lcd_Draw_New_Position(&new_head_position, &tail_position);
+
+	Add_Snake_Position(&new_head_position);
+	Remove_Snake_Position();
+//	Lcd_Draw_New_Position(&new_head_position, &tail_position);
 //	Uart_Printf("Calculate_Snake_Position End\n");
 }
 

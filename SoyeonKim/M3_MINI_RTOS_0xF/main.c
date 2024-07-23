@@ -5,32 +5,6 @@ int dummyParams[10];
 
 void Task1(void *para)
 {
-	//volatile int i;
-	for(;;)
-	{
-		LED_0_Toggle();
-		//Uart_Printf("Task1\n");
-		OS_Block_Current_Task(500);
-		//Uart_Printf("Task1 after loop\n");
-	}
-}
-
-void Task2(void *para)
-{
-	//volatile int i;
-//	int cnt = 0;
-	for(;;)
-	{
-		LED_1_Toggle();
-		//Uart_Printf("Task2\n");
-		OS_Block_Current_Task(100);
-		//for(i=0;i<0x100000;i++);
-		//Uart_Printf("Task2 after loop\n");
-	}
-}
-
-void Task3(void *para)
-{
 //	volatile int i;
 	int cnt = 0;
 //	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
@@ -94,16 +68,131 @@ void Task3(void *para)
 	}
 }
 
+//void Task1(void *para)
+//{
+//	//volatile int i;
+//	for(;;)
+//	{
+//		LED_0_Toggle();
+//		//Uart_Printf("Task1\n");
+//		OS_Block_Current_Task(500);
+//		//Uart_Printf("Task1 after loop\n");
+//	}
+//}
 
-
-
-
-// 임시
-void Task4(void *para)
+void Task2(void *para)
 {
+	//volatile int i;
+//	int cnt = 0;
 	for(;;)
 	{
 		Calculate_Snake_Position(snake_object.head_direction);
+		//Uart_Printf("Task2\n");
+		OS_Block_Current_Task(500);
+		//for(i=0;i<0x100000;i++);
+		//Uart_Printf("Task2 after loop\n");
+	}
+}
+
+void Task3(void *para)
+{
+	//volatile int i;
+//	int cnt = 0;
+	for(;;)
+	{
+		LED_1_Toggle();
+		//Uart_Printf("Task2\n");
+		OS_Block_Current_Task(100);
+		//for(i=0;i<0x100000;i++);
+		//Uart_Printf("Task2 after loop\n");
+	}
+}
+
+//void Task2(void *para)
+//{
+//	//volatile int i;
+////	int cnt = 0;
+//	for(;;)
+//	{
+//		LED_1_Toggle();
+//		//Uart_Printf("Task2\n");
+//		OS_Block_Current_Task(100);
+//		//for(i=0;i<0x100000;i++);
+//		//Uart_Printf("Task2 after loop\n");
+//	}
+//}
+
+//void Task3(void *para)
+//{
+////	volatile int i;
+//	int cnt = 0;
+////	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
+//	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
+////	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
+////	char usart_received_data[32];
+////	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
+//	for(;;)
+//	{
+//		Uart_Printf("Task3 : %d\n", cnt++);
+//		int received_data = -1;
+//    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
+//
+////    	Uart_Printf("KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
+////    	Uart_Printf("queues[0].size: %d\n", queues[0].size);
+////    	Uart_Printf("queues[0].data_size: %d\n", queues[0].data_size);
+////    	Uart_Printf("queues[1].size: %d\n", queues[1].size);
+////    	Uart_Printf("queues[1].data_size: %d\n", queues[1].data_size);
+//
+//		Uart_Printf("Wait_result : %d\n", wait_result);
+//    	if(wait_result == SIGNAL_TIMEOUT) {
+//    		Uart_Printf("Signal Timeout\n");
+//    	}
+//    	else if(wait_result == SIGNAL_NO_PERMISSION) {
+//    		Uart_Printf("Task 3 didn't create Queue\n");
+//    	}
+//    	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
+//    		Uart_Printf("Queue is empty\n");
+//    	}
+//    	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
+//    		Uart_Printf("Data Type is wrong\n");
+//    	}
+//    	else if(wait_result == SIGNAL_NO_ERROR){
+//    		Uart_Printf("Received data is : %d\n", received_data);
+////    		Uart_Printf("여기까지는 정상 동작\n");
+//    		snake_object.head_direction = received_data;
+////    		Calculate_Snake_Position(snake_object.head_direction);
+//    	}
+//
+//    	/*
+//    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
+//		Uart_Printf("usart_result : %d\n", usart_result);
+//    	if(usart_result == SIGNAL_TIMEOUT) {
+//    		Uart_Printf("Signal Timeout\n");
+//    	}
+//    	else if(usart_result == SIGNAL_NO_PERMISSION) {
+//    		Uart_Printf("Task 3 didn't create Queue\n");
+//    	}
+//    	else if(usart_result == SIGNAL_QUEUE_EMPTY) {
+//    		Uart_Printf("Queue is empty\n");
+//    	}
+//    	else if(usart_result == SIGNAL_WRONG_DATA_TYPE) {
+//    		Uart_Printf("Data Type is wrong\n");
+//    	}
+//    	else if(usart_result == SIGNAL_NO_ERROR){
+//    		Uart_Printf("Received data is : %s\n", usart_received_data);
+//    	}
+//    	*/
+//    	OS_Block_Current_Task(500);
+////		for(i=0;i<0x100000;i++);
+//	}
+//}
+
+// 임시
+void Task5(void *para)
+{
+	for(;;)
+	{
+//		Calculate_Snake_Position(snake_object.head_direction);
 
 //		Make_Target();
 
@@ -167,16 +256,19 @@ void Main(void)
 	// 임시
 	Snake_Init();
 
-	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
-	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
+//	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
+	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task3, (void*)0, 5, 1024);
+//	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
+//	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
 
-	OS_Create_Task_Simple(Task4, (void*)0, 7, 1024);
+	OS_Create_Task_Simple(Task5, (void*)0, 7, 1024);
 
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
+//		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
 	}
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)
