@@ -50,6 +50,9 @@
 //	}POINT;
 
 	extern SNAKE_OBJECT snake_object;
+	extern unsigned short apple_img[];
+	extern unsigned short grass_img[];
+	extern unsigned short snake_head_img[];
 
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);
