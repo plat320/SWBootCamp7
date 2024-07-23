@@ -5,6 +5,7 @@
 #include <time.h>
 #include "OS.h"
 #include "queue.h"
+#include "lcd.h"
 
 	#define OBJECT_BLOCK_SIZE		(20)
 	#define GAME_WINDOW_HIGHT		(240)
@@ -14,14 +15,14 @@
 	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
 	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COLUMN) - 2)
 
-	#define KEY_UP				(1)
-	#define KEY_DOWN			(2)
-	#define KEY_LEFT			(3)
-	#define KEY_RIGHT			(4)
+	#define KEY_UP					(1)
+	#define KEY_DOWN				(2)
+	#define KEY_LEFT				(3)
+	#define KEY_RIGHT				(4)
 
-	#define EMPTY_ID			(0)
-	#define SNAKE_ID			(1)
-	#define TARGET_ID			(2)
+	#define EMPTY_ID				(0)
+	#define SNAKE_ID				(1)
+	#define TARGET_ID				(2)
 
 	#define BACKGROUND_COLOR		(0x0000)
 	#define BORDER_COLOR			(0xffff)
@@ -53,11 +54,19 @@
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);
 	void Remove_Snake_Position(void);
-	void Lcd_Draw_Border(void);
-	void Lcd_Draw_Snake(void);
-//	void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position);
+//	void Calculate_Snake_Position(int);
+	void Make_Target(void);
 	int Check_Snake_Position(POINT);
 	void Move_Snake_Position(int);
-	void Make_Target(void);
+
+	// draw function
+	void draw_init(void);
+	void Lcd_Draw_Border(void);
+	void Lcd_Draw_Snake(void);
+	void Lcd_Draw_Grass(void);
+	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+	void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction);
+
+
 
 #endif // SNAKE_H

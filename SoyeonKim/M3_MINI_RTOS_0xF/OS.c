@@ -24,6 +24,7 @@ const int default_delay = 1000000000;
 
 SNAKE_OBJECT snake_object;
 int KeyValueReceiverIndex;
+int UpdateLcdIndex;
 
 /* Function */
 void IdleTask(void *para) {
