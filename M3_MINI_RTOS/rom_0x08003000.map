@@ -86,6 +86,7 @@ Linker script and memory map
 LOAD OS.o
 LOAD clock.o
 LOAD core_cm3.o
+LOAD define.o
 LOAD joy_key.o
 LOAD lcd.o
 LOAD led.o
@@ -150,6 +151,7 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
                 0x08003db0                __STREXB
                 0x08003dd8                __STREXH
                 0x08003e00                __STREXW
+ .text          0x08003e28        0x0 define.o
  .text          0x08003e28      0x3c0 joy_key.o
                 0x08003e90                Key_Poll_Init
                 0x08003f84                Key_Get_Pressed
@@ -210,90 +212,90 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
  .text          0x08005640       0xe4 runtime.o
                 0x08005640                _sbrk
                 0x080056cc                System_Init
- .text          0x08005724      0xa8c snake.o
+ .text          0x08005724      0xa88 snake.o
                 0x08005724                Snake_Init
-                0x08005924                draw_init
-                0x08005934                Lcd_Draw_Grass
-                0x08005994                Lcd_Draw_Border
-                0x08005a24                Lcd_Draw_Snake
-                0x08005b58                rotate_image_array
-                0x08005cf8                Add_Snake_Position
-                0x08005d4c                Remove_Snake_Position
-                0x08005db4                Move_Snake_Position
-                0x08005f38                Check_Snake_Position
-                0x08005fac                Calculate_Snake_Position
-                0x08006030                Make_Target
-                0x080060c8                Lcd_Draw_IMG
- .text          0x080061b0      0x73c stm32f10x_it.o
-                0x080061e4                Invalid_ISR
-                0x08006370                NMI_Handler
-                0x08006390                HardFault_Handler
-                0x08006438                MemManage_Handler
-                0x08006494                BusFault_Handler
-                0x080064f0                UsageFault_Handler
-                0x08006514                DebugMon_Handler
-                0x08006528                SysTick_Handler
-                0x08006544                WWDG_IRQHandler
-                0x08006550                PVD_IRQHandler
-                0x0800655c                TAMPER_IRQHandler
-                0x08006568                RTC_IRQHandler
-                0x08006574                FLASH_IRQHandler
-                0x08006580                RCC_IRQHandler
-                0x0800658c                EXTI0_IRQHandler
-                0x08006598                EXTI1_IRQHandler
-                0x080065a4                EXTI2_IRQHandler
-                0x080065b0                EXTI3_IRQHandler
-                0x080065f8                EXTI4_IRQHandler
-                0x08006604                DMA1_Channel1_IRQHandler
-                0x08006610                DMA1_Channel2_IRQHandler
-                0x0800661c                DMA1_Channel3_IRQHandler
-                0x08006628                DMA1_Channel4_IRQHandler
-                0x08006634                DMA1_Channel5_IRQHandler
-                0x08006640                DMA1_Channel6_IRQHandler
-                0x0800664c                DMA1_Channel7_IRQHandler
-                0x08006658                ADC1_2_IRQHandler
-                0x08006664                USB_HP_CAN_TX_IRQHandler
-                0x08006670                USB_LP_CAN_RX0_IRQHandler
-                0x0800667c                CAN_RX1_IRQHandler
-                0x08006688                CAN_SCE_IRQHandler
-                0x08006694                EXTI9_5_IRQHandler
-                0x080066f4                TIM1_BRK_IRQHandler
-                0x08006700                TIM1_UP_IRQHandler
-                0x0800670c                TIM1_TRG_COM_IRQHandler
-                0x08006718                TIM1_CC_IRQHandler
-                0x08006724                TIM2_IRQHandler
-                0x08006730                TIM3_IRQHandler
-                0x0800673c                TIM4_IRQHandler
-                0x08006770                I2C1_EV_IRQHandler
-                0x0800677c                I2C1_ER_IRQHandler
-                0x08006788                I2C2_EV_IRQHandler
-                0x08006794                I2C2_ER_IRQHandler
-                0x080067a0                SPI1_IRQHandler
-                0x080067ac                SPI2_IRQHandler
-                0x080067b8                USART1_IRQHandler
-                0x08006850                USART2_IRQHandler
-                0x0800685c                USART3_IRQHandler
-                0x08006868                EXTI15_10_IRQHandler
-                0x080068d4                RTCAlarm_IRQHandler
-                0x080068e0                USBWakeUp_IRQHandler
- *fill*         0x080068ec        0x4 
- .text          0x080068f0       0x90 systick.o
-                0x080068f0                SysTick_OS_Tick
- .text          0x08006980      0x1c8 timer.o
-                0x08006a1c                TIM4_Repeat_Interrupt_Enable
- .text          0x08006b48      0x328 uart.o
-                0x08006be4                Uart1_Init
-                0x08006d48                Uart1_Send_Byte
-                0x08006db4                Uart1_Send_String
-                0x08006ddc                Uart1_Printf
-                0x08006e10                Uart1_RX_Interrupt_Enable
- .text          0x08006e70       0xf0 exp_handler.o
-                0x08006e70                __get_IPSR
-                0x08006e76                _Print_Reg
-                0x08006f08                _HardFault_Handler
-                0x08006f1c                _MemManage_Handler
-                0x08006f30                _BusFault_Handler
-                0x08006f44                _UsageFault_Handler
+                0x080058a8                draw_init
+                0x080058b8                Lcd_Draw_Grass
+                0x08005918                Lcd_Draw_Border
+                0x080059a8                Lcd_Draw_Snake
+                0x08005b54                rotate_image_array
+                0x08005cf4                Add_Snake_Position
+                0x08005d48                Remove_Snake_Position
+                0x08005db0                Move_Snake_Position
+                0x08005f34                Check_Snake_Position
+                0x08005fa8                Calculate_Snake_Position
+                0x0800602c                Make_Target
+                0x080060c4                Lcd_Draw_IMG
+ .text          0x080061ac      0x73c stm32f10x_it.o
+                0x080061e0                Invalid_ISR
+                0x0800636c                NMI_Handler
+                0x0800638c                HardFault_Handler
+                0x08006434                MemManage_Handler
+                0x08006490                BusFault_Handler
+                0x080064ec                UsageFault_Handler
+                0x08006510                DebugMon_Handler
+                0x08006524                SysTick_Handler
+                0x08006540                WWDG_IRQHandler
+                0x0800654c                PVD_IRQHandler
+                0x08006558                TAMPER_IRQHandler
+                0x08006564                RTC_IRQHandler
+                0x08006570                FLASH_IRQHandler
+                0x0800657c                RCC_IRQHandler
+                0x08006588                EXTI0_IRQHandler
+                0x08006594                EXTI1_IRQHandler
+                0x080065a0                EXTI2_IRQHandler
+                0x080065ac                EXTI3_IRQHandler
+                0x080065f4                EXTI4_IRQHandler
+                0x08006600                DMA1_Channel1_IRQHandler
+                0x0800660c                DMA1_Channel2_IRQHandler
+                0x08006618                DMA1_Channel3_IRQHandler
+                0x08006624                DMA1_Channel4_IRQHandler
+                0x08006630                DMA1_Channel5_IRQHandler
+                0x0800663c                DMA1_Channel6_IRQHandler
+                0x08006648                DMA1_Channel7_IRQHandler
+                0x08006654                ADC1_2_IRQHandler
+                0x08006660                USB_HP_CAN_TX_IRQHandler
+                0x0800666c                USB_LP_CAN_RX0_IRQHandler
+                0x08006678                CAN_RX1_IRQHandler
+                0x08006684                CAN_SCE_IRQHandler
+                0x08006690                EXTI9_5_IRQHandler
+                0x080066f0                TIM1_BRK_IRQHandler
+                0x080066fc                TIM1_UP_IRQHandler
+                0x08006708                TIM1_TRG_COM_IRQHandler
+                0x08006714                TIM1_CC_IRQHandler
+                0x08006720                TIM2_IRQHandler
+                0x0800672c                TIM3_IRQHandler
+                0x08006738                TIM4_IRQHandler
+                0x0800676c                I2C1_EV_IRQHandler
+                0x08006778                I2C1_ER_IRQHandler
+                0x08006784                I2C2_EV_IRQHandler
+                0x08006790                I2C2_ER_IRQHandler
+                0x0800679c                SPI1_IRQHandler
+                0x080067a8                SPI2_IRQHandler
+                0x080067b4                USART1_IRQHandler
+                0x0800684c                USART2_IRQHandler
+                0x08006858                USART3_IRQHandler
+                0x08006864                EXTI15_10_IRQHandler
+                0x080068d0                RTCAlarm_IRQHandler
+                0x080068dc                USBWakeUp_IRQHandler
+ .text          0x080068e8       0x90 systick.o
+                0x080068e8                SysTick_OS_Tick
+ .text          0x08006978      0x1c8 timer.o
+                0x08006a14                TIM4_Repeat_Interrupt_Enable
+ .text          0x08006b40      0x328 uart.o
+                0x08006bdc                Uart1_Init
+                0x08006d40                Uart1_Send_Byte
+                0x08006dac                Uart1_Send_String
+                0x08006dd4                Uart1_Printf
+                0x08006e08                Uart1_RX_Interrupt_Enable
+ .text          0x08006e68       0xf0 exp_handler.o
+                0x08006e68                __get_IPSR
+                0x08006e6e                _Print_Reg
+                0x08006f00                _HardFault_Handler
+                0x08006f14                _MemManage_Handler
+                0x08006f28                _BusFault_Handler
+                0x08006f3c                _UsageFault_Handler
+ *fill*         0x08006f58        0x8 
  .text          0x08006f60       0x40 scheduler.o
                 0x08006f60                PendSV_Handler
                 0x08006f7c                SVC_Handler
@@ -512,19 +514,20 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
                 0x20000000                interrupt_period
  .data          0x2000000c        0x0 clock.o
  .data          0x2000000c        0x0 core_cm3.o
- .data          0x2000000c        0x0 joy_key.o
- .data          0x2000000c        0x2 lcd.o
-                0x2000000c                BACK_COLOR
- .data          0x2000000e        0x0 led.o
- .data          0x2000000e        0x0 main.o
- .data          0x2000000e        0x0 priority_queue.o
- *fill*         0x2000000e        0x2 
- .data          0x20000010        0x8 queue.o
- .data          0x20000018        0x0 runtime.o
- .data          0x20000018      0x960 snake.o
-                0x20000018                apple_img
-                0x20000338                grass_img
-                0x20000658                snake_head_img
+ .data          0x2000000c      0x960 define.o
+                0x2000000c                apple_img
+                0x2000032c                grass_img
+                0x2000064c                snake_head_img
+ .data          0x2000096c        0x0 joy_key.o
+ .data          0x2000096c        0x2 lcd.o
+                0x2000096c                BACK_COLOR
+ .data          0x2000096e        0x0 led.o
+ .data          0x2000096e        0x0 main.o
+ .data          0x2000096e        0x0 priority_queue.o
+ *fill*         0x2000096e        0x2 
+ .data          0x20000970        0x8 queue.o
+ .data          0x20000978        0x0 runtime.o
+ .data          0x20000978        0x0 snake.o
  .data          0x20000978       0x30 stm32f10x_it.o
                 0x20000978                EXTI9_5_LUT
                 0x20000998                EXTI15_10_LUT
@@ -599,6 +602,7 @@ LOAD C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc
                 0x20003e0c                UpdateLcdIndex
  .bss           0x20003e18        0x0 clock.o
  .bss           0x20003e18        0x0 core_cm3.o
+ .bss           0x20003e18        0x0 define.o
  .bss           0x20003e18        0x0 joy_key.o
  .bss           0x20003e18       0x10 lcd.o
                 0x20003e18                lcddev
@@ -678,6 +682,7 @@ OUTPUT(rom_0x08003000.elf elf32-littlearm)
                                  0x31 (size before relaxing)
  .comment       0x00000000       0x31 clock.o
  .comment       0x00000000       0x31 core_cm3.o
+ .comment       0x00000000       0x31 define.o
  .comment       0x00000000       0x31 joy_key.o
  .comment       0x00000000       0x31 lcd.o
  .comment       0x00000000       0x31 led.o
@@ -700,103 +705,105 @@ OUTPUT(rom_0x08003000.elf elf32-littlearm)
  .ARM.attributes
                 0x00000066       0x33 core_cm3.o
  .ARM.attributes
-                0x00000099       0x33 joy_key.o
+                0x00000099       0x33 define.o
  .ARM.attributes
-                0x000000cc       0x33 lcd.o
+                0x000000cc       0x33 joy_key.o
  .ARM.attributes
-                0x000000ff       0x33 led.o
+                0x000000ff       0x33 lcd.o
  .ARM.attributes
-                0x00000132       0x33 main.o
+                0x00000132       0x33 led.o
  .ARM.attributes
-                0x00000165       0x33 priority_queue.o
+                0x00000165       0x33 main.o
  .ARM.attributes
-                0x00000198       0x33 queue.o
+                0x00000198       0x33 priority_queue.o
  .ARM.attributes
-                0x000001cb       0x33 runtime.o
+                0x000001cb       0x33 queue.o
  .ARM.attributes
-                0x000001fe       0x33 snake.o
+                0x000001fe       0x33 runtime.o
  .ARM.attributes
-                0x00000231       0x33 stm32f10x_it.o
+                0x00000231       0x33 snake.o
  .ARM.attributes
-                0x00000264       0x33 systick.o
+                0x00000264       0x33 stm32f10x_it.o
  .ARM.attributes
-                0x00000297       0x33 timer.o
+                0x00000297       0x33 systick.o
  .ARM.attributes
-                0x000002ca       0x33 uart.o
+                0x000002ca       0x33 timer.o
  .ARM.attributes
-                0x000002fd       0x21 crt0.o
+                0x000002fd       0x33 uart.o
  .ARM.attributes
-                0x0000031e       0x21 exp_handler.o
+                0x00000330       0x21 crt0.o
  .ARM.attributes
-                0x0000033f       0x21 scheduler.o
+                0x00000351       0x21 exp_handler.o
  .ARM.attributes
-                0x00000360       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
+                0x00000372       0x21 scheduler.o
  .ARM.attributes
-                0x00000389       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-rand.o)
+                0x00000393       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x000003b2       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-vsprintf.o)
+                0x000003bc       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-rand.o)
  .ARM.attributes
-                0x000003db       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x000003e5       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-vsprintf.o)
  .ARM.attributes
-                0x00000404       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
+                0x0000040e       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x0000042d       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
+                0x00000437       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
  .ARM.attributes
-                0x00000456       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
+                0x00000460       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
  .ARM.attributes
-                0x0000047f       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
+                0x00000489       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
  .ARM.attributes
-                0x000004a8       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
+                0x000004b2       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x000004d1       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
+                0x000004db       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
  .ARM.attributes
-                0x000004fa       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
+                0x00000504       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
  .ARM.attributes
-                0x00000523       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
+                0x0000052d       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
  .ARM.attributes
-                0x0000054c       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
+                0x00000556       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
  .ARM.attributes
-                0x00000575       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
+                0x0000057f       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
  .ARM.attributes
-                0x0000059e       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
+                0x000005a8       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
  .ARM.attributes
-                0x000005c7       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-s_fpclassify.o)
+                0x000005d1       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
  .ARM.attributes
-                0x000005f0       0x17 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strcmp.o)
+                0x000005fa       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-s_fpclassify.o)
  .ARM.attributes
-                0x00000607       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
+                0x00000623       0x17 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strcmp.o)
  .ARM.attributes
-                0x00000630       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
+                0x0000063a       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
  .ARM.attributes
-                0x00000659       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
+                0x00000663       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfiprintf.o)
  .ARM.attributes
-                0x00000682       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
+                0x0000068c       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
  .ARM.attributes
-                0x000006ab       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
+                0x000006b5       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
  .ARM.attributes
-                0x000006d4       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
+                0x000006de       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
  .ARM.attributes
-                0x000006fd       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
+                0x00000707       0x29 C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
  .ARM.attributes
-                0x00000716       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_dvmd_tls.o)
+                0x00000730       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x0000072f       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_addsubdf3.o)
+                0x00000749       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000748       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivdf3.o)
+                0x00000762       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000761       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpdf2.o)
+                0x0000077b       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x0000077a       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixdfsi.o)
+                0x00000794       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpdf2.o)
  .ARM.attributes
-                0x00000793       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixunsdfsi.o)
+                0x000007ad       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixdfsi.o)
  .ARM.attributes
-                0x000007ac       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
+                0x000007c6       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixunsdfsi.o)
  .ARM.attributes
-                0x000007c5       0x29 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
+                0x000007df       0x19 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x000007ee       0x29 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+                0x000007f8       0x29 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
  .ARM.attributes
-                0x00000817       0x29 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+                0x00000821       0x29 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+ .ARM.attributes
+                0x0000084a       0x29 C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
 
 .debug_frame    0x00000000      0x82c
  .debug_frame   0x00000000       0x2c C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
@@ -1279,7 +1286,7 @@ _svfiprintf_r                                     C:\CodeSourcery\Sourcery G++ L
 _svfprintf_r                                      C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-svfprintf.o)
                                                   C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-vsprintf.o)
 _vsprintf_r                                       C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-vsprintf.o)
-apple_img                                         snake.o
+apple_img                                         define.o
 blocked_queue                                     OS.o
 cleanup_glue                                      C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
 createQueue                                       queue.o
@@ -1298,7 +1305,8 @@ enqueue                                           queue.o
 errno                                             C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
                                                   C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
 free                                              C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
-grass_img                                         snake.o
+grass_img                                         define.o
+                                                  snake.o
 interrupt_period                                  OS.o
 isEmpty                                           queue.o
                                                   OS.o
@@ -1350,7 +1358,8 @@ rand                                              C:\CodeSourcery\Sourcery G++ L
 ready_queue                                       OS.o
 rotate_image_array                                snake.o
 setlocale                                         C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
-snake_head_img                                    snake.o
+snake_head_img                                    define.o
+                                                  snake.o
 snake_object                                      OS.o
                                                   snake.o
                                                   main.o

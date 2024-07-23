@@ -17,17 +17,23 @@ void Snake_Init(void)
 
 	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), 10);
 //	Uart_Printf("*** snake_object.queue_no: %d\n", snake_object.queue_no);
-	POINT p1 = {4,5};		// tail - front
-	POINT p2 = {5,5};		// head - rear
-	POINT p3 = {-1,-1};
-	enqueue(&queues[snake_object.queue_no], &p1);
-	enqueue(&queues[snake_object.queue_no], &p2);
+	POINT p1 = {4,5};
+	POINT p2 = {5,5};
+	POINT p3 = {6,5};
+	POINT p4 = {-1,-1};
+	Uart_Printf("1\n");
 	snake_object.snake_head_pos = *((POINT*)queues[snake_object.queue_no].rear->data);
-	snake_object.snake_tail_pos = p3;
+	snake_object.snake_tail_pos = p4;
 
 	snake_object.object_map[p1.x][p1.y] = SNAKE_ID;
 	snake_object.object_map[p2.x][p2.y] = SNAKE_ID;
+	snake_object.object_map[p3.x][p3.y] = SNAKE_ID;
 
+	Uart_Printf("2\n");
+	enqueue(&queues[snake_object.queue_no], &p1);
+	enqueue(&queues[snake_object.queue_no], &p2);
+	enqueue(&queues[snake_object.queue_no], &p3);
+	Uart_Printf("3\n");
 	draw_init();
 	Lcd_Draw_Snake();
 	Make_Target();
@@ -42,7 +48,7 @@ void Lcd_Draw_Grass(){
 	int i, j;
     for ( i = 1; i < GAME_WINDOW_HIGHT / OBJECT_BLOCK_SIZE -1; i++) {
         for (j = 1; j < GAME_WINDOW_WIDTH / OBJECT_BLOCK_SIZE -1; j++) {
-            Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  grass_img);
+            Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  &grass_img);
         }
     }
 }
@@ -59,12 +65,10 @@ void Lcd_Draw_Border(void){
 }
 
 void Lcd_Draw_Snake(void){
-	Node* node = queues[snake_object.queue_no].rear;
+	Node* node = queues[snake_object.queue_no].front;
 	int head_dir = snake_object.snake_head_dir;
 	int tail_pos_x = snake_object.snake_tail_pos.x;
 	int tail_pos_y = snake_object.snake_tail_pos.y;
-	int prev_head_pos_x;
-	int prev_head_pos_y;
 
 	unsigned short rotated_head_img[400];
 
@@ -72,32 +76,13 @@ void Lcd_Draw_Snake(void){
 	POINT* p = (POINT*)node->data;
 
 	rotate_image_array(snake_head_img, rotated_head_img, head_dir);
-	Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  rotated_head_img);
+	Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  &rotated_head_img);
 
 	// draw prev head
-	switch(head_dir){
-	case KEY_UP:
-		prev_head_pos_x = p->x;
-		prev_head_pos_y = p->y -1;
-		break;
-	case KEY_DOWN:
-		prev_head_pos_x = p->x;
-		prev_head_pos_y = p->y +1;
-		break;
-	case KEY_RIGHT:
-		prev_head_pos_x = p->x+1;
-		prev_head_pos_y = p->y;
-		break;
-	case KEY_LEFT:
-		prev_head_pos_x = p->x-1;
-		prev_head_pos_y = p->y;
-		break;
-	default:
-		Uart_Printf("WRONG KEY VALUE\n");
-		return;
-	}
+	node = node->next;
+	p = (POINT*)node->data;
 
-	Lcd_Draw_Box(prev_head_pos_x*OBJECT_BLOCK_SIZE, prev_head_pos_y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  SNAKE_COLOR);
+	Lcd_Draw_Box(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  SNAKE_COLOR);
 
 	// draw tail
 	if (tail_pos_x != -1 && tail_pos_y != -1) {
@@ -111,28 +96,28 @@ void rotate_image_array(unsigned short* image_array, unsigned short *temp, int d
 
     // direction 값에 따라 회전 방향을 결정
     switch (direction) {
-        case KEY_DOWN: // direction = 0일 때 (원래 방향, 위쪽)
+        case 2: // direction = 0일 때 (원래 방향, 위쪽)
             for (i = 0; i < OBJECT_BLOCK_SIZE; i++) {
                 for (j = 0; j < OBJECT_BLOCK_SIZE; j++) {
                     temp[i*OBJECT_BLOCK_SIZE+j] = image_array[i*OBJECT_BLOCK_SIZE+j];
                 }
             }
             break;
-        case KEY_LEFT: // direction = 1일 때 (시계 방향으로 90도 회전, 왼쪽)
+        case 3: // direction = 1일 때 (시계 방향으로 90도 회전, 왼쪽)
             for (i = 0; i < OBJECT_BLOCK_SIZE; i++) {
                 for (j = 0; j < OBJECT_BLOCK_SIZE; j++) {
                     temp[OBJECT_BLOCK_SIZE*j+OBJECT_BLOCK_SIZE - 1 - i] = image_array[OBJECT_BLOCK_SIZE*i+OBJECT_BLOCK_SIZE+j];
                 }
             }
             break;
-        case KEY_UP: // direction = 2일 때 (180도 회전, 아래쪽)
+        case 1: // direction = 2일 때 (180도 회전, 아래쪽)
             for (i = 0; i < OBJECT_BLOCK_SIZE; i++) {
                 for (j = 0; j < OBJECT_BLOCK_SIZE; j++) {
                     temp[(OBJECT_BLOCK_SIZE - 1 - i)*OBJECT_BLOCK_SIZE + OBJECT_BLOCK_SIZE - 1 - j] = image_array[i*OBJECT_BLOCK_SIZE+j];
                 }
             }
             break;
-        case KEY_RIGHT: // direction = 3일 때 (반시계 방향으로 90도 회전, 왼쪽)
+        case 4: // direction = 3일 때 (반시계 방향으로 90도 회전, 왼쪽)
             for (i = 0; i < OBJECT_BLOCK_SIZE; i++) {
                 for (j = 0; j < OBJECT_BLOCK_SIZE; j++) {
                     temp[(OBJECT_BLOCK_SIZE - 1 - j)*OBJECT_BLOCK_SIZE+i] = image_array[i*OBJECT_BLOCK_SIZE+j];

@@ -693,3 +693,198 @@ snake.h:67:7: note: expected 'short unsigned int *' but argument is of type 'sho
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
 
 **** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+snake.c: In function 'Lcd_Draw_Grass':
+snake.c:55:13: warning: passing argument 5 of 'Lcd_Draw_IMG' from incompatible pointer type [enabled by default]
+             Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  &grass_img);
+             ^
+In file included from snake.c:1:0:
+snake.h:70:7: note: expected 'short unsigned int *' but argument is of type 'short unsigned int (*)[]'
+  void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+       ^
+snake.c: In function 'Lcd_Draw_Snake':
+snake.c:83:2: warning: passing argument 5 of 'Lcd_Draw_IMG' from incompatible pointer type [enabled by default]
+  Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  &rotated_head_img);
+  ^
+In file included from snake.c:1:0:
+snake.h:70:7: note: expected 'short unsigned int *' but argument is of type 'short unsigned int (*)[400]'
+  void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+snake.c: In function 'Lcd_Draw_Grass':
+snake.c:51:13: warning: passing argument 5 of 'Lcd_Draw_IMG' from incompatible pointer type [enabled by default]
+             Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  &grass_img);
+             ^
+In file included from snake.c:1:0:
+snake.h:70:7: note: expected 'short unsigned int *' but argument is of type 'short unsigned int (*)[]'
+  void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:45: error: lvalue required as unary '&' operand
+       OS_Signal_Send(KeyValueReceiverIndex, &1);
+                                             ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+make: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
