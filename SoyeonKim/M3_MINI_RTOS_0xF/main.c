@@ -40,8 +40,9 @@ void Task1(void *para)
     	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
 //    		Uart_Printf("여기까지는 정상 동작\n");
-    		snake_object.head_direction = received_data;
-//    		Calculate_Snake_Position(snake_object.head_direction);
+//    		snake_object.snake_head_dir = received_data;
+//    		Move_Snake_Position(snake_object.snake_head_dir);
+    		Move_Snake_Position(received_data);
     	}
 
     	/*
@@ -86,7 +87,7 @@ void Task2(void *para)
 //	int cnt = 0;
 	for(;;)
 	{
-		Calculate_Snake_Position(snake_object.head_direction);
+		Move_Snake_Position(snake_object.snake_head_dir);
 		//Uart_Printf("Task2\n");
 		OS_Block_Current_Task(500);
 		//for(i=0;i<0x100000;i++);
@@ -159,8 +160,8 @@ void Task3(void *para)
 //    	else if(wait_result == SIGNAL_NO_ERROR){
 //    		Uart_Printf("Received data is : %d\n", received_data);
 ////    		Uart_Printf("여기까지는 정상 동작\n");
-//    		snake_object.head_direction = received_data;
-////    		Calculate_Snake_Position(snake_object.head_direction);
+//    		snake_object.snake_head_dir = received_data;
+////    		Move_Snake_Position(snake_object.snake_head_dir);
 //    	}
 //
 //    	/*
@@ -192,7 +193,7 @@ void Task5(void *para)
 {
 	for(;;)
 	{
-//		Calculate_Snake_Position(snake_object.head_direction);
+//		Move_Snake_Position(snake_object.snake_head_dir);
 
 //		Make_Target();
 

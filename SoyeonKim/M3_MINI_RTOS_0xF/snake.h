@@ -14,10 +14,14 @@
 	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
 	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COLUMN) - 2)
 
-	#define JOY_KEY_UP				(1)
-	#define JOY_KEY_DOWN			(2)
-	#define JOY_KEY_LEFT			(3)
-	#define JOY_KEY_RIGHT			(4)
+	#define KEY_UP				(1)
+	#define KEY_DOWN			(2)
+	#define KEY_LEFT			(3)
+	#define KEY_RIGHT			(4)
+
+	#define EMPTY_ID			(0)
+	#define SNAKE_ID			(1)
+	#define TARGET_ID			(2)
 
 	#define BACKGROUND_COLOR		(0x0000)
 	#define BORDER_COLOR			(0xffff)
@@ -31,8 +35,11 @@
 	typedef struct _snake_object{
 		// TODO: 머리 위치도 여기서 바로 접근 가능하게 변수 만들기, 뱀의 head, tail 변수 (포인터)
 		char object_map[GAME_OBJECT_MAP_ROW][GAME_OBJECT_MAP_COLUMN];
-		int head_direction;
+		int snake_head_dir;
 		int queue_no;
+		int score;
+		POINT snake_head_pos;
+		POINT snake_tail_pos;
 	}SNAKE_OBJECT;
 
 	// queue.h로 이동
@@ -49,7 +56,8 @@
 	void Lcd_Draw_Border(void);
 	void Lcd_Draw_Snake(void);
 //	void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position);
-	void Calculate_Snake_Position(int);
+	int Check_Snake_Position(POINT);
+	void Move_Snake_Position(int);
 	void Make_Target(void);
 
 #endif // SNAKE_H
