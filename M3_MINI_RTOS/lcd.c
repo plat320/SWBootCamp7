@@ -58,7 +58,7 @@ static void _SPI1_Init(void)
 	Macro_Set_Bit(SPI1->CR1, 6);
 }
 
-static void _SPI1_Write_Byte(unsigned char data)
+void _SPI1_Write_Byte(unsigned char data)
 {
 	SPI1->DR = (data & 0xff);
 	while(Macro_Check_Bit_Clear(SPI1->SR, 1));

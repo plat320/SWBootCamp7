@@ -2,14 +2,69 @@
 **** Build of configuration Default for project M3_MINI_RTOS ****
 
 make all 
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
-main.c: In function 'Task2':
-main.c:21:6: warning: unused variable 'cnt' [-Wunused-variable]
-  int cnt = 0;
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c clock.c core_cm3.c joy_key.c lcd.c led.c main.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+main.c: In function 'Task1':
+main.c:45:7: warning: passing argument 2 of 'OS_Signal_Send' makes pointer from integer without a cast [enabled by default]
+       OS_Signal_Send(KeyValueReceiverIndex, 1);
+       ^
+In file included from main.c:2:0:
+OS.h:89:7: note: expected 'const void *' but argument is of type 'int'
+  void OS_Signal_Send(int queue_no, const void* buffer);
+       ^
+snake.c: In function 'Snake_Init':
+snake.c:33:2: warning: implicit declaration of function 'draw_init' [-Wimplicit-function-declaration]
+  draw_init();
+  ^
+snake.c: At top level:
+snake.c:38:6: warning: conflicting types for 'draw_init' [enabled by default]
+ void draw_init(){
       ^
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
-"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+snake.c:33:2: note: previous implicit declaration of 'draw_init' was here
+  draw_init();
+  ^
+snake.c: In function 'Lcd_Draw_Grass':
+snake.c:47:13: warning: passing argument 5 of 'Lcd_Draw_IMG' from incompatible pointer type [enabled by default]
+             Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  &grass_img);
+             ^
+In file included from snake.c:1:0:
+snake.h:66:7: note: expected 'short unsigned int *' but argument is of type 'short unsigned int (*)[400]'
+  void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+       ^
+snake.c: In function 'Lcd_Draw_Snake':
+snake.c:75:2: warning: passing argument 5 of 'Lcd_Draw_IMG' from incompatible pointer type [enabled by default]
+  Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  &rotated_head_img);
+  ^
+In file included from snake.c:1:0:
+snake.h:66:7: note: expected 'short unsigned int *' but argument is of type 'short unsigned int (*)[400]'
+  void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+       ^
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o clock.o core_cm3.o joy_key.o lcd.o led.o main.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+main.o:(.data+0x0): multiple definition of `apple_img'
+OS.o:(.data+0x0): first defined here
+main.o:(.data+0x320): multiple definition of `grass_img'
+OS.o:(.data+0x320): first defined here
+main.o:(.data+0x640): multiple definition of `snake_head_img'
+OS.o:(.data+0x640): first defined here
+priority_queue.o:(.data+0x0): multiple definition of `apple_img'
+OS.o:(.data+0x0): first defined here
+priority_queue.o:(.data+0x320): multiple definition of `grass_img'
+OS.o:(.data+0x320): first defined here
+priority_queue.o:(.data+0x640): multiple definition of `snake_head_img'
+OS.o:(.data+0x640): first defined here
+snake.o:(.data+0x0): multiple definition of `apple_img'
+OS.o:(.data+0x0): first defined here
+snake.o:(.data+0x320): multiple definition of `grass_img'
+OS.o:(.data+0x320): first defined here
+snake.o:(.data+0x640): multiple definition of `snake_head_img'
+OS.o:(.data+0x640): first defined here
+stm32f10x_it.o:(.data+0x0): multiple definition of `apple_img'
+OS.o:(.data+0x0): first defined here
+stm32f10x_it.o:(.data+0x320): multiple definition of `grass_img'
+OS.o:(.data+0x320): first defined here
+stm32f10x_it.o:(.data+0x640): multiple definition of `snake_head_img'
+OS.o:(.data+0x640): first defined here
+C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld: rom_0x08003000.elf section `.bss' will not fit in region `RAM'
+C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld: region `RAM' overflowed by 7232 bytes
+make: *** [rom_0x08003000.elf] Error 1
 
 **** Build Finished ****

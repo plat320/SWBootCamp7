@@ -305,7 +305,9 @@ void EXTI3_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI3_IRQn);
 
 	key_value = 1;
-	OS_Signal_Send(0, (const void*)(&key_value));
+//	Uart_Printf("EXTI3_IRQHandler\n");
+//	OS_Signal_Send(0, (const void*)(&key_value));
+	OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 }
 
 /*******************************************************************************
@@ -484,7 +486,8 @@ void EXTI9_5_IRQHandler(void)
 	NVIC_ClearPendingIRQ(23);
 
 	key_value = EXTI9_5_LUT[kv];
-	OS_Signal_Send(0, (const void*)(&key_value));
+//	OS_Signal_Send(0, (const void*)(&key_value));
+	OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 }
 
 /*******************************************************************************
@@ -679,7 +682,6 @@ void USART1_IRQHandler(void)
 
         // 큐에 문자열 저장
         int queue_no = 1;
-
         OS_Signal_Send(queue_no, (const void*)(uart_rx_buffer));
     }
 
@@ -725,7 +727,8 @@ void EXTI15_10_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI15_10_IRQn);
 
 	key_value = EXTI15_10_LUT[kv];
-	OS_Signal_Send(0, (const void*)(&key_value));
+//	OS_Signal_Send(0, (const void*)(&key_value));
+	OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 }
 
 /*******************************************************************************
