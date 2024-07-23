@@ -6,6 +6,8 @@ int dummyParams[10];
 void Task1(void *para)
 {
 //	volatile int i;
+	int cnt = 0;
+	int for_signaling = -1;
 //	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 //	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
@@ -14,7 +16,7 @@ void Task1(void *para)
 	for(;;)
 	{
 		int received_data = -1;
-    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
+    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 500);
 
 //    	Uart_Printf("KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
 //    	Uart_Printf("queues[0].size: %d\n", queues[0].size);
@@ -62,6 +64,8 @@ void Task1(void *para)
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	*/
+		Move_Snake_Position(snake_object.snake_head_dir);
+		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
     	OS_Block_Current_Task(500);			//
 //		for(i=0;i<0x100000;i++);
 	}
@@ -79,22 +83,22 @@ void Task1(void *para)
 //	}
 //}
 
-void Task2(void *para)
-{
-	//volatile int i;
-//	int cnt = 0;
-	int for_signaling = -1;
-	for(;;)
-	{
-		Uart_Printf("Task2\n");
-		Move_Snake_Position(snake_object.snake_head_dir);
-		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
-		//Uart_Printf("Task2\n");
-		OS_Block_Current_Task(500);
-		//for(i=0;i<0x100000;i++);
-		//Uart_Printf("Task2 after loop\n");
-	}
-}
+//void Task2(void *para)
+//{
+//	//volatile int i;
+////	int cnt = 0;
+//	int for_signaling = -1;
+//	for(;;)
+//	{
+//		Uart_Printf("Task2\n");
+//		Move_Snake_Position(snake_object.snake_head_dir);
+//		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
+//		//Uart_Printf("Task2\n");
+//		OS_Block_Current_Task(500);
+//		//for(i=0;i<0x100000;i++);
+//		//Uart_Printf("Task2 after loop\n");
+//	}
+//}
 
 //void Task3(void *para)
 //{
@@ -261,7 +265,7 @@ void Main(void)
 	Uart_Printf("Snake Init end\n");
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
+//	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
 	OS_Create_Task_Simple(Task5, (void*)0, 5, 1024);
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)

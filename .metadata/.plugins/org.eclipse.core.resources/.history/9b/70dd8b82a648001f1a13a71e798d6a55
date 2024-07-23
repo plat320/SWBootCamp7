@@ -6,6 +6,7 @@ int dummyParams[10];
 void Task1(void *para)
 {
 //	volatile int i;
+	int cnt = 0;
 //	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 //	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
@@ -13,6 +14,7 @@ void Task1(void *para)
 //	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
 	for(;;)
 	{
+		Uart_Printf("Task3 : %d\n", cnt++);
 		int received_data = -1;
     	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
 

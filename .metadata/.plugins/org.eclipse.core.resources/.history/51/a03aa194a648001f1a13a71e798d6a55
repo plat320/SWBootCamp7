@@ -6,6 +6,7 @@ int dummyParams[10];
 void Task1(void *para)
 {
 //	volatile int i;
+	int cnt = 0;
 //	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 //	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);

@@ -6,6 +6,8 @@ int dummyParams[10];
 void Task1(void *para)
 {
 //	volatile int i;
+	int cnt = 0;
+	int for_signaling = -1;
 //	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 //	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
@@ -62,6 +64,8 @@ void Task1(void *para)
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	*/
+		Move_Snake_Position(snake_object.snake_head_dir);
+		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
     	OS_Block_Current_Task(500);			//
 //		for(i=0;i<0x100000;i++);
 	}
