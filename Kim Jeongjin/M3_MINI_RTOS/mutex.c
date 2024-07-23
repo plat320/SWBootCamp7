@@ -66,63 +66,73 @@ int Create_Mutex(int task_related) {
 }
 
 int Take_Mutex(int mutex_id, int task_related) {
+    __set_BASEPRI(0x30);
     if (mutex_id < 0 || mutex_id >= MAX_MUTEX) {
+        __set_BASEPRI(0x00);
         return FAIL_TO_TAKE_MUTEX; // 유효하지 않은 mutex_id
+    }
+    if (mutex_list[mutex_id]->locked == 0) {
+    	mutex_list[mutex_id]->locked = 1;
+    	mutex_list[mutex_id]->no_task = current_tcb->no_task;
+    	__set_BASEPRI(0x00);
+    	return SUCCESS_ALLOCATE_MUTEX;
     }
 
     if (scheduler_flag == SCHEDULER_START && task_related == TASK_RELATED) {
-        if (mutex_list[mutex_id]->locked == 0) {
-            mutex_list[mutex_id]->locked = 1;
-            mutex_list[mutex_id]->no_task = current_tcb->no_task;
-            current_tcb->waiting_for_mutex = NO_WAITING_MUTEX;
-            return SUCCESS_ALLOCATE_MUTEX;
-        } else {
-        	//Uart_Printf("scheduler_flag of current task %d is %d\n", current_tcb->no_task, scheduler_flag);
-        	if(scheduler_flag == SCHEDULER_START) {
-        		if (mutex_list[mutex_id]->no_task != NO_ALLOCATED_TASK && mutex_list[mutex_id]->no_task != current_tcb->no_task) {
-        			return FAIL_TO_TAKE_MUTEX;
-        		}
-        		if (tcb[mutex_list[mutex_id]->no_task].prio < current_tcb->prio) {
-        			tcb[mutex_list[mutex_id]->no_task].prio = current_tcb->prio;
-        			pq_update(&ready_queue, &tcb[mutex_list[mutex_id]->no_task], pq_compare_ready);
-        		}
-        		if (current_tcb->waiting_for_mutex == mutex_id) {
-        			return FAIL_TO_TAKE_MUTEX; // 이미 대기 중인 경우
-        		}
-                current_tcb->state = STATE_BLOCKED;
-                current_tcb->waiting_for_mutex = mutex_id;
-                int task_no = current_tcb->no_task;
-                enqueue(&mutex_list[mutex_id]->waiting_queue, &task_no);
-                OS_Pend_Trigger();
-        	}
-            return FAIL_TO_TAKE_MUTEX;
-        }
+    	int cur_task_no = current_tcb->no_task;
+    	if(mutex_list[mutex_id]->no_task == cur_task_no) {
+    		__set_BASEPRI(0x00);
+    		return SUCCESS_ALLOCATE_MUTEX;
+    	}
+    	else {
+    		//if (tcb[mutex_list[mutex_id]->no_task].prio < tcb[cur_task_no].prio) {
+    		//    	tcb[mutex_list[mutex_id]->no_task].prio = tcb[cur_task_no].prio;
+    		//    	pq_update(&ready_queue, &tcb[mutex_list[mutex_id]->no_task], pq_compare_ready);
+    		//}
+    		tcb[cur_task_no].state = STATE_BLOCKED;
+    		tcb[cur_task_no].waiting_for_mutex = mutex_id;
+    		int task_no = cur_task_no;
+    		enqueue(&mutex_list[mutex_id]->waiting_queue, &task_no);
+    		__set_BASEPRI(0x00);
+    		OS_Pend_Trigger();
+    		return SUCCESS_ALLOCATE_MUTEX;
+    	}
     } else {
-        if (mutex_list[mutex_id]->locked == 0) {
-            mutex_list[mutex_id]->locked = 1;
-            return SUCCESS_ALLOCATE_MUTEX;
-        } else {
-            return FAIL_TO_TAKE_MUTEX;
+    	__set_BASEPRI(0x00);
+        while (mutex_list[mutex_id]->locked == 1) {
+            // Non-task related 획득 시 바쁜 대기
         }
+        __set_BASEPRI(0x30);
+        mutex_list[mutex_id]->locked = 1;
+        __set_BASEPRI(0x00);
+        return SUCCESS_ALLOCATE_MUTEX;
     }
 }
 
 void Give_Mutex(int mutex_id, int task_related) {
+	__set_BASEPRI(0x30);
     if (mutex_id < 0 || mutex_id >= MAX_MUTEX) {
+    	__set_BASEPRI(0x00);
         return; // 유효하지 않은 mutex_id
     }
 
-    if (task_related && scheduler_flag) {
+    if (task_related && scheduler_flag == SCHEDULER_START) {
         if (mutex_list[mutex_id]->no_task != current_tcb->no_task) {
+        	__set_BASEPRI(0x00);
             return; // Mutex의 소유자가 아닌 경우
         }
+
         if (!isEmpty(&mutex_list[mutex_id]->waiting_queue)) {
             int next_tcb_no;
             dequeue(&mutex_list[mutex_id]->waiting_queue, &next_tcb_no, NO_ALLOCATED_TASK);
             tcb[next_tcb_no].state = STATE_READY;
             tcb[next_tcb_no].waiting_for_mutex = NO_WAITING_MUTEX;
             pq_push(&ready_queue, &tcb[next_tcb_no], pq_compare_ready);
+            mutex_list[mutex_id]->locked = 1;
             mutex_list[mutex_id]->no_task = next_tcb_no;
+            __set_BASEPRI(0x00);
+            OS_Pend_Trigger();
+            __set_BASEPRI(0x30);
         } else {
             mutex_list[mutex_id]->locked = 0;
             mutex_list[mutex_id]->no_task = NO_ALLOCATED_TASK;
@@ -133,6 +143,7 @@ void Give_Mutex(int mutex_id, int task_related) {
     } else {
         mutex_list[mutex_id]->locked = 0;
     }
+    __set_BASEPRI(0x00);
 }
 
 void Set_Mutex_Scheduler_Flag() {

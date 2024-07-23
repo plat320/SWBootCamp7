@@ -46,16 +46,31 @@ void Task3(void *para)
 	}
 }
 
+void Task4(void *para)
+{
+//	volatile int i;
+	//int cnt = 0;
+	//int KeyValueReceiverIndex = OS_Creates_Queue(sizeof(int), 10);
+	//char usart_received_data[32];
+	//int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
+	for(;;)
+	{
+		//Uart_Printf("Task3: To be yourself in a world that is constantly changing you.\n");
+		Uart_Printf_From_Task("Task4: ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ.\n");
+		OS_Block_Current_Task(1);
+//		for(i=0;i<0x100000;i++);
+	}
+}
+
 void TaskDummy(void *para)
 {
 	//volatile int i;
-	OS_Block_Current_Task(3000);
 	for(;;)
 	{
 		//((void(*)(void))0xE1234567)();
 		Uart_Printf_From_Task("TaskDummy\n");
 		//for(i=0;i<0x100000;i++);
-		OS_Block_Current_Task(1000);
+		OS_Block_Current_Task(1);
 	}
 }
 
@@ -73,10 +88,11 @@ void Main(void)
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
 	OS_Create_Task_Simple(Task2, (void*)0, 6, 1024); // Task 생성
 	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
+	//OS_Create_Task_Simple(Task4, (void*)0, 4, 1024);
 	volatile int i;
 	for(i = 4; i <= 60; i++)
 	{
-		//OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 1024);
+		//OS_Create_Task_Simple(TaskDummy, (void*)0, 10, 1024);
 	}
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)
