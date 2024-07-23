@@ -255,7 +255,6 @@ void Main(void)
 	OS_Init();	// OS 자료구조 초기화
 
 	// 임시
-	Uart_Printf("Snake Init start\n");
 	Snake_Init();
 
 //	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);

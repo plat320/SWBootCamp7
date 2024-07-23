@@ -102,13 +102,14 @@ void Snake_Init(void)
 	}
 	snake_object.snake_head_dir = KEY_RIGHT;
 
+	Uart_Printf("1\n");
 	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), 10);
 //	Uart_Printf("*** snake_object.queue_no: %d\n", snake_object.queue_no);
 	POINT p1 = {4,5};
 	POINT p2 = {5,5};
 	POINT p3 = {6,5};
 	POINT p4 = {-1,-1};
-	Uart_Printf("1\n");
+	Uart_Printf("2\n");
 	snake_object.snake_head_pos = *((POINT*)queues[snake_object.queue_no].rear->data);
 	snake_object.snake_tail_pos = p4;
 
@@ -116,11 +117,9 @@ void Snake_Init(void)
 	snake_object.object_map[p2.x][p2.y] = SNAKE_ID;
 	snake_object.object_map[p3.x][p3.y] = SNAKE_ID;
 
-	Uart_Printf("2\n");
 	enqueue(&queues[snake_object.queue_no], &p1);
 	enqueue(&queues[snake_object.queue_no], &p2);
 	enqueue(&queues[snake_object.queue_no], &p3);
-	Uart_Printf("3\n");
 	draw_init();
 	Lcd_Draw_Snake();
 	Make_Target();
