@@ -43,7 +43,7 @@ void Task1(void *para)
 //    		Uart_Printf("여기까지는 정상 동작\n");
 //    		snake_object.head_direction = received_data;
     		Move_Snake_Position(received_data);
-    		OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&for_signaling));
+    		OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 //    		Calculate_Snake_Position(snake_object.head_direction);
     	}
 

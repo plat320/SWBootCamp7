@@ -78,18 +78,18 @@ void Lcd_Draw_Snake(void){
 	switch(head_dir){
 	case KEY_UP:
 		prev_head_pos_x = p->x;
-		prev_head_pos_y = p->y +1;
+		prev_head_pos_y = p->y -1;
 		break;
 	case KEY_DOWN:
 		prev_head_pos_x = p->x;
-		prev_head_pos_y = p->y -1;
+		prev_head_pos_y = p->y +1;
 		break;
 	case KEY_RIGHT:
-		prev_head_pos_x = p->x-1;
+		prev_head_pos_x = p->x+1;
 		prev_head_pos_y = p->y;
 		break;
 	case KEY_LEFT:
-		prev_head_pos_x = p->x+1;
+		prev_head_pos_x = p->x-1;
 		prev_head_pos_y = p->y;
 		break;
 	default:
