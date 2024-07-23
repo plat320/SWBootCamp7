@@ -5,13 +5,33 @@
 void Snake_Init(void)
 {
 	int i, j;
-	for (i = 0; i < GAME_OBJECT_MAP_ROW; i++)
+	for (i = 1; i < GAME_WINDOW_ROW - 1; i++)
 	{
-		for (j = 0; j < GAME_OBJECT_MAP_COLUMN; j++)
+		for (j = 1; j < GAME_WINDOW_COLUMN - 1; j++)
 		{
 			snake_object.object_map[i][j] = EMPTY_ID;
 		}
 	}
+
+	for (i = 0; i < GAME_WINDOW_ROW; i++)
+	{
+		snake_object.object_map[i][0] = BORDER_ID;
+		snake_object.object_map[0][i] = BORDER_ID;
+		snake_object.object_map[i][GAME_WINDOW_ROW-1] = BORDER_ID;
+		snake_object.object_map[GAME_WINDOW_ROW-1][i] = BORDER_ID;
+	}
+
+//	Uart_Printf("===================\n");
+//	for (i = 0; i < GAME_WINDOW_ROW; i++)
+//	{
+//		for (j = 0; j < GAME_WINDOW_COLUMN; j++)
+//		{
+//			Uart_Printf("%d", snake_object.object_map[i][j]);
+//		}
+//		Uart_Printf("\n");
+//	}
+//	Uart_Printf("===================\n");
+
 	snake_object.snake_head_dir = KEY_RIGHT;
 
 	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), 10);
@@ -102,6 +122,7 @@ void Lcd_Draw_Snake(void){
 	if (tail_pos_x != -1 && tail_pos_y != -1) {
 		Lcd_Draw_IMG(tail_pos_x*OBJECT_BLOCK_SIZE, tail_pos_y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  grass_img);
 	}
+
 }
 
 void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction) {
@@ -152,6 +173,8 @@ void rotate_image_array(unsigned short* image_array, unsigned short *temp, int d
 //    }
 }
 
+
+
 void Add_Snake_Position(POINT* p)
 {
 	enqueue(&queues[snake_object.queue_no], p);
@@ -170,8 +193,6 @@ void Remove_Snake_Position(void)
 	snake_object.object_map[p.x][p.y] = EMPTY_ID;
 //	Lcd_Draw_Box(p.x * OBJECT_BLOCK_SIZE, p.y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BACKGROUND_COLOR);
 }
-
-// TODO: 파라미터 안받는 함수로 변경해도 될 것 같음 추후 문제 없을 시 변경하기
 void Move_Snake_Position(int received_head_dir)
 {
 //	Uart_Printf("Move_Snake_Position Start\n");
@@ -179,8 +200,8 @@ void Move_Snake_Position(int received_head_dir)
 	POINT new_head_position = {head_position -> x, head_position -> y};
 //	POINT tail_position;
 
+	// Task 1으로 이동
 	// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
-	// 해당 로직 Task1으로 이동
 //	if (received_head_dir * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
 //			&& received_head_dir * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT)
 //	{
@@ -257,6 +278,8 @@ int Check_Snake_Position(POINT p)
 	}
 }
 
+
+
 //void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position)
 //{
 ////	Uart_Printf("Lcd_Draw_New_Position Start\n");
@@ -305,8 +328,8 @@ void Make_Target(void)
 {
 //	srand(time(NULL));  // 난수 초기화
 	int rand_row, rand_column;
-	rand_row = rand() % GAME_OBJECT_MAP_ROW;
-	rand_column = rand() % GAME_OBJECT_MAP_COLUMN;
+	rand_row = rand() % GAME_WINDOW_ROW;
+	rand_column = rand() % GAME_WINDOW_COLUMN;
 	Uart_Printf("rand_row: %d\n", rand_row);
 	Uart_Printf("rand_column: %d\n", rand_column);
 	Lcd_Draw_Box(rand_column * OBJECT_BLOCK_SIZE, rand_row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, TARGET_COLOR);

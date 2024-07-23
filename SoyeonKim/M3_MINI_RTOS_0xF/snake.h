@@ -12,8 +12,8 @@
 	#define GAME_WINDOW_WIDTH		(240)
 	#define GAME_WINDOW_ROW			((GAME_WINDOW_HIGHT) / (OBJECT_BLOCK_SIZE))
 	#define GAME_WINDOW_COLUMN		((GAME_WINDOW_WIDTH) / (OBJECT_BLOCK_SIZE))
-	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
-	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COLUMN) - 2)
+//	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
+//	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COLUMN) - 2)
 
 	#define KEY_UP					(1)
 	#define KEY_DOWN				(2)
@@ -23,6 +23,7 @@
 	#define EMPTY_ID				(0)
 	#define SNAKE_ID				(1)
 	#define TARGET_ID				(2)
+	#define BORDER_ID				(3)
 
 	#define BACKGROUND_COLOR		(0x0000)
 	#define BORDER_COLOR			(0xffff)
@@ -35,7 +36,7 @@
 
 	typedef struct _snake_object{
 		// TODO: 머리 위치도 여기서 바로 접근 가능하게 변수 만들기, 뱀의 head, tail 변수 (포인터)
-		char object_map[GAME_OBJECT_MAP_ROW][GAME_OBJECT_MAP_COLUMN];
+		char object_map[GAME_WINDOW_ROW][GAME_WINDOW_COLUMN];
 		int snake_head_dir;
 		int queue_no;
 		int score;
@@ -69,7 +70,5 @@
 	void Lcd_Draw_Grass(void);
 	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
 	void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction);
-
-
 
 #endif // SNAKE_H

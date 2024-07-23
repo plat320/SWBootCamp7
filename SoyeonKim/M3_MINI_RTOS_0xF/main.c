@@ -14,7 +14,7 @@ void Task1(void *para)
 	for(;;)
 	{
 		int received_data = -1;
-    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
+    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 0);
 
 //    	Uart_Printf("KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
 //    	Uart_Printf("queues[0].size: %d\n", queues[0].size);
@@ -37,18 +37,11 @@ void Task1(void *para)
     	}
     	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart_Printf("Received data is : %d\n", received_data);
-//    		Uart_Printf("여기까지는 정상 동작\n");
-//    		snake_object.head_direction = received_data;
-
     		// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
-			if (received_data * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
-					&& received_data * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT)
-			{
+    		if (received_data * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
+					&& received_data * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT && received_data <= 4){
 				snake_object.snake_head_dir = received_data;
 			}
-
-//    		Move_Snake_Position(received_data);
-//    		Calculate_Snake_Position(snake_object.head_direction);
     	}
 
     	/*
@@ -70,7 +63,7 @@ void Task1(void *para)
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	*/
-    	OS_Block_Current_Task(500);			//
+//    	OS_Block_Current_Task(500);			//
 //		for(i=0;i<0x100000;i++);
 	}
 }
@@ -87,22 +80,22 @@ void Task1(void *para)
 //	}
 //}
 
-void Task2(void *para)
-{
-	//volatile int i;
-//	int cnt = 0;
-	int for_signaling = -1;
-	for(;;)
-	{
-		Uart_Printf("Task2\n");
-		Move_Snake_Position(snake_object.snake_head_dir);
-		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
-		//Uart_Printf("Task2\n");
-		OS_Block_Current_Task(500);
-		//for(i=0;i<0x100000;i++);
-		//Uart_Printf("Task2 after loop\n");
-	}
-}
+//void Task2(void *para)
+//{
+//	//volatile int i;
+////	int cnt = 0;
+//	int for_signaling = -1;
+//	for(;;)
+//	{
+//		Uart_Printf("Task2\n");
+//		Move_Snake_Position(snake_object.snake_head_dir);
+//		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
+//		//Uart_Printf("Task2\n");
+//		OS_Block_Current_Task(500);
+//		//for(i=0;i<0x100000;i++);
+//		//Uart_Printf("Task2 after loop\n");
+//	}
+//}
 
 //void Task3(void *para)
 //{
@@ -204,10 +197,8 @@ void Task5(void *para)
 	for(;;)
 	{
 		int received_data = -1;
-		Uart_Printf("Task5\n");
-		int wait_result = OS_Signal_Wait(UpdateLcdIndex, &received_data, sizeof(int), 5000);
+		int wait_result = OS_Signal_Wait(UpdateLcdIndex, &received_data, sizeof(int), 0);
 
-		Uart_Printf("Task5 Wait_result : %d\n", wait_result);
 		if(wait_result == SIGNAL_TIMEOUT) {
 			Uart_Printf("Signal Timeout\n");
 		}
@@ -221,13 +212,13 @@ void Task5(void *para)
 			Uart_Printf("Data Type is wrong\n");
 		}
 		else if(wait_result == SIGNAL_NO_ERROR){
-			Uart_Printf("Received data is : %d\n", received_data);
+//			Uart_Printf("Received data is : %d\n", received_data);
 //    		Uart_Printf("여기까지는 정상 동작\n");
 			Lcd_Draw_Snake();
 //    		Calculate_Snake_Position(snake_object.head_direction);
 		}
 
-		OS_Block_Current_Task(500);
+//		OS_Block_Current_Task(500);
 	}
 }
 
@@ -269,7 +260,7 @@ void Main(void)
 	Uart_Printf("Snake Init end\n");
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
+//	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
 	OS_Create_Task_Simple(Task5, (void*)0, 5, 1024);
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)
