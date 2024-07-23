@@ -7,7 +7,7 @@ void Snake_Init(void)
 	int i, j;
 	for (i = 1; i < GAME_WINDOW_ROW - 1; i++)
 	{
-		for (j = 1; j < GAME_WINDOW_COLUMN - 1; j++)
+		for (j = 1; j < GAME_WINDOW_COL - 1; j++)
 		{
 			snake_object.object_map[i][j] = EMPTY_ID;
 		}
@@ -24,7 +24,7 @@ void Snake_Init(void)
 //	Uart_Printf("===================\n");
 //	for (i = 0; i < GAME_WINDOW_ROW; i++)
 //	{
-//		for (j = 0; j < GAME_WINDOW_COLUMN; j++)
+//		for (j = 0; j < GAME_WINDOW_COL; j++)
 //		{
 //			Uart_Printf("%d", snake_object.object_map[i][j]);
 //		}
@@ -44,12 +44,12 @@ void Snake_Init(void)
 	snake_object.snake_head_pos = *((POINT*)queues[snake_object.queue_no].rear->data);
 	snake_object.snake_tail_pos = p3;
 
-	snake_object.object_map[p1.x][p1.y] = SNAKE_ID;
-	snake_object.object_map[p2.x][p2.y] = SNAKE_ID;
+	snake_object.object_map[p1.y][p1.x] = SNAKE_ID;
+	snake_object.object_map[p2.y][p2.x] = SNAKE_ID;
 
+	Make_Target();
 	draw_init();
 	Lcd_Draw_Snake();
-	Make_Target();
 }
 
 void draw_init(){
@@ -118,11 +118,15 @@ void Lcd_Draw_Snake(void){
 
 	Lcd_Draw_Box(prev_head_pos_x*OBJECT_BLOCK_SIZE, prev_head_pos_y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  SNAKE_COLOR);
 
-	// draw tail
+	// draw grass
 	if (tail_pos_x != -1 && tail_pos_y != -1) {
 		Lcd_Draw_IMG(tail_pos_x*OBJECT_BLOCK_SIZE, tail_pos_y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  grass_img);
 	}
-
+	// 사과 먹은 상황일 때 draw apple
+	else
+	{
+		Lcd_Draw_IMG(snake_object.snake_target_pos.x*OBJECT_BLOCK_SIZE, snake_object.snake_target_pos.y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE, apple_img);
+	}
 }
 
 void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction) {
@@ -178,7 +182,7 @@ void rotate_image_array(unsigned short* image_array, unsigned short *temp, int d
 void Add_Snake_Position(POINT* p)
 {
 	enqueue(&queues[snake_object.queue_no], p);
-	snake_object.object_map[p->x][p->y] = SNAKE_ID;
+	snake_object.object_map[p->y][p->x] = SNAKE_ID;
 //	Lcd_Draw_Box(p->x * OBJECT_BLOCK_SIZE, p->y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, SNAKE_COLOR);
 }
 
@@ -190,9 +194,10 @@ void Remove_Snake_Position(void)
 	{
 		Uart_Printf("Dequeue fail!\n");
 	}
-	snake_object.object_map[p.x][p.y] = EMPTY_ID;
+	snake_object.object_map[p.y][p.x] = EMPTY_ID;
 //	Lcd_Draw_Box(p.x * OBJECT_BLOCK_SIZE, p.y * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, BACKGROUND_COLOR);
 }
+
 void Move_Snake_Position(int received_head_dir)
 {
 //	Uart_Printf("Move_Snake_Position Start\n");
@@ -261,14 +266,51 @@ void Move_Snake_Position(int received_head_dir)
 //	Uart_Printf("Move_Snake_Position End\n");
 }
 
+// 이동 예정인 위치 확인
 int Check_Snake_Position(POINT p)
 {
-	switch (snake_object.object_map[p.x][p.y])
+	// TODO: Game Over
+	// object map 범위 초과
+	if (p.x < 0 || p.x >= GAME_WINDOW_ROW || p.y < 0 || p.y >= GAME_WINDOW_COL)
+	{
+		Uart_Printf("Game Over!!\n");
+		// Timer stop
+		TIM4_Repeat_Interrupt_Enable(0, 600);
+		return -1;
+	}
+
+//	int i, j;
+//	Uart_Printf("===================\n");
+//	for (i = 0; i < GAME_WINDOW_ROW; i++)
+//	{
+//		for (j = 0; j < GAME_WINDOW_COL; j++)
+//		{
+//			Uart_Printf("%d", snake_object.object_map[i][j]);
+//		}
+//		Uart_Printf("\n");
+//	}
+//	Uart_Printf("===================\n");
+
+//	Uart_Printf("Check_Snake_Position\n");
+//	Uart_Printf("snake_object.object_map[p.y][p.x]: %d\n", snake_object.object_map[p.y][p.x]);
+//	Uart_Printf("p.y: %d, p.x: %d\n", p.y, p.x);
+
+	switch (snake_object.object_map[p.y][p.x])
 	{
 		case SNAKE_ID:
 			// TODO: Game over
+			Uart_Printf("Game Over!!\n");
+			// Timer stop
+			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return SNAKE_ID;
+		case BORDER_ID:
+			// TODO: Game over
+			Uart_Printf("Game Over!!\n");
+			// Timer stop
+			TIM4_Repeat_Interrupt_Enable(0, 600);
+			return BORDER_ID;
 		case TARGET_ID:
+//			Uart_Printf("**************** 여기 들어왔나\n");
 			snake_object.score += 1;
 			Uart_Printf("score: %d\n", snake_object.score);
 			Make_Target();
@@ -278,8 +320,6 @@ int Check_Snake_Position(POINT p)
 	}
 }
 
-
-
 //void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position)
 //{
 ////	Uart_Printf("Lcd_Draw_New_Position Start\n");
@@ -288,51 +328,103 @@ int Check_Snake_Position(POINT p)
 ////	Uart_Printf("Lcd_Draw_New_Position End\n");
 //}
 
-void Calculate_Snake_Position(int head_direction)
-{
-	// TODO: 가고 있는 방향 반대 방향으로 전환하면 무시
-//	Uart_Printf("Calculate_Snake_Position Start\n");
-	POINT* head_position = (POINT*)queues[snake_object.queue_no].rear->data;
-	POINT new_head_position = {head_position -> x, head_position -> y};
-//	POINT tail_position;
-	if (head_direction == KEY_UP)
-	{
-		new_head_position.y -= 1;
-	}
-	else if (head_direction == KEY_DOWN)
-	{
-		new_head_position.y += 1;
-	}
-	else if (head_direction == KEY_LEFT)
-	{
-		new_head_position.x -= 1;
-	}
-	else if (head_direction == KEY_RIGHT)
-	{
-		new_head_position.x += 1;
-	}
-//	Uart_Printf("before enqueue\n");
-//	enqueue(&queues[snake_object.queue_no], &new_head_position);
-//	Uart_Printf("after enqueue\n");
-//	int ret = dequeue(&queues[snake_object.queue_no], &tail_position, HAVE_PERMISSION);
-//	Uart_Printf("ret: %d\n", ret);
-//	Uart_Printf("after dequeue\n");
-
-	Add_Snake_Position(&new_head_position);
-	Remove_Snake_Position();
-//	Lcd_Draw_New_Position(&new_head_position, &tail_position);
-//	Uart_Printf("Calculate_Snake_Position End\n");
-}
+//void Calculate_Snake_Position(int head_direction)
+//{
+//	// TODO: 가고 있는 방향 반대 방향으로 전환하면 무시
+////	Uart_Printf("Calculate_Snake_Position Start\n");
+//	POINT* head_position = (POINT*)queues[snake_object.queue_no].rear->data;
+//	POINT new_head_position = {head_position -> x, head_position -> y};
+////	POINT tail_position;
+//	if (head_direction == KEY_UP)
+//	{
+//		new_head_position.y -= 1;
+//	}
+//	else if (head_direction == KEY_DOWN)
+//	{
+//		new_head_position.y += 1;
+//	}
+//	else if (head_direction == KEY_LEFT)
+//	{
+//		new_head_position.x -= 1;
+//	}
+//	else if (head_direction == KEY_RIGHT)
+//	{
+//		new_head_position.x += 1;
+//	}
+////	Uart_Printf("before enqueue\n");
+////	enqueue(&queues[snake_object.queue_no], &new_head_position);
+////	Uart_Printf("after enqueue\n");
+////	int ret = dequeue(&queues[snake_object.queue_no], &tail_position, HAVE_PERMISSION);
+////	Uart_Printf("ret: %d\n", ret);
+////	Uart_Printf("after dequeue\n");
+//
+//	Add_Snake_Position(&new_head_position);
+//	Remove_Snake_Position();
+////	Lcd_Draw_New_Position(&new_head_position, &tail_position);
+////	Uart_Printf("Calculate_Snake_Position End\n");
+//}
 
 void Make_Target(void)
 {
 //	srand(time(NULL));  // 난수 초기화
-	int rand_row, rand_column;
-	rand_row = rand() % GAME_WINDOW_ROW;
-	rand_column = rand() % GAME_WINDOW_COLUMN;
-	Uart_Printf("rand_row: %d\n", rand_row);
-	Uart_Printf("rand_column: %d\n", rand_column);
-	Lcd_Draw_Box(rand_column * OBJECT_BLOCK_SIZE, rand_row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, TARGET_COLOR);
+	int i, j;
+	int validCount = 0;
+
+//	typedef struct {
+//		int row;
+//		int column;
+//	} Position;
+
+//	Position valid_map[GAME_WINDOW_ROW * GAME_WINDOW_COL];
+	POINT valid_map[GAME_WINDOW_ROW * GAME_WINDOW_COL];
+
+	for (i=1; i<GAME_WINDOW_ROW - 1; i++){
+		for (j=1; j<GAME_WINDOW_COL - 1; j++){
+			if (snake_object.object_map[i][j] == EMPTY_ID) {
+//				valid_map[validCount].row = i;
+//				valid_map[validCount].column = j;
+				valid_map[validCount].y = i;
+				valid_map[validCount].x = j;
+				++validCount;
+			}
+		}
+	}
+	// 유효한 위치가 하나도 없는 경우
+	if (validCount == 0) {
+		return ;				// 게임 클리어
+	}
+	// 랜덤으로 인덱스 선택
+	int randomIndex = rand() % validCount;
+
+	snake_object.object_map[valid_map[randomIndex].y][valid_map[randomIndex].x] = TARGET_ID;
+	snake_object.snake_target_pos.y = valid_map[randomIndex].y;
+	snake_object.snake_target_pos.x = valid_map[randomIndex].x;
+
+	Uart_Printf("rand_row: %d\n", valid_map[randomIndex].y);
+	Uart_Printf("rand_column: %d\n", valid_map[randomIndex].x);
+//	Lcd_Draw_IMG(valid_map[randomIndex].column * OBJECT_BLOCK_SIZE, valid_map[randomIndex].row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, apple_img);
+
+//	srand(time(NULL));  // 난수 초기화
+//	int rand_row, rand_column;
+//	for (;;)
+//	{
+//		rand_row = rand() % GAME_WINDOW_ROW;
+//		rand_column = rand() % GAME_WINDOW_COL;
+//		if (snake_object.object_map[rand_row][rand_column] == EMPTY_ID)
+//		{
+//			break;
+//		}
+//	}
+//	Uart_Printf("rand_row: %d\n", rand_row);
+//	Uart_Printf("rand_column: %d\n", rand_column);
+//	snake_object.object_map[rand_row][rand_column] = TARGET_ID;
+//
+//	POINT p = {rand_column, rand_row};
+//	snake_object.snake_target_pos = p;
+
+//	Uart_Printf("snake_object.object_map[rand_row][rand_column]: %d\n", snake_object.object_map[rand_row][rand_column]);
+
+//	Lcd_Draw_Box(rand_column * OBJECT_BLOCK_SIZE, rand_row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, TARGET_COLOR);
 }
 
 void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img)

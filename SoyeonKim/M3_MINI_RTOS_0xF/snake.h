@@ -11,9 +11,9 @@
 	#define GAME_WINDOW_HIGHT		(240)
 	#define GAME_WINDOW_WIDTH		(240)
 	#define GAME_WINDOW_ROW			((GAME_WINDOW_HIGHT) / (OBJECT_BLOCK_SIZE))
-	#define GAME_WINDOW_COLUMN		((GAME_WINDOW_WIDTH) / (OBJECT_BLOCK_SIZE))
+	#define GAME_WINDOW_COL			((GAME_WINDOW_WIDTH) / (OBJECT_BLOCK_SIZE))
 //	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
-//	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COLUMN) - 2)
+//	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COL) - 2)
 
 	#define KEY_UP					(1)
 	#define KEY_DOWN				(2)
@@ -36,12 +36,13 @@
 
 	typedef struct _snake_object{
 		// TODO: 머리 위치도 여기서 바로 접근 가능하게 변수 만들기, 뱀의 head, tail 변수 (포인터)
-		char object_map[GAME_WINDOW_ROW][GAME_WINDOW_COLUMN];
+		char object_map[GAME_WINDOW_ROW][GAME_WINDOW_COL];
 		int snake_head_dir;
 		int queue_no;
 		int score;
 		POINT snake_head_pos;
 		POINT snake_tail_pos;
+		POINT snake_target_pos;
 	}SNAKE_OBJECT;
 
 	// queue.h로 이동

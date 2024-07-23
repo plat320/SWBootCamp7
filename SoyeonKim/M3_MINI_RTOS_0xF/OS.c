@@ -163,7 +163,8 @@ void OS_Scheduler_Start(void)
 	current_tcb->state = STATE_RUNNING;
 
 	SysTick_OS_Tick(interrupt_period);
-	TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 확성화
+	// TODO: 사망하면 이거 첫번째 인자 0으로 바꾸기
+	TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
 
 	__set_BASEPRI(0x00);
 	_OS_Start_First_Task();
