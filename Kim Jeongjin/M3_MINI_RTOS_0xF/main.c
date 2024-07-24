@@ -38,8 +38,9 @@ void Task1(void *para)
     	else if(wait_result == SIGNAL_NO_ERROR){
     		Uart1_Printf_From_Task("Received data is : %d\n", received_data);
     		// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
-    		if (received_data * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
-					&& received_data * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT && received_data <= 4){
+    		if (received_data * snake_object.snake_head_dir_pre != KEY_UP * KEY_DOWN
+					&& received_data * snake_object.snake_head_dir_pre != KEY_LEFT * KEY_RIGHT
+					&& received_data >=1 && received_data <= 4){
 				snake_object.snake_head_dir = received_data;
 			}
     	}
@@ -214,6 +215,7 @@ void Task5(void *para)
 		else if(wait_result == SIGNAL_NO_ERROR){
 //			Uart1_Printf_From_Task("Received data is : %d\n", received_data);
 //    		Uart1_Printf_From_Task("여기까지는 정상 동작\n");
+			Move_Snake_Position(snake_object.snake_head_dir);
 			Lcd_Draw_Snake();
 //    		Calculate_Snake_Position(snake_object.head_direction);
 		}
@@ -261,7 +263,7 @@ void Main(void)
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
 //	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
-	OS_Create_Task_Simple(Task5, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task5, (void*)0, 4, 1024);
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)
 

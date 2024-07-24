@@ -1,5 +1,6 @@
 #include "device_driver.h"
 #include "lcd.h"
+#include "FONT.H"
 
 #define Lcd_W 			240
 #define Lcd_H 			320
@@ -406,3 +407,109 @@ void Lcd_Put_Pixel(unsigned short x, unsigned short y, unsigned short color)
 	Lcd_Write_Data_16Bit(color);
 }
 
+
+void LCD_Show_Char(u16 x, u16 y, u16 fc,  u16 bc,  u8 num, u8 size, u8 mode)
+
+{
+
+    u8 temp;
+
+    u8 pos, t;
+
+	u16 colortemp=POINT_COLOR;
+
+
+
+	num=num-' ';
+
+	Lcd_Set_Windows(x, y, x+size/2-1, y+size-1);
+
+	if(!mode)
+
+	{
+
+		for(pos=0;pos<size*2;pos++)
+
+		{
+
+			if(size==12)temp=asc2_1206[num][pos/2];
+
+			else temp=asc2_1608[num][pos/2];
+
+			for(t=0;t<size;t++)
+
+		    {
+
+		        if(temp&0x01)Lcd_Write_Data_16Bit(fc);
+
+				else Lcd_Write_Data_16Bit(bc);
+
+		        if (t%2 == 1) temp>>=1;
+
+
+
+		    }
+
+
+
+		}
+
+	}else
+
+	{
+
+		for(pos=0;pos<size*2;pos++)
+
+		{
+
+			if(size==12)temp=asc2_1206[num][pos/2];
+
+			else temp=asc2_1608[num][pos/2];
+
+			for(t=0;t<size;t++)
+
+		    {
+
+				POINT_COLOR=fc;
+
+		        if(temp&0x01)Lcd_Put_Pixel(x+t, y+pos, POINT_COLOR);
+
+		        else Lcd_Put_Pixel(x+t, y+pos, bc);
+
+		        if (t%2 == 1) temp>>=1;
+
+		    }
+
+		}
+
+	}
+
+	POINT_COLOR=colortemp;
+
+	Lcd_Set_Windows(0, 0, lcddev.width-1, lcddev.height-1);
+
+}
+
+
+
+void LCD_Show_String(u16 x, u16 y, u16 fc,  u16 bc, u8 size, u8 *p, u8 mode)
+
+{
+
+    while((*p<='~')&&(*p>=' '))
+
+    {
+
+		if(x>(lcddev.width-1)||y>(lcddev.height-1))
+
+		return;
+
+		LCD_Show_Char(x, y, fc, bc, *p, size, mode);
+
+        x+=size/2;
+
+        p++;
+
+    }
+
+}

@@ -15,6 +15,8 @@
 //	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
 //	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COL) - 2)
 
+	#define SNAKE_MAX_LENGTH		(40)
+
 	#define KEY_UP					(1)
 	#define KEY_DOWN				(2)
 	#define KEY_LEFT				(3)
@@ -27,7 +29,8 @@
 
 	#define BACKGROUND_COLOR		(0x0000)
 	#define BORDER_COLOR			(0xffff)
-	#define SNAKE_COLOR				(0x07e0)
+//	#define SNAKE_COLOR				(0x07e0)
+	#define SNAKE_COLOR				(0x0000)
 	#define TARGET_COLOR			(0xf800)
 
 //	#define STATE_READY				(0)
@@ -38,6 +41,7 @@
 		// TODO: 머리 위치도 여기서 바로 접근 가능하게 변수 만들기, 뱀의 head, tail 변수 (포인터)
 		char object_map[GAME_WINDOW_ROW][GAME_WINDOW_COL];
 		int snake_head_dir;
+		int snake_head_dir_pre;
 		int queue_no;
 		int score;
 		POINT snake_head_pos;
@@ -52,9 +56,10 @@
 //	}POINT;
 
 	extern SNAKE_OBJECT snake_object;
-	extern unsigned short apple_img[];
-	extern unsigned short grass_img[];
-	extern unsigned short snake_head_img[];
+	extern const unsigned short apple_img[];
+	extern const unsigned short grass_img[];
+	extern const unsigned short snake_head_img[];
+//	extern const unsigned short big_apple_img[];
 
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);
@@ -69,7 +74,7 @@
 	void Lcd_Draw_Border(void);
 	void Lcd_Draw_Snake(void);
 	void Lcd_Draw_Grass(void);
-	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
-	void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction);
+	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img);
+	void rotate_image_array(const unsigned short* image_array, unsigned short *temp, int direction);
 
 #endif // SNAKE_H

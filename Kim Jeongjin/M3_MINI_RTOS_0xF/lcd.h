@@ -1,6 +1,8 @@
 // Lcd.a (Library)
 // SPI1 @36MHz (PCLK2=72MHz)
 
+#include "stm32f10x.h"
+
 #define BLACK	0x0000
 #define WHITE	0xffff
 #define BLUE	0x001f
@@ -27,3 +29,7 @@ extern void Lcd_Write_Data_16Bit(unsigned short color);
 extern void Lcd_Draw_Box(int xs, int ys, int w, int h, unsigned short Color);
 
 extern void _SPI1_Write_Byte(unsigned char data);
+
+
+extern void LCD_Show_String(u16 x, u16 y, u16 fc,  u16 bc, u8 size, u8 *p, u8 mode);
+extern void LCD_Show_Char(u16 x, u16 y, u16 fc,  u16 bc,  u8 num, u8 size, u8 mode);
