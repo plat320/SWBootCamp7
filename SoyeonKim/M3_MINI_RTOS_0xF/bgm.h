@@ -1,6 +1,3 @@
-#ifndef BGM_H
-#define BGM_H
-
 #include "device_driver.h"
 
 #define TIM3_FREQ           (8000000)           // Hz
@@ -24,12 +21,14 @@
 #define A5  880
 #define B5  988
 
-#define NOTE_DURATION 200 // 기본 노트 길이 (밀리초)
+#define NOTE_DURATION (200) // 기본 노트 길이 (밀리초)
+#define COIN_NOTE_DURATION (50) // 기본 노트 길이 (밀리초)
+#define DEAD_NOTE_DURATION (20) // 기본 노트 길이 (밀리초)
 
 void TIM3_Out_Init(void);
 void TIM3_Out_Freq_Generation(unsigned short freq);
 void TIM3_Out_Stop(void);
 void play_tone(unsigned short freq, unsigned int duration_ms);
+void play_coin();
+void play_dead();
 void play_melody();
-
-#endif // BGM_H

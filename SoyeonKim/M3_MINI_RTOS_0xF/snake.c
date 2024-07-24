@@ -83,7 +83,14 @@ void Lcd_Draw_Grass(){
 
     // draw score apple
 
-    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3+10, 1*OBJECT_BLOCK_SIZE,  20,  20,  apple_img);
+    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3, 1*OBJECT_BLOCK_SIZE,  40,  40,  big_apple_img);
+
+	u8* s1 = "Press";
+	u8* s2 = "START";
+	u8* s3 = "BUTTON";
+	LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 5 *OBJECT_BLOCK_SIZE +35 , 0x07e0,  0, 12, s1, 1);
+	LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 7 *OBJECT_BLOCK_SIZE +25 , 0x07e0,  0, 12, s2, 1);
+	LCD_Show_String(12 *OBJECT_BLOCK_SIZE+5, 195, 0x07e0,  0, 12, s3, 1);
 }
 
 void Lcd_Draw_Border(void){
@@ -149,9 +156,9 @@ void Lcd_Draw_Snake(void){
 	{
 		Lcd_Draw_IMG(snake_object.snake_target_pos.x*OBJECT_BLOCK_SIZE, snake_object.snake_target_pos.y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE, apple_img);
 
-		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
+		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
 
-		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
+		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
 
 		//LCD_Show_String(13 *OBJECT_BLOCK_SIZE, 5 *OBJECT_BLOCK_SIZE, 0x07e0,  0, 16, s, 1);
 
@@ -331,8 +338,12 @@ int Check_Snake_Position(POINT p)
 	{
 		case SNAKE_ID:
 			// TODO: Game over
+			play_dead();
 			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
+			if(IncredibleFlag){
+					return SNAKE_ID;
+			}
 			snake_mode = MODE_OVER;
 			OS_Signal_Send(ModeChangeIndex, (const void*)(&send_data));
 			send_data = SNAKE_ID;
@@ -340,8 +351,12 @@ int Check_Snake_Position(POINT p)
 			return SNAKE_ID;
 		case BORDER_ID:
 			// TODO: Game over
+			play_dead();
 			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
+			if(IncredibleFlag){
+					return BORDER_ID;
+			}
 			snake_mode = MODE_OVER;
 			send_data = BORDER_ID;
 			OS_Signal_Send(ModeChangeIndex, (const void*)(&send_data));
@@ -349,6 +364,7 @@ int Check_Snake_Position(POINT p)
 			return BORDER_ID;
 		case TARGET_ID:
 //			Uart_Printf("**************** 여기 들어왔나\n");
+			play_coin();
 			snake_object.score += 1;
 			//Uart1_Printf_From_Task("score: %d\n", snake_object.score);
 			Make_Target();

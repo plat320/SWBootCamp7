@@ -6,6 +6,7 @@
 #include "OS.h"
 #include "queue.h"
 #include "lcd.h"
+#include "bgm.h"
 
 	#define OBJECT_BLOCK_SIZE		(20)
 	#define GAME_WINDOW_HIGHT		(240)
@@ -66,7 +67,7 @@
 	extern const unsigned short snake_up_img[];
 	extern const unsigned short snake_right_img[];
 	extern const unsigned short snake_left_img[];
-//	extern const unsigned short big_apple_img[];
+	extern const unsigned short big_apple_img[];
 
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);
