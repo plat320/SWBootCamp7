@@ -15,7 +15,7 @@
 //	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
 //	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COL) - 2)
 
-	#define SNAKE_MAX_LENGTH		(40)
+	#define SNAKE_MAX_LENGTH		(100)
 
 	#define KEY_UP					(1)
 	#define KEY_DOWN				(2)
@@ -32,6 +32,10 @@
 //	#define SNAKE_COLOR				(0x07e0)
 	#define SNAKE_COLOR				(0x0000)
 	#define TARGET_COLOR			(0xf800)
+	#define MODE_INIT				(0)
+	#define MODE_START				(1)
+	#define MODE_PAUSE				(2)
+	#define MODE_OVER				(3)
 
 //	#define STATE_READY				(0)
 //	#define STATE_BLOCKED			(1)
