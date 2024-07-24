@@ -39,7 +39,8 @@ void Task1(void *para)
     		Uart1_Printf_From_Task("Received data is : %d\n", received_data);
     		// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
     		if (received_data * snake_object.snake_head_dir_pre != KEY_UP * KEY_DOWN
-					&& received_data * snake_object.snake_head_dir_pre != KEY_LEFT * KEY_RIGHT && received_data <= 4){
+					&& received_data * snake_object.snake_head_dir_pre != KEY_LEFT * KEY_RIGHT
+					&& received_data >=1 && received_data <= 4){
 				snake_object.snake_head_dir = received_data;
 			}
     	}
