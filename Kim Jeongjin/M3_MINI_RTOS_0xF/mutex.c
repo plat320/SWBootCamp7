@@ -132,11 +132,12 @@ void Give_Mutex(int mutex_id, int task_related) {
             mutex_list[mutex_id]->no_task = next_tcb_no;
             __set_BASEPRI(0x00);
             OS_Pend_Trigger();
-            __set_BASEPRI(0x30);
+
         } else {
             mutex_list[mutex_id]->locked = 0;
             mutex_list[mutex_id]->no_task = NO_ALLOCATED_TASK;
         }
+        __set_BASEPRI(0x30);
         current_tcb->waiting_for_mutex = NO_WAITING_MUTEX;
         current_tcb->prio = current_tcb->base_prio;
         //pq_push(&ready_queue, current_tcb, pq_compare_ready);

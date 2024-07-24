@@ -198,8 +198,7 @@ void OS_Scheduler(void)
 
 		return; // 우선순위 큐가 비어 있는 경우
 	}
-
-	if (next_tcb != NULL && next_tcb != current_tcb) {
+	else{
 		pq_pop(&ready_queue, pq_compare_ready);
 	    next_tcb->state = STATE_RUNNING;
 
