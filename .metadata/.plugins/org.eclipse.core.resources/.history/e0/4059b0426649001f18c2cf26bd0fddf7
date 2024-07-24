@@ -173,7 +173,7 @@ void rotate_image_array(const unsigned short* image_array, unsigned short *temp,
         case KEY_LEFT: // direction = 1일 때 (시계 방향으로 90도 회전, 왼쪽)
             for (i = 0; i < OBJECT_BLOCK_SIZE; i++) {
                 for (j = 0; j < OBJECT_BLOCK_SIZE; j++) {
-                    temp[OBJECT_BLOCK_SIZE*j+OBJECT_BLOCK_SIZE - 1 - i] = image_array[OBJECT_BLOCK_SIZE*i+j];
+                    temp[OBJECT_BLOCK_SIZE*j+OBJECT_BLOCK_SIZE - 1 - i] = image_array[OBJECT_BLOCK_SIZE*i+OBJECT_BLOCK_SIZE+j];
                 }
             }
             break;
