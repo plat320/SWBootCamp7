@@ -32,6 +32,10 @@
 //	#define SNAKE_COLOR				(0x07e0)
 	#define SNAKE_COLOR				(0x0000)
 	#define TARGET_COLOR			(0xf800)
+	#define MODE_INIT				(0)
+	#define MODE_START				(1)
+	#define MODE_PAUSE				(2)
+	#define MODE_OVER				(3)
 
 //	#define STATE_READY				(0)
 //	#define STATE_BLOCKED			(1)
@@ -59,6 +63,9 @@
 	extern const unsigned short apple_img[];
 	extern const unsigned short grass_img[];
 	extern const unsigned short snake_head_img[];
+	extern const unsigned short snake_up_img[];
+	extern const unsigned short snake_right_img[];
+	extern const unsigned short snake_left_img[];
 //	extern const unsigned short big_apple_img[];
 
 	void Snake_Init(void);

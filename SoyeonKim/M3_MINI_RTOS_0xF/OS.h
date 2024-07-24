@@ -20,8 +20,7 @@
 	#define OS_FAIL_ALLOCATE_STACK	(-2)
 	#define OS_FAIL_ALLOCATE_QUEUE (-3)
 
-//	#define STACK_SIZE				(5 * 1024)
-	#define STACK_SIZE				(3 * 1024)
+	#define STACK_SIZE				(5 * 1024)
 
 	#define STATE_READY				(0)
 	#define STATE_BLOCKED			(1)
@@ -71,7 +70,9 @@
 	extern int interrupt_period;
 //	extern SNAKE_OBJECT snake_object;
 	extern int KeyValueReceiverIndex;
+	extern int ModeChangeIndex;
 	extern int UpdateLcdIndex;
+	extern int snake_mode;
 
 	/* [ Macro ] */
 
