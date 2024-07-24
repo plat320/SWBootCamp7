@@ -187,22 +187,25 @@ void OS_Scheduler_Start(void)
 
 void OS_Scheduler(void)
 {
+	if (current_tcb->state == STATE_RUNNING){
+		 current_tcb->state = STATE_READY;
+		 current_tcb->timestamp = system_tick;
+		 pq_push(&ready_queue, current_tcb, pq_compare_ready);
+	}
+
 	next_tcb = pq_top(&ready_queue);
 	if (next_tcb == NULL) {
+
 		return; // 우선순위 큐가 비어 있는 경우
 	}
 
 	if (next_tcb != NULL && next_tcb != current_tcb) {
 		pq_pop(&ready_queue, pq_compare_ready);
 	    next_tcb->state = STATE_RUNNING;
-	    if (current_tcb->state == STATE_RUNNING){
-	    	current_tcb->state = STATE_READY;
-	    	current_tcb->timestamp = system_tick;
-		    pq_push(&ready_queue, current_tcb, pq_compare_ready);
-	    }
 
 	    current_tcb = next_tcb;
 	}
+
 }
 
 void OS_Tick(void) {

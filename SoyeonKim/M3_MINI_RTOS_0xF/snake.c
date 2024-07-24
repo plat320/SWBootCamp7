@@ -65,12 +65,24 @@ void draw_init(){
 }
 
 void Lcd_Draw_Grass(){
+
 	int i, j;
+
+	// draw grass
+
     for ( i = 1; i < GAME_WINDOW_HIGHT / OBJECT_BLOCK_SIZE -1; i++) {
+
         for (j = 1; j < GAME_WINDOW_WIDTH / OBJECT_BLOCK_SIZE -1; j++) {
+
             Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  grass_img);
+
         }
+
     }
+
+    // draw score apple
+
+    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3+10, 1*OBJECT_BLOCK_SIZE,  20,  20,  apple_img);
 }
 
 void Lcd_Draw_Border(void){
@@ -91,6 +103,9 @@ void Lcd_Draw_Snake(void){
 	int tail_pos_y = snake_object.snake_tail_pos.y;
 	int prev_head_pos_x;
 	int prev_head_pos_y;
+	int first_digit = snake_object.score%10;
+	int second_digit = snake_object.score/10;
+//	u8* s = "Game Over";
 
 	unsigned short rotated_head_img[400];
 
@@ -133,10 +148,17 @@ void Lcd_Draw_Snake(void){
 	else
 	{
 		Lcd_Draw_IMG(snake_object.snake_target_pos.x*OBJECT_BLOCK_SIZE, snake_object.snake_target_pos.y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE, apple_img);
+
+		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
+
+		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
+
+		//LCD_Show_String(13 *OBJECT_BLOCK_SIZE, 5 *OBJECT_BLOCK_SIZE, 0x07e0,  0, 16, s, 1);
+
 	}
 }
 
-void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction) {
+void rotate_image_array(const unsigned short* image_array, unsigned short *temp, int direction) {
     int i, j;
 
     // direction 값에 따라 회전 방향을 결정
@@ -151,7 +173,7 @@ void rotate_image_array(unsigned short* image_array, unsigned short *temp, int d
         case KEY_LEFT: // direction = 1일 때 (시계 방향으로 90도 회전, 왼쪽)
             for (i = 0; i < OBJECT_BLOCK_SIZE; i++) {
                 for (j = 0; j < OBJECT_BLOCK_SIZE; j++) {
-                    temp[OBJECT_BLOCK_SIZE*j+OBJECT_BLOCK_SIZE - 1 - i] = image_array[OBJECT_BLOCK_SIZE*i+OBJECT_BLOCK_SIZE+j];
+                    temp[OBJECT_BLOCK_SIZE*j+OBJECT_BLOCK_SIZE - 1 - i] = image_array[OBJECT_BLOCK_SIZE*i+j];
                 }
             }
             break;
@@ -321,7 +343,7 @@ int Check_Snake_Position(POINT p)
 		case TARGET_ID:
 //			Uart_Printf("**************** 여기 들어왔나\n");
 			snake_object.score += 1;
-			Uart_Printf("score: %d\n", snake_object.score);
+//			Uart_Printf("score: %d\n", snake_object.score);
 			Make_Target();
 			return TARGET_ID;
 		default:
@@ -408,8 +430,8 @@ void Make_Target(void)
 	snake_object.snake_target_pos.y = valid_map[randomIndex].y;
 	snake_object.snake_target_pos.x = valid_map[randomIndex].x;
 
-	Uart_Printf_From_Task("rand_row: %d\n", valid_map[randomIndex].y);
-	Uart_Printf_From_Task("rand_column: %d\n", valid_map[randomIndex].x);
+//	Uart_Printf_From_Task("rand_row: %d\n", valid_map[randomIndex].y);
+//	Uart_Printf_From_Task("rand_column: %d\n", valid_map[randomIndex].x);
 //	Lcd_Draw_IMG(valid_map[randomIndex].column * OBJECT_BLOCK_SIZE, valid_map[randomIndex].row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, apple_img);
 
 //	srand(time(NULL));  // 난수 초기화
@@ -435,9 +457,9 @@ void Make_Target(void)
 //	Lcd_Draw_Box(rand_column * OBJECT_BLOCK_SIZE, rand_row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, TARGET_COLOR);
 }
 
-void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img)
+void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img)
 {
-	Take_Mutex(snaek_mutex_id, TASK_RELATED);
+	//Take_Mutex(snaek_mutex_id, TASK_RELATED);
 	unsigned int i;
 	int xe, ye;
 	xe = xs+w-1;
@@ -458,5 +480,5 @@ void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img)
 	}
 
 	Lcd_CS_DIS();
-	Give_Mutex(snaek_mutex_id, TASK_RELATED);
+	//Give_Mutex(snaek_mutex_id, TASK_RELATED);
 }
