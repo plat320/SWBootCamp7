@@ -21,6 +21,8 @@ PriorityQueue blocked_queue;
 long long int system_tick = 0;
 int interrupt_period = 100;
 const int default_delay = 1000000000;
+int os_mutex_id;
+
 
 SNAKE_OBJECT snake_object;
 int KeyValueReceiverIndex;
@@ -47,6 +49,7 @@ void OS_Init(void)
 		tcb[i].timestamp = 0;
 		tcb[i].delay_until = 0;
 		tcb[i].heap_index = -1;
+		tcb[i].base_prio = 255;
 	}
 	pq_init(&ready_queue);
 	pq_init(&blocked_queue);
@@ -61,7 +64,12 @@ void OS_Init(void)
 	}
 
 	__set_BASEPRI(0x00);
+	Uart_Printf("Create Mutex\n");
+	Mutex_Init();
+	os_mutex_id = Create_Mutex();
+	Uart_Printf("Create IdleTask\n");
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
+	Uart_Printf("Success Init\n");
 }
 
 char* _OS_Get_Stack(int size){
@@ -127,17 +135,23 @@ int OS_Create_Task_Simple(void(*ptask)(void*), void* para, int prio, int size_st
 
 int OS_Create_Queue(int data_size, int number_of_elements) {
 	__set_BASEPRI(0x30);
+
 	int i;
     for (i = 0; i < MAX_QUEUE; i++) {
         if (queues[i].data_size == 0) { // 사용 중이지 않은 큐를 찾음
             if (createQueue(&queues[i], data_size, number_of_elements, current_tcb -> no_task) == QUEUE_SUCCESS) {
             	Uart_Printf("queues[%d] created \n", i);
+
+            	__set_BASEPRI(0x00);
                 return i; // 큐 생성 성공, 큐 인덱스 반환
             } else {
+            	Uart_Printf("queue create fail \n", i);
+            	__set_BASEPRI(0x00);
                 return OS_FAIL_ALLOCATE_QUEUE; // 큐 생성 실패
             }
         }
     }
+    Uart_Printf("No Queues memory \n", i);
     __set_BASEPRI(0x00);
     return OS_FAIL_ALLOCATE_QUEUE; // 모든 큐가 사용 중인 경우
 }
@@ -167,6 +181,7 @@ void OS_Scheduler_Start(void)
 	TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
 
 	__set_BASEPRI(0x00);
+	Set_Mutex_Scheduler_Flag();
 	_OS_Start_First_Task();
 }
 

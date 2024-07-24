@@ -22,24 +22,25 @@ void Task1(void *para)
 //    	Uart_Printf("queues[1].size: %d\n", queues[1].size);
 //    	Uart_Printf("queues[1].data_size: %d\n", queues[1].data_size);
 
-		Uart_Printf("Task1 Wait_result : %d\n", wait_result);
+    	Uart1_Printf_From_Task("Task1 Wait_result : %d\n", wait_result);
     	if(wait_result == SIGNAL_TIMEOUT) {
-    		Uart_Printf("Signal Timeout\n");
+    		Uart1_Printf_From_Task("Signal Timeout\n");
     	}
     	else if(wait_result == SIGNAL_NO_PERMISSION) {
-    		Uart_Printf("Task 3 didn't create Queue\n");
+    		Uart1_Printf_From_Task("Task 3 didn't create Queue\n");
     	}
     	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
-    		Uart_Printf("Queue is empty\n");
+    		Uart1_Printf_From_Task("Queue is empty\n");
     	}
     	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
-    		Uart_Printf("Data Type is wrong\n");
+    		Uart1_Printf_From_Task("Data Type is wrong\n");
     	}
     	else if(wait_result == SIGNAL_NO_ERROR){
-    		Uart_Printf("Received data is : %d\n", received_data);
+    		Uart1_Printf_From_Task("Received data is : %d\n", received_data);
     		// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
-    		if (received_data * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
-					&& received_data * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT && received_data <= 4){
+    		if (received_data * snake_object.snake_head_dir_pre != KEY_UP * KEY_DOWN
+					&& received_data * snake_object.snake_head_dir_pre != KEY_LEFT * KEY_RIGHT
+					&& received_data >=1 && received_data <= 4){
 				snake_object.snake_head_dir = received_data;
 			}
     	}
@@ -200,20 +201,20 @@ void Task5(void *para)
 		int wait_result = OS_Signal_Wait(UpdateLcdIndex, &received_data, sizeof(int), 0);
 
 		if(wait_result == SIGNAL_TIMEOUT) {
-			Uart_Printf("Signal Timeout\n");
+			Uart1_Printf_From_Task("Signal Timeout\n");
 		}
 		else if(wait_result == SIGNAL_NO_PERMISSION) {
-			Uart_Printf("Task 3 didn't create Queue\n");
+			Uart1_Printf_From_Task("Task 3 didn't create Queue\n");
 		}
 		else if(wait_result == SIGNAL_QUEUE_EMPTY) {
-			Uart_Printf("Queue is empty\n");
+			Uart1_Printf_From_Task("Queue is empty\n");
 		}
 		else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
-			Uart_Printf("Data Type is wrong\n");
+			Uart1_Printf_From_Task("Data Type is wrong\n");
 		}
 		else if(wait_result == SIGNAL_NO_ERROR){
-//			Uart_Printf("Received data is : %d\n", received_data);
-//    		Uart_Printf("여기까지는 정상 동작\n");
+//			Uart1_Printf_From_Task("Received data is : %d\n", received_data);
+//    		Uart1_Printf_From_Task("여기까지는 정상 동작\n");
 			Lcd_Draw_Snake();
 //    		Calculate_Snake_Position(snake_object.head_direction);
 		}

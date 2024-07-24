@@ -4,6 +4,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <mutex.h>
+#include "OS.h"
+
+static int uart_mutex_id = -1;
 
 void Uart1_Init(int baud)
 {
@@ -26,6 +30,9 @@ void Uart1_Init(int baud)
 	USART1->CR1 = (1<<13)|(0<<12)|(0<<10)|(1<<3)|(1<<2);
 	USART1->CR2 = 0<<12;
 	USART1->CR3 = 0;
+
+	Mutex_Init();
+	uart_mutex_id = Create_Mutex();
 }
 
 void Uart1_Send_Byte(char data)
@@ -54,10 +61,25 @@ void Uart1_Printf(char *fmt,...)
 	va_list ap;
 	char string[128];
 
-	va_start(ap,fmt);
-	vsprintf(string,fmt,ap);
+	Take_Mutex(uart_mutex_id, TASK_NOT_RELATED);
+	va_start(ap, fmt);
+	vsprintf(string, fmt, ap);
 	Uart1_Send_String(string);
 	va_end(ap);
+	Give_Mutex(uart_mutex_id, TASK_NOT_RELATED);
+}
+
+void Uart1_Printf_From_Task(char *fmt,...)
+{
+	va_list ap;
+	char string[128];
+
+	Take_Mutex(uart_mutex_id, TASK_RELATED);
+	va_start(ap, fmt);
+	vsprintf(string, fmt, ap);
+	Uart1_Send_String(string);
+	va_end(ap);
+	Give_Mutex(uart_mutex_id, TASK_RELATED);
 }
 
 void Uart1_RX_Interrupt_Enable(int en)
