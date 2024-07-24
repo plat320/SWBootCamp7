@@ -30,6 +30,11 @@ int ModeChangeIndex;
 int UpdateLcdIndex;
 int snake_mode;
 
+int UsartReceiverIndex;
+int IncredibleFlag = 0;
+int KeyControlFlag = 0;
+int TimerGap = 600;
+
 /* Function */
 void IdleTask(void *para) {
 	volatile int i;

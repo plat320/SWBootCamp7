@@ -74,6 +74,11 @@
 	extern int UpdateLcdIndex;
 	extern int snake_mode;
 
+	extern int UsartReceiverIndex;
+	extern int IncredibleFlag;
+	extern int KeyControlFlag;
+	extern int TimerGap;
+
 	/* [ Macro ] */
 
 	/* [ Function ] */

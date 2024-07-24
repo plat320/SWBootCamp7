@@ -1,5 +1,6 @@
 #include "device_driver.h"
 #include "OS.h"
+#include "command.h"
 
 int dummyParams[10];
 
@@ -118,6 +119,75 @@ void Task2(void *para)
 	}
 
 }
+
+void Task3(void *para)
+{
+	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
+	char usart_received_data[32];
+	char changed_received_data[32];
+	char poweroverwhelming[32] = "poweroverwhelming";
+	char keycontrol[32] = "keycontrol";
+	char normalmode[32] = "normalmode";
+	char hardmode[32] = "hardmode";
+	char hardestmode[32] = "hardestmode";
+	UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
+	volatile int i;
+	const char keycommand[7] = {'r','w','s','a','d','o','p'};
+	for(;;)
+	{
+    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
+		Uart_Printf("usart_result : %d\n", usart_result);
+    	if(usart_result == SIGNAL_TIMEOUT) {
+    		Uart_Printf_From_Task("Signal Timeout\n");
+    	}
+    	else if(usart_result == SIGNAL_NO_PERMISSION) {
+    		Uart_Printf_From_Task("Task 3 didn't create Queue\n");
+    	}
+    	else if(usart_result == SIGNAL_QUEUE_EMPTY) {
+    		Uart_Printf_From_Task("Queue is empty\n");
+    	}
+    	else if(usart_result == SIGNAL_WRONG_DATA_TYPE) {
+    		Uart_Printf_From_Task("Data Type is wrong\n");
+    	}
+    	else if(usart_result == SIGNAL_NO_ERROR){
+    		my_tolower_str(usart_received_data, changed_received_data);
+    		if (KeyControlFlag) {
+    			if(my_strcasecmp(changed_received_data, &(keycommand[0])) == 0) {
+    				KeyControlFlag = 0;
+    				Uart_Printf_From_Task("Key Control Finished\n");
+    			}
+    			for(i = 1; i <= 6; i++) {
+    				if(my_strcasecmp(changed_received_data, &(keycommand[i])) == 0) {
+    					OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&i));
+    				}
+    			}
+    		}
+    		else if (my_strcasecmp(changed_received_data, poweroverwhelming) == 0) {
+    			IncredibleFlag ^= 1;
+    		}
+    		else if (my_strcasecmp(changed_received_data, keycontrol) == 0) {
+    			KeyControlFlag = 1;
+    			Uart_Printf_From_Task("Key Control Start\n");
+    		}
+    		else if (my_strcasecmp(changed_received_data, normalmode) == 0) {
+    		    TimerGap = 600;
+    		    Uart_Printf_From_Task("Hard Mode Start\n");
+    		}
+    		else if (my_strcasecmp(changed_received_data, hardmode) == 0) {
+    			TimerGap = 450;
+    		    Uart_Printf_From_Task("Hard Mode Start\n");
+    		}
+    		else if (my_strcasecmp(changed_received_data, hardestmode) == 0) {
+    		    TimerGap = 300;
+    		    Uart_Printf_From_Task("Hardest Mode Start\n");
+    		}
+    		else {
+    			Uart_Printf_From_Task("Received data is : %s\n", usart_received_data);
+    		}
+    	}
+	}
+}
+
 // 필요한 정보들 전달 받아서 LCD 구동
 void Task5(void *para)
 {
@@ -190,6 +260,7 @@ void Main(void)
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
 	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task3, (void*)0, 5, 1024);
 	OS_Create_Task_Simple(Task5, (void*)0, 5, 1024);
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)

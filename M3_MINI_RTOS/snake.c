@@ -340,6 +340,9 @@ int Check_Snake_Position(POINT p)
 			// TODO: Game over
 			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
+			if(IncredibleFlag){
+					return SNAKE_ID;
+			}
 			snake_mode = MODE_OVER;
 			OS_Signal_Send(ModeChangeIndex, (const void*)(&send_data));
 			send_data = SNAKE_ID;
@@ -349,6 +352,9 @@ int Check_Snake_Position(POINT p)
 			// TODO: Game over
 			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
+			if(IncredibleFlag){
+					return BORDER_ID;
+			}
 			snake_mode = MODE_OVER;
 			send_data = BORDER_ID;
 			OS_Signal_Send(ModeChangeIndex, (const void*)(&send_data));
