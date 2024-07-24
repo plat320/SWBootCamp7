@@ -85,10 +85,10 @@ int Take_Mutex(int mutex_id, int task_related) {
     		return SUCCESS_ALLOCATE_MUTEX;
     	}
     	else {
-    		//if (tcb[mutex_list[mutex_id]->no_task].prio < tcb[cur_task_no].prio) {
-    		//    	tcb[mutex_list[mutex_id]->no_task].prio = tcb[cur_task_no].prio;
-    		//    	pq_update(&ready_queue, &tcb[mutex_list[mutex_id]->no_task], pq_compare_ready);
-    		//}
+    		if (tcb[mutex_list[mutex_id]->no_task].prio > tcb[cur_task_no].prio) {
+    		    	tcb[mutex_list[mutex_id]->no_task].prio = tcb[cur_task_no].prio;
+    		    	pq_update(&ready_queue, &tcb[mutex_list[mutex_id]->no_task], pq_compare_ready);
+    		}
     		tcb[cur_task_no].state = STATE_BLOCKED;
     		tcb[cur_task_no].waiting_for_mutex = mutex_id;
     		int task_no = cur_task_no;
@@ -132,11 +132,12 @@ void Give_Mutex(int mutex_id, int task_related) {
             mutex_list[mutex_id]->no_task = next_tcb_no;
             __set_BASEPRI(0x00);
             OS_Pend_Trigger();
-            __set_BASEPRI(0x30);
+
         } else {
             mutex_list[mutex_id]->locked = 0;
             mutex_list[mutex_id]->no_task = NO_ALLOCATED_TASK;
         }
+        __set_BASEPRI(0x30);
         current_tcb->waiting_for_mutex = NO_WAITING_MUTEX;
         current_tcb->prio = current_tcb->base_prio;
         //pq_push(&ready_queue, current_tcb, pq_compare_ready);

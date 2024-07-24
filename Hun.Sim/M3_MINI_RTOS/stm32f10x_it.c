@@ -580,7 +580,6 @@ void TIM4_IRQHandler(void)
 	Macro_Clear_Bit(TIM4->SR, 0);
 	NVIC_ClearPendingIRQ(TIM4_IRQn);
 
-	Move_Snake_Position(snake_object.snake_head_dir);
 	OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
 }
 

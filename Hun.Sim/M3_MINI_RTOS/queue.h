@@ -4,8 +4,10 @@
 #include <stddef.h>
 
 // 고정된 최대 크기 정의
-#define MAX_QUEUE_SIZE          (10)
-#define QUEUE_BUFFER_SIZE       (4 * 1024)
+//#define MAX_QUEUE_SIZE          (10)
+#define MAX_QUEUE_SIZE          (5)
+//#define QUEUE_BUFFER_SIZE       (4 * 1024)
+#define QUEUE_BUFFER_SIZE       (5 * 1024)
 
 // Queue 상태 정의
 #define QUEUE_SUCCESS           (0)
@@ -29,6 +31,7 @@ typedef struct Queue {
     Node* front;
     Node* rear;
     int size;      // 현재 Queue에 있는 요소의 수
+    int max_size;  // 현재 Queue에 삽입할 수 있는 요소 수의 최댓값
     int data_size; // 데이터 크기
     Node* free_nodes; // 미리 할당된 노드들의 리스트
     int no_task; // Queue 생성한 task의 no

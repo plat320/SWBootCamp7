@@ -506,7 +506,7 @@ void LCD_Show_String(u16 x, u16 y, u16 fc,  u16 bc, u8 size, u8 *p, u8 mode)
 
 		LCD_Show_Char(x, y, fc, bc, *p, size, mode);
 
-        x+=size/2;
+        x+=size;///2;
 
         p++;
 

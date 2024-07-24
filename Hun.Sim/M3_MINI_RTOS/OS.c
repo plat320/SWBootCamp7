@@ -26,7 +26,9 @@ int os_mutex_id;
 
 SNAKE_OBJECT snake_object;
 int KeyValueReceiverIndex;
+int ModeChangeIndex;
 int UpdateLcdIndex;
+int snake_mode;
 
 /* Function */
 void IdleTask(void *para) {
@@ -178,7 +180,7 @@ void OS_Scheduler_Start(void)
 
 	SysTick_OS_Tick(interrupt_period);
 	// TODO: 사망하면 이거 첫번째 인자 0으로 바꾸기
-	TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
+//	TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
 
 	__set_BASEPRI(0x00);
 	Set_Mutex_Scheduler_Flag();
@@ -187,22 +189,24 @@ void OS_Scheduler_Start(void)
 
 void OS_Scheduler(void)
 {
-	next_tcb = pq_top(&ready_queue);
-	if (next_tcb == NULL) {
-		return; // 우선순위 큐가 비어 있는 경우
+	if (current_tcb->state == STATE_RUNNING){
+		 current_tcb->state = STATE_READY;
+		 current_tcb->timestamp = system_tick;
+		 pq_push(&ready_queue, current_tcb, pq_compare_ready);
 	}
 
-	if (next_tcb != NULL && next_tcb != current_tcb) {
+	next_tcb = pq_top(&ready_queue);
+	if (next_tcb == NULL) {
+
+		return; // 우선순위 큐가 비어 있는 경우
+	}
+	else{
 		pq_pop(&ready_queue, pq_compare_ready);
 	    next_tcb->state = STATE_RUNNING;
-	    if (current_tcb->state == STATE_RUNNING){
-	    	current_tcb->state = STATE_READY;
-	    	current_tcb->timestamp = system_tick;
-		    pq_push(&ready_queue, current_tcb, pq_compare_ready);
-	    }
 
 	    current_tcb = next_tcb;
 	}
+
 }
 
 void OS_Tick(void) {

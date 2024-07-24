@@ -70,7 +70,9 @@
 	extern int interrupt_period;
 //	extern SNAKE_OBJECT snake_object;
 	extern int KeyValueReceiverIndex;
+	extern int ModeChangeIndex;
 	extern int UpdateLcdIndex;
+	extern int snake_mode;
 
 	/* [ Macro ] */
 
