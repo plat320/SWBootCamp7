@@ -107,31 +107,31 @@ void Lcd_Draw_Snake(void){
 	int second_digit = snake_object.score/10;
 //	u8* s = "Game Over";
 
+	unsigned short rotated_head_img[400];
+
 	// draw curr head  => ¹ì¸Ó¸®
 	POINT* p = (POINT*)node->data;
 
+	rotate_image_array(snake_head_img, rotated_head_img, head_dir);
+	Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  rotated_head_img);
 
 	// draw prev head
 	switch(head_dir){
 	case KEY_UP:
 		prev_head_pos_x = p->x;
 		prev_head_pos_y = p->y +1;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_up_img);
 		break;
 	case KEY_DOWN:
 		prev_head_pos_x = p->x;
 		prev_head_pos_y = p->y -1;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_head_img);
 		break;
 	case KEY_RIGHT:
 		prev_head_pos_x = p->x-1;
 		prev_head_pos_y = p->y;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_right_img);
 		break;
 	case KEY_LEFT:
 		prev_head_pos_x = p->x+1;
 		prev_head_pos_y = p->y;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_left_img);
 		break;
 	default:
 		Uart_Printf("WRONG KEY VALUE\n");

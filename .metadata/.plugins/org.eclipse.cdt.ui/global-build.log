@@ -2111,3 +2111,147 @@ make all
 "C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
 
 **** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+snake.c: In function 'Lcd_Draw_Snake':
+snake.c:122:20: error: incompatible types when assigning to type 'short unsigned int[400]' from type 'const short unsigned int *'
+   rotated_head_img = snake_up_img;
+                    ^
+snake.c:127:20: error: incompatible types when assigning to type 'short unsigned int[400]' from type 'const short unsigned int *'
+   rotated_head_img = snake_head_img;
+                    ^
+snake.c:132:20: error: incompatible types when assigning to type 'short unsigned int[400]' from type 'const short unsigned int *'
+   rotated_head_img = snake_right_img;
+                    ^
+snake.c:137:22: error: 'snake_left_img' undeclared (first use in this function)
+   rotated_head_img = snake_left_img;
+                      ^
+snake.c:137:22: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+snake.c: In function 'Lcd_Draw_Snake':
+snake.c:122:20: warning: assignment discards 'const' qualifier from pointer target type [enabled by default]
+   rotated_head_img = snake_up_img;
+                    ^
+snake.c:127:20: warning: assignment discards 'const' qualifier from pointer target type [enabled by default]
+   rotated_head_img = snake_head_img;
+                    ^
+snake.c:132:20: warning: assignment discards 'const' qualifier from pointer target type [enabled by default]
+   rotated_head_img = snake_right_img;
+                    ^
+snake.c:137:22: error: 'snake_left_img' undeclared (first use in this function)
+   rotated_head_img = snake_left_img;
+                      ^
+snake.c:137:22: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+snake.c: In function 'Lcd_Draw_Snake':
+snake.c:122:20: warning: assignment makes pointer from integer without a cast [enabled by default]
+   rotated_head_img = *snake_up_img;
+                    ^
+snake.c:127:20: warning: assignment makes pointer from integer without a cast [enabled by default]
+   rotated_head_img = *snake_head_img;
+                    ^
+snake.c:132:20: warning: assignment makes pointer from integer without a cast [enabled by default]
+   rotated_head_img = *snake_right_img;
+                    ^
+snake.c:137:23: error: 'snake_left_img' undeclared (first use in this function)
+   rotated_head_img = *snake_left_img;
+                       ^
+snake.c:137:23: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+snake.c: In function 'Lcd_Draw_Snake':
+snake.c:110:17: error: array size missing in 'rotated_head_img'
+  unsigned short rotated_head_img[];
+                 ^
+snake.c:122:20: error: incompatible types when assigning to type 'short unsigned int[1]' from type 'const short unsigned int *'
+   rotated_head_img = snake_up_img;
+                    ^
+snake.c:127:20: error: incompatible types when assigning to type 'short unsigned int[1]' from type 'const short unsigned int *'
+   rotated_head_img = snake_head_img;
+                    ^
+snake.c:132:20: error: incompatible types when assigning to type 'short unsigned int[1]' from type 'const short unsigned int *'
+   rotated_head_img = snake_right_img;
+                    ^
+snake.c:137:20: error: incompatible types when assigning to type 'short unsigned int[1]' from type 'const short unsigned int *'
+   rotated_head_img = snake_left_img;
+                    ^
+make: *** [OS.o] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o bgm.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o mutex.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld: rom_0x08003000.elf section `.rodata' will not fit in region `ROM'
+C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld: region `ROM' overflowed by 488 bytes
+make: *** [rom_0x08003000.elf] Error 1
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o bgm.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o mutex.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o bgm.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o mutex.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o bgm.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o mutex.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****
+
+**** Build of configuration Default for project M3_MINI_RTOS ****
+
+make all 
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-gcc" crt0.s exp_handler.s scheduler.s OS.c bgm.c clock.c core_cm3.c define.c joy_key.c lcd.c led.c main.c mutex.c priority_queue.c queue.c runtime.c snake.c stm32f10x_it.c systick.c timer.c uart.c -nostdinc  -I. -I "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/include" -I "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/include"  -mcpu=cortex-m3 -fno-stack-protector -c -O0 -Wall -mthumb -msoft-float -fno-builtin -funsigned-char -fno-strict-aliasing -fno-common -pipe -mapcs -mno-thumb-interwork  
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-ld" OS.o bgm.o clock.o core_cm3.o define.o joy_key.o lcd.o led.o main.o mutex.o priority_queue.o queue.o runtime.o snake.o stm32f10x_it.o systick.o timer.o uart.o crt0.o exp_handler.o scheduler.o -o rom_0x08003000.elf --cref -Bstatic -nostdlib -p -EL -lm -Map rom_0x08003000.map -L "C:\CodeSourcery\Sourcery G++ Lite/arm-none-eabi/lib/thumb2" -L "C:\CodeSourcery\Sourcery G++ Lite/lib/gcc/arm-none-eabi/4.8.1/thumb2" -lc -lgcc -T rom_0x08003000.lds
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objcopy" rom_0x08003000.elf rom_0x08003000.bin -O binary
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D .\rom_0x08003000.elf > .\__dump.txt
+"C:\CodeSourcery\Sourcery G++ Lite/bin/arm-none-eabi-objdump" -x -D -S .\rom_0x08003000.elf > .\__dump_all.txt
+
+**** Build Finished ****

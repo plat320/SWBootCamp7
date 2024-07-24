@@ -107,36 +107,40 @@ void Lcd_Draw_Snake(void){
 	int second_digit = snake_object.score/10;
 //	u8* s = "Game Over";
 
+	unsigned short *rotated_head_img;
+
 	// draw curr head  => 뱀머리
 	POINT* p = (POINT*)node->data;
 
+//	rotate_image_array(snake_head_img, rotated_head_img, head_dir);
 
 	// draw prev head
 	switch(head_dir){
 	case KEY_UP:
 		prev_head_pos_x = p->x;
 		prev_head_pos_y = p->y +1;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_up_img);
+		rotated_head_img = *snake_up_img;
 		break;
 	case KEY_DOWN:
 		prev_head_pos_x = p->x;
 		prev_head_pos_y = p->y -1;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_head_img);
+		rotated_head_img = *snake_head_img;
 		break;
 	case KEY_RIGHT:
 		prev_head_pos_x = p->x-1;
 		prev_head_pos_y = p->y;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_right_img);
+		rotated_head_img = *snake_right_img;
 		break;
 	case KEY_LEFT:
 		prev_head_pos_x = p->x+1;
 		prev_head_pos_y = p->y;
-		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_left_img);
+		rotated_head_img = *snake_left_img;
 		break;
 	default:
 		Uart_Printf("WRONG KEY VALUE\n");
 		return;
 	}
+	Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  rotated_head_img);
 
 	Lcd_Draw_Box(prev_head_pos_x*OBJECT_BLOCK_SIZE, prev_head_pos_y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  SNAKE_COLOR);
 
@@ -304,7 +308,7 @@ int Check_Snake_Position(POINT p)
 	// object map 범위 초과
 	if (p.x < 0 || p.x >= GAME_WINDOW_ROW || p.y < 0 || p.y >= GAME_WINDOW_COL)
 	{
-		Uart1_Printf_From_Task("Game Over!!\n");
+		Uart_Printf("Game Over!!\n");
 		// Timer stop
 		TIM4_Repeat_Interrupt_Enable(0, 600);
 		return -1;
@@ -330,20 +334,20 @@ int Check_Snake_Position(POINT p)
 	{
 		case SNAKE_ID:
 			// TODO: Game over
-			//Uart1_Printf_From_Task("Game Over!!\n");
+			Uart_Printf("Game Over!!\n");
 			// Timer stop
 			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return SNAKE_ID;
 		case BORDER_ID:
 			// TODO: Game over
-			//Uart1_Printf_From_Task("Game Over!!\n");
+			Uart_Printf("Game Over!!\n");
 			// Timer stop
 			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return BORDER_ID;
 		case TARGET_ID:
 //			Uart_Printf("**************** 여기 들어왔나\n");
 			snake_object.score += 1;
-			//Uart1_Printf_From_Task("score: %d\n", snake_object.score);
+			Uart_Printf("score: %d\n", snake_object.score);
 			Make_Target();
 			return TARGET_ID;
 		default:
@@ -432,7 +436,6 @@ void Make_Target(void)
 
 	Uart_Printf_From_Task("rand_row: %d\n", valid_map[randomIndex].y);
 	Uart_Printf_From_Task("rand_column: %d\n", valid_map[randomIndex].x);
-
 //	Lcd_Draw_IMG(valid_map[randomIndex].column * OBJECT_BLOCK_SIZE, valid_map[randomIndex].row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, apple_img);
 
 //	srand(time(NULL));  // 난수 초기화
@@ -460,7 +463,7 @@ void Make_Target(void)
 
 void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img)
 {
-	//Take_Mutex(snaek_mutex_id, TASK_RELATED);
+	Take_Mutex(snaek_mutex_id, TASK_RELATED);
 	unsigned int i;
 	int xe, ye;
 	xe = xs+w-1;
@@ -481,5 +484,5 @@ void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img)
 	}
 
 	Lcd_CS_DIS();
-	//Give_Mutex(snaek_mutex_id, TASK_RELATED);
+	Give_Mutex(snaek_mutex_id, TASK_RELATED);
 }
