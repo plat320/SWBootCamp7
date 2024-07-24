@@ -16,6 +16,8 @@
 #define DEQUEUE_NO_PERMISSION		(-2)
 #define DEQUEUE_EMPTY				(-3)
 
+#define HAVE_PERMISSION			(-1)
+
 // 노드 구조체 정의
 typedef struct Node {
     void* data;
@@ -31,6 +33,12 @@ typedef struct Queue {
     Node* free_nodes; // 미리 할당된 노드들의 리스트
     int no_task; // Queue 생성한 task의 no
 } Queue;
+
+// 임시
+typedef struct _point{
+	int x;
+	int y;
+}POINT;
 
 // 함수 선언
 char* _OS_Get_Buffer(int size);

@@ -305,7 +305,9 @@ void EXTI3_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI3_IRQn);
 
 	key_value = 1;
-	OS_Signal_Send(0, (const void*)(&key_value));
+//	Uart_Printf("EXTI3_IRQHandler\n");
+//	OS_Signal_Send(0, (const void*)(&key_value));
+	OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 }
 
 /*******************************************************************************
@@ -484,7 +486,8 @@ void EXTI9_5_IRQHandler(void)
 	NVIC_ClearPendingIRQ(23);
 
 	key_value = EXTI9_5_LUT[kv];
-	OS_Signal_Send(0, (const void*)(&key_value));
+//	OS_Signal_Send(0, (const void*)(&key_value));
+	OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 }
 
 /*******************************************************************************
@@ -572,10 +575,13 @@ void TIM3_IRQHandler(void)
 volatile int tim4_timeout;
 void TIM4_IRQHandler(void)
 {
+	int for_signaling = -1;
+	LED_0_Toggle();
 	Macro_Clear_Bit(TIM4->SR, 0);
 	NVIC_ClearPendingIRQ(TIM4_IRQn);
 
-	tim4_timeout = 1;
+	Move_Snake_Position(snake_object.snake_head_dir);
+	OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
 }
 
 /*******************************************************************************
@@ -724,7 +730,8 @@ void EXTI15_10_IRQHandler(void)
 	NVIC_ClearPendingIRQ(EXTI15_10_IRQn);
 
 	key_value = EXTI15_10_LUT[kv];
-	OS_Signal_Send(0, (const void*)(&key_value));
+//	OS_Signal_Send(0, (const void*)(&key_value));
+	OS_Signal_Send(KeyValueReceiverIndex, (const void*)(&key_value));
 }
 
 /*******************************************************************************

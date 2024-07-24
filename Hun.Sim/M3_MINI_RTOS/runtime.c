@@ -32,6 +32,7 @@ void System_Init(void)
 
 	LED_Init();	// LED ÃÊ±âÈ­
 
+
 	SCB->VTOR = 0x08003000;
 	SCB->SHCSR = 7<<16;
 	SCB->AIRCR = 0x05FA0000;
