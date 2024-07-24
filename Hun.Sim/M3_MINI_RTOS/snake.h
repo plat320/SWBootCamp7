@@ -56,10 +56,10 @@
 //	}POINT;
 
 	extern SNAKE_OBJECT snake_object;
-	extern unsigned short apple_img[];
-	extern unsigned short grass_img[];
-	extern unsigned short snake_head_img[];
-	extern const unsigned short big_apple_img[];
+	extern const unsigned short apple_img[];
+	extern const unsigned short grass_img[];
+	extern const unsigned short snake_head_img[];
+//	extern const unsigned short big_apple_img[];
 
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);
@@ -74,7 +74,7 @@
 	void Lcd_Draw_Border(void);
 	void Lcd_Draw_Snake(void);
 	void Lcd_Draw_Grass(void);
-	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img);
 	void rotate_image_array(const unsigned short* image_array, unsigned short *temp, int direction);
 
 #endif // SNAKE_H

@@ -82,7 +82,7 @@ void Lcd_Draw_Grass(){
 
     // draw score apple
 
-    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3, 1*OBJECT_BLOCK_SIZE,  40,  40,  big_apple_img);
+    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3+10, 1*OBJECT_BLOCK_SIZE,  20,  20,  apple_img);
 }
 
 void Lcd_Draw_Border(void){
@@ -149,9 +149,9 @@ void Lcd_Draw_Snake(void){
 	{
 		Lcd_Draw_IMG(snake_object.snake_target_pos.x*OBJECT_BLOCK_SIZE, snake_object.snake_target_pos.y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE, apple_img);
 
-		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
+		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
 
-		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
+		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
 
 		//LCD_Show_String(13 *OBJECT_BLOCK_SIZE, 5 *OBJECT_BLOCK_SIZE, 0x07e0,  0, 16, s, 1);
 
@@ -457,7 +457,7 @@ void Make_Target(void)
 //	Lcd_Draw_Box(rand_column * OBJECT_BLOCK_SIZE, rand_row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, TARGET_COLOR);
 }
 
-void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img)
+void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img)
 {
 	Take_Mutex(snaek_mutex_id, TASK_RELATED);
 	unsigned int i;
