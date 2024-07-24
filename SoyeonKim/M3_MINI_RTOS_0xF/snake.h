@@ -15,7 +15,7 @@
 //	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
 //	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COL) - 2)
 
-	#define SNAKE_MAX_LENGTH		(20)
+	#define SNAKE_MAX_LENGTH		(100)
 
 	#define KEY_UP					(1)
 	#define KEY_DOWN				(2)

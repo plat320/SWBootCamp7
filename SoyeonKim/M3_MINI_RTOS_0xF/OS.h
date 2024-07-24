@@ -21,7 +21,7 @@
 	#define OS_FAIL_ALLOCATE_QUEUE (-3)
 
 //	#define STACK_SIZE				(5 * 1024)
-	#define STACK_SIZE				(4 * 1024)
+	#define STACK_SIZE				(3 * 1024)
 
 	#define STATE_READY				(0)
 	#define STATE_BLOCKED			(1)

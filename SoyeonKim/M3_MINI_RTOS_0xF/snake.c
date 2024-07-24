@@ -330,20 +330,23 @@ int Check_Snake_Position(POINT p)
 	{
 		case SNAKE_ID:
 			// TODO: Game over
-			//Uart1_Printf_From_Task("Game Over!!\n");
+//			Uart1_Printf_From_Task("Game Over!!\n");
+			Uart_Printf("Game Over!!\n");
 			// Timer stop
 			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return SNAKE_ID;
 		case BORDER_ID:
 			// TODO: Game over
-			//Uart1_Printf_From_Task("Game Over!!\n");
+//			Uart1_Printf_From_Task("Game Over!!\n");
+			Uart_Printf("Game Over!!\n");
 			// Timer stop
 			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return BORDER_ID;
 		case TARGET_ID:
 //			Uart_Printf("**************** 여기 들어왔나\n");
 			snake_object.score += 1;
-			//Uart1_Printf_From_Task("score: %d\n", snake_object.score);
+//			Uart1_Printf_From_Task("score: %d\n", snake_object.score);
+			Uart_Printf("score: %d\n", snake_object.score);
 			Make_Target();
 			return TARGET_ID;
 		default:
@@ -430,8 +433,8 @@ void Make_Target(void)
 	snake_object.snake_target_pos.y = valid_map[randomIndex].y;
 	snake_object.snake_target_pos.x = valid_map[randomIndex].x;
 
-	Uart_Printf_From_Task("rand_row: %d\n", valid_map[randomIndex].y);
-	Uart_Printf_From_Task("rand_column: %d\n", valid_map[randomIndex].x);
+//	Uart_Printf_From_Task("rand_row: %d\n", valid_map[randomIndex].y);
+//	Uart_Printf_From_Task("rand_column: %d\n", valid_map[randomIndex].x);
 
 //	Lcd_Draw_IMG(valid_map[randomIndex].column * OBJECT_BLOCK_SIZE, valid_map[randomIndex].row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, apple_img);
 
