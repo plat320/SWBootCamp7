@@ -50,6 +50,7 @@ void Snake_Init(void)
 
 	snake_object.object_map[p1.y][p1.x] = SNAKE_ID;
 	snake_object.object_map[p2.y][p2.x] = SNAKE_ID;
+	snake_mode = MODE_INIT;
 
 	Mutex_Init();
 	snaek_mutex_id = Create_Mutex();
@@ -107,31 +108,30 @@ void Lcd_Draw_Snake(void){
 	int second_digit = snake_object.score/10;
 //	u8* s = "Game Over";
 
-	unsigned short rotated_head_img[400];
-
 	// draw curr head  => 뱀머리
 	POINT* p = (POINT*)node->data;
-
-	rotate_image_array(snake_head_img, rotated_head_img, head_dir);
-	Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  rotated_head_img);
 
 	// draw prev head
 	switch(head_dir){
 	case KEY_UP:
 		prev_head_pos_x = p->x;
 		prev_head_pos_y = p->y +1;
+		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_up_img);
 		break;
 	case KEY_DOWN:
 		prev_head_pos_x = p->x;
 		prev_head_pos_y = p->y -1;
+		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_head_img);
 		break;
 	case KEY_RIGHT:
 		prev_head_pos_x = p->x-1;
 		prev_head_pos_y = p->y;
+		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_right_img);
 		break;
 	case KEY_LEFT:
 		prev_head_pos_x = p->x+1;
 		prev_head_pos_y = p->y;
+		Lcd_Draw_IMG(p->x*OBJECT_BLOCK_SIZE, p->y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  snake_left_img);
 		break;
 	default:
 		Uart_Printf("WRONG KEY VALUE\n");
@@ -304,7 +304,7 @@ int Check_Snake_Position(POINT p)
 	// object map 범위 초과
 	if (p.x < 0 || p.x >= GAME_WINDOW_ROW || p.y < 0 || p.y >= GAME_WINDOW_COL)
 	{
-		Uart1_Printf_From_Task("Game Over!!\n");
+//		Uart1_Printf_From_Task("Game Over!!\n");
 		// Timer stop
 		TIM4_Repeat_Interrupt_Enable(0, 600);
 		return -1;
@@ -325,28 +325,32 @@ int Check_Snake_Position(POINT p)
 //	Uart_Printf("Check_Snake_Position\n");
 //	Uart_Printf("snake_object.object_map[p.y][p.x]: %d\n", snake_object.object_map[p.y][p.x]);
 //	Uart_Printf("p.y: %d, p.x: %d\n", p.y, p.x);
+	int send_data;
 
 	switch (snake_object.object_map[p.y][p.x])
 	{
 		case SNAKE_ID:
 			// TODO: Game over
-//			Uart1_Printf_From_Task("Game Over!!\n");
-			Uart_Printf("Game Over!!\n");
+			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
-			TIM4_Repeat_Interrupt_Enable(0, 600);
+			snake_mode = MODE_OVER;
+			OS_Signal_Send(ModeChangeIndex, (const void*)(&send_data));
+			send_data = SNAKE_ID;
+//			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return SNAKE_ID;
 		case BORDER_ID:
 			// TODO: Game over
-//			Uart1_Printf_From_Task("Game Over!!\n");
-			Uart_Printf("Game Over!!\n");
+			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
-			TIM4_Repeat_Interrupt_Enable(0, 600);
+			snake_mode = MODE_OVER;
+			send_data = BORDER_ID;
+			OS_Signal_Send(ModeChangeIndex, (const void*)(&send_data));
+//			TIM4_Repeat_Interrupt_Enable(0, 600);
 			return BORDER_ID;
 		case TARGET_ID:
 //			Uart_Printf("**************** 여기 들어왔나\n");
 			snake_object.score += 1;
-//			Uart1_Printf_From_Task("score: %d\n", snake_object.score);
-			Uart_Printf("score: %d\n", snake_object.score);
+			//Uart1_Printf_From_Task("score: %d\n", snake_object.score);
 			Make_Target();
 			return TARGET_ID;
 		default:

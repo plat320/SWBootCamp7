@@ -32,6 +32,8 @@ void System_Init(void)
 
 	LED_Init();	// LED 초기화
 
+	// 임시
+	TIM3_Out_Init();  // buzzer 초기화
 
 	SCB->VTOR = 0x08003000;
 	SCB->SHCSR = 7<<16;
