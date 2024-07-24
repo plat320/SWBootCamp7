@@ -5,7 +5,7 @@
 
 // 고정된 최대 크기 정의
 #define MAX_QUEUE_SIZE          (10)
-#define QUEUE_BUFFER_SIZE       (2 * 1024)
+#define QUEUE_BUFFER_SIZE       (4 * 1024)
 
 // Queue 상태 정의
 #define QUEUE_SUCCESS           (0)

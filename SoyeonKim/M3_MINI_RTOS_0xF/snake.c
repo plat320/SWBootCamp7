@@ -2,6 +2,8 @@
 #include "device_driver.h"
 #include <stdlib.h>
 
+static int snaek_mutex_id = -1;
+
 void Snake_Init(void)
 {
 	int i, j;
@@ -33,9 +35,10 @@ void Snake_Init(void)
 //	Uart_Printf("===================\n");
 
 	snake_object.snake_head_dir = KEY_RIGHT;
+	snake_object.snake_head_dir_pre = KEY_RIGHT;
 
-	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), 10);
-//	Uart_Printf("*** snake_object.queue_no: %d\n", snake_object.queue_no);
+	snake_object.queue_no = OS_Create_Queue(sizeof(POINT), SNAKE_MAX_LENGTH);
+
 	POINT p1 = {4,5};		// tail - front
 	POINT p2 = {5,5};		// head - rear
 	POINT p3 = {-1,-1};
@@ -43,9 +46,13 @@ void Snake_Init(void)
 	enqueue(&queues[snake_object.queue_no], &p2);
 	snake_object.snake_head_pos = *((POINT*)queues[snake_object.queue_no].rear->data);
 	snake_object.snake_tail_pos = p3;
+	//Uart_Printf_From_Task("*** snake_object.queue_no: %d\n", snake_object.queue_no);
 
 	snake_object.object_map[p1.y][p1.x] = SNAKE_ID;
 	snake_object.object_map[p2.y][p2.x] = SNAKE_ID;
+
+	Mutex_Init();
+	snaek_mutex_id = Create_Mutex();
 
 	Make_Target();
 	draw_init();
@@ -236,6 +243,8 @@ void Move_Snake_Position(int received_head_dir)
 //	Uart_Printf("ret: %d\n", ret);
 //	Uart_Printf("after dequeue\n");
 
+	snake_object.snake_head_dir_pre = snake_object.snake_head_dir;
+
 	int ret = Check_Snake_Position(new_head_position);
 
 	if (ret == TARGET_ID)
@@ -395,13 +404,12 @@ void Make_Target(void)
 	}
 	// 랜덤으로 인덱스 선택
 	int randomIndex = rand() % validCount;
-
 	snake_object.object_map[valid_map[randomIndex].y][valid_map[randomIndex].x] = TARGET_ID;
 	snake_object.snake_target_pos.y = valid_map[randomIndex].y;
 	snake_object.snake_target_pos.x = valid_map[randomIndex].x;
 
-	Uart_Printf("rand_row: %d\n", valid_map[randomIndex].y);
-	Uart_Printf("rand_column: %d\n", valid_map[randomIndex].x);
+	Uart_Printf_From_Task("rand_row: %d\n", valid_map[randomIndex].y);
+	Uart_Printf_From_Task("rand_column: %d\n", valid_map[randomIndex].x);
 //	Lcd_Draw_IMG(valid_map[randomIndex].column * OBJECT_BLOCK_SIZE, valid_map[randomIndex].row * OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, OBJECT_BLOCK_SIZE, apple_img);
 
 //	srand(time(NULL));  // 난수 초기화
@@ -429,6 +437,7 @@ void Make_Target(void)
 
 void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img)
 {
+	Take_Mutex(snaek_mutex_id, TASK_RELATED);
 	unsigned int i;
 	int xe, ye;
 	xe = xs+w-1;
@@ -449,4 +458,5 @@ void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img)
 	}
 
 	Lcd_CS_DIS();
+	Give_Mutex(snaek_mutex_id, TASK_RELATED);
 }
