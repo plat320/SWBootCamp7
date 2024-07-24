@@ -675,16 +675,23 @@ void USART1_IRQHandler(void)
     NVIC_ClearPendingIRQ(USART1_IRQn);
 
     // 수신된 문자를 버퍼에 저장
-    uart_rx_buffer[uart_rx_index++] = received_char;
+    if (!KeyControlFlag) {
+    	uart_rx_buffer[uart_rx_index++] = received_char;
 
     // 종료 문자를 받았거나 버퍼가 가득 찼을 때
-    if (received_char == END_CHAR || uart_rx_index >= BUFFER_SIZE) {
-        uart_rx_buffer[uart_rx_index] = '\0'; // 문자열 종료 문자 추가
-        uart_rx_index = 0; // 버퍼 인덱스 초기화
+    	if (received_char == END_CHAR || uart_rx_index >= BUFFER_SIZE) {
+    		uart_rx_buffer[uart_rx_index] = '\0'; // 문자열 종료 문자 추가
+    		uart_rx_index = 0; // 버퍼 인덱스 초기화
 
         // 큐에 문자열 저장
-        int queue_no = 1;
-        OS_Signal_Send(queue_no, (const void*)(uart_rx_buffer));
+    		OS_Signal_Send(UsartReceiverIndex, (const void*)(uart_rx_buffer));
+    	}
+    }
+    else {
+    	uart_rx_buffer[uart_rx_index++] = received_char;
+    	uart_rx_buffer[uart_rx_index] = '\0';
+    	uart_rx_index = 0;
+    	OS_Signal_Send(UsartReceiverIndex, (const void*)(uart_rx_buffer));
     }
 
     uart_rx_in = 1;

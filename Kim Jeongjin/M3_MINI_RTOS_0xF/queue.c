@@ -27,6 +27,7 @@ int createQueue(Queue* q, int data_size, int number_of_elements, int no_task) {
     q->size = 0;
     q->data_size = data_size;
     q->no_task = no_task;
+    q->max_size = number_of_elements;
 
     // 미리 할당된 메모리로 노드 초기화
     q->free_nodes = (Node*)_OS_Get_Buffer(sizeof(Node));
@@ -125,5 +126,5 @@ int isEmpty(Queue* q) {
 
 // Queue가 꽉 차 있는지 확인하는 함수
 int isFull(Queue* q) {
-    return (q->size == MAX_QUEUE_SIZE);
+    return (q->size == q->max_size);
 }
