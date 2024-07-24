@@ -5,19 +5,25 @@
 #include <time.h>
 #include "OS.h"
 #include "queue.h"
+#include "lcd.h"
 
 	#define OBJECT_BLOCK_SIZE		(20)
 	#define GAME_WINDOW_HIGHT		(240)
 	#define GAME_WINDOW_WIDTH		(240)
 	#define GAME_WINDOW_ROW			((GAME_WINDOW_HIGHT) / (OBJECT_BLOCK_SIZE))
-	#define GAME_WINDOW_COLUMN		((GAME_WINDOW_WIDTH) / (OBJECT_BLOCK_SIZE))
-	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
-	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COLUMN) - 2)
+	#define GAME_WINDOW_COL			((GAME_WINDOW_WIDTH) / (OBJECT_BLOCK_SIZE))
+//	#define GAME_OBJECT_MAP_ROW		((GAME_WINDOW_ROW) - 2)
+//	#define GAME_OBJECT_MAP_COLUMN	((GAME_WINDOW_COL) - 2)
 
-	#define JOY_KEY_UP				(1)
-	#define JOY_KEY_DOWN			(2)
-	#define JOY_KEY_LEFT			(3)
-	#define JOY_KEY_RIGHT			(4)
+	#define KEY_UP					(1)
+	#define KEY_DOWN				(2)
+	#define KEY_LEFT				(3)
+	#define KEY_RIGHT				(4)
+
+	#define EMPTY_ID				(0)
+	#define SNAKE_ID				(1)
+	#define TARGET_ID				(2)
+	#define BORDER_ID				(3)
 
 	#define BACKGROUND_COLOR		(0x0000)
 	#define BORDER_COLOR			(0xffff)
@@ -30,9 +36,13 @@
 
 	typedef struct _snake_object{
 		// TODO: 머리 위치도 여기서 바로 접근 가능하게 변수 만들기, 뱀의 head, tail 변수 (포인터)
-		char object_map[GAME_OBJECT_MAP_ROW][GAME_OBJECT_MAP_COLUMN];
-		int head_direction;
+		char object_map[GAME_WINDOW_ROW][GAME_WINDOW_COL];
+		int snake_head_dir;
 		int queue_no;
+		int score;
+		POINT snake_head_pos;
+		POINT snake_tail_pos;
+		POINT snake_target_pos;
 	}SNAKE_OBJECT;
 
 	// queue.h로 이동
@@ -42,14 +52,24 @@
 //	}POINT;
 
 	extern SNAKE_OBJECT snake_object;
+	extern unsigned short apple_img[];
+	extern unsigned short grass_img[];
+	extern unsigned short snake_head_img[];
 
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);
 	void Remove_Snake_Position(void);
+//	void Calculate_Snake_Position(int);
+	void Make_Target(void);
+	int Check_Snake_Position(POINT);
+	void Move_Snake_Position(int);
+
+	// draw function
+	void draw_init(void);
 	void Lcd_Draw_Border(void);
 	void Lcd_Draw_Snake(void);
-//	void Lcd_Draw_New_Position(POINT* head_position, POINT* tail_position);
-	void Calculate_Snake_Position(int);
-	void Make_Target(void);
+	void Lcd_Draw_Grass(void);
+	void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  unsigned short *img);
+	void rotate_image_array(unsigned short* image_array, unsigned short *temp, int direction);
 
 #endif // SNAKE_H

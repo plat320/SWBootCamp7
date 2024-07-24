@@ -6,7 +6,6 @@ int dummyParams[10];
 void Task1(void *para)
 {
 //	volatile int i;
-	int cnt = 0;
 //	int KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 	KeyValueReceiverIndex = OS_Create_Queue(sizeof(int), 10);
 //	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
@@ -14,9 +13,8 @@ void Task1(void *para)
 //	int UsartReceiverIndex = OS_Create_Queue(sizeof(usart_received_data), 5);
 	for(;;)
 	{
-		Uart_Printf("Task3 : %d\n", cnt++);
 		int received_data = -1;
-    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 5000);
+    	int wait_result = OS_Signal_Wait(KeyValueReceiverIndex, &received_data, sizeof(int), 0);
 
 //    	Uart_Printf("KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
 //    	Uart_Printf("queues[0].size: %d\n", queues[0].size);
@@ -24,24 +22,26 @@ void Task1(void *para)
 //    	Uart_Printf("queues[1].size: %d\n", queues[1].size);
 //    	Uart_Printf("queues[1].data_size: %d\n", queues[1].data_size);
 
-		Uart_Printf("Wait_result : %d\n", wait_result);
+    	Uart1_Printf_From_Task("Task1 Wait_result : %d\n", wait_result);
     	if(wait_result == SIGNAL_TIMEOUT) {
-    		Uart_Printf("Signal Timeout\n");
+    		Uart1_Printf_From_Task("Signal Timeout\n");
     	}
     	else if(wait_result == SIGNAL_NO_PERMISSION) {
-    		Uart_Printf("Task 3 didn't create Queue\n");
+    		Uart1_Printf_From_Task("Task 3 didn't create Queue\n");
     	}
     	else if(wait_result == SIGNAL_QUEUE_EMPTY) {
-    		Uart_Printf("Queue is empty\n");
+    		Uart1_Printf_From_Task("Queue is empty\n");
     	}
     	else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
-    		Uart_Printf("Data Type is wrong\n");
+    		Uart1_Printf_From_Task("Data Type is wrong\n");
     	}
     	else if(wait_result == SIGNAL_NO_ERROR){
-    		Uart_Printf("Received data is : %d\n", received_data);
-//    		Uart_Printf("여기까지는 정상 동작\n");
-    		snake_object.head_direction = received_data;
-//    		Calculate_Snake_Position(snake_object.head_direction);
+    		Uart1_Printf_From_Task("Received data is : %d\n", received_data);
+    		// 기존 뱀 진행 방향의 반대 방향이 입력으로 들어오면 무시하고 그렇지 않은 경우에만 입력값으로 방향 업데이트
+    		if (received_data * snake_object.snake_head_dir != KEY_UP * KEY_DOWN
+					&& received_data * snake_object.snake_head_dir != KEY_LEFT * KEY_RIGHT && received_data <= 4){
+				snake_object.snake_head_dir = received_data;
+			}
     	}
 
     	/*
@@ -63,7 +63,7 @@ void Task1(void *para)
     		Uart_Printf("Received data is : %s\n", usart_received_data);
     	}
     	*/
-    	OS_Block_Current_Task(500);
+//    	OS_Block_Current_Task(500);			//
 //		for(i=0;i<0x100000;i++);
 	}
 }
@@ -80,33 +80,36 @@ void Task1(void *para)
 //	}
 //}
 
-void Task2(void *para)
-{
-	//volatile int i;
-//	int cnt = 0;
-	for(;;)
-	{
-		Calculate_Snake_Position(snake_object.head_direction);
-		//Uart_Printf("Task2\n");
-		OS_Block_Current_Task(500);
-		//for(i=0;i<0x100000;i++);
-		//Uart_Printf("Task2 after loop\n");
-	}
-}
+//void Task2(void *para)
+//{
+//	//volatile int i;
+////	int cnt = 0;
+//	int for_signaling = -1;
+//	for(;;)
+//	{
+//		Uart_Printf("Task2\n");
+//		Move_Snake_Position(snake_object.snake_head_dir);
+//		OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
+//		//Uart_Printf("Task2\n");
+//		OS_Block_Current_Task(500);
+//		//for(i=0;i<0x100000;i++);
+//		//Uart_Printf("Task2 after loop\n");
+//	}
+//}
 
-void Task3(void *para)
-{
-	//volatile int i;
-//	int cnt = 0;
-	for(;;)
-	{
-		LED_1_Toggle();
-		//Uart_Printf("Task2\n");
-		OS_Block_Current_Task(100);
-		//for(i=0;i<0x100000;i++);
-		//Uart_Printf("Task2 after loop\n");
-	}
-}
+//void Task3(void *para)
+//{
+//	//volatile int i;
+////	int cnt = 0;
+//	for(;;)
+//	{
+//		LED_1_Toggle();
+//		//Uart_Printf("Task2\n");
+//		OS_Block_Current_Task(100);
+//		//for(i=0;i<0x100000;i++);
+//		//Uart_Printf("Task2 after loop\n");
+//	}
+//}
 
 //void Task2(void *para)
 //{
@@ -187,37 +190,35 @@ void Task3(void *para)
 //	}
 //}
 
-// 임시
+// 필요한 정보들 전달 받아서 LCD 구동
 void Task5(void *para)
 {
+	UpdateLcdIndex = OS_Create_Queue(sizeof(int), 10);
 	for(;;)
 	{
-//		Calculate_Snake_Position(snake_object.head_direction);
+		int received_data = -1;
+		int wait_result = OS_Signal_Wait(UpdateLcdIndex, &received_data, sizeof(int), 0);
 
-//		Make_Target();
+		if(wait_result == SIGNAL_TIMEOUT) {
+			Uart1_Printf_From_Task("Signal Timeout\n");
+		}
+		else if(wait_result == SIGNAL_NO_PERMISSION) {
+			Uart1_Printf_From_Task("Task 3 didn't create Queue\n");
+		}
+		else if(wait_result == SIGNAL_QUEUE_EMPTY) {
+			Uart1_Printf_From_Task("Queue is empty\n");
+		}
+		else if(wait_result == SIGNAL_WRONG_DATA_TYPE) {
+			Uart1_Printf_From_Task("Data Type is wrong\n");
+		}
+		else if(wait_result == SIGNAL_NO_ERROR){
+//			Uart1_Printf_From_Task("Received data is : %d\n", received_data);
+//    		Uart1_Printf_From_Task("여기까지는 정상 동작\n");
+			Lcd_Draw_Snake();
+//    		Calculate_Snake_Position(snake_object.head_direction);
+		}
 
-		// 임시 lcd
-//		static int idx_color = 0;
-//		static int color[] = {0xf800,0x07e0,0x001f,0xffff};
-		// Lcd_Draw_Box(가로, 세로, ...)
-//		Lcd_Draw_Box(80, 60, 160, 120, color[idx_color]);
-
-//		Lcd_Draw_Box(40, 60, 20, 20, color[idx_color]);
-
-//		Lcd_Draw_Box(40, 80, 20, 20, color[idx_color]);
-//		Lcd_Draw_Box(80, 20, 20, 20, color[idx_color]);
-//		Lcd_Draw_Box(40, 100, 20, 20, color[idx_color]);
-//		Lcd_Draw_Box(140, 0, 20, 20, color[(idx_color + 1) % 4]);
-//		Lcd_Draw_Box(140, 20, 20, 20, color[(idx_color + 1) % 4]);
-//		Lcd_Draw_Box(140, 40, 20, 20, color[(idx_color + 1) % 4]);
-//		Lcd_Draw_Box(140, 60, 20, 20, color[(idx_color + 1) % 4]);
-//		Lcd_Draw_Box(140, 80, 20, 20, color[(idx_color + 1) % 4]);
-//		Lcd_Draw_Box(160, 80, 20, 20, color[(idx_color + 1) % 4]);
-
-//		Lcd_Draw_Box(260, 200, 20, 20, 0xf800);
-
-//		idx_color = (idx_color + 1) % 4;
-		OS_Block_Current_Task(500);
+//		OS_Block_Current_Task(500);
 	}
 }
 
@@ -254,22 +255,13 @@ void Main(void)
 	OS_Init();	// OS 자료구조 초기화
 
 	// 임시
+	Uart_Printf("Snake Init start\n");
 	Snake_Init();
+	Uart_Printf("Snake Init end\n");
 
-//	OS_Create_Task_Simple(Task1, (void*)0, 5, 128);
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
-	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
-	OS_Create_Task_Simple(Task3, (void*)0, 5, 1024);
-//	OS_Create_Task_Simple(Task2, (void*)0, 5, 256); // Task 생성
-//	OS_Create_Task_Simple(Task3, (void*)0, 7, 1024);
-
-	OS_Create_Task_Simple(Task5, (void*)0, 7, 1024);
-
-	volatile int i;
-	for(i = 4; i <= 60; i++)
-	{
-//		OS_Create_Task_Simple(TaskDummy, (void*)0, 5 + (i % 2), 128);
-	}
+//	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
+	OS_Create_Task_Simple(Task5, (void*)0, 5, 1024);
 
 	OS_Scheduler_Start();	// Scheduler Start (지금은 첫번째 Task의 실행만 하고 있음)
 

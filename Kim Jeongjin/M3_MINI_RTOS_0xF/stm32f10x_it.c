@@ -575,10 +575,13 @@ void TIM3_IRQHandler(void)
 volatile int tim4_timeout;
 void TIM4_IRQHandler(void)
 {
+	int for_signaling = -1;
+	LED_0_Toggle();
 	Macro_Clear_Bit(TIM4->SR, 0);
 	NVIC_ClearPendingIRQ(TIM4_IRQn);
 
-	tim4_timeout = 1;
+	Move_Snake_Position(snake_object.snake_head_dir);
+	OS_Signal_Send(UpdateLcdIndex, (const void*)(&for_signaling));
 }
 
 /*******************************************************************************
