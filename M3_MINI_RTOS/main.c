@@ -77,21 +77,42 @@ void Task2(void *para)
     		if (received_data == 5 && snake_mode == MODE_INIT){
         		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
 
+        		Lcd_Draw_Box(240, 135, 80, 105, 0);
     			TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
         		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
     			snake_mode = MODE_START;
         		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
 			}
     		else if (received_data == 5 && snake_mode == MODE_PAUSE){
+
+    			Lcd_Draw_Box(240, 135, 80, 105, 0);
     			TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
     			snake_mode = MODE_START;
 			}
     		else if (received_data == 6 && snake_mode == MODE_START){
+    			u8* s1 = "Press";
+    			u8* s2 = "START";
+    			u8* s3 = "BUTTON";
+    			LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 5 *OBJECT_BLOCK_SIZE +35 , 0x07e0,  0, 12, s1, 1);
+    			LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 7 *OBJECT_BLOCK_SIZE +25 , 0x07e0,  0, 12, s2, 1);
+    			LCD_Show_String(12 *OBJECT_BLOCK_SIZE+5, 195, 0x07e0,  0, 12, s3, 1);
     			TIM4_Repeat_Interrupt_Enable(0, 600);	// TIM4 timeout 이벤트 interrupt 활성화
     			snake_mode = MODE_PAUSE;
     		}
     		else if (snake_mode == MODE_OVER){
+    			int first_digit = snake_object.score%10;
+    			int second_digit = snake_object.score/10;
+    			u8* s1 = "FINAL SCORE ";
     			TIM4_Repeat_Interrupt_Enable(0, 600);	// TIM4 timeout 이벤트 interrupt 활성화
+    			Lcd_Draw_Box(0, 0, 320, 240, 0);
+
+    			Lcd_Draw_IMG(40, 70,  40,  40,  big_apple_img);
+    			LCD_Show_String(90 , 70, 0x07e0,  0, 16, s1, 1);
+				LCD_Show_Char(160, 120, 0x07e0,  0,  0x30 + first_digit, 16, 1);
+				LCD_Show_Char(140, 120, 0x07e0,  0,  0x30 + second_digit, 16, 1);
+    			//LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 5 *OBJECT_BLOCK_SIZE +35 , 0x07e0,  0, 12, s1, 1);
+
+
     		}
     	}
 	}

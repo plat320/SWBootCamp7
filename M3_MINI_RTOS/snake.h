@@ -66,7 +66,7 @@
 	extern const unsigned short snake_up_img[];
 	extern const unsigned short snake_right_img[];
 	extern const unsigned short snake_left_img[];
-//	extern const unsigned short big_apple_img[];
+	extern const unsigned short big_apple_img[];
 
 	void Snake_Init(void);
 	void Add_Snake_Position(POINT*);

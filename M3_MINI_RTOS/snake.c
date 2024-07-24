@@ -83,7 +83,14 @@ void Lcd_Draw_Grass(){
 
     // draw score apple
 
-    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3+10, 1*OBJECT_BLOCK_SIZE,  20,  20,  apple_img);
+    Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3, 1*OBJECT_BLOCK_SIZE,  40,  40,  big_apple_img);
+
+	u8* s1 = "Press";
+	u8* s2 = "START";
+	u8* s3 = "BUTTON";
+	LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 5 *OBJECT_BLOCK_SIZE +35 , 0x07e0,  0, 12, s1, 1);
+	LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 7 *OBJECT_BLOCK_SIZE +25 , 0x07e0,  0, 12, s2, 1);
+	LCD_Show_String(12 *OBJECT_BLOCK_SIZE+5, 195, 0x07e0,  0, 12, s3, 1);
 }
 
 void Lcd_Draw_Border(void){
@@ -149,9 +156,9 @@ void Lcd_Draw_Snake(void){
 	{
 		Lcd_Draw_IMG(snake_object.snake_target_pos.x*OBJECT_BLOCK_SIZE, snake_object.snake_target_pos.y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE, apple_img);
 
-		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
+		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
 
-		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 2 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
+		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
 
 		//LCD_Show_String(13 *OBJECT_BLOCK_SIZE, 5 *OBJECT_BLOCK_SIZE, 0x07e0,  0, 16, s, 1);
 
