@@ -3,6 +3,7 @@
 
 #include "queue.h"
 #include "snake.h"
+#include "mutex.h"
 
 	/* [Constant] */
 	//#define MAX_TCB					(20)
@@ -19,7 +20,7 @@
 	#define OS_FAIL_ALLOCATE_STACK	(-2)
 	#define OS_FAIL_ALLOCATE_QUEUE (-3)
 
-	#define STACK_SIZE				(8 * 1024)
+	#define STACK_SIZE				(5 * 1024)
 
 	#define STATE_READY				(0)
 	#define STATE_BLOCKED			(1)
@@ -45,14 +46,13 @@
 		int prio;						// task의 priority
 		int state;						// task의 상태
 
-		// For Priority Queue
 		long long int timestamp;
 		long long int delay_until;
 		int heap_index;
-
 		int temp_value;
 		int signal_flag;
-
+		int base_prio;					// priority inheritence 이후 복귀할 priority
+		int waiting_for_mutex;			// task가 기다리고 있는 mutex id, 없으면 -1
 	}TCB;
 
 	typedef struct {
@@ -92,5 +92,8 @@
 	// void OS_Block_Task(int task_no, int delay);
 	void OS_Unblock_Task(TCB* task);
 	// void OS_Change_Priority(int task_no, int new_prio);
+
+	void OS_Take_Mutex(void);
+	void OS_Give_Mutex(void);
 
 #endif

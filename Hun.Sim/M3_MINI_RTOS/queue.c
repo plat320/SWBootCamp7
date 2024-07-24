@@ -55,7 +55,6 @@ int createQueue(Queue* q, int data_size, int number_of_elements, int no_task) {
         return QUEUE_FAIL_ALLOCATE;
     }
     current_node->next = NULL;
-
     return QUEUE_SUCCESS;
 }
 
