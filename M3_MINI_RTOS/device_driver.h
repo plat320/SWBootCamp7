@@ -16,11 +16,13 @@ extern void LED_1_Toggle(void);
 #define Uart_Send_Byte		Uart1_Send_Byte
 #define Uart_Send_String	Uart1_Send_String
 #define Uart_Printf			Uart1_Printf
+#define Uart_Printf_From_Task			Uart1_Printf_From_Task
 
 extern void Uart1_Init(int baud);
 extern void Uart1_Send_Byte(char data);
 extern void Uart1_Send_String(char *pt);
 extern void Uart1_Printf(char *fmt,...);
+extern void Uart1_Printf_From_Task(char *fmt,...);
 extern void Uart1_RX_Interrupt_Enable(int en);
 // Clock.c
 

@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="261" key="DIALOG_WIDTH"/>
-		<item value="304" key="DIALOG_Y_ORIGIN"/>
-		<item value="1399" key="DIALOG_X_ORIGIN"/>
+		<item value="329" key="DIALOG_Y_ORIGIN"/>
+		<item value="8" key="DIALOG_X_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 	</section>
@@ -13,18 +13,22 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Uart_print" key="selection"/>
+		<item value="Game over" key="selection"/>
 		<list key="findhistory">
-			<item value="uart_print"/>
-			<item value="queue is"/>
-			<item value="queue"/>
-			<item value="memcpy"/>
-			<item value="8006460"/>
-			<item value="size == "/>
-			<item value="usart"/>
-			<item value="create_queue"/>
+			<item value="Game Over"/>
+			<item value="game over"/>
+			<item value="0x0000"/>
+			<item value="make_target"/>
+			<item value="draw_snake"/>
+			<item value="target"/>
+			<item value="Check_Snake_Position"/>
+			<item value="object_map"/>
 		</list>
 		<list key="replacehistory">
+			<item value="0x84E5"/>
+			<item value="GAME_WINDOW_COL"/>
+			<item value="OBJECT_BLOCK_SIZE"/>
+			<item value="KEY"/>
 		</list>
 	</section>
 </section>
