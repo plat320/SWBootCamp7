@@ -338,7 +338,6 @@ int Check_Snake_Position(POINT p)
 	{
 		case SNAKE_ID:
 			// TODO: Game over
-			play_dead();
 			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
 			if(IncredibleFlag){
@@ -351,7 +350,6 @@ int Check_Snake_Position(POINT p)
 			return SNAKE_ID;
 		case BORDER_ID:
 			// TODO: Game over
-			play_dead();
 			//Uart1_Printf_From_Task("Game Over!!\n");
 			// Timer stop
 			if(IncredibleFlag){
@@ -364,7 +362,6 @@ int Check_Snake_Position(POINT p)
 			return BORDER_ID;
 		case TARGET_ID:
 //			Uart_Printf("**************** 여기 들어왔나\n");
-			play_coin();
 			snake_object.score += 1;
 			//Uart1_Printf_From_Task("score: %d\n", snake_object.score);
 			Make_Target();

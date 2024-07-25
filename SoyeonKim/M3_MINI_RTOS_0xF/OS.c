@@ -76,7 +76,7 @@ void OS_Init(void)
 	os_mutex_id = Create_Mutex();
 	Uart_Printf("Create IdleTask\n");
 	OS_Create_Task_Simple(IdleTask, NULL, 255, 128);
-	Uart_Printf("Success Init\n");
+	Uart_Printf("Os Init Success\n");
 }
 
 char* _OS_Get_Stack(int size){

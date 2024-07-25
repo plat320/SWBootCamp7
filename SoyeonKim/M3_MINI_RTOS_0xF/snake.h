@@ -6,7 +6,6 @@
 #include "OS.h"
 #include "queue.h"
 #include "lcd.h"
-#include "bgm.h"
 
 	#define OBJECT_BLOCK_SIZE		(20)
 	#define GAME_WINDOW_HIGHT		(240)

@@ -38,30 +38,6 @@ void play_tone(unsigned short freq, unsigned int duration_ms)
     OS_Block_Current_Task(10); // 노트 사이의 짧은 휴식
 }
 
-void play_coin()
-{
-    unsigned short melody[] = {G5, A5};
-
-    int melody_length = sizeof(melody) / sizeof(melody[0]);
-
-    int i;
-    for (i = 0; i < melody_length; i++) {
-        play_tone(melody[i], NOTE_DURATION);
-    }
-}
-
-void play_dead()
-{
-    unsigned short melody[] = {G4, G4, G4};
-
-    int melody_length = sizeof(melody) / sizeof(melody[0]);
-
-    int i;
-    for (i = 0; i < melody_length; i++) {
-        play_tone(melody[i], NOTE_DURATION);
-    }
-}
-
 void play_melody()
 {
     unsigned short melody[] = {

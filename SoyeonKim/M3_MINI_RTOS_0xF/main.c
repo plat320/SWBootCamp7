@@ -74,15 +74,15 @@ void Task2(void *para)
     		Uart1_Printf_From_Task("Data Type is wrong\n");
     	}
     	else if(wait_result == SIGNAL_NO_ERROR){
-    		Uart1_Printf_From_Task("START, %d %d\n", received_data, snake_mode);
+//    		Uart1_Printf_From_Task("START, %d %d\n", received_data, snake_mode);
     		if (received_data == 5 && snake_mode == MODE_INIT){
-        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
+//        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
 
         		Lcd_Draw_Box(240, 135, 80, 105, 0);
     			TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
-        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
+//        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
     			snake_mode = MODE_START;
-        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
+//        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
 			}
     		else if (received_data == 5 && snake_mode == MODE_PAUSE){
 
@@ -122,7 +122,7 @@ void Task2(void *para)
 
 void Task3(void *para)
 {
-	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
+//	Uart_Printf("*** KeyValueReceiverIndex: %d\n", KeyValueReceiverIndex);
 	char usart_received_data[32];
 	char changed_received_data[32];
 	char poweroverwhelming[32] = "poweroverwhelming";
@@ -135,8 +135,8 @@ void Task3(void *para)
 	const char keycommand[7] = {'r','w','s','a','d','o','p'};
 	for(;;)
 	{
-    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 5000);
-		Uart_Printf("usart_result : %d\n", usart_result);
+    	int usart_result = OS_Signal_Wait(UsartReceiverIndex, &usart_received_data, sizeof(usart_received_data), 0);
+//		Uart_Printf("usart_result : %d\n", usart_result);
     	if(usart_result == SIGNAL_TIMEOUT) {
     		Uart_Printf_From_Task("Signal Timeout\n");
     	}
@@ -171,14 +171,14 @@ void Task3(void *para)
     		}
     		else if (my_strcasecmp(changed_received_data, normalmode) == 0) {
     		    TimerGap = 600;
-    		    Uart_Printf_From_Task("Hard Mode Start\n");
+    		    Uart_Printf_From_Task("Normal Mode Start\n");
     		}
     		else if (my_strcasecmp(changed_received_data, hardmode) == 0) {
-    			TimerGap = 450;
+    			TimerGap = 300;
     		    Uart_Printf_From_Task("Hard Mode Start\n");
     		}
     		else if (my_strcasecmp(changed_received_data, hardestmode) == 0) {
-    		    TimerGap = 300;
+    		    TimerGap = 50;
     		    Uart_Printf_From_Task("Hardest Mode Start\n");
     		}
     		else {
@@ -253,10 +253,9 @@ void Main(void)
 
 	OS_Init();	// OS 자료구조 초기화
 
-	// 임시
-	Uart_Printf("Snake Init start\n");
+//	Uart_Printf("Snake Init start\n");
 	Snake_Init();
-	Uart_Printf("Snake Init end\n");
+//	Uart_Printf("Snake Init end\n");
 
 	OS_Create_Task_Simple(Task1, (void*)0, 5, 1024);
 	OS_Create_Task_Simple(Task2, (void*)0, 5, 1024);
