@@ -2,7 +2,7 @@
 #include "device_driver.h"
 #include <stdlib.h>
 
-static int snaek_mutex_id = -1;
+static int snake_mutex_id = -1;
 
 void Snake_Init(void)
 {
@@ -53,7 +53,7 @@ void Snake_Init(void)
 	snake_mode = MODE_INIT;
 
 	Mutex_Init();
-	snaek_mutex_id = Create_Mutex();
+	snake_mutex_id = Create_Mutex();
 
 	Make_Target();
 	draw_init();
@@ -66,23 +66,18 @@ void draw_init(){
 }
 
 void Lcd_Draw_Grass(){
-
 	int i, j;
 
 	// draw grass
-
     for ( i = 1; i < GAME_WINDOW_HIGHT / OBJECT_BLOCK_SIZE -1; i++) {
 
         for (j = 1; j < GAME_WINDOW_WIDTH / OBJECT_BLOCK_SIZE -1; j++) {
 
             Lcd_Draw_IMG(j*OBJECT_BLOCK_SIZE, i*OBJECT_BLOCK_SIZE,  20,  20,  grass_img);
-
         }
-
     }
 
     // draw score apple
-
     Lcd_Draw_IMG(13*OBJECT_BLOCK_SIZE+3, 1*OBJECT_BLOCK_SIZE,  40,  40,  big_apple_img);
 
 	u8* s1 = "Press";
@@ -155,13 +150,9 @@ void Lcd_Draw_Snake(void){
 	else
 	{
 		Lcd_Draw_IMG(snake_object.snake_target_pos.x*OBJECT_BLOCK_SIZE, snake_object.snake_target_pos.y*OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE,  OBJECT_BLOCK_SIZE, apple_img);
-
 		LCD_Show_Char(14 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + first_digit, 16, 1);
-
 		LCD_Show_Char(13 *OBJECT_BLOCK_SIZE+5, 3 *OBJECT_BLOCK_SIZE+5, 0x07e0,  0,  0x30 + second_digit, 16, 1);
-
 		//LCD_Show_String(13 *OBJECT_BLOCK_SIZE, 5 *OBJECT_BLOCK_SIZE, 0x07e0,  0, 16, s, 1);
-
 	}
 }
 
@@ -212,8 +203,6 @@ void rotate_image_array(const unsigned short* image_array, unsigned short *temp,
 //        }
 //    }
 }
-
-
 
 void Add_Snake_Position(POINT* p)
 {
@@ -480,7 +469,7 @@ void Make_Target(void)
 
 void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img)
 {
-	//Take_Mutex(snaek_mutex_id, TASK_RELATED);
+	//Take_Mutex(snake_mutex_id, TASK_RELATED);
 	unsigned int i;
 	int xe, ye;
 	xe = xs+w-1;
@@ -501,5 +490,5 @@ void Lcd_Draw_IMG(int xs,  int ys,  int w,  int h,  const unsigned short *img)
 	}
 
 	Lcd_CS_DIS();
-	//Give_Mutex(snaek_mutex_id, TASK_RELATED);
+	//Give_Mutex(snake_mutex_id, TASK_RELATED);
 }

@@ -9,7 +9,6 @@
 // 참고 : 최초 제공된 코드는 완전한 코드가 아님
 //      그러므로 추후 RTOS 설계에 따라 보완이 필요함
 
-
 /* Global Variable */
 TCB tcb[MAX_TCB + 1];
 char stack[STACK_SIZE] __attribute__((__aligned__(8)));
@@ -22,7 +21,6 @@ long long int system_tick = 0;
 int interrupt_period = 100;
 const int default_delay = 1000000000;
 int os_mutex_id;
-
 
 SNAKE_OBJECT snake_object;
 int KeyValueReceiverIndex;

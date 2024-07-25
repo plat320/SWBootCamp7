@@ -52,7 +52,6 @@ void Task1(void *para)
 	}
 }
 
-
 void Task2(void *para)
 {
 	ModeChangeIndex = OS_Create_Queue(sizeof(int), 10);
@@ -79,7 +78,7 @@ void Task2(void *para)
 //        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
 
         		Lcd_Draw_Box(240, 135, 80, 105, 0);
-    			TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
+    			TIM4_Repeat_Interrupt_Enable(1, TimerGap);	// TIM4 timeout 이벤트 interrupt 활성화
 //        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
     			snake_mode = MODE_START;
 //        		Uart1_Printf_From_Task("??? %d %d\n", received_data, snake_mode);
@@ -87,7 +86,7 @@ void Task2(void *para)
     		else if (received_data == 5 && snake_mode == MODE_PAUSE){
 
     			Lcd_Draw_Box(240, 135, 80, 105, 0);
-    			TIM4_Repeat_Interrupt_Enable(1, 600);	// TIM4 timeout 이벤트 interrupt 활성화
+    			TIM4_Repeat_Interrupt_Enable(1, TimerGap);	// TIM4 timeout 이벤트 interrupt 활성화
     			snake_mode = MODE_START;
 			}
     		else if (received_data == 6 && snake_mode == MODE_START){
@@ -97,14 +96,14 @@ void Task2(void *para)
     			LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 5 *OBJECT_BLOCK_SIZE +35 , 0x07e0,  0, 12, s1, 1);
     			LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 7 *OBJECT_BLOCK_SIZE +25 , 0x07e0,  0, 12, s2, 1);
     			LCD_Show_String(12 *OBJECT_BLOCK_SIZE+5, 195, 0x07e0,  0, 12, s3, 1);
-    			TIM4_Repeat_Interrupt_Enable(0, 600);	// TIM4 timeout 이벤트 interrupt 활성화
+    			TIM4_Repeat_Interrupt_Enable(0, TimerGap);	// TIM4 timeout 이벤트 interrupt 활성화
     			snake_mode = MODE_PAUSE;
     		}
     		else if (snake_mode == MODE_OVER){
     			int first_digit = snake_object.score%10;
     			int second_digit = snake_object.score/10;
     			u8* s1 = "FINAL SCORE ";
-    			TIM4_Repeat_Interrupt_Enable(0, 600);	// TIM4 timeout 이벤트 interrupt 활성화
+    			TIM4_Repeat_Interrupt_Enable(0, TimerGap);	// TIM4 timeout 이벤트 interrupt 활성화
     			Lcd_Draw_Box(0, 0, 320, 240, 0);
 
     			Lcd_Draw_IMG(40, 70,  40,  40,  big_apple_img);
@@ -112,12 +111,9 @@ void Task2(void *para)
 				LCD_Show_Char(160, 120, 0x07e0,  0,  0x30 + first_digit, 16, 1);
 				LCD_Show_Char(140, 120, 0x07e0,  0,  0x30 + second_digit, 16, 1);
     			//LCD_Show_String(12 *OBJECT_BLOCK_SIZE+12, 5 *OBJECT_BLOCK_SIZE +35 , 0x07e0,  0, 12, s1, 1);
-
-
     		}
     	}
 	}
-
 }
 
 void Task3(void *para)
@@ -175,11 +171,11 @@ void Task3(void *para)
     		    Uart_Printf_From_Task("Normal Mode Start\n");
     		}
     		else if (my_strcasecmp(changed_received_data, hardmode) == 0) {
-    			TimerGap = 300;
+    			TimerGap = 400;
     		    Uart_Printf_From_Task("Hard Mode Start\n");
     		}
     		else if (my_strcasecmp(changed_received_data, hardestmode) == 0) {
-    		    TimerGap = 50;
+    		    TimerGap = 200;
     		    Uart_Printf_From_Task("Hardest Mode Start\n");
     		}
     		else {
