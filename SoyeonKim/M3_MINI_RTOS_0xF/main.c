@@ -163,6 +163,7 @@ void Task3(void *para)
     			}
     		}
     		else if (my_strcasecmp(changed_received_data, poweroverwhelming) == 0) {
+    			Uart_Printf_From_Task("Power Overwhelming\n");
     			IncredibleFlag ^= 1;
     		}
     		else if (my_strcasecmp(changed_received_data, keycontrol) == 0) {
